@@ -14,6 +14,7 @@ except ModuleNotFoundError:
         r"-r backend\requirements.txt"
     )
 
+
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BACKEND_ROOT))
 
@@ -28,9 +29,10 @@ def connection_settings() -> tuple[dict[str, Any], Any]:
     try:
         settings = get_settings()
         connection_params = settings.mysql_connection_params
-        ssl_context = settings.create_mysql_ssl_context()
     except Exception as exc:
-        raise SystemExit(f"Settings validation failed: {exc}") from exc
+        raise SystemExit(
+            f"Settings validation failed: {exc}"
+        ) from exc
 
     if not connection_params:
         raise SystemExit(
@@ -44,8 +46,6 @@ def connection_settings() -> tuple[dict[str, Any], Any]:
         "charset": "utf8mb4",
         "connect_timeout": 15,
     }
-    if ssl_context is not None:
-        params["ssl"] = ssl_context
 
     return params, settings
 
@@ -56,29 +56,46 @@ async def main() -> None:
     try:
         connection = await aiomysql.connect(**params)
     except Exception as exc:
-        raise SystemExit(f"Could not connect to MySQL: {exc}") from exc
+        raise SystemExit(
+            f"Could not connect to MySQL: {exc}"
+        ) from exc
 
     try:
-        result = await bootstrap_administrator(connection, settings)
+        result = await bootstrap_administrator(
+            connection,
+            settings,
+        )
+
         await connection.commit()
 
         verification = await verify_administrator(
             connection,
             str(settings.oniria_admin_email),
         )
-        if not verification.active or not verification.has_administrator_role:
-            raise SystemExit("Administrator verification failed after bootstrap.")
+
+        if (
+            not verification.active
+            or not verification.has_administrator_role
+        ):
+            raise SystemExit(
+                "Administrator verification failed after bootstrap."
+            )
 
         print(result.status)
+
     except ValueError as exc:
         await connection.rollback()
         raise SystemExit(str(exc)) from exc
+
     except BaseException:
         await connection.rollback()
         raise
+
     finally:
         connection.close()
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+    

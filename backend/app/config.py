@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import ssl
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -28,8 +27,6 @@ class Settings(BaseSettings):
     mysql_database: str | None = None
     mysql_user: str | None = None
     mysql_password: str | None = None
-    mysql_ssl_enabled: bool = False
-    mysql_ssl_ca: str | None = None
     mysql_pool_size: int = 10
     mysql_max_overflow: int = 20
     database_min_size: int = 1
@@ -92,7 +89,6 @@ class Settings(BaseSettings):
         "mysql_database",
         "mysql_user",
         "mysql_password",
-        "mysql_ssl_ca",
         "mail_provider",
         "resend_api_key",
         "mail_from",
