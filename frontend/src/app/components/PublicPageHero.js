@@ -14,7 +14,7 @@ export default function PublicPageHero({
       <div className="publicPageHeroOverlay" />
 
       <div className="publicPageHeroContent">
-        <p>{eyebrow}</p>
+        {eyebrow && <p>{eyebrow}</p>}
         <h1>{title}</h1>
         <span>{description}</span>
       </div>

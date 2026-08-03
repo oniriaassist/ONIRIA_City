@@ -16,8 +16,8 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #e9ddcb;
+  color: #95694d;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -7861,5 +7861,2324 @@ textarea:focus-visible {
 
   .adminSidebar {
     transition: none;
+  }
+}
+
+/* =========================================================
+   EDEN HILLS-INSPIRED HOME HEADER AND HERO
+========================================================= */
+.edenHeader {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1200;
+  padding: 34px clamp(28px, 4vw, 72px) 20px;
+  color: #fff;
+  transition: background-color 260ms ease, padding 260ms ease, box-shadow 260ms ease;
+}
+
+.edenHeaderScrolled {
+  padding-top: 20px;
+  background: rgba(13, 22, 19, 0.86);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.edenHeaderDesktop {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 72px);
+}
+
+.edenNavGroup {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 54px);
+}
+
+.edenNavGroupRight { justify-content: flex-end; }
+
+.edenNavGroup a {
+  position: relative;
+  padding: 8px 0;
+  font-size: clamp(12px, 0.95vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.edenNavGroup a::after {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms ease;
+}
+
+.edenNavGroup a:hover::after,
+.edenNavGroup a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.edenHeaderBrand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(23px, 2.15vw, 40px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.edenHeaderMobile,
+.edenMobileMenu { display: none; }
+
+.edenInspiredHero {
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.edenInspiredHero::before {
+  height: 210px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52), transparent);
+}
+
+.edenInspiredHero .heroDarkOverlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 8, 6, 0.12) 0%,
+    rgba(3, 8, 6, 0.20) 45%,
+    rgba(3, 8, 6, 0.48) 100%
+  );
+}
+
+.edenHeroContent {
+  width: min(900px, calc(100% - 40px));
+  margin: 0;
+  padding: 92px 0 110px;
+}
+
+.edenHeroContent h1 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: clamp(42px, 4.6vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.edenHeroContent h1 span:first-child,
+.edenHeroContent h1 span:last-child {
+  font: inherit;
+}
+
+.edenHeroContent .heroSignature {
+  margin-top: 34px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(17px, 1.45vw, 24px);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.beginStoryLink {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateX(-50%);
+}
+
+.beginStoryArrow {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.beginStoryArrow::before {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  width: 9px;
+  height: 9px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.beginStoryLink:hover .beginStoryArrow,
+.beginStoryLink:focus-visible .beginStoryArrow {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(4px);
+}
+
+.heroSlideDots {
+  position: absolute;
+  right: clamp(24px, 3vw, 48px);
+  bottom: 38px;
+  z-index: 15;
+  display: flex;
+  gap: 8px;
+}
+
+.heroSlideDots button {
+  width: 22px;
+  height: 2px;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+}
+
+.heroSlideDots button.isActive { background: #fff; }
+
+/* Smaller floating actions without changing their functionality */
+.oniriaWhatsappFabV2 {
+  width: 50px !important;
+  height: 50px !important;
+  right: 18px !important;
+  bottom: 20px !important;
+}
+
+.oniriaWhatsappFabV2Icon {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.oniriaAIButton {
+  right: 18px !important;
+  bottom: 82px !important;
+  transform: scale(0.88);
+  transform-origin: bottom right;
+}
+
+.oniriaAIChat {
+  right: 18px !important;
+  bottom: 145px !important;
+}
+
+@media (max-width: 1080px) {
+  .edenHeaderDesktop { display: none; }
+
+  .edenHeader {
+    padding: 24px 24px 16px;
+  }
+
+  .edenHeaderMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .edenHeaderMobile .edenHeaderBrand {
+    font-size: 25px;
+    text-align: left;
+  }
+
+  .edenMenuButton {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.12);
+    display: grid;
+    place-content: center;
+    gap: 6px;
+  }
+
+  .edenMenuButton span {
+    width: 18px;
+    height: 1px;
+    background: #fff;
+    transition: transform 200ms ease;
+  }
+
+  .edenMenuButton.isOpen span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .edenMenuButton.isOpen span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+  .edenMobileMenu {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    padding: 120px 28px 40px;
+    background: rgba(15, 27, 23, 0.97);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    transition: opacity 220ms ease;
+  }
+
+  .edenMobileMenu.isOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .edenMobileMenu a {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 9vw, 54px);
+    line-height: 1.05;
+  }
+}
+
+@media (max-width: 600px) {
+  .edenHeroContent {
+    padding-top: 70px;
+    padding-bottom: 115px;
+  }
+
+  .edenHeroContent h1 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .edenHeroContent .heroSignature {
+    margin-top: 24px;
+    font-size: 17px;
+  }
+
+  .beginStoryLink { bottom: 26px; }
+  .heroSlideDots { display: none; }
+
+  .oniriaWhatsappFabV2 {
+    width: 46px !important;
+    height: 46px !important;
+    right: 14px !important;
+    bottom: 16px !important;
+  }
+
+  .oniriaAIButton {
+    right: 14px !important;
+    bottom: 70px !important;
+    transform: scale(0.80);
+  }
+}
+
+/* =========================================================
+   EDEN HILLS-INSPIRED PUBLIC CONTENT TYPOGRAPHY
+   Shared warm palette and centered editorial treatment
+========================================================= */
+
+:root {
+  --oniria-sand: #e9ddcb;
+  --oniria-terracotta: #95694d;
+}
+
+/* The first section immediately after the homepage hero */
+.introductionSection {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 132px 40px 138px;
+  background-color: var(--oniria-sand);
+  color: var(--oniria-terracotta);
+  text-align: center;
+}
+
+.introductionInner {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+}
+
+.introductionSection .sectionLabel {
+  margin: 0 0 28px;
+  color: var(--oniria-terracotta);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.introductionSection h2,
+.editorialIntroduction h2,
+.editorialSectionContent h2,
+.galleryIntroduction h2,
+.journalIntroduction h2,
+.faqIntroduction h2,
+.propertyCollectionIntroduction h2,
+.propertyListingHeading h2,
+.contactPageIntroduction h2,
+.inquiryPageHeading h2 {
+  font-size: 54px;
+  line-height: 0.98;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1.5px;
+}
+
+.introductionSection h2 {
+  max-width: 940px;
+  margin: 0 auto 42px;
+  color: var(--oniria-terracotta);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.introductionCopy {
+  width: min(960px, 100%);
+  margin: 0 auto;
+}
+
+.introductionText,
+.editorialIntroduction > p:last-child,
+.galleryIntroduction > p:last-child,
+.journalIntroduction > p:last-child,
+.faqIntroduction > p:last-child,
+.propertyCollectionIntroduction > p:last-child,
+.contactPageIntroduction > p:last-child,
+.inquiryPageHeading > p:last-child {
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: center;
+}
+
+.introductionText {
+  max-width: none;
+  margin: 0 auto 18px;
+  color: var(--oniria-terracotta);
+}
+
+.introductionText:last-child {
+  margin-bottom: 0;
+}
+
+.introductionLink {
+  margin-top: 42px;
+  padding-bottom: 8px;
+  border-color: var(--oniria-terracotta);
+  color: var(--oniria-terracotta);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.introductionLink:hover,
+.introductionLink:focus-visible {
+  border-color: #6f4a36;
+  color: #6f4a36;
+}
+
+/* Keep the same visual language on the main introductions of public pages. */
+.editorialIntroduction,
+.galleryIntroduction,
+.journalIntroduction,
+.faqIntroduction,
+.propertyCollectionIntroduction,
+.contactPageIntroduction,
+.inquiryPageHeading {
+  background-color: var(--oniria-sand);
+  color: var(--oniria-terracotta);
+}
+
+.editorialIntroduction h2,
+.galleryIntroduction h2,
+.journalIntroduction h2,
+.faqIntroduction h2,
+.propertyCollectionIntroduction h2,
+.contactPageIntroduction h2,
+.inquiryPageHeading h2,
+.editorialIntroduction > p:last-child,
+.galleryIntroduction > p:last-child,
+.journalIntroduction > p:last-child,
+.faqIntroduction > p:last-child,
+.propertyCollectionIntroduction > p:last-child,
+.contactPageIntroduction > p:last-child,
+.inquiryPageHeading > p:last-child {
+  color: var(--oniria-terracotta);
+}
+
+@media (max-width: 900px) {
+  .introductionSection {
+    padding: 104px 28px 110px;
+  }
+
+  .introductionSection h2,
+  .editorialIntroduction h2,
+  .editorialSectionContent h2,
+  .galleryIntroduction h2,
+  .journalIntroduction h2,
+  .faqIntroduction h2,
+  .propertyCollectionIntroduction h2,
+  .propertyListingHeading h2,
+  .contactPageIntroduction h2,
+  .inquiryPageHeading h2 {
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .introductionText,
+  .editorialIntroduction > p:last-child,
+  .galleryIntroduction > p:last-child,
+  .journalIntroduction > p:last-child,
+  .faqIntroduction > p:last-child,
+  .propertyCollectionIntroduction > p:last-child,
+  .contactPageIntroduction > p:last-child,
+  .inquiryPageHeading > p:last-child {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 600px) {
+  .introductionSection {
+    padding: 82px 22px 88px;
+  }
+
+  .introductionSection .sectionLabel {
+    margin-bottom: 22px;
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .introductionSection h2,
+  .editorialIntroduction h2,
+  .editorialSectionContent h2,
+  .galleryIntroduction h2,
+  .journalIntroduction h2,
+  .faqIntroduction h2,
+  .propertyCollectionIntroduction h2,
+  .propertyListingHeading h2,
+  .contactPageIntroduction h2,
+  .inquiryPageHeading h2 {
+    font-size: 38px;
+    line-height: 1.02;
+    letter-spacing: -0.6px;
+  }
+
+  .introductionText,
+  .editorialIntroduction > p:last-child,
+  .galleryIntroduction > p:last-child,
+  .journalIntroduction > p:last-child,
+  .faqIntroduction > p:last-child,
+  .propertyCollectionIntroduction > p:last-child,
+  .contactPageIntroduction > p:last-child,
+  .inquiryPageHeading > p:last-child {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .introductionLink {
+    margin-top: 34px;
+  }
+}
+
+
+/* =========================================================
+   PROJECT-WIDE EDEN HILLS PALETTE AND TYPOGRAPHY
+   Keeps all photography and image overlays unchanged.
+========================================================= */
+
+:root {
+  --oniria-page-background: #e9ddcb;
+  --oniria-page-text: #95694d;
+  --oniria-heading-size: 54px;
+  --oniria-description-size: 21px;
+}
+
+/* Use the warm palette throughout all public pages. */
+body,
+main {
+  background-color: var(--oniria-page-background);
+  color: var(--oniria-page-text);
+}
+
+/* Content sections receive the shared sand background. Image elements,
+   hero backgrounds and background-image declarations remain untouched. */
+.introductionSection,
+.collectionsSection,
+.featuredResidencesSection,
+.masterplanSection,
+.lifestylePreviewSection,
+.editorialIntroduction,
+.editorialSections,
+.editorialSectionContent,
+.galleryIntroduction,
+.galleryGrid,
+.journalIntroduction,
+.journalGrid,
+.faqIntroduction,
+.faqGroups,
+.propertyCollectionIntroduction,
+.propertyCollectionGridSection,
+.propertyListingSection,
+.propertyDetailOverview,
+.propertyDetailFeaturesSection,
+.propertyDetailLayout,
+.contactPageSection,
+.contactPageIntroduction,
+.contactPageGrid,
+.contactMapSection,
+.inquiryPageSection,
+.inquiryPageHeading,
+.inquiryPageLayout,
+.legalPageSection,
+.legalPageLayout,
+.legalPageContent,
+.sitemapSection {
+  background-color: var(--oniria-page-background);
+  color: var(--oniria-page-text);
+}
+
+/* Main page and section headings use one consistent editorial size. */
+.edenHeroContent h1,
+.publicPageHeroContent h1,
+.propertyCollectionHeroContent h1,
+.propertyDetailHeroContent h1,
+.introductionSection h2,
+.collectionsHeading h2,
+.featuredResidencesHeading h2,
+.masterplanHeading h2,
+.lifestylePreviewHeading h2,
+.editorialIntroduction h2,
+.editorialSectionContent h2,
+.galleryIntroduction h2,
+.journalIntroduction h2,
+.faqIntroduction h2,
+.faqGroupHeading,
+.propertyCollectionIntroduction h2,
+.propertyCollectionGridHeading h2,
+.propertyListingHeading h2,
+.propertyDetailFeaturesHeading h2,
+.contactPageIntroduction h2,
+.contactFormHeading h2,
+.inquiryPageHeading h2,
+.finalSalesContent h2,
+.legalPageContent h1,
+.sitemapSection h1 {
+  font-size: var(--oniria-heading-size);
+  line-height: 0.98;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1.5px;
+}
+
+/* Main descriptions use one consistent readable size. */
+.edenHeroContent .heroSignature,
+.publicPageHeroContent > p,
+.propertyCollectionHeroContent > p,
+.propertyDetailHeroContent > p,
+.introductionText,
+.collectionsHeading > p,
+.featuredResidencesIntro,
+.masterplanHeadingText,
+.lifestylePreviewIntro,
+.editorialIntroduction > p,
+.editorialSectionContent > p,
+.galleryIntroduction > p,
+.journalIntroduction > p,
+.faqIntroduction > p,
+.propertyCollectionIntroduction > p,
+.propertyCollectionGridHeading > p,
+.propertyListingHeading > p,
+.propertyDetailOverviewText,
+.contactPageIntroduction > p,
+.inquiryPageHeading > p,
+.finalSalesDescription,
+.legalPageContent > p,
+.sitemapSection > p {
+  font-size: var(--oniria-description-size);
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Keep the shared brown text on light content areas. */
+.introductionSection,
+.collectionsSection,
+.featuredResidencesSection,
+.masterplanSection,
+.lifestylePreviewSection,
+.editorialIntroduction,
+.editorialSectionContent,
+.galleryIntroduction,
+.journalIntroduction,
+.faqIntroduction,
+.propertyCollectionIntroduction,
+.propertyCollectionGridSection,
+.propertyListingSection,
+.propertyDetailOverview,
+.propertyDetailFeaturesSection,
+.contactPageIntroduction,
+.contactPageGrid,
+.inquiryPageHeading,
+.inquiryPageLayout,
+.legalPageContent,
+.sitemapSection,
+.introductionSection h2,
+.collectionsHeading h2,
+.featuredResidencesHeading h2,
+.masterplanHeading h2,
+.lifestylePreviewHeading h2,
+.editorialIntroduction h2,
+.editorialSectionContent h2,
+.galleryIntroduction h2,
+.journalIntroduction h2,
+.faqIntroduction h2,
+.propertyCollectionIntroduction h2,
+.propertyCollectionGridHeading h2,
+.propertyListingHeading h2,
+.propertyDetailFeaturesHeading h2,
+.contactPageIntroduction h2,
+.inquiryPageHeading h2 {
+  color: var(--oniria-page-text);
+}
+
+/* Responsive sizes preserve the 54px/21px desktop design without overflow. */
+@media (max-width: 900px) {
+  :root {
+    --oniria-heading-size: 46px;
+    --oniria-description-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --oniria-heading-size: 36px;
+    --oniria-description-size: 18px;
+  }
+}
+
+/* =========================================================
+   CONSISTENT PROJECT TEXT COLOUR
+   Uses the same terracotta colour as the Vision and
+   post-hero introduction pages. Text placed directly over
+   photographs remains white for contrast and readability.
+========================================================= */
+
+/* Default text colour for every normal page and content element. */
+body,
+main,
+section,
+article,
+aside,
+nav,
+form,
+label,
+input,
+select,
+textarea,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+li,
+dt,
+dd,
+blockquote,
+figcaption,
+small,
+strong {
+  color: var(--oniria-page-text);
+}
+
+/* Form controls and placeholders follow the same project colour. */
+input,
+select,
+textarea {
+  color: var(--oniria-page-text);
+  border-color: rgba(149, 105, 77, 0.42);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(149, 105, 77, 0.72);
+  opacity: 1;
+}
+
+/* Links and interactive text use the same colour instead of old greys/blacks. */
+main a:not(.primaryButton):not(.secondaryButton),
+main button:not(.oniriaWhatsappFabV2):not(.oniriaAIButton) {
+  color: var(--oniria-page-text);
+}
+
+/* Keep text over photography and dark branded areas readable. */
+.siteHeader,
+.siteHeader *,
+.edenHero,
+.edenHero *,
+.publicPageHero,
+.publicPageHero *,
+.propertyCollectionHero,
+.propertyCollectionHero *,
+.propertyDetailHero,
+.propertyDetailHero *,
+.heroSection,
+.heroSection *,
+.imageOverlay,
+.imageOverlay *,
+.propertyCardImage,
+.propertyCardImage *,
+.collectionCardImage,
+.collectionCardImage *,
+.finalSalesSection,
+.finalSalesSection *,
+.siteFooter,
+.siteFooter *,
+footer,
+footer *,
+.oniriaWhatsappFabV2,
+.oniriaWhatsappFabV2 *,
+.oniriaAIButton,
+.oniriaAIButton * {
+  color: #ffffff;
+}
+
+/* Restore terracotta text for light cards and panels nested in media sections. */
+.propertyCardContent,
+.propertyCardContent *,
+.collectionCardContent,
+.collectionCardContent *,
+.residenceCardContent,
+.residenceCardContent *,
+.journalCardContent,
+.journalCardContent *,
+.faqItem,
+.faqItem *,
+.contactForm,
+.contactForm *,
+.inquiryForm,
+.inquiryForm *,
+.legalPageContent,
+.legalPageContent * {
+  color: var(--oniria-page-text);
+}
+
+/* =========================================================
+   FINAL TEXT-COLOUR CORRECTION
+   - Home hero/header stay white exactly as before.
+   - All light content areas use the Vision-page terracotta.
+   - Text positioned on photographs stays white for contrast.
+========================================================= */
+
+/* HOME PAGE: preserve the original white hero and navigation text. */
+.siteHeader,
+.siteHeader a,
+.siteHeader button,
+.siteHeader span,
+.edenHero,
+.edenHero h1,
+.edenHero h2,
+.edenHero h3,
+.edenHero p,
+.edenHero a,
+.edenHero span,
+.edenHero button,
+.edenHeroContent,
+.edenHeroContent *,
+.edenBeginStory,
+.edenBeginStory * {
+  color: #ffffff !important;
+}
+
+/* OTHER PAGE HEROES: retain white text when displayed over photographs. */
+.publicPageHeroContent,
+.publicPageHeroContent *,
+.propertyCollectionHeroContent,
+.propertyCollectionHeroContent *,
+.propertyDetailHeroContent,
+.propertyDetailHeroContent * {
+  color: #ffffff !important;
+}
+
+/* MAIN LIGHT CONTENT: use the same text colour as the Vision page. */
+.introductionSection,
+.collectionsSection,
+.featuredResidencesSection,
+.masterplanSection,
+.lifestylePreviewSection,
+.editorialIntroduction,
+.editorialSections,
+.editorialSectionContent,
+.galleryIntroduction,
+.galleryGrid,
+.journalIntroduction,
+.journalGrid,
+.faqIntroduction,
+.faqGroups,
+.propertyCollectionIntroduction,
+.propertyCollectionGridSection,
+.propertyListingSection,
+.propertyDetailOverview,
+.propertyDetailFeaturesSection,
+.propertyDetailLayout,
+.contactPageSection,
+.contactPageIntroduction,
+.contactPageGrid,
+.contactMapSection,
+.inquiryPageSection,
+.inquiryPageHeading,
+.inquiryPageLayout,
+.legalPageSection,
+.legalPageLayout,
+.legalPageContent,
+.sitemapSection {
+  color: #95694d !important;
+}
+
+/* Apply terracotta to normal text inside every light section. */
+.introductionSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.collectionsSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.featuredResidencesSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.masterplanSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.lifestylePreviewSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.editorialIntroduction :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.editorialSectionContent :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.galleryIntroduction :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.journalIntroduction :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.faqIntroduction :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.faqGroups :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.propertyCollectionIntroduction :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.propertyCollectionGridSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.propertyListingSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.propertyDetailOverview :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.propertyDetailFeaturesSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.contactPageSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong, label),
+.inquiryPageSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong, label),
+.legalPageSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong),
+.sitemapSection :is(h1, h2, h3, h4, h5, h6, p, a, span, li, small, strong) {
+  color: #95694d;
+}
+
+/* Image-card and image-banner content must remain white. */
+.collectionImage .collectionContent,
+.collectionImage .collectionContent *,
+.masterplanImageContent,
+.masterplanImageContent *,
+.masterplanMapLabel,
+.masterplanMapLabel *,
+.lifestylePreviewHeroContent,
+.lifestylePreviewHeroContent *,
+.residenceImage,
+.residenceImage *,
+.propertyCardImage,
+.propertyCardImage *,
+.collectionCardImage,
+.collectionCardImage *,
+.imageOverlay,
+.imageOverlay * {
+  color: #ffffff !important;
+}
+
+/* Text below images and inside light cards uses terracotta. */
+.collectionDescription,
+.masterplanHighlightCard,
+.masterplanHighlightCard *,
+.lifestylePreviewCardContent,
+.lifestylePreviewCardContent *,
+.residenceCardContent,
+.residenceCardContent *,
+.propertyCardContent,
+.propertyCardContent *,
+.collectionCardContent,
+.collectionCardContent *,
+.journalCardContent,
+.journalCardContent *,
+.faqItem,
+.faqItem * {
+  color: #95694d !important;
+}
+
+/* Keep dark call-to-action and footer areas readable. */
+.finalSalesSection,
+.finalSalesSection *,
+.siteFooter,
+.siteFooter *,
+footer,
+footer *,
+.oniriaWhatsappFabV2,
+.oniriaWhatsappFabV2 *,
+.oniriaAIButton,
+.oniriaAIButton * {
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   FINAL HOME-HERO AND FEATURED-COLLECTION COLOUR LOCK
+   Requested behaviour:
+   1. The homepage navigation and hero text remain white.
+   2. The Featured Collections heading area uses the same
+      terracotta colour as the other light content pages.
+========================================================= */
+
+/* Homepage header/navigation — always white over the hero and dark scroll bar. */
+.edenHeader,
+.edenHeader .edenHeaderDesktop,
+.edenHeader .edenHeaderMobile,
+.edenHeader .edenNavGroup,
+.edenHeader .edenNavGroup a,
+.edenHeader .edenHeaderBrand,
+.edenHeader .edenMenuButton,
+.edenHeader .edenMenuButton span,
+.edenHeader .edenMobileMenu,
+.edenHeader .edenMobileMenu a {
+  color: #ffffff !important;
+}
+
+.edenHeader .edenMenuButton span {
+  background-color: #ffffff !important;
+}
+
+/* Homepage hero copy — keep every requested item white. */
+.heroSlider.edenInspiredHero,
+.heroSlider.edenInspiredHero .heroMainContent,
+.heroSlider.edenInspiredHero .heroMainContent h1,
+.heroSlider.edenInspiredHero .heroMainContent h1 span,
+.heroSlider.edenInspiredHero .heroSignature,
+.heroSlider.edenInspiredHero .beginStoryLink,
+.heroSlider.edenInspiredHero .beginStoryLink span {
+  color: #ffffff !important;
+}
+
+/* The arrow beneath BEGIN YOUR STORY remains white as well. */
+.heroSlider.edenInspiredHero .beginStoryArrow {
+  border-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.heroSlider.edenInspiredHero .beginStoryArrow::before {
+  border-right-color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+
+/* Featured Collections introduction — match the other light pages. */
+.collectionsSection .collectionsHeading,
+.collectionsSection .collectionsHeading .sectionLabel,
+.collectionsSection .collectionsHeading h2,
+.collectionsSection .collectionsHeading > p {
+  color: #95694d !important;
+}
+
+
+/* =========================================================
+   INNER-PAGE HEADER AND HERO SCROLL-LINK CORRECTION
+   - The homepage header remains transparent/white.
+   - Inner-page headers use the page sand background instead
+     of the previous dark bar.
+   - Explore ↓ remains white over hero photographs.
+========================================================= */
+
+/* Keep the navigation transparent on every inner page, including after scrolling. */
+.edenHeader.edenHeaderInner,
+.edenHeader.edenHeaderInner.edenHeaderScrolled {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Use the same white navigation treatment as the homepage. */
+.edenHeader.edenHeaderInner .edenNavGroup a,
+.edenHeader.edenHeaderInner .edenHeaderBrand,
+.edenHeader.edenHeaderInner .edenMobileMenu a {
+  color: #ffffff !important;
+}
+
+.edenHeader.edenHeaderInner .edenMenuButton span {
+  background-color: #ffffff !important;
+}
+
+/* Keep the homepage navigation exactly white as requested. */
+.edenHeader.edenHeaderHome .edenNavGroup a,
+.edenHeader.edenHeaderHome .edenHeaderBrand,
+.edenHeader.edenHeaderHome .edenMobileMenu a {
+  color: #ffffff !important;
+}
+
+.edenHeader.edenHeaderHome .edenMenuButton span {
+  background-color: #ffffff !important;
+}
+
+/* The hero action is placed over a photograph, so it must stay white. */
+.publicPageHero .publicPageScroll,
+.propertyDetailHero .propertyDetailScroll {
+  color: #ffffff !important;
+}
+
+
+/* FINAL HEADER TRANSPARENCY LOCK */
+.edenHeader,
+.edenHeader.edenHeaderHome,
+.edenHeader.edenHeaderInner,
+.edenHeader.edenHeaderScrolled,
+.edenHeader.edenHeaderHome.edenHeaderScrolled,
+.edenHeader.edenHeaderInner.edenHeaderScrolled {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.edenHeader .edenNavGroup a,
+.edenHeader .edenHeaderBrand,
+.edenHeader .edenMobileMenu a {
+  color: #ffffff !important;
+}
+
+.edenHeader .edenMenuButton span {
+  background-color: #ffffff !important;
+}
+
+/* =========================================================
+   FINAL SALES CTA COLOUR LOCK
+   Keep every CTA text item white and give all four actions
+   the same dark-brown background.
+========================================================= */
+.finalSalesSection,
+.finalSalesSection .finalSalesContent,
+.finalSalesSection .finalSalesLabel,
+.finalSalesSection .finalSalesContent h2,
+.finalSalesSection .finalSalesDescription,
+.finalSalesSection .finalSalesInformation span,
+.finalSalesSection .finalSalesInformation strong {
+  color: #ffffff !important;
+}
+
+.finalSalesSection .finalSalesPrimaryButton,
+.finalSalesSection .finalSalesSecondaryButton {
+  border: 1px solid #95694d !important;
+  background-color: transparent !important;
+  color: #95694d !important;
+}
+
+.finalSalesSection .finalSalesPrimaryButton:hover,
+.finalSalesSection .finalSalesSecondaryButton:hover {
+  border-color: #95694d !important;
+  background-color: #95694d !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   MINIMAL EDEN HILLS-INSPIRED FOOTER
+========================================================= */
+.oniriaMinimalFooter {
+  width: 100%;
+  min-height: 455px;
+  padding: 72px 60px;
+  background-color: #4b2f26;
+  color: #e9ddcb;
+  border: 0;
+}
+
+.oniriaMinimalFooter,
+.oniriaMinimalFooter * {
+  color: #e9ddcb !important;
+}
+
+.oniriaMinimalFooterInner {
+  width: min(1760px, 100%);
+  min-height: 310px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr) minmax(360px, 1fr);
+  align-items: start;
+  gap: 48px;
+}
+
+.oniriaMinimalFooter p,
+.oniriaMinimalFooter a {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.oniriaMinimalFooterContact {
+  padding-top: 68px;
+  text-transform: uppercase;
+}
+
+.oniriaMinimalFooterCompany {
+  font-weight: 700;
+}
+
+.oniriaMinimalFooterContactLinks {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.oniriaMinimalFooterBrand {
+  padding-top: 55px;
+  text-align: center;
+}
+
+.oniriaMinimalFooterBrand a {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.oniriaMinimalFooterLinks {
+  min-height: 270px;
+  padding-top: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.oniriaMinimalFooterLegal,
+.oniriaMinimalFooterSocial {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px 18px;
+  text-transform: uppercase;
+}
+
+.oniriaMinimalFooterLegal a,
+.oniriaMinimalFooterSocial a {
+  font-weight: 600;
+}
+
+.oniriaMinimalFooter a {
+  transition: opacity 180ms ease;
+}
+
+.oniriaMinimalFooter a:hover {
+  opacity: 0.68;
+}
+
+.oniriaMinimalFooter a:focus-visible {
+  outline: 2px solid #e9ddcb;
+  outline-offset: 5px;
+}
+
+@media (max-width: 980px) {
+  .oniriaMinimalFooter {
+    min-height: auto;
+    padding: 60px 36px;
+  }
+
+  .oniriaMinimalFooterInner {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .oniriaMinimalFooterContact,
+  .oniriaMinimalFooterBrand,
+  .oniriaMinimalFooterLinks {
+    padding-top: 0;
+  }
+
+  .oniriaMinimalFooterBrand {
+    order: -1;
+    text-align: left;
+  }
+
+  .oniriaMinimalFooterLinks {
+    min-height: auto;
+    align-items: flex-start;
+    gap: 32px;
+    text-align: left;
+  }
+
+  .oniriaMinimalFooterLegal,
+  .oniriaMinimalFooterSocial {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .oniriaMinimalFooter {
+    padding: 48px 24px 132px;
+  }
+
+  .oniriaMinimalFooterBrand a {
+    font-size: 32px;
+  }
+
+  .oniriaMinimalFooter p,
+  .oniriaMinimalFooter a {
+    font-size: 14px;
+  }
+
+  .oniriaMinimalFooterLegal,
+  .oniriaMinimalFooterSocial {
+    gap: 10px 12px;
+  }
+}
+
+
+/* =========================================================
+   FINAL USER-REQUESTED FOOTER AND CTA COLOURS
+========================================================= */
+.oniriaMinimalFooter {
+  background-color: #2A4933 !important;
+}
+
+.finalSalesSection .finalSalesPrimaryButton,
+.finalSalesSection .finalSalesSecondaryButton {
+  border-color: #95694D !important;
+  background-color: #95694D !important;
+  color: #FFFFFF !important;
+}
+
+.finalSalesSection .finalSalesPrimaryButton *,
+.finalSalesSection .finalSalesSecondaryButton * {
+  color: #FFFFFF !important;
+}
+
+.finalSalesSection .finalSalesPrimaryButton:hover,
+.finalSalesSection .finalSalesSecondaryButton:hover {
+  border-color: #7F573F !important;
+  background-color: #7F573F !important;
+  color: #FFFFFF !important;
+}
+
+/* =========================================================
+   FINAL FOOTER TEXT COLOUR LOCK
+========================================================= */
+.oniriaMinimalFooter,
+.oniriaMinimalFooter *,
+.oniriaMinimalFooter p,
+.oniriaMinimalFooter a,
+.oniriaMinimalFooter span {
+  color: #FFFFFF !important;
+}
+
+.oniriaMinimalFooter a:focus-visible {
+  outline-color: #FFFFFF !important;
+}
+
+/* =========================================================
+   V AVENUE — REFINED MALL / MIXED-USE PAGE
+========================================================= */
+.vAvenuePage {
+  --v-avenue-sand: #e9ddcb;
+  --v-avenue-brown: #95694d;
+  background: var(--v-avenue-sand);
+}
+
+.vAvenueHero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+.vAvenueHero::before {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  transform: scale(1.02);
+}
+
+.vAvenueHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(18, 29, 23, 0.42), rgba(18, 29, 23, 0.28) 45%, rgba(18, 29, 23, 0.62)),
+    linear-gradient(to right, rgba(18, 29, 23, 0.18), transparent 48%);
+}
+
+.vAvenueHeroContent {
+  position: relative;
+  z-index: 1;
+  width: min(1050px, calc(100% - 48px));
+  padding-top: 80px;
+  color: #fff;
+  text-align: center;
+}
+
+.vAvenueHeroContent,
+.vAvenueHeroContent * {
+  color: #fff !important;
+}
+
+.vAvenueEyebrow,
+.vAvenueSectionLabel,
+.vAvenueCardCategory {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.vAvenueHeroContent h1 {
+  max-width: 900px;
+  margin: 28px auto 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -2px;
+  text-transform: none;
+}
+
+.vAvenueHeroMeta {
+  margin: 0;
+  font-size: clamp(16px, 1.7vw, 22px);
+  letter-spacing: 1.6px;
+}
+
+.vAvenueScrollLink {
+  position: absolute;
+  top: calc(50vh + 260px);
+  left: 50%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.vAvenueScrollLink span {
+  font-size: 20px;
+}
+
+.vAvenueIntroduction {
+  padding: 130px 40px 120px;
+  background: var(--v-avenue-sand);
+  color: var(--v-avenue-brown);
+  text-align: center;
+}
+
+.vAvenueIntroduction h2,
+.vAvenueOpportunitiesHeading h2,
+.vAvenueExperienceContent h2 {
+  max-width: 1050px;
+  margin: 28px auto 34px;
+  color: var(--v-avenue-brown) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 54px;
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vAvenueSectionLabel {
+  color: var(--v-avenue-brown) !important;
+}
+
+.vAvenueLead {
+  max-width: 940px;
+  margin: 0 auto;
+  color: var(--v-avenue-brown) !important;
+  font-size: 21px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.vAvenueExperience {
+  width: min(1440px, calc(100% - 64px));
+  margin: 0 auto 130px;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  min-height: 680px;
+  background: var(--v-avenue-sand);
+}
+
+.vAvenueExperienceImage {
+  min-height: 680px;
+  background-image: linear-gradient(rgba(24, 40, 30, 0.12), rgba(24, 40, 30, 0.12)), url("/media/oniria/residence-roundabout.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.vAvenueExperienceContent {
+  padding: 90px 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--v-avenue-brown);
+}
+
+.vAvenueExperienceContent h2 {
+  margin-left: 0;
+  text-align: left;
+}
+
+.vAvenueExperienceContent > p:not(.vAvenueSectionLabel) {
+  margin: 0;
+  color: var(--v-avenue-brown) !important;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.vAvenueExperiencePoints {
+  margin-top: 42px;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(149, 105, 77, 0.32);
+}
+
+.vAvenueExperiencePoints span {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.32);
+  color: var(--v-avenue-brown) !important;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.vAvenueOpportunities {
+  padding: 120px 40px 140px;
+  background: var(--v-avenue-sand);
+}
+
+.vAvenueOpportunitiesHeading {
+  width: min(1320px, 100%);
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.vAvenueOpportunitiesHeading,
+.vAvenueOpportunitiesHeading * {
+  color: var(--v-avenue-brown) !important;
+}
+
+.vAvenueOpportunitiesHeading h2 {
+  color: var(--v-avenue-brown) !important;
+}
+
+.vAvenueGrid {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.vAvenueCard {
+  overflow: hidden;
+  background: #f6f2e9;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vAvenueCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
+}
+
+.vAvenueCard > a {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: 420px;
+}
+
+.vAvenueCardImage {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.vAvenueCardImage::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(21, 34, 26, 0.48), transparent 58%);
+  content: "";
+}
+
+.vAvenueCardNumber {
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: 24px;
+  color: #fff !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+}
+
+.vAvenueCardBody {
+  padding: 46px 42px;
+  display: flex;
+  flex-direction: column;
+  color: var(--v-avenue-brown);
+}
+
+.vAvenueCardBody,
+.vAvenueCardBody * {
+  color: var(--v-avenue-brown) !important;
+}
+
+.vAvenueCardCategory {
+  margin-bottom: 28px;
+  letter-spacing: 2.4px;
+}
+
+.vAvenueCardBody h3 {
+  margin: 0 0 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 36px;
+  line-height: 1.08;
+  font-weight: 400;
+}
+
+.vAvenueCardBody > p:not(.vAvenueCardCategory) {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.vAvenueCardLink {
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 32px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+@media (max-width: 1050px) {
+  .vAvenueExperience {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenueExperienceImage {
+    min-height: 520px;
+  }
+
+  .vAvenueGrid {
+    grid-template-columns: 1fr;
+    max-width: 760px;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .vAvenueHeroContent h1 {
+    font-size: 48px;
+  }
+
+  .vAvenueScrollLink {
+    top: auto;
+    bottom: 35px;
+  }
+
+  .vAvenueIntroduction,
+  .vAvenueOpportunities {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .vAvenueIntroduction h2,
+  .vAvenueOpportunitiesHeading h2,
+  .vAvenueExperienceContent h2 {
+    font-size: 38px;
+  }
+
+  .vAvenueLead {
+    font-size: 18px;
+  }
+
+  .vAvenueExperience {
+    width: calc(100% - 32px);
+    margin-bottom: 90px;
+  }
+
+  .vAvenueExperienceImage {
+    min-height: 380px;
+  }
+
+  .vAvenueExperienceContent {
+    padding: 58px 28px;
+  }
+
+  .vAvenueCard > a {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenueCardImage {
+    min-height: 360px;
+  }
+
+  .vAvenueCardBody {
+    min-height: 360px;
+    padding: 38px 28px;
+  }
+
+  .vAvenueCardBody h3 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   V AVENUE — FINAL CARD / SECTION COLOUR LOCK
+   Keep the green background isolated to the footer only.
+========================================================= */
+.vAvenuePage,
+.vAvenueIntroduction,
+.vAvenueExperience,
+.vAvenueOpportunities {
+  background-color: #E9DDCB !important;
+}
+
+.vAvenueCard,
+.vAvenueCard > a,
+.vAvenueCardBody {
+  background-color: #f6f2e9 !important;
+}
+
+.vAvenuePage > .oniriaMinimalFooter {
+  background-color: #2A4933 !important;
+}
+
+/* =========================================================
+   FINAL PUBLIC COLOUR CLEAN-UP
+   - V Avenue opportunity cards match the Contact form panel.
+   - Public dark/black action boxes use the project heading colour.
+   - Text inside those action boxes remains white.
+   - Footer, photographs, WhatsApp and ONIRIA AI remain unchanged.
+========================================================= */
+
+/* Match the V Avenue opportunity cards to the Contact-page form panel. */
+.vAvenueCard,
+.vAvenueCard > a,
+.vAvenueCardBody {
+  background-color: #f6f2e9 !important;
+}
+
+/* Keep the card content in the established heading/text colour. */
+.vAvenueCardBody,
+.vAvenueCardBody * {
+  color: #95694d !important;
+}
+
+/* Replace dark public action boxes with the project heading colour. */
+.propertySearchButton,
+.mobilePropertySearch button,
+.mobileFilterActions button:last-child,
+.masterplanButton,
+.lifestylePreviewButton,
+.propertyDetailPrimaryButton,
+.propertyDetailInquiryActions .propertyDetailPrimaryButton,
+.formSubmitButton,
+.headerInquiryButton,
+.oniriaHeaderScrolled .headerInquiryButton,
+.legalPageButton,
+.finalSalesPrimaryButton,
+.finalSalesSecondaryButton {
+  background-color: #95694d !important;
+  border-color: #95694d !important;
+  color: #ffffff !important;
+}
+
+.propertySearchButton *,
+.mobilePropertySearch button *,
+.mobileFilterActions button:last-child *,
+.masterplanButton *,
+.lifestylePreviewButton *,
+.propertyDetailPrimaryButton *,
+.propertyDetailInquiryActions .propertyDetailPrimaryButton *,
+.formSubmitButton *,
+.headerInquiryButton *,
+.oniriaHeaderScrolled .headerInquiryButton *,
+.legalPageButton *,
+.finalSalesPrimaryButton *,
+.finalSalesSecondaryButton * {
+  color: #ffffff !important;
+}
+
+/* Consistent hover treatment without returning to black. */
+.propertySearchButton:hover,
+.propertySearchButton:focus-visible,
+.mobilePropertySearch button:hover,
+.mobileFilterActions button:last-child:hover,
+.masterplanButton:hover,
+.lifestylePreviewButton:hover,
+.propertyDetailPrimaryButton:hover,
+.propertyDetailInquiryActions .propertyDetailPrimaryButton:hover,
+.formSubmitButton:hover,
+.headerInquiryButton:hover,
+.legalPageButton:hover,
+.finalSalesPrimaryButton:hover,
+.finalSalesSecondaryButton:hover {
+  background-color: #7f573f !important;
+  border-color: #7f573f !important;
+  color: #ffffff !important;
+}
+
+/* Contact/inquiry form panels are the visual reference for light boxes. */
+.contactForm,
+.inquiryForm {
+  background-color: #f6f2e9 !important;
+}
+
+
+/* =========================================================
+   FINAL PAGE-FLOW AND VILLAS COLOUR REFINEMENT
+   - No repeated FinalSalesCTA on Lifestyle, Masterplan or Villas.
+   - Villa feature text uses the project terracotta colour.
+   - V Avenue hero keeps only its main title and Explore link.
+========================================================= */
+.propertyCollectionFeatures,
+.propertyCollectionFeatures article {
+  background-color: #e9ddcb !important;
+}
+
+.propertyCollectionFeatures span,
+.propertyCollectionFeatures h3,
+.propertyCollectionFeatures p {
+  color: #95694d !important;
+}
+
+.propertyCollectionFeatures p {
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.propertyCollectionFeatures h3 {
+  color: #95694d !important;
+}
+
+@media (max-width: 720px) {
+  .propertyCollectionFeatures p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+/* =========================================================
+   REFINED INNER-PAGE HERO TYPOGRAPHY
+   Keeps the centre titles elegant and balanced on Vision,
+   Lifestyle, Masterplan, Villas, Mall and Contact pages.
+========================================================= */
+.publicPageHeroContent h1,
+.propertyCollectionHeroContent h1,
+.vAvenueHeroContent h1 {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(38px, 4.4vw, 58px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -1px !important;
+  text-wrap: balance;
+}
+
+.publicPageHeroContent span,
+.propertyCollectionHeroContent span,
+.vAvenueHeroMeta {
+  max-width: 690px;
+  font-size: clamp(16px, 1.35vw, 19px) !important;
+  line-height: 1.55 !important;
+}
+
+/* The Mall title is longer, so keep it slightly narrower and calmer. */
+.vAvenueHeroContent h1 {
+  max-width: 760px;
+}
+
+@media (max-width: 900px) {
+  .publicPageHeroContent h1,
+  .propertyCollectionHeroContent h1,
+  .vAvenueHeroContent h1 {
+    max-width: 680px;
+    font-size: clamp(35px, 6.2vw, 48px) !important;
+    line-height: 1.05 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .publicPageHeroContent,
+  .propertyCollectionHeroContent,
+  .vAvenueHeroContent {
+    width: min(100% - 36px, 620px);
+  }
+
+  .publicPageHeroContent h1,
+  .propertyCollectionHeroContent h1,
+  .vAvenueHeroContent h1 {
+    max-width: 100%;
+    font-size: clamp(30px, 9vw, 39px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .publicPageHeroContent span,
+  .propertyCollectionHeroContent span,
+  .vAvenueHeroMeta {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* =========================================================
+   ONIRIA LOCATION MAP — EDEN HILLS-INSPIRED LAYOUT
+========================================================= */
+.oniriaLocationSection {
+  width: min(1500px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 8px 0 120px;
+  background: transparent;
+}
+
+.oniriaLocationIntro {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(320px, 1.25fr);
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 70px;
+}
+
+.oniriaLocationIntro h3 {
+  margin: 0;
+  color: #95694d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 4.2vw, 64px);
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.oniriaLocationIntro p {
+  max-width: 650px;
+  margin: 0;
+  color: #95694d;
+  font-size: 21px;
+  line-height: 1.45;
+  font-weight: 400;
+  text-align: left;
+}
+
+.oniriaMapFrame {
+  width: min(1080px, 100%);
+  margin-left: auto;
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.2);
+  background-color: #f6f2e9;
+}
+
+.oniriaMapFrame iframe {
+  display: block;
+  width: 100%;
+  height: 640px;
+  border: 0;
+  filter: saturate(0.72) sepia(0.08) brightness(1.04);
+}
+
+@media (max-width: 900px) {
+  .oniriaLocationSection {
+    width: calc(100% - 48px);
+    padding-bottom: 90px;
+  }
+
+  .oniriaLocationIntro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .oniriaLocationIntro h3,
+  .oniriaLocationIntro p {
+    text-align: center;
+  }
+
+  .oniriaLocationIntro p {
+    margin: 0 auto;
+    font-size: 20px;
+  }
+
+  .oniriaMapFrame {
+    margin: 0 auto;
+  }
+
+  .oniriaMapFrame iframe {
+    height: 520px;
+  }
+}
+
+@media (max-width: 600px) {
+  .oniriaLocationSection {
+    width: calc(100% - 32px);
+    padding-bottom: 72px;
+  }
+
+  .oniriaLocationIntro h3 {
+    font-size: 40px;
+  }
+
+  .oniriaLocationIntro p {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .oniriaMapFrame iframe {
+    height: 430px;
+  }
+}
+
+/* =========================================================
+   FINAL HOMEPAGE CONTENT REFINEMENT
+   Welcome, collections, masterplan and location
+========================================================= */
+.homePage .introductionSection,
+.homePage .collectionsSection,
+.homePage .masterplanSection {
+  background-color: #e9ddcb !important;
+  color: #95694d;
+}
+
+/* Welcome section: calm editorial rhythm */
+.homePage .introductionSection {
+  position: relative;
+  padding: clamp(96px, 10vw, 156px) 32px;
+}
+
+.homePage .introductionSection::after {
+  position: absolute;
+  right: max(32px, 5vw);
+  bottom: 0;
+  left: max(32px, 5vw);
+  height: 1px;
+  background: rgba(149, 105, 77, 0.18);
+  content: "";
+}
+
+.homePage .introductionInner {
+  width: min(1080px, 100%);
+}
+
+.homePage .introductionSection .sectionLabel,
+.homePage .collectionsHeading .sectionLabel,
+.homePage .masterplanHeading .sectionLabel {
+  margin-bottom: 24px;
+  color: #95694d !important;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+}
+
+.homePage .introductionSection h2 {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: clamp(42px, 4.8vw, 64px);
+  line-height: 1;
+  letter-spacing: -1.8px;
+  text-wrap: balance;
+}
+
+.homePage .introductionCopy {
+  width: min(940px, 100%);
+}
+
+.homePage .introductionText {
+  margin-bottom: 20px;
+  font-size: clamp(18px, 1.45vw, 21px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.homePage .introductionLink {
+  margin-top: 38px;
+}
+
+/* Featured collections: premium three-card composition */
+.homePage .collectionsSection {
+  padding: clamp(96px, 9vw, 144px) 40px;
+}
+
+.homePage .collectionsHeading {
+  max-width: 840px;
+  margin-bottom: 64px;
+}
+
+.homePage .collectionsHeading h2 {
+  margin-bottom: 24px;
+  color: #95694d !important;
+  font-size: clamp(42px, 4.4vw, 60px);
+  line-height: 1;
+  letter-spacing: -1.4px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.homePage .collectionsHeading > p:last-child {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #95694d !important;
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.5;
+}
+
+.homePage .collectionsGrid {
+  max-width: 1480px;
+  gap: 30px;
+}
+
+.homePage .collectionImage {
+  min-height: clamp(500px, 43vw, 650px);
+  border: 1px solid rgba(149, 105, 77, 0.18);
+}
+
+.homePage .collectionCard:hover .collectionImage {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 50px rgba(72, 49, 36, 0.15);
+}
+
+.homePage .collectionOverlay {
+  background: linear-gradient(
+    to top,
+    rgba(25, 24, 20, 0.82) 0%,
+    rgba(25, 24, 20, 0.2) 58%,
+    rgba(25, 24, 20, 0.06) 100%
+  );
+}
+
+.homePage .collectionContent {
+  right: 34px;
+  bottom: 36px;
+  left: 34px;
+}
+
+.homePage .collectionContent,
+.homePage .collectionContent p,
+.homePage .collectionContent h3,
+.homePage .collectionContent span {
+  color: #fff !important;
+}
+
+.homePage .collectionContent h3 {
+  font-size: clamp(31px, 2.4vw, 42px);
+  line-height: 1.05;
+}
+
+.homePage .collectionDescription {
+  margin: 24px 4px 0;
+  color: #95694d !important;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+/* Masterplan introduction: balanced two-column editorial layout */
+.homePage .masterplanSection {
+  padding-top: clamp(96px, 9vw, 144px);
+}
+
+.homePage .masterplanHeading {
+  width: min(1450px, calc(100% - 80px));
+  margin-bottom: 82px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  align-items: start;
+  gap: clamp(56px, 7vw, 120px);
+}
+
+.homePage .masterplanHeading h2 {
+  max-width: 820px;
+  color: #95694d !important;
+  font-size: clamp(42px, 4.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -1.6px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.homePage .masterplanHeadingText {
+  padding-top: 36px;
+}
+
+.homePage .masterplanHeadingText p {
+  color: #95694d !important;
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.55;
+}
+
+.homePage .masterplanHeadingText .textLink {
+  color: #95694d !important;
+  border-color: #95694d !important;
+}
+
+/* Location section: Eden Hills-inspired left title and offset map */
+.homePage .oniriaLocationSection {
+  width: min(1450px, calc(100% - 80px));
+  padding: 8px 0 clamp(100px, 9vw, 144px);
+}
+
+.homePage .oniriaLocationIntro {
+  grid-template-columns: minmax(230px, 0.7fr) minmax(420px, 1.3fr);
+  gap: clamp(60px, 9vw, 150px);
+  margin-bottom: 66px;
+}
+
+.homePage .oniriaLocationIntro h3 {
+  font-size: clamp(42px, 4.3vw, 62px);
+}
+
+.homePage .oniriaLocationIntro p {
+  max-width: 700px;
+  font-size: clamp(18px, 1.4vw, 21px);
+  line-height: 1.55;
+}
+
+.homePage .oniriaMapFrame {
+  width: min(1100px, 78%);
+  border-color: rgba(149, 105, 77, 0.22);
+  box-shadow: 0 18px 48px rgba(89, 62, 44, 0.08);
+}
+
+.homePage .oniriaMapFrame iframe {
+  height: clamp(500px, 48vw, 680px);
+}
+
+@media (max-width: 1100px) {
+  .homePage .collectionsGrid {
+    max-width: 820px;
+    grid-template-columns: 1fr;
+    gap: 58px;
+  }
+
+  .homePage .collectionImage {
+    min-height: 620px;
+  }
+
+  .homePage .masterplanHeading {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .homePage .masterplanHeadingText {
+    max-width: 760px;
+    padding-top: 0;
+  }
+
+  .homePage .oniriaMapFrame {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .homePage .introductionSection,
+  .homePage .collectionsSection {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .homePage .introductionSection h2,
+  .homePage .collectionsHeading h2,
+  .homePage .masterplanHeading h2 {
+    font-size: clamp(35px, 10vw, 43px);
+    line-height: 1.04;
+    letter-spacing: -0.8px;
+  }
+
+  .homePage .introductionText,
+  .homePage .collectionsHeading > p:last-child,
+  .homePage .collectionDescription,
+  .homePage .masterplanHeadingText p,
+  .homePage .oniriaLocationIntro p {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .homePage .collectionImage {
+    min-height: 470px;
+  }
+
+  .homePage .masterplanHeading,
+  .homePage .oniriaLocationSection {
+    width: calc(100% - 44px);
+  }
+
+  .homePage .oniriaLocationIntro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 42px;
+  }
+
+  .homePage .oniriaLocationIntro h3,
+  .homePage .oniriaLocationIntro p {
+    text-align: center;
+  }
+
+  .homePage .oniriaMapFrame iframe {
+    height: 430px;
+  }
+}
+
+/* HOME LOCATION SECTION AFTER MASTERPLAN INTRO REMOVAL */
+.homePage .masterplanSection {
+  padding-top: clamp(92px, 8vw, 128px);
+  background-color: #e9ddcb;
+}
+
+.homePage .oniriaLocationSection {
+  padding-top: 0;
+}
+
+.homePage .oniriaLocationIntro h2 {
+  margin: 0;
+  color: #95694d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 4.3vw, 62px);
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -1.2px;
+}
+
+@media (max-width: 700px) {
+  .homePage .masterplanSection {
+    padding-top: 76px;
+  }
+
+  .homePage .oniriaLocationIntro h2 {
+    font-size: clamp(36px, 10vw, 44px);
+    text-align: center;
   }
 }

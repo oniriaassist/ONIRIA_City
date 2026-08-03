@@ -58,8 +58,9 @@ const villas = [
 export default function VillasPage() {
   return (
     <PropertyCollectionPage
+      showFinalCTA={false}
+      showCardLabels={false}
       hero={{
-        eyebrow: "ONIRIA VILLAS",
         title: "Private Homes Inspired by Island Living",
         description:
           "Generous villas combining contemporary design, gardens, privacy and a strong connection to Zanzibar’s tropical environment.",

@@ -9,6 +9,8 @@ export default function PropertyCollectionPage({
   introduction,
   properties,
   features = [],
+  showFinalCTA = true,
+  showCardLabels = true,
 }) {
   return (
     <main>
@@ -56,12 +58,16 @@ export default function PropertyCollectionPage({
 
         <div className="propertyListingGrid">
           {properties.map((property) => (
-            <PropertyCard property={property} key={property.title} />
+            <PropertyCard
+              property={property}
+              showImageLabels={showCardLabels}
+              key={property.title}
+            />
           ))}
         </div>
       </section>
 
-      <FinalSalesCTA />
+      {showFinalCTA && <FinalSalesCTA />}
       <Footer />
     </main>
   );

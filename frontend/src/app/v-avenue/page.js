@@ -4,138 +4,123 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "V Avenue | ONIRIA City",
   description:
-    "Explore apartments, retail, restaurants and professional spaces at V Avenue in ONIRIA City.",
+    "Discover apartments, retail, dining and professional opportunities at V Avenue, the social and commercial heart of ONIRIA City.",
 };
 
 const opportunities = [
   {
+    number: "01",
     title: "V Avenue Two-Bedroom Apartment",
     category: "Mixed-use apartment",
     description:
-      "A contemporary apartment positioned close to dining, retail, services and community activity.",
-    image:
-      "/media/oniria/residence-parking-garden.png",
+      "A contemporary home close to dining, retail, everyday services and the energy of community life.",
+    image: "/media/oniria/residence-parking-garden.png",
     href: "/v-avenue/apartment",
   },
   {
+    number: "02",
     title: "V Avenue Retail Space",
     category: "Commercial opportunity",
     description:
-      "A flexible retail opportunity for businesses seeking visibility within a growing residential community.",
-    image:
-      "/media/oniria/residence-roundabout.png",
+      "A flexible and visible retail address created for businesses serving a growing residential destination.",
+    image: "/media/oniria/residence-roundabout.png",
     href: "/commercial/retail-space",
   },
   {
+    number: "03",
     title: "Restaurant and Café Space",
     category: "Dining opportunity",
     description:
-      "A hospitality space intended for cafés, restaurants and selected dining concepts.",
-    image:
-      "/media/oniria/residence-aerial-masterplan.png",
+      "A welcoming hospitality setting for cafés, restaurants and selected dining concepts with strong footfall potential.",
+    image: "/media/oniria/residence-aerial-masterplan.png",
     href: "/commercial/restaurant-space",
   },
   {
+    number: "04",
     title: "Professional Office Space",
     category: "Office opportunity",
     description:
-      "A modern business address for companies and professional service providers.",
-    image:
-      "/media/oniria/v-avenue-commercial.png",
+      "A modern business address for companies and professional service providers within a connected community.",
+    image: "/media/oniria/v-avenue-commercial.png",
     href: "/commercial/office-space",
   },
 ];
 
 export default function VAvenuePage() {
   return (
-    <main>
+    <main className="vAvenuePage">
       <Header />
 
       <section
-        className="propertyCollectionHero"
+        className="vAvenueHero"
         style={{
-          backgroundImage:
-            'url("/media/oniria/villa-pool-rear.png")',
+          backgroundImage: 'url("/media/oniria/v-avenue-commercial.png")',
         }}
       >
-        <div className="propertyCollectionHeroOverlay" />
-
-        <div className="propertyCollectionHeroContent">
-          <p>V AVENUE</p>
-
+        <div className="vAvenueHeroOverlay" />
+        <div className="vAvenueHeroContent">
           <h1>The social and commercial heart of ONIRIA City</h1>
-
-          <span>Living · Dining · Retail · Business</span>
+          <a href="#discover-v-avenue" className="vAvenueScrollLink">
+            Explore <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
 
-      <section className="propertyCollectionIntroduction">
-        <div>
-          <p className="sectionLabel">DISCOVER V AVENUE</p>
-
-          <h2>A vibrant destination for living, working and gathering</h2>
-        </div>
-
-        <p>
-          V Avenue is designed as a mixed-use centre where residents, visitors
-          and businesses can connect. It brings together homes, shops, cafés,
-          restaurants, offices and public spaces within an active and walkable
-          environment.
+      <section id="discover-v-avenue" className="vAvenueIntroduction">
+        <p className="vAvenueSectionLabel">DISCOVER V AVENUE</p>
+        <h2>A vibrant destination for living, working and gathering</h2>
+        <p className="vAvenueLead">
+          V Avenue is a walkable mixed-use centre where residents, visitors and
+          businesses meet. Homes, shops, cafés, restaurants, offices and public
+          spaces come together in one active destination designed for everyday
+          convenience and meaningful connection.
         </p>
       </section>
 
-      <section className="propertyCollectionGridSection">
-        <div className="propertyCollectionGridHeading">
-          <p className="sectionLabel">EXPLORE THE COLLECTION</p>
+      <section className="vAvenueExperience" aria-label="V Avenue experience">
+        <div className="vAvenueExperienceImage" />
+        <div className="vAvenueExperienceContent">
+          <p className="vAvenueSectionLabel">A PLACE WITH PURPOSE</p>
+          <h2>Designed around everyday life</h2>
+          <p>
+            From a morning coffee and convenient services to evening dining and
+            professional workspaces, V Avenue brings daily needs and social
+            experiences closer together.
+          </p>
+          <div className="vAvenueExperiencePoints">
+            <span>Walkable connections</span>
+            <span>Flexible commercial spaces</span>
+            <span>Active day-to-evening environment</span>
+          </div>
+        </div>
+      </section>
 
+      <section className="vAvenueOpportunities">
+        <div className="vAvenueOpportunitiesHeading">
+          <p className="vAvenueSectionLabel">EXPLORE THE COLLECTION</p>
           <h2>Opportunities within V Avenue</h2>
         </div>
 
-        <div className="propertyCollectionGrid">
-          {opportunities.map((item, index) => (
-            <article className="propertyCollectionCard" key={item.href}>
-              <a href={item.href}>
+        <div className="vAvenueGrid">
+          {opportunities.map((item) => (
+            <article className="vAvenueCard" key={item.href}>
+              <a href={item.href} aria-label={`Explore ${item.title}`}>
                 <div
-                  className="propertyCollectionCardImage"
-                  style={{
-                    backgroundImage: `url("${item.image}")`,
-                  }}
+                  className="vAvenueCardImage"
+                  style={{ backgroundImage: `url("${item.image}")` }}
                 >
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span className="vAvenueCardNumber">{item.number}</span>
                 </div>
-
-                <div className="propertyCollectionCardContent">
-                  <p>{item.category}</p>
-
+                <div className="vAvenueCardBody">
+                  <p className="vAvenueCardCategory">{item.category}</p>
                   <h3>{item.title}</h3>
-
-                  <div className="propertyCollectionCardDescription">
-                    {item.description}
-                  </div>
-
-                  <span className="propertyCollectionCardLink">
-                    Explore opportunity →
-                  </span>
+                  <p>{item.description}</p>
+                  <span className="vAvenueCardLink">Explore opportunity →</span>
                 </div>
               </a>
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="propertyCollectionClosing">
-        <div>
-          <p className="sectionLabel">REGISTER YOUR INTEREST</p>
-
-          <h2>Find your place within V Avenue</h2>
-        </div>
-
-        <a
-          href="/inquiries?type=property-information&collection=v-avenue"
-          className="propertyDetailPrimaryButton"
-        >
-          Make an inquiry
-        </a>
       </section>
 
       <Footer />

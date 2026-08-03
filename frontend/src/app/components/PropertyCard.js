@@ -1,4 +1,4 @@
-export default function PropertyCard({ property }) {
+export default function PropertyCard({ property, showImageLabels = true }) {
   return (
     <article className="propertyCard">
       <a href={property.link} className="propertyCardImageLink">
@@ -10,11 +10,13 @@ export default function PropertyCard({ property }) {
         >
           <div className="propertyCardOverlay" />
 
-          <span className="propertyCardCollection">
-            {property.collection}
-          </span>
+          {showImageLabels && property.collection && (
+            <span className="propertyCardCollection">
+              {property.collection}
+            </span>
+          )}
 
-          {property.status && (
+          {showImageLabels && property.status && (
             <span className="propertyCardStatus">{property.status}</span>
           )}
 

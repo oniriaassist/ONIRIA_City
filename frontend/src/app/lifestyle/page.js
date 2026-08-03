@@ -9,8 +9,8 @@ export const metadata = {
 export default function LifestylePage() {
   return (
     <EditorialPage
+      showFinalCTA={false}
       hero={{
-        eyebrow: "THE ONIRIA LIFESTYLE",
         title: "Life Inspired by Zanzibar",
         description:
           "Ocean experiences, tropical nature, wellness, dining and community brought together in one destination.",

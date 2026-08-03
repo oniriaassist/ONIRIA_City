@@ -7,6 +7,7 @@ export default function EditorialPage({
   hero,
   introduction,
   sections,
+  showFinalCTA = true,
 }) {
   return (
     <main>
@@ -67,7 +68,7 @@ export default function EditorialPage({
         ))}
       </section>
 
-      <FinalSalesCTA />
+      {showFinalCTA && <FinalSalesCTA />}
       <Footer />
     </main>
   );

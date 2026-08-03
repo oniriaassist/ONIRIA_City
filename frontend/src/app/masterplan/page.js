@@ -9,6 +9,7 @@ export const metadata = {
 export default function MasterplanPage() {
   return (
     <EditorialPage
+      showFinalCTA={false}
       hero={{
         eyebrow: "ONE CONNECTED COMMUNITY",
         title: "The ONIRIA City Masterplan",

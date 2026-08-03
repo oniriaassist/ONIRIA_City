@@ -102,7 +102,6 @@ export default function ContactPage() {
       <Header />
 
       <PublicPageHero
-        eyebrow="CONTACT ONIRIA CITY"
         title="Let Us Start a Conversation"
         description="Speak with our team about properties, investment, site visits, commercial opportunities or general questions."
         image="/media/oniria/residence-aerial-masterplan.png"
