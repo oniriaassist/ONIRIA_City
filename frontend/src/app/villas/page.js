@@ -61,9 +61,9 @@ export default function VillasPage() {
       showFinalCTA={false}
       showCardLabels={false}
       hero={{
-        title: "Private Homes Inspired by Island Living",
+        title: ["SPACE TO", "LIVE WELL"],
         description:
-          "Generous villas combining contemporary design, gardens, privacy and a strong connection to Zanzibar’s tropical environment.",
+          "Private villas shaped by light, landscape and island living.",
         image:
           "/media/oniria/residence-roundabout.png",
       }}
@@ -73,21 +73,22 @@ export default function VillasPage() {
         description:
           "The ONIRIA Villa Collection is designed for families and owners seeking generous living areas, private outdoor spaces and timeless tropical architecture.",
       }}
+      featuresClassName="villaPremiumFeatures"
       features={[
         {
-          title: "Private gardens",
+          title: "Private outdoor living",
           description:
-            "Outdoor spaces designed for relaxation, entertaining and everyday family life.",
+            "Landscaped gardens and terraces create a calm setting for family time, entertaining and quiet retreat.",
         },
         {
-          title: "Generous interiors",
+          title: "Space that adapts",
           description:
-            "Open living areas, comfortable bedrooms and flexible spaces for family and guests.",
+            "Generous interiors support everyday living, visiting guests, private work and moments of rest.",
         },
         {
-          title: "Tropical design",
+          title: "Designed for the tropics",
           description:
-            "Shade, airflow, natural light and warm materials support comfortable island living.",
+            "Natural light, shade and airflow bring lasting comfort to a refined Zanzibar home.",
         },
       ]}
       properties={villas}

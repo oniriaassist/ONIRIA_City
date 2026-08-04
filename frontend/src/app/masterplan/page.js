@@ -11,10 +11,9 @@ export default function MasterplanPage() {
     <EditorialPage
       showFinalCTA={false}
       hero={{
-        eyebrow: "ONE CONNECTED COMMUNITY",
-        title: "The ONIRIA City Masterplan",
+        title: ["ONE CONNECTED", "VISION"],
         description:
-          "Villas, residences, commerce, nature and community spaces arranged as one complete destination.",
+          "Homes, landscape and daily life planned as one.",
         image:
           "/media/oniria/v-avenue-commercial.png",
       }}

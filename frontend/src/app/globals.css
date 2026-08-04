@@ -10182,3 +10182,1758 @@ footer *,
     text-align: center;
   }
 }
+
+/* =========================================================
+   ADMIN BUSINESS-INTELLIGENCE DASHBOARD
+========================================================= */
+.adminDashboardContent {
+  display: grid;
+  gap: 20px;
+}
+
+.adminDashboardCards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.adminDashboardMetric {
+  min-height: 168px;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.adminDashboardMetric:hover {
+  border-color: rgba(149, 105, 77, 0.42);
+  box-shadow: 0 24px 56px rgba(17, 35, 31, 0.1);
+  transform: translateY(-3px);
+}
+
+.adminMetricTrend {
+  width: fit-content;
+  margin-top: 10px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #f2eadf;
+  color: #6e6254 !important;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2 !important;
+}
+
+.adminMetricTrend.is-positive {
+  background: #e7f3ea;
+  color: #1d6b42 !important;
+}
+
+.adminMetricTrend.is-negative {
+  background: #fae9e4;
+  color: #9a3929 !important;
+}
+
+.adminDashboardAnalyticsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.8fr);
+  gap: 20px;
+}
+
+.adminDashboardOperationsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.75fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.adminDashboardSection {
+  margin-top: 0;
+  min-width: 0;
+}
+
+.adminPanelHeading {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.adminPanelHeading p {
+  margin: 0 0 5px;
+  color: #95694d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.adminPanelHeading h2 {
+  margin: 0;
+  color: #163129;
+  font-size: 27px;
+}
+
+.adminPanelHeading a {
+  color: #95694d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.adminPageActions .adminSecondaryButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+@media (max-width: 1180px) {
+  .adminDashboardCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .adminDashboardAnalyticsGrid,
+  .adminDashboardOperationsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .adminDashboardCards {
+    grid-template-columns: 1fr;
+  }
+
+  .adminPanelHeading {
+    flex-direction: column;
+  }
+}
+
+/* =========================================================
+   ADMIN DASHBOARD — FINAL PROFESSIONAL LAYOUT
+========================================================= */
+.adminDashboardContent {
+  display: grid;
+  gap: 22px;
+}
+
+.adminDashboardCards {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.adminDashboardMetric {
+  min-height: 152px;
+  padding: 18px;
+}
+
+.adminDashboardMetric > span:not(.adminMetricIcon) {
+  max-width: calc(100% - 42px);
+  color: #6d645a;
+  font-size: 13px;
+}
+
+.adminDashboardMetric strong {
+  margin-top: 18px;
+  color: #11231f;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.adminMetricTrend {
+  margin-top: 13px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: #7b7165 !important;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.adminMetricTrend.is-positive { color: #2a6a46 !important; }
+.adminMetricTrend.is-negative { color: #9a3929 !important; }
+
+.adminDashboardAnalyticsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(260px, 0.7fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.adminDashboardOperationsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.65fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.adminPanelHeadingWithTools {
+  align-items: center;
+}
+
+.adminPanelTools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.adminPanelTools > a {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+}
+
+@media (max-width: 1450px) {
+  .adminDashboardCards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1100px) {
+  .adminDashboardCards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .adminDashboardAnalyticsGrid,
+  .adminDashboardOperationsGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .adminDashboardCards { grid-template-columns: 1fr; }
+  .adminPanelHeadingWithTools,
+  .adminPanelTools { align-items: flex-start; flex-direction: column; }
+}
+
+/* =========================================================
+   ADMIN WORKSPACE — POLISHED VISUAL SYSTEM
+   Keeps all existing routes, data loading and permissions.
+========================================================= */
+.adminShell {
+  min-height: 100dvh;
+  background: #f5efe4;
+}
+
+.adminMain {
+  background:
+    radial-gradient(circle at 92% 4%, rgba(149, 105, 77, 0.08), transparent 28rem),
+    #f5efe4;
+}
+
+.adminSidebar {
+  background: #173a2d;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  scrollbar-color: rgba(233, 221, 203, 0.35) transparent;
+}
+
+.adminBrandBlock {
+  margin: 0 4px 8px;
+  padding: 16px 14px 24px;
+}
+
+.adminBrand {
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  letter-spacing: 0.16em;
+}
+
+.adminBrandBlock > span,
+.adminNavGroup p {
+  color: #d8b989 !important;
+}
+
+.adminNavGroup a {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.adminNavGroup a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+}
+
+.adminNavGroup a.isActive {
+  background: rgba(255, 255, 255, 0.13);
+  box-shadow: inset 3px 0 0 #d8b989;
+  color: #ffffff !important;
+}
+
+.adminNavIcon {
+  background: rgba(255, 255, 255, 0.035);
+  color: #f1d9b1;
+}
+
+.adminTopbar {
+  min-height: 108px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  background: rgba(250, 247, 240, 0.94);
+  border-bottom-color: rgba(149, 105, 77, 0.16);
+  box-shadow: 0 8px 28px rgba(23, 58, 45, 0.04);
+}
+
+.adminTopbar > div:nth-child(2) {
+  min-width: 0;
+}
+
+.adminTopbar p {
+  color: #95694d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.adminTopbar h1 {
+  color: #173a2d;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1;
+}
+
+.adminStaffBadge {
+  border-color: rgba(149, 105, 77, 0.18);
+  background: #fffdf8;
+  box-shadow: 0 8px 24px rgba(23, 58, 45, 0.05);
+}
+
+.adminStaffBadge > button {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #173a2d !important;
+  color: #ffffff !important;
+}
+
+.adminPageHeader {
+  padding: 10px 2px 4px;
+}
+
+.adminPageHeader h2 {
+  color: #95694d;
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1;
+}
+
+.adminPageHeader > div > p:last-child {
+  max-width: 760px;
+  color: #6f665c;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.adminMetricCard,
+.adminPanel,
+.adminTableWrap,
+.adminDetailCard,
+.adminFilters,
+.adminEmptyState,
+.adminErrorCard,
+[class*="DashboardAnalytics_panel"] {
+  border-color: rgba(149, 105, 77, 0.14);
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 16px 40px rgba(23, 58, 45, 0.055);
+}
+
+.adminDashboardMetric {
+  border-radius: 22px;
+}
+
+.adminDashboardMetric:hover {
+  border-color: rgba(149, 105, 77, 0.3);
+  box-shadow: 0 22px 48px rgba(23, 58, 45, 0.085);
+}
+
+.adminSecondaryButton {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(149, 105, 77, 0.45) !important;
+  border-radius: 999px;
+  background: transparent !important;
+  color: #173a2d !important;
+}
+
+.adminTableWrap {
+  border-radius: 20px;
+}
+
+.adminTable th {
+  background: #f1e7d8;
+  color: #7f5a40;
+}
+
+/* Remove the solid black mobile menu rectangle and use a clean icon button. */
+.adminMenuButton {
+  flex: 0 0 auto;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(149, 105, 77, 0.3) !important;
+  border-radius: 50% !important;
+  background: #fffdf8 !important;
+  box-shadow: 0 7px 20px rgba(23, 58, 45, 0.08) !important;
+  color: #173a2d !important;
+}
+
+.adminMenuButton span {
+  width: 18px !important;
+  height: 2px !important;
+  border-radius: 999px;
+  background: #173a2d !important;
+}
+
+@media (min-width: 1101px) {
+  .adminMenuButton {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .adminTopbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .adminMenuButton {
+    display: grid !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .adminTopbar {
+    min-height: auto;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+  }
+
+  .adminStaffBadge {
+    grid-column: 1 / -1;
+  }
+
+  .adminPageHeader h2 {
+    font-size: 38px;
+  }
+}
+
+/* =========================================================
+   ADMIN TOPBAR — COMPACT RIGHT-ALIGNED STAFF PROFILE
+========================================================= */
+.adminTopbar {
+  grid-template-columns: auto minmax(0, 1fr) max-content !important;
+}
+
+.adminTopbar > div:nth-child(2) {
+  justify-self: start;
+}
+
+.adminStaffBadge {
+  width: auto !important;
+  min-width: 0;
+  max-width: 390px;
+  justify-self: end;
+  justify-content: flex-start !important;
+  padding: 7px 7px 7px 9px;
+  gap: 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.adminStaffBadge > div {
+  min-width: 118px;
+  max-width: 190px;
+}
+
+.adminStaffBadge strong {
+  max-width: 190px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.adminStaffBadge span {
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.adminStaffBadge > button {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0 17px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.adminStaffBadge > button:hover {
+  background: #95694d !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .adminStaffBadge {
+    max-width: 330px;
+  }
+
+  .adminStaffBadge > div {
+    min-width: 0;
+    max-width: 150px;
+  }
+
+  .adminStaffBadge strong {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 760px) {
+  .adminTopbar {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+
+  .adminStaffBadge {
+    grid-column: 1 / -1;
+    width: 100% !important;
+    max-width: none;
+    justify-self: stretch;
+    justify-content: flex-start !important;
+  }
+
+  .adminStaffBadge > div {
+    max-width: none;
+    flex: 1 1 auto;
+  }
+
+  .adminStaffBadge > button {
+    margin-left: auto;
+  }
+}
+
+/* =========================================================
+   PREMIUM SALES REQUEST EXPERIENCES
+========================================================= */
+.premiumInquiryPage {
+  background: #e9ddcb;
+  color: #95694d;
+}
+
+.premiumInquiryHero {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.premiumInquiryHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(9, 38, 29, 0.35), rgba(9, 38, 29, 0.72));
+}
+
+.premiumInquiryHeroContent {
+  width: min(920px, calc(100% - 48px));
+  padding: 150px 0 70px;
+  text-align: center;
+  color: #fff;
+}
+
+.premiumInquiryHeroContent > p {
+  margin: 0 0 24px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+
+.premiumInquiryHeroContent h1 {
+  max-width: 850px;
+  margin: 0 auto 30px;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(46px, 6.6vw, 92px);
+  line-height: .98;
+  font-weight: 400;
+  letter-spacing: -2px;
+  text-wrap: balance;
+}
+
+.premiumInquiryHeroContent > span {
+  display: block;
+  max-width: 700px;
+  margin: 0 auto;
+  color: rgba(255,255,255,.92);
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.55;
+}
+
+.premiumInquiryHeroContent > a {
+  display: inline-block;
+  margin-top: 48px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.7);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.premiumInquiryIntro {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(50px, 9vw, 150px);
+  padding: clamp(100px, 12vw, 170px) clamp(28px, 6vw, 100px);
+  border-bottom: 1px solid rgba(149,105,77,.22);
+}
+
+.premiumInquiryIntroHeading h2,
+.premiumInquiryFormAside h2 {
+  margin: 18px 0 0;
+  color: #95694d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(40px, 4.3vw, 58px);
+  line-height: 1.02;
+  font-weight: 400;
+  letter-spacing: -1.3px;
+  text-wrap: balance;
+}
+
+.premiumInquiryIntroCopy {
+  max-width: 680px;
+  margin: 0;
+  align-self: end;
+  color: #95694d;
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+.premiumInquiryHighlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0 clamp(28px, 6vw, 100px);
+  border-bottom: 1px solid rgba(149,105,77,.22);
+}
+
+.premiumInquiryHighlights article {
+  min-height: 340px;
+  padding: 58px clamp(26px, 3vw, 48px);
+  border-right: 1px solid rgba(149,105,77,.22);
+}
+
+.premiumInquiryHighlights article:first-child { border-left: 1px solid rgba(149,105,77,.22); }
+.premiumInquiryHighlights article > span {
+  display: block;
+  margin-bottom: 68px;
+  font-size: 14px;
+  letter-spacing: .15em;
+}
+.premiumInquiryHighlights h3 {
+  margin: 0 0 18px;
+  color: #95694d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 2.3vw, 38px);
+  line-height: 1.08;
+  font-weight: 400;
+}
+.premiumInquiryHighlights p {
+  margin: 0;
+  color: #95694d;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.premiumInquiryFormSection {
+  display: grid;
+  grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+  gap: clamp(50px, 8vw, 130px);
+  padding: clamp(100px, 12vw, 170px) clamp(28px, 6vw, 100px);
+  align-items: start;
+}
+
+.premiumInquiryFormAside {
+  position: sticky;
+  top: 120px;
+}
+.premiumInquiryFormAside > p:not(.sectionLabel) {
+  margin: 30px 0;
+  color: #95694d;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.premiumInquiryContactNote {
+  margin-top: 46px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(149,105,77,.28);
+}
+.premiumInquiryContactNote span { display: block; margin-bottom: 12px; font-size: 14px; }
+.premiumInquiryContactNote a { color: #95694d; font-weight: 700; }
+
+.premiumInquiryForm {
+  padding: clamp(30px, 4vw, 62px);
+  border: 1px solid rgba(149,105,77,.22);
+  background: #f6f2e9;
+}
+.premiumFormSection + .premiumFormSection {
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(149,105,77,.2);
+}
+.premiumFormSection > p {
+  margin: 0 0 28px;
+  color: #95694d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+.premiumFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 24px;
+}
+.premiumFormGrid label { display: grid; gap: 10px; }
+.premiumFormGrid label > span { color: #95694d; font-size: 14px; font-weight: 600; }
+.premiumFormGrid input,
+.premiumFormGrid select,
+.premiumFormGrid textarea {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1px solid rgba(149,105,77,.3);
+  border-radius: 0;
+  background: #fffdf8;
+  color: #593f31;
+  font: inherit;
+  outline: none;
+}
+.premiumFormGrid textarea { min-height: 140px; resize: vertical; }
+.premiumFormGrid input:focus,
+.premiumFormGrid select:focus,
+.premiumFormGrid textarea:focus { border-color: #95694d; box-shadow: 0 0 0 3px rgba(149,105,77,.1); }
+.premiumFormFull { grid-column: 1 / -1; }
+.premiumConsent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 32px 0;
+  color: #6e5546;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.premiumConsent input { margin-top: 3px; }
+.premiumInquirySubmit {
+  width: 100%;
+  min-height: 62px;
+  border: 0;
+  background: #95694d;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.premiumInquirySubmit:hover { background: #7f573f; }
+.premiumInquirySubmit:disabled { cursor: wait; opacity: .65; }
+.premiumFormStatus { margin: 0 0 24px; padding: 18px; border: 1px solid; }
+.premiumFormStatus p { margin: 0 0 8px; }
+.premiumFormStatus.isSuccess { background: #e8f0e9; border-color: #2a4933; color: #2a4933; }
+.premiumFormStatus.isError { background: #f8e7e2; border-color: #8d3c2c; color: #8d3c2c; }
+
+@media (max-width: 900px) {
+  .premiumInquiryIntro,
+  .premiumInquiryFormSection { grid-template-columns: 1fr; }
+  .premiumInquiryHighlights { grid-template-columns: 1fr; }
+  .premiumInquiryHighlights article,
+  .premiumInquiryHighlights article:first-child { border-left: 1px solid rgba(149,105,77,.22); border-bottom: 1px solid rgba(149,105,77,.22); }
+  .premiumInquiryFormAside { position: static; }
+}
+
+@media (max-width: 620px) {
+  .premiumInquiryHero { min-height: 76vh; }
+  .premiumInquiryHeroContent { width: min(100% - 32px, 920px); padding-top: 125px; }
+  .premiumInquiryHeroContent h1 { font-size: clamp(38px, 13vw, 54px); letter-spacing: -1px; }
+  .premiumInquiryIntro,
+  .premiumInquiryFormSection { padding-left: 20px; padding-right: 20px; }
+  .premiumInquiryHighlights { padding: 0 20px; }
+  .premiumInquiryHighlights article { min-height: 0; padding: 40px 26px; }
+  .premiumInquiryHighlights article > span { margin-bottom: 34px; }
+  .premiumFormGrid { grid-template-columns: 1fr; }
+  .premiumFormFull { grid-column: auto; }
+  .premiumInquiryForm { padding: 26px 20px; }
+}
+
+/* =========================================================
+   PREMIUM SALES REQUEST PAGES — UNIQUE CONVERSION FLOWS
+========================================================= */
+.premiumInquiryHeroContent > h1 {
+  margin-top: 0 !important;
+}
+
+.premiumInquiryHeroContent > p {
+  max-width: 720px;
+  margin: 22px auto 0;
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-size: clamp(18px, 1.45vw, 22px) !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-align: center;
+}
+
+.premiumPhoneField {
+  display: grid;
+  grid-template-columns: minmax(92px, 118px) minmax(0, 1fr);
+  width: 100%;
+  border: 1px solid rgba(149, 105, 77, 0.28);
+  background: #fffdf8;
+}
+
+.premiumPhoneField select,
+.premiumPhoneField input {
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  border: 0 !important;
+  background: transparent !important;
+  color: #173a2d !important;
+  font: inherit;
+}
+
+.premiumPhoneField select {
+  padding: 0 12px;
+  border-right: 1px solid rgba(149, 105, 77, 0.24) !important;
+}
+
+.premiumPhoneField input {
+  padding: 0 16px;
+}
+
+.premiumPhoneField:focus-within {
+  outline: 2px solid rgba(149, 105, 77, 0.36);
+  outline-offset: 2px;
+}
+
+.premiumInquiryPage--brochure .premiumInquiryHighlights article,
+.premiumInquiryPage--interest .premiumInquiryHighlights article,
+.premiumInquiryPage--site-visit .premiumInquiryHighlights article {
+  min-height: 265px;
+}
+
+.premiumInquiryPage--brochure .premiumInquiryFormSection {
+  background: #f6f2e9;
+}
+
+.premiumInquiryPage--interest .premiumInquiryFormSection {
+  background: #e9ddcb;
+}
+
+.premiumInquiryPage--site-visit .premiumInquiryFormSection {
+  background: #f2eadf;
+}
+
+.premiumInquiryForm select,
+.premiumInquiryForm input,
+.premiumInquiryForm textarea {
+  border-radius: 0;
+}
+
+@media (max-width: 680px) {
+  .premiumPhoneField {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .premiumInquiryHeroContent > p {
+    font-size: 17px !important;
+  }
+}
+
+/* =========================================================
+   PREMIUM REQUEST PAGES — FINAL VISUAL & SALES REFINEMENT
+========================================================= */
+.premiumInquiryIntro,
+.premiumInquiryHighlights,
+.premiumInquiryFormSection {
+  background-color: #e9ddcb !important;
+}
+
+.premiumInquiryHighlights {
+  gap: clamp(18px, 2vw, 30px);
+  padding-top: clamp(42px, 5vw, 72px);
+  padding-bottom: clamp(70px, 8vw, 118px);
+  border-top: 1px solid rgba(149, 105, 77, 0.2);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.premiumInquiryHighlights article,
+.premiumInquiryHighlights article:first-child {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px !important;
+  padding: clamp(34px, 3.2vw, 50px);
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.24) !important;
+  background: #f6f2e9;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.premiumInquiryHighlights article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #95694d;
+  transform: scaleX(0.28);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.premiumInquiryHighlights article:hover {
+  transform: translateY(-7px);
+  border-color: rgba(149, 105, 77, 0.48) !important;
+  box-shadow: 0 24px 50px rgba(74, 48, 36, 0.12);
+}
+
+.premiumInquiryHighlights article:hover::before {
+  transform: scaleX(1);
+}
+
+.premiumHighlightNumber {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: clamp(48px, 5vw, 78px);
+  border: 1px solid rgba(149, 105, 77, 0.42);
+  border-radius: 50%;
+  color: #95694d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.premiumHighlightContent {
+  margin-top: auto;
+}
+
+.premiumInquiryHighlights h3 {
+  margin-bottom: 18px;
+  font-size: clamp(31px, 2.5vw, 42px);
+  letter-spacing: -0.7px;
+}
+
+.premiumInquiryHighlights p {
+  max-width: 390px;
+  font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.65;
+}
+
+.premiumInquiryFormSection,
+.premiumInquiryPage--brochure .premiumInquiryFormSection,
+.premiumInquiryPage--interest .premiumInquiryFormSection,
+.premiumInquiryPage--site-visit .premiumInquiryFormSection {
+  background: #e9ddcb !important;
+}
+
+.premiumInquiryFormAside {
+  padding: clamp(8px, 1vw, 16px) 0;
+}
+
+.premiumInquiryFormAside .sectionLabel,
+.premiumInquiryFormAside h2,
+.premiumInquiryFormAside > p,
+.premiumInquiryContactNote,
+.premiumInquiryContactNote span,
+.premiumInquiryContactNote a {
+  color: #95694d !important;
+}
+
+.premiumInquiryFormAside h2 {
+  max-width: 560px;
+  font-size: clamp(40px, 4.1vw, 57px);
+  line-height: 1.02;
+}
+
+.premiumInquiryFormAside > p:not(.sectionLabel) {
+  max-width: 560px;
+  margin: 28px 0 0;
+  font-size: clamp(17px, 1.25vw, 19px);
+  line-height: 1.65;
+}
+
+.premiumInquiryPrivacyNote {
+  padding-left: 18px;
+  border-left: 2px solid rgba(149, 105, 77, 0.48);
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  opacity: 0.88;
+}
+
+.premiumInquiryContactNote {
+  max-width: 560px;
+}
+
+.premiumInquiryForm {
+  border: 1px solid rgba(149, 105, 77, 0.25);
+  border-radius: 2px;
+  background: #f6f2e9 !important;
+  box-shadow: 0 26px 70px rgba(73, 48, 37, 0.1);
+}
+
+.premiumFormSection > p {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(149, 105, 77, 0.28);
+  background: rgba(233, 221, 203, 0.52);
+}
+
+.premiumInquirySubmit,
+.premiumInquirySubmit:visited,
+.premiumInquirySubmit:hover,
+.premiumInquirySubmit:focus,
+.premiumInquirySubmit:active {
+  color: #ffffff !important;
+}
+
+.premiumInquirySubmit {
+  border: 1px solid #95694d;
+  background: #95694d !important;
+  box-shadow: 0 12px 28px rgba(149, 105, 77, 0.2);
+  transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.premiumInquirySubmit:hover {
+  background: #7f573f !important;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(127, 87, 63, 0.28);
+}
+
+@media (max-width: 900px) {
+  .premiumInquiryHighlights {
+    gap: 18px;
+  }
+
+  .premiumInquiryHighlights article,
+  .premiumInquiryHighlights article:first-child {
+    min-height: 270px !important;
+  }
+
+  .premiumHighlightNumber {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 620px) {
+  .premiumInquiryHighlights {
+    padding-top: 34px;
+    padding-bottom: 64px;
+  }
+
+  .premiumInquiryHighlights article,
+  .premiumInquiryHighlights article:first-child {
+    min-height: 250px !important;
+    padding: 34px 26px;
+  }
+
+  .premiumHighlightNumber {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 38px;
+  }
+
+  .premiumInquiryFormAside h2 {
+    font-size: 38px;
+  }
+}
+
+/* =========================================================
+   UNIFIED PREMIUM HERO TYPOGRAPHY
+   Shared scale across Vision, Lifestyle, Masterplan, Villas,
+   V Avenue, Contact and the three private request journeys.
+========================================================= */
+.publicPageHeroContent h1,
+.propertyCollectionHeroContent h1,
+.vAvenueHeroContent h1,
+.premiumInquiryHeroContent h1 {
+  width: min(100%, 760px);
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(38px, 4.15vw, 54px) !important;
+  line-height: 1.02 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.9px !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  text-wrap: balance;
+}
+
+.publicPageHeroContent span,
+.propertyCollectionHeroContent span,
+.vAvenueHeroMeta,
+.premiumInquiryHeroContent > p {
+  display: block;
+  width: min(100%, 650px);
+  max-width: 650px !important;
+  margin: 22px auto 0 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: clamp(16px, 1.25vw, 18px) !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-align: center !important;
+  text-transform: none !important;
+  text-wrap: balance;
+}
+
+/* Keep small editorial labels restrained and consistent. */
+.publicPageHeroContent > p,
+.propertyCollectionHeroContent > p,
+.vAvenueHeroContent > p:not(.vAvenueHeroMeta) {
+  color: #ffffff !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 720px) {
+  .publicPageHeroContent h1,
+  .propertyCollectionHeroContent h1,
+  .vAvenueHeroContent h1,
+  .premiumInquiryHeroContent h1 {
+    font-size: clamp(32px, 10vw, 43px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .publicPageHeroContent span,
+  .propertyCollectionHeroContent span,
+  .vAvenueHeroMeta,
+  .premiumInquiryHeroContent > p {
+    max-width: 520px !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+
+/* =========================================================
+   PREMIUM VILLA BENEFITS
+   A restrained editorial presentation used only on Villas.
+========================================================= */
+.villaPremiumFeatures {
+  width: min(1320px, calc(100% - 80px));
+  margin: 0 auto 132px;
+  border: 1px solid rgba(149, 105, 77, 0.22);
+  background: #f6f2e9 !important;
+  overflow: hidden;
+}
+
+.villaPremiumFeatures article {
+  position: relative;
+  min-height: 360px;
+  padding: 46px 42px 48px;
+  display: flex;
+  flex-direction: column;
+  background: #f6f2e9 !important;
+  border-right: 1px solid rgba(149, 105, 77, 0.22);
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.villaPremiumFeatures article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #95694d;
+  transform: scaleX(0.28);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.villaPremiumFeatures article:hover {
+  background: #efe3d2 !important;
+}
+
+.villaPremiumFeatures article:hover::before {
+  transform: scaleX(1);
+}
+
+.villaPremiumFeatures article:last-child {
+  border-right: 0;
+}
+
+.villaPremiumFeatures span {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(149, 105, 77, 0.35);
+  border-radius: 50%;
+  color: #95694d !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.villaPremiumFeatures h3 {
+  max-width: 290px;
+  margin: auto 0 22px;
+  color: #95694d !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 2.5vw, 39px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.villaPremiumFeatures p {
+  max-width: 330px;
+  margin: 0;
+  color: #95694d !important;
+  font-size: 18px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+@media (max-width: 980px) {
+  .villaPremiumFeatures {
+    width: min(100% - 48px, 760px);
+    grid-template-columns: 1fr;
+  }
+
+  .villaPremiumFeatures article {
+    min-height: 280px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(149, 105, 77, 0.22);
+  }
+
+  .villaPremiumFeatures article:last-child {
+    border-bottom: 0;
+  }
+
+  .villaPremiumFeatures h3,
+  .villaPremiumFeatures p {
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 600px) {
+  .villaPremiumFeatures {
+    width: calc(100% - 32px);
+    margin-bottom: 92px;
+  }
+
+  .villaPremiumFeatures article {
+    min-height: 250px;
+    padding: 32px 26px 34px;
+  }
+
+  .villaPremiumFeatures h3 {
+    margin-top: 46px;
+    font-size: 31px;
+  }
+
+  .villaPremiumFeatures p {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+}
+
+/* =========================================================
+   EDEN-INSPIRED HERO SYSTEM — FINAL CONSISTENCY PASS
+   One restrained editorial scale for every public and sales hero.
+========================================================= */
+.publicPageHero,
+.premiumInquiryHero,
+.vAvenueHero {
+  min-height: clamp(560px, 78vh, 760px) !important;
+}
+
+.publicPageHeroOverlay,
+.premiumInquiryHeroOverlay,
+.vAvenueHeroOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 28, 22, 0.24) 0%,
+    rgba(10, 28, 22, 0.48) 52%,
+    rgba(10, 28, 22, 0.64) 100%
+  ) !important;
+}
+
+.publicPageHeroContent,
+.premiumInquiryHeroContent,
+.vAvenueHeroContent {
+  width: min(900px, calc(100% - 48px)) !important;
+  margin: 0 auto !important;
+  padding: 110px 0 84px !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+.publicPageHeroContent h1,
+.premiumInquiryHeroContent h1,
+.vAvenueHeroContent h1 {
+  width: 100% !important;
+  max-width: 880px !important;
+  margin: 0 auto !important;
+  color: #ffffff !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(50px, 5.3vw, 72px) !important;
+  line-height: 0.96 !important;
+  font-weight: 400 !important;
+  letter-spacing: -1.8px !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+}
+
+.publicPageHeroTitleLine,
+.premiumInquiryHeroContent h1 > span,
+.vAvenueHeroContent h1 > span {
+  display: block;
+}
+
+.publicPageHeroEyebrow,
+.publicPageHeroContent > p,
+.vAvenueHeroContent > p:not(.vAvenueHeroMeta) {
+  margin: 0 auto 24px !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.34em !important;
+  text-transform: uppercase !important;
+}
+
+.publicPageHeroDescription,
+.publicPageHeroContent > span.publicPageHeroDescription,
+.premiumInquiryHeroContent > p,
+.vAvenueHeroMeta {
+  display: block !important;
+  width: min(100%, 690px) !important;
+  max-width: 690px !important;
+  margin: 34px auto 0 !important;
+  color: rgba(255, 255, 255, 0.96) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: clamp(17px, 1.35vw, 20px) !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-align: center !important;
+  text-transform: none !important;
+  text-wrap: balance;
+}
+
+.publicPageScroll,
+.premiumInquiryHeroContent > a,
+.vAvenueScrollLink {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.72) !important;
+}
+
+@media (max-width: 760px) {
+  .publicPageHero,
+  .premiumInquiryHero,
+  .vAvenueHero {
+    min-height: 620px !important;
+  }
+
+  .publicPageHeroContent,
+  .premiumInquiryHeroContent,
+  .vAvenueHeroContent {
+    width: min(100% - 34px, 650px) !important;
+    padding: 118px 0 82px !important;
+  }
+
+  .publicPageHeroContent h1,
+  .premiumInquiryHeroContent h1,
+  .vAvenueHeroContent h1 {
+    font-size: clamp(39px, 11.5vw, 54px) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -1px !important;
+  }
+
+  .publicPageHeroDescription,
+  .publicPageHeroContent > span.publicPageHeroDescription,
+  .premiumInquiryHeroContent > p,
+  .vAvenueHeroMeta {
+    max-width: 540px !important;
+    margin-top: 26px !important;
+    font-size: 17px !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .publicPageHeroContent h1,
+  .premiumInquiryHeroContent h1,
+  .vAvenueHeroContent h1 {
+    font-size: clamp(36px, 12vw, 46px) !important;
+  }
+}
+
+.publicPageHeroContent h1 > .publicPageHeroTitleLine,
+.premiumInquiryHeroContent h1 > span,
+.vAvenueHeroContent h1 > span {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  text-align: inherit !important;
+  text-transform: inherit !important;
+}
+
+/* =========================================================
+   REFINED PROPERTY DETAIL EXPERIENCE
+   Premium, editorial presentation for villa detail pages
+========================================================= */
+
+.propertyDetailPage {
+  background: #e9ddcb;
+  color: #95694d;
+}
+
+.propertyDetailPage .propertyDetailHero {
+  min-height: 88vh;
+  background-position: center;
+}
+
+.propertyDetailPage .propertyDetailHeroOverlay {
+  background:
+    linear-gradient(180deg, rgba(16, 38, 30, 0.38) 0%, rgba(16, 38, 30, 0.18) 40%, rgba(16, 38, 30, 0.62) 100%);
+}
+
+.propertyDetailPage .propertyDetailHeroContent {
+  width: min(980px, calc(100% - 48px));
+  text-align: center;
+}
+
+.propertyDetailPage .propertyDetailHeroContent > p,
+.propertyDetailPage .propertyDetailHeroContent > span,
+.propertyDetailPage .propertyDetailHeroContent h1,
+.propertyDetailPage .propertyDetailScroll {
+  color: #ffffff !important;
+}
+
+.propertyDetailPage .propertyDetailHeroContent > p {
+  margin-bottom: 22px;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+}
+
+.propertyDetailPage .propertyDetailHeroContent h1 {
+  max-width: 880px;
+  margin-inline: auto;
+  font-size: clamp(48px, 6.2vw, 82px);
+  line-height: 0.96;
+  letter-spacing: -1.8px;
+  text-wrap: balance;
+}
+
+.propertyDetailPage .propertyDetailHeroContent > span {
+  display: block;
+  margin-top: 26px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.propertyDetailPage .propertyDetailOverview {
+  width: min(1280px, calc(100% - 80px));
+  padding: clamp(96px, 10vw, 150px) 0;
+  align-items: start;
+  gap: clamp(60px, 8vw, 130px);
+}
+
+.propertyDetailPage .propertyDetailOverviewText .sectionLabel,
+.propertyDetailPage .propertyDetailFeaturesHeading .sectionLabel,
+.propertyDetailPage .propertyDetailInquiry .sectionLabel {
+  color: #95694d !important;
+}
+
+.propertyDetailPage .propertyDetailOverviewText h2 {
+  max-width: 720px;
+  color: #95694d !important;
+  font-size: clamp(44px, 5vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.propertyDetailPage .propertyDetailOverviewText > p:last-of-type {
+  max-width: 680px;
+  color: #95694d !important;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.propertyDetailOverviewActions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-top: 38px;
+}
+
+.propertyDetailPage .propertyDetailOverviewActions .propertyDetailPrimaryButton {
+  margin-top: 0;
+}
+
+.propertyDetailTextLink {
+  padding: 10px 0 8px;
+  border-bottom: 1px solid currentColor;
+  color: #95694d !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.propertyDetailPage .propertyDetailFacts {
+  padding: 18px 28px;
+  border: 1px solid rgba(149, 105, 77, 0.22);
+  background: #f6f2e9;
+}
+
+.propertyDetailPage .propertyDetailFacts > div {
+  padding: 22px 0;
+  border-color: rgba(149, 105, 77, 0.2);
+}
+
+.propertyDetailPage .propertyDetailFacts span,
+.propertyDetailPage .propertyDetailFacts strong {
+  color: #95694d !important;
+}
+
+.propertyDetailPage .propertyDetailGallery {
+  width: min(1500px, calc(100% - 48px));
+  gap: 18px;
+  grid-auto-rows: clamp(420px, 42vw, 620px);
+}
+
+.propertyDetailPage .propertyDetailGalleryCaption h3 {
+  font-size: clamp(30px, 3vw, 44px);
+}
+
+.propertyDetailPage .propertyDetailFeaturesSection {
+  margin-top: clamp(90px, 10vw, 150px);
+  padding: clamp(100px, 11vw, 160px) 40px;
+  background: #f6f2e9;
+}
+
+.propertyDetailPage .propertyDetailFeaturesHeading {
+  max-width: 880px;
+  margin-bottom: 72px;
+}
+
+.propertyDetailPage .propertyDetailFeaturesHeading h2 {
+  color: #95694d !important;
+  font-size: clamp(42px, 4.8vw, 64px);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-wrap: balance;
+}
+
+.propertyDetailPage .propertyDetailFeaturesHeading > p:last-child {
+  max-width: 650px;
+  margin: 26px auto 0;
+  color: #95694d !important;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid {
+  border-color: rgba(149, 105, 77, 0.24);
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid article {
+  position: relative;
+  min-height: 350px;
+  padding: 42px 32px;
+  border-color: rgba(149, 105, 77, 0.24);
+  background: transparent;
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid article:hover {
+  background: #e9ddcb;
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid span,
+.propertyDetailPage .propertyDetailFeaturesGrid h3,
+.propertyDetailPage .propertyDetailFeaturesGrid p {
+  color: #95694d !important;
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid h3 {
+  margin-top: 64px;
+  font-size: clamp(27px, 2.2vw, 34px);
+  line-height: 1.08;
+}
+
+.propertyDetailPage .propertyDetailFeaturesGrid p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.propertyDetailPage .propertyDetailLayout {
+  min-height: 760px;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent {
+  padding: clamp(64px, 7vw, 110px);
+  background: #2a4933;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent h2 {
+  color: #ffffff !important;
+  font-size: clamp(42px, 4.7vw, 64px);
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-wrap: balance;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent > p,
+.propertyDetailPage .propertyDetailLayoutContent li {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent li span {
+  color: #e9ddcb !important;
+}
+
+.propertyDetailPage .propertyDetailPrimaryButton,
+.propertyDetailPage .propertyDetailInquiryActions .propertyDetailPrimaryButton {
+  border-color: #95694d !important;
+  background: #95694d !important;
+  color: #ffffff !important;
+}
+
+.propertyDetailPage .propertyDetailPrimaryButton:hover,
+.propertyDetailPage .propertyDetailInquiryActions .propertyDetailPrimaryButton:hover {
+  border-color: #7f573f !important;
+  background: #7f573f !important;
+  color: #ffffff !important;
+}
+
+.propertyDetailPage .propertyDetailSecondaryButton {
+  border-color: #95694d !important;
+  background: transparent !important;
+  color: #95694d !important;
+}
+
+.propertyDetailPage .propertyDetailSecondaryButton:hover {
+  background: #95694d !important;
+  color: #ffffff !important;
+}
+
+.propertyDetailPage .propertyDetailInquiry {
+  width: min(1280px, calc(100% - 80px));
+  padding: clamp(95px, 10vw, 145px) 0;
+  align-items: center;
+}
+
+.propertyDetailInquiryCopy > p:last-child {
+  max-width: 700px;
+  margin: 26px 0 0;
+  color: #95694d !important;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.propertyDetailPage .propertyDetailInquiry h2 {
+  max-width: 760px;
+  color: #95694d !important;
+  font-size: clamp(42px, 4.8vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+@media (max-width: 1000px) {
+  .propertyDetailPage .propertyDetailOverview,
+  .propertyDetailPage .propertyDetailInquiry {
+    grid-template-columns: 1fr;
+  }
+
+  .propertyDetailPage .propertyDetailFacts {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 700px) {
+  .propertyDetailPage .propertyDetailHero {
+    min-height: 76vh;
+  }
+
+  .propertyDetailPage .propertyDetailHeroContent h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .propertyDetailPage .propertyDetailOverview,
+  .propertyDetailPage .propertyDetailInquiry {
+    width: calc(100% - 36px);
+  }
+
+  .propertyDetailPage .propertyDetailOverviewText h2,
+  .propertyDetailPage .propertyDetailFeaturesHeading h2,
+  .propertyDetailPage .propertyDetailLayoutContent h2,
+  .propertyDetailPage .propertyDetailInquiry h2 {
+    font-size: 38px;
+  }
+
+  .propertyDetailPage .propertyDetailOverviewText > p:last-of-type,
+  .propertyDetailPage .propertyDetailFeaturesHeading > p:last-child,
+  .propertyDetailInquiryCopy > p:last-child {
+    font-size: 17px;
+  }
+
+  .propertyDetailOverviewActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .propertyDetailTextLink {
+    width: fit-content;
+  }
+
+  .propertyDetailPage .propertyDetailGallery {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .propertyDetailPage .propertyDetailFeaturesSection {
+    padding-inline: 18px;
+  }
+
+  .propertyDetailPage .propertyDetailLayoutContent {
+    padding: 68px 24px;
+  }
+}

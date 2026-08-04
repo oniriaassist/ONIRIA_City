@@ -10,10 +10,9 @@ export default function VisionPage() {
   return (
     <EditorialPage
       hero={{
-        eyebrow: "THE ONIRIA VISION",
-        title: "A New Way of Living in Zanzibar",
+        title: ["A PLACE TO", "BELONG"],
         description:
-          "A destination where thoughtful architecture, nature and community create a more meaningful way of life.",
+          "Thoughtful living, rooted in Zanzibar and designed for generations.",
         image:
           "/media/oniria/residence-aerial-masterplan.png",
       }}

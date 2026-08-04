@@ -4,7 +4,7 @@ export default function IntroductionSection() {
       <div className="introductionInner">
         <p className="sectionLabel">WELCOME HOME</p>
 
-        <h2>A New Way of Living in Zanzibar</h2>
+        <h2>A NEW ZANZIBAR WAY OF LIFE</h2>
 
         <div className="introductionCopy">
           <p className="introductionText">

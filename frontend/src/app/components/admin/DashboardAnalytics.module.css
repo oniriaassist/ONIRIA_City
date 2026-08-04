@@ -1,0 +1,199 @@
+.panel {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid rgba(149, 105, 77, 0.16);
+  border-radius: 24px;
+  background: #fffdf8;
+  box-shadow: 0 18px 46px rgba(17, 35, 31, 0.07);
+}
+
+.activityPanel { grid-column: span 2; }
+
+.panelHeader,
+.panelHeaderCompact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.panelHeader h3,
+.panelHeaderCompact h3 {
+  margin: 5px 0 0;
+  color: #163129;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.panelHeader span {
+  display: block;
+  margin-top: 8px;
+  color: #756b5f;
+  font-size: 14px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #95694d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.panelHeaderCompact a {
+  color: #95694d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.segmentedControl {
+  display: flex;
+  padding: 4px;
+  border: 1px solid rgba(149, 105, 77, 0.2);
+  border-radius: 999px;
+  background: #f4ecdf;
+}
+
+.segmentedControl button {
+  min-height: 36px;
+  padding: 8px 15px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #6f6456;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.segmentedControl .activeSegment {
+  background: #2a4933;
+  color: #fff;
+}
+
+.chartMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 24px 0 4px;
+}
+
+.legend {
+  display: flex;
+  gap: 20px;
+  color: #6f6456;
+  font-size: 12px;
+}
+
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.leadsDot { background: #2a4933; }
+.enquiriesDot { background: #b17a58; }
+.chartSummary { color: #8b8073; font-size: 11px; }
+
+.chartWrap {
+  min-height: 330px;
+  overflow: hidden;
+}
+
+.chartWrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.gridLine { stroke: rgba(149, 105, 77, 0.15); stroke-width: 1; }
+.axisText { fill: #8b8073; font-size: 10px; }
+.axisTitle { fill: #756b5f; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.leadBar { fill: #2a4933; }
+.enquiryBar { fill: #b17a58; }
+.emptyChartBox { fill: #f7f1e7; stroke: rgba(149, 105, 77, 0.12); }
+.emptyChartTitle { fill: #163129; font-size: 17px; font-family: Georgia, "Times New Roman", serif; }
+.emptyChartText { fill: #7c7267; font-size: 11px; }
+
+.breakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.barList { margin-top: 24px; display: grid; gap: 18px; }
+.barItem { display: grid; gap: 8px; }
+.barLabel { display: flex; justify-content: space-between; gap: 16px; color: #5f564c; font-size: 13px; text-transform: capitalize; }
+.barLabel strong { color: #163129; font-size: 12px; }
+.barLabel small { color: #8d8275; font-weight: 500; }
+.barTrack { height: 8px; border-radius: 999px; background: #eee5d7; overflow: hidden; }
+.barTrack span { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2a4933, #53745c); display: block; }
+
+.appointmentList { margin-top: 20px; display: grid; }
+.appointmentList article { padding: 16px 0; border-top: 1px solid rgba(149, 105, 77, 0.15); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; }
+.appointmentType { min-width: 86px; padding: 7px 9px; border-radius: 999px; background: #f0e5d4; color: #795935; font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
+.appointmentList strong { color: #173129; font-size: 13px; display: block; }
+.appointmentList small { margin-top: 4px; color: #7b7165; font-size: 11px; display: block; }
+.appointmentStatus { color: #2a4933; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+
+.attentionPanel {
+  background: #2a4933;
+  color: #fff;
+}
+
+.attentionPanel .eyebrow,
+.attentionPanel .panelHeaderCompact h3 { color: #fff; }
+
+.attentionList { margin-top: 20px; display: grid; }
+.attentionList a { padding: 18px 0; border-top: 1px solid rgba(255, 255, 255, 0.15); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.attentionList span { font-size: 13px; }
+.attentionList strong { font-family: Georgia, "Times New Roman", serif; font-size: 29px; font-weight: 400; }
+.emptyText { margin: 22px 0 0; color: #7c7267; font-size: 13px; line-height: 1.6; }
+
+.exportInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exportInline button {
+  min-height: 38px;
+  padding: 9px 15px;
+  border: 1px solid #2a4933;
+  border-radius: 999px;
+  background: #2a4933;
+  color: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.exportInline button:disabled { cursor: wait; opacity: 0.6; }
+.exportSuccess { color: #2a4933; font-size: 10px; font-weight: 700; }
+.exportError { color: #9a3929; font-size: 10px; font-weight: 700; }
+
+@media (max-width: 1180px) {
+  .activityPanel { grid-column: auto; }
+  .breakdownGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 760px) {
+  .panel { padding: 20px; border-radius: 18px; }
+  .panelHeader, .panelHeaderCompact, .chartMeta { flex-direction: column; }
+  .segmentedControl { width: 100%; }
+  .segmentedControl button { flex: 1; }
+  .breakdownGrid { grid-template-columns: 1fr; }
+  .appointmentList article { grid-template-columns: 1fr; }
+  .appointmentType { width: fit-content; }
+  .chartWrap { min-height: 260px; overflow-x: auto; }
+  .chartWrap svg { min-width: 720px; }
+  .exportInline { align-items: flex-start; flex-direction: column; }
+}

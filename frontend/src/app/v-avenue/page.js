@@ -59,7 +59,10 @@ export default function VAvenuePage() {
       >
         <div className="vAvenueHeroOverlay" />
         <div className="vAvenueHeroContent">
-          <h1>The social and commercial heart of ONIRIA City</h1>
+          <h1><span>THE HEART</span><span>OF ONIRIA</span></h1>
+          <p className="vAvenueHeroMeta">
+            Living, dining, retail and business—brought together.
+          </p>
           <a href="#discover-v-avenue" className="vAvenueScrollLink">
             Explore <span aria-hidden="true">↓</span>
           </a>

@@ -21,6 +21,27 @@ async function request(path, options = {}) {
   return body.data;
 }
 
+async function download(path, fallbackFilename) {
+  const response = await fetch(joinApiUrl(path), { credentials: "include" });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(body?.error?.message || body?.detail || "Unable to download data");
+  }
+  const disposition = response.headers.get("content-disposition") || "";
+  const match = disposition.match(/filename="?([^";]+)"?/i);
+  const filename = match?.[1] || fallbackFilename;
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+  return filename;
+}
+
 export const adminApi = {
   login: async (payload) => {
     const session = await request("/admin/login", { method: "POST", body: JSON.stringify(payload) });
@@ -59,6 +80,8 @@ export const adminApi = {
     return sessionCheckPromise;
   },
   dashboard: () => request("/admin/dashboard"),
+  exportData: ({ format = "xlsx", dataset = "all" } = {}) =>
+    download(`/admin/data-export?format=${encodeURIComponent(format)}&dataset=${encodeURIComponent(dataset)}`, `oniria-${dataset}.${format}`),
   leads: (params = {}) => {
     const query = new URLSearchParams(
       Object.entries(params).filter(([, value]) => value !== undefined && value !== "")

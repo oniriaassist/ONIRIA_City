@@ -1,43 +1,55 @@
 import Header from "./Header";
-import FinalSalesCTA from "./FinalSalesCTA";
 import Footer from "./Footer";
 
 export default function PropertyDetailPage({ property }) {
+  const inquiryHref = `/register-interest?collection=villas&property=${encodeURIComponent(
+    property.title,
+  )}`;
+  const visitHref = `/arrange-site-visit?collection=villas&property=${encodeURIComponent(
+    property.title,
+  )}`;
+  const brochureHref = `/request-brochure?collection=villas&property=${encodeURIComponent(
+    property.title,
+  )}`;
+
   return (
-    <main>
+    <main className="propertyDetailPage">
       <Header />
 
       <section
         className="propertyDetailHero"
-        style={{
-          backgroundImage: `url("${property.heroImage}")`,
-        }}
+        style={{ backgroundImage: `url("${property.heroImage}")` }}
       >
         <div className="propertyDetailHeroOverlay" />
 
         <div className="propertyDetailHeroContent">
           <p>{property.collection}</p>
-
           <h1>{property.title}</h1>
-
           <span>{property.location}</span>
         </div>
 
         <a href="#property-overview" className="propertyDetailScroll">
-          Explore ↓
+          Explore <span aria-hidden="true">↓</span>
         </a>
       </section>
 
       <section className="propertyDetailOverview" id="property-overview">
         <div className="propertyDetailOverviewText">
           <p className="sectionLabel">{property.eyebrow}</p>
-
           <h2>{property.overviewTitle}</h2>
-
           <p>{property.description}</p>
+
+          <div className="propertyDetailOverviewActions">
+            <a href={inquiryHref} className="propertyDetailPrimaryButton">
+              Request availability
+            </a>
+            <a href={visitHref} className="propertyDetailTextLink">
+              Arrange a private visit <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
 
-        <div className="propertyDetailFacts">
+        <div className="propertyDetailFacts" aria-label="Property facts">
           {property.facts.map((fact) => (
             <div key={fact.label}>
               <span>{fact.label}</span>
@@ -47,7 +59,7 @@ export default function PropertyDetailPage({ property }) {
         </div>
       </section>
 
-      <section className="propertyDetailGallery">
+      <section className="propertyDetailGallery" aria-label="Property gallery">
         {property.gallery.map((image, index) => (
           <article
             className={`propertyDetailGalleryItem ${
@@ -57,12 +69,9 @@ export default function PropertyDetailPage({ property }) {
           >
             <div
               className="propertyDetailGalleryImage"
-              style={{
-                backgroundImage: `url("${image.url}")`,
-              }}
+              style={{ backgroundImage: `url("${image.url}")` }}
             >
               <div className="propertyDetailGalleryOverlay" />
-
               <div className="propertyDetailGalleryCaption">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{image.title}</h3>
@@ -75,17 +84,18 @@ export default function PropertyDetailPage({ property }) {
       <section className="propertyDetailFeaturesSection">
         <div className="propertyDetailFeaturesHeading">
           <p className="sectionLabel">PROPERTY FEATURES</p>
-
-          <h2>Designed around comfort and island living</h2>
+          <h2>Designed for a more considered way of living</h2>
+          <p>
+            Every detail supports privacy, comfort and an effortless connection
+            between home, garden and Zanzibar&apos;s tropical climate.
+          </p>
         </div>
 
         <div className="propertyDetailFeaturesGrid">
           {property.features.map((feature, index) => (
             <article key={feature.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-
               <h3>{feature.title}</h3>
-
               <p>{feature.description}</p>
             </article>
           ))}
@@ -95,49 +105,51 @@ export default function PropertyDetailPage({ property }) {
       <section className="propertyDetailLayout">
         <div
           className="propertyDetailLayoutImage"
-          style={{
-            backgroundImage: `url("${property.layoutImage}")`,
-          }}
+          style={{ backgroundImage: `url("${property.layoutImage}")` }}
+          role="img"
+          aria-label={`${property.title} layout and spaces`}
         />
 
         <div className="propertyDetailLayoutContent">
-          <p className="sectionLabel">LAYOUT & SPACES</p>
-
+          <p className="sectionLabel">LAYOUT &amp; SPACES</p>
           <h2>{property.layoutTitle}</h2>
-
           <p>{property.layoutDescription}</p>
 
           <ul>
             {property.layoutPoints.map((point) => (
-              <li key={point}>{point}</li>
+              <li key={point}>
+                <span aria-hidden="true">—</span>
+                {point}
+              </li>
             ))}
           </ul>
 
-          <a href="/inquiries" className="propertyDetailPrimaryButton">
+          <a href={brochureHref} className="propertyDetailPrimaryButton">
             Request full details
           </a>
         </div>
       </section>
 
       <section className="propertyDetailInquiry">
-        <div>
-          <p className="sectionLabel">REGISTER YOUR INTEREST</p>
-
-          <h2>Take the next step toward owning at ONIRIA City</h2>
+        <div className="propertyDetailInquiryCopy">
+          <p className="sectionLabel">YOUR NEXT STEP</p>
+          <h2>Explore this villa with our property team</h2>
+          <p>
+            Receive current information, discuss your requirements or arrange a
+            private introduction to ONIRIA City in Fumba.
+          </p>
         </div>
 
         <div className="propertyDetailInquiryActions">
-          <a href="/inquiries" className="propertyDetailPrimaryButton">
-            Make an inquiry
+          <a href={inquiryHref} className="propertyDetailPrimaryButton">
+            Register interest
           </a>
-
-          <a href="/contact" className="propertyDetailSecondaryButton">
-            Speak to our team
+          <a href={visitHref} className="propertyDetailSecondaryButton">
+            Arrange site visit
           </a>
         </div>
       </section>
 
-      <FinalSalesCTA />
       <Footer />
     </main>
   );

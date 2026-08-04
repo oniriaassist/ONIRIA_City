@@ -9,7 +9,25 @@ class AdminRepository:
         self.pool = pool
 
     async def dashboard(self) -> dict[str, Any]:
-        lead_counts, enquiry_counts, sources, recent = await asyncio.gather(
+        """Return operational KPIs and time-series data for the staff dashboard.
+
+        The database queries intentionally return only dates that contain activity.
+        Missing days and months are filled in Python so the frontend always receives
+        a stable chart shape, including when the database is new or quiet.
+        """
+        (
+            lead_counts,
+            enquiry_counts,
+            sources,
+            recent,
+            daily_leads,
+            daily_enquiries,
+            monthly_leads,
+            monthly_enquiries,
+            status_breakdown,
+            enquiry_breakdown,
+            upcoming_appointments,
+        ) = await asyncio.gather(
             self.pool.fetchrow(
                 """
                 SELECT
@@ -19,38 +37,197 @@ class AdminRepository:
                     COALESCE(SUM(lead_status = 'Qualified'), 0) AS qualified_leads,
                     COALESCE(SUM(COALESCE(lead_score, score, 0) >= 70 OR follow_up_status = 'priority_follow_up'), 0) AS priority_leads,
                     COALESCE(SUM(assigned_salesperson_id IS NULL), 0) AS unassigned_leads,
-                    COALESCE(SUM(DATE(next_follow_up_at) = CURRENT_DATE), 0) AS follow_ups_due_today
+                    COALESCE(SUM(DATE(next_follow_up_at) = CURRENT_DATE), 0) AS follow_ups_due_today,
+                    COALESCE(SUM(created_at >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')), 0) AS leads_this_month,
+                    COALESCE(SUM(
+                        created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01')
+                        AND created_at < DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+                    ), 0) AS leads_last_month
                 FROM leads
                 """
             ),
             self.pool.fetchrow(
                 """
                 SELECT
+                    COUNT(*) AS total_enquiries,
                     COALESCE(SUM(enquiry_type = 'brochure'), 0) AS brochure_requests,
                     COALESCE(SUM(enquiry_type = 'consultation'), 0) AS consultation_requests,
-                    COALESCE(SUM(enquiry_type = 'site_visit'), 0) AS site_visit_requests
+                    COALESCE(SUM(enquiry_type = 'site_visit'), 0) AS site_visit_requests,
+                    COALESCE(SUM(created_at >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')), 0) AS enquiries_this_month,
+                    COALESCE(SUM(
+                        created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01')
+                        AND created_at < DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+                    ), 0) AS enquiries_last_month
                 FROM enquiries
                 """
             ),
             self.pool.fetch(
-                "SELECT COALESCE(utm_source, source_platform, 'Direct') AS source, COUNT(*) AS count FROM leads GROUP BY source ORDER BY count DESC"
+                """
+                SELECT COALESCE(NULLIF(utm_source, ''), NULLIF(source_platform, ''), 'Direct') AS source,
+                       COUNT(*) AS count
+                FROM leads
+                GROUP BY source
+                ORDER BY count DESC
+                LIMIT 8
+                """
             ),
             self.pool.fetch("SELECT * FROM admin_lead_summary ORDER BY created_date DESC LIMIT 8"),
+            self.pool.fetch(
+                """
+                SELECT DATE(created_at) AS activity_date, COUNT(*) AS count
+                FROM leads
+                WHERE created_at >= CURRENT_DATE - INTERVAL 29 DAY
+                GROUP BY DATE(created_at)
+                ORDER BY activity_date
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT DATE(created_at) AS activity_date, COUNT(*) AS count
+                FROM enquiries
+                WHERE created_at >= CURRENT_DATE - INTERVAL 29 DAY
+                GROUP BY DATE(created_at)
+                ORDER BY activity_date
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT DATE_FORMAT(created_at, '%Y-%m') AS activity_month, COUNT(*) AS count
+                FROM leads
+                WHERE created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 11 MONTH, '%Y-%m-01')
+                GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+                ORDER BY activity_month
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT DATE_FORMAT(created_at, '%Y-%m') AS activity_month, COUNT(*) AS count
+                FROM enquiries
+                WHERE created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 11 MONTH, '%Y-%m-01')
+                GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+                ORDER BY activity_month
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT COALESCE(NULLIF(lead_status, ''), NULLIF(follow_up_status, ''), 'Unknown') AS status,
+                       COUNT(*) AS count
+                FROM leads
+                GROUP BY status
+                ORDER BY count DESC
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT COALESCE(NULLIF(enquiry_type, ''), 'general') AS enquiry_type,
+                       COUNT(*) AS count
+                FROM enquiries
+                GROUP BY enquiry_type
+                ORDER BY count DESC
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT appointment_type, customer, preferred_date, status, reference
+                FROM (
+                    SELECT 'Consultation' AS appointment_type,
+                           COALESCE(c.full_name, l.name, 'Prospective client') AS customer,
+                           co.preferred_date,
+                           co.status,
+                           COALESCE(l.reference_number, e.reference_number) AS reference,
+                           co.created_at
+                    FROM consultations co
+                    JOIN leads l ON l.id = co.lead_id
+                    LEFT JOIN customers c ON c.id = l.customer_id
+                    LEFT JOIN enquiries e ON e.id = co.enquiry_id
+                    WHERE co.status NOT IN ('completed', 'cancelled')
+                    UNION ALL
+                    SELECT 'Site visit' AS appointment_type,
+                           COALESCE(c.full_name, l.name, 'Prospective client') AS customer,
+                           sv.preferred_date,
+                           sv.status,
+                           COALESCE(l.reference_number, e.reference_number) AS reference,
+                           sv.created_at
+                    FROM site_visits sv
+                    JOIN leads l ON l.id = sv.lead_id
+                    LEFT JOIN customers c ON c.id = l.customer_id
+                    LEFT JOIN enquiries e ON e.id = sv.enquiry_id
+                    WHERE sv.status NOT IN ('completed', 'cancelled')
+                ) appointments
+                ORDER BY created_at DESC
+                LIMIT 6
+                """
+            ),
         )
+
+        from datetime import date, timedelta
+
         lead_counts = lead_counts or {}
         enquiry_counts = enquiry_counts or {}
+
+        def percent_change(current: int, previous: int) -> float | None:
+            if previous == 0:
+                return None if current == 0 else 100.0
+            return round(((current - previous) / previous) * 100, 1)
+
+        daily_lead_map = {str(row["activity_date"]): int(row["count"] or 0) for row in daily_leads}
+        daily_enquiry_map = {str(row["activity_date"]): int(row["count"] or 0) for row in daily_enquiries}
+        daily_activity = []
+        for offset in range(29, -1, -1):
+            day = date.today() - timedelta(days=offset)
+            key = day.isoformat()
+            daily_activity.append({
+                "date": key,
+                "leads": daily_lead_map.get(key, 0),
+                "enquiries": daily_enquiry_map.get(key, 0),
+            })
+
+        monthly_lead_map = {str(row["activity_month"]): int(row["count"] or 0) for row in monthly_leads}
+        monthly_enquiry_map = {str(row["activity_month"]): int(row["count"] or 0) for row in monthly_enquiries}
+        monthly_activity = []
+        year = date.today().year
+        month = date.today().month
+        for offset in range(11, -1, -1):
+            absolute_month = year * 12 + month - 1 - offset
+            item_year, zero_based_month = divmod(absolute_month, 12)
+            item_month = zero_based_month + 1
+            key = f"{item_year:04d}-{item_month:02d}"
+            monthly_activity.append({
+                "month": key,
+                "leads": monthly_lead_map.get(key, 0),
+                "enquiries": monthly_enquiry_map.get(key, 0),
+            })
+
+        total_leads = int(lead_counts.get("total_leads") or 0)
+        qualified_leads = int(lead_counts.get("qualified_leads") or 0)
+        leads_this_month = int(lead_counts.get("leads_this_month") or 0)
+        leads_last_month = int(lead_counts.get("leads_last_month") or 0)
+        enquiries_this_month = int(enquiry_counts.get("enquiries_this_month") or 0)
+        enquiries_last_month = int(enquiry_counts.get("enquiries_last_month") or 0)
+
         return {
-            "total_leads": int(lead_counts.get("total_leads") or 0),
+            "total_leads": total_leads,
             "new_leads": int(lead_counts.get("new_leads") or 0),
             "contacted_leads": int(lead_counts.get("contacted_leads") or 0),
-            "qualified_leads": int(lead_counts.get("qualified_leads") or 0),
+            "qualified_leads": qualified_leads,
             "priority_leads": int(lead_counts.get("priority_leads") or 0),
+            "total_enquiries": int(enquiry_counts.get("total_enquiries") or 0),
             "brochure_requests": int(enquiry_counts.get("brochure_requests") or 0),
             "consultation_requests": int(enquiry_counts.get("consultation_requests") or 0),
             "site_visit_requests": int(enquiry_counts.get("site_visit_requests") or 0),
             "follow_ups_due_today": int(lead_counts.get("follow_ups_due_today") or 0),
             "unassigned_leads": int(lead_counts.get("unassigned_leads") or 0),
+            "conversion_rate": round((qualified_leads / total_leads) * 100, 1) if total_leads else 0.0,
+            "leads_this_month": leads_this_month,
+            "enquiries_this_month": enquiries_this_month,
+            "lead_month_change": percent_change(leads_this_month, leads_last_month),
+            "enquiry_month_change": percent_change(enquiries_this_month, enquiries_last_month),
             "leads_by_source": sources,
+            "lead_status_breakdown": status_breakdown,
+            "enquiry_type_breakdown": enquiry_breakdown,
+            "daily_activity": daily_activity,
+            "monthly_activity": monthly_activity,
+            "upcoming_appointments": upcoming_appointments,
             "recent_enquiries": recent,
         }
 
@@ -172,3 +349,89 @@ class AdminRepository:
         if enquiry_type:
             return await self.pool.fetch("SELECT * FROM enquiries WHERE enquiry_type = %s ORDER BY created_at DESC", enquiry_type)
         return await self.pool.fetch("SELECT * FROM enquiries ORDER BY created_at DESC")
+
+    async def export_customer_data(self) -> dict[str, list[dict[str, Any]]]:
+        """Return customer-facing operational data for authorised staff exports.
+
+        Authentication secrets, password hashes, session tokens and audit records
+        are intentionally excluded. This method is read-only.
+        """
+        leads, enquiries, customers = await asyncio.gather(
+            self.pool.fetch(
+                """
+                SELECT
+                    l.reference_number,
+                    COALESCE(c.full_name, l.name) AS customer_name,
+                    COALESCE(c.email, l.email) AS email,
+                    COALESCE(c.phone, l.phone) AS phone,
+                    l.property_interest,
+                    l.bedroom_preference,
+                    l.budget_range,
+                    l.buying_purpose,
+                    l.purchase_timeframe,
+                    l.lead_status,
+                    l.follow_up_status,
+                    COALESCE(l.lead_score, l.score, 0) AS lead_score,
+                    COALESCE(NULLIF(l.utm_source, ''), NULLIF(l.source_platform, ''), 'Direct') AS source,
+                    l.utm_campaign,
+                    su.full_name AS assigned_staff,
+                    l.next_follow_up_at,
+                    l.last_contacted_at,
+                    l.created_at,
+                    l.updated_at
+                FROM leads l
+                LEFT JOIN customers c ON c.id = l.customer_id
+                LEFT JOIN staff_users su ON su.id = l.assigned_salesperson_id
+                ORDER BY l.created_at DESC
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT
+                    e.reference_number,
+                    e.enquiry_type,
+                    COALESCE(c.full_name, l.name) AS customer_name,
+                    COALESCE(c.email, l.email) AS email,
+                    COALESCE(c.phone, l.phone) AS phone,
+                    l.property_interest,
+                    e.message,
+                    e.preferred_contact_time,
+                    e.status,
+                    e.follow_up_status,
+                    e.notification_status,
+                    e.created_at,
+                    e.updated_at
+                FROM enquiries e
+                JOIN leads l ON l.id = e.lead_id
+                LEFT JOIN customers c ON c.id = l.customer_id
+                ORDER BY e.created_at DESC
+                """
+            ),
+            self.pool.fetch(
+                """
+                SELECT
+                    c.id AS customer_id,
+                    c.full_name,
+                    c.email,
+                    c.phone,
+                    c.country,
+                    c.preferred_language,
+                    c.preferred_contact_method,
+                    c.marketing_consent,
+                    c.privacy_consent,
+                    c.created_at,
+                    c.updated_at,
+                    COUNT(DISTINCT l.id) AS lead_count,
+                    COUNT(DISTINCT e.id) AS enquiry_count
+                FROM customers c
+                LEFT JOIN leads l ON l.customer_id = c.id
+                LEFT JOIN enquiries e ON e.lead_id = l.id
+                GROUP BY
+                    c.id, c.full_name, c.email, c.phone, c.country,
+                    c.preferred_language, c.preferred_contact_method,
+                    c.marketing_consent, c.privacy_consent, c.created_at, c.updated_at
+                ORDER BY c.created_at DESC
+                """
+            ),
+        )
+        return {"leads": leads, "enquiries": enquiries, "customers": customers}

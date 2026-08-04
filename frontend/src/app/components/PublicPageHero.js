@@ -1,3 +1,13 @@
+function renderTitle(title) {
+  const lines = Array.isArray(title) ? title : [title];
+
+  return lines.map((line, index) => (
+    <span className="publicPageHeroTitleLine" key={`${line}-${index}`}>
+      {line}
+    </span>
+  ));
+}
+
 export default function PublicPageHero({
   eyebrow,
   title,
@@ -14,13 +24,13 @@ export default function PublicPageHero({
       <div className="publicPageHeroOverlay" />
 
       <div className="publicPageHeroContent">
-        {eyebrow && <p>{eyebrow}</p>}
-        <h1>{title}</h1>
-        <span>{description}</span>
+        {eyebrow && <p className="publicPageHeroEyebrow">{eyebrow}</p>}
+        <h1>{renderTitle(title)}</h1>
+        <span className="publicPageHeroDescription">{description}</span>
       </div>
 
       <a href="#page-content" className="publicPageScroll">
-        Explore ↓
+        Explore <span aria-hidden="true">↓</span>
       </a>
     </section>
   );

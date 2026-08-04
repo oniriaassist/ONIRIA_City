@@ -11,9 +11,9 @@ export default function LifestylePage() {
     <EditorialPage
       showFinalCTA={false}
       hero={{
-        title: "Life Inspired by Zanzibar",
+        title: ["LIFE COMES", "TOGETHER"],
         description:
-          "Ocean experiences, tropical nature, wellness, dining and community brought together in one destination.",
+          "Nature, wellness and community shape every day.",
         image:
           "/media/oniria/villa-front-entry.png",
       }}

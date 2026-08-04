@@ -11,6 +11,7 @@ export default function PropertyCollectionPage({
   features = [],
   showFinalCTA = true,
   showCardLabels = true,
+  featuresClassName = "",
 }) {
   return (
     <main>
@@ -32,7 +33,7 @@ export default function PropertyCollectionPage({
       </section>
 
       {features.length > 0 && (
-        <section className="propertyCollectionFeatures">
+        <section className={`propertyCollectionFeatures ${featuresClassName}`.trim()}>
           {features.map((feature, index) => (
             <article key={feature.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>

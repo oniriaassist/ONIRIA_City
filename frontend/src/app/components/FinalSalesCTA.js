@@ -20,15 +20,15 @@ export default function FinalSalesCTA() {
           </p>
 
           <div className="finalSalesActions">
-            <a href="/inquiries?type=brochure" className="finalSalesPrimaryButton">
+            <a href="/request-brochure" className="finalSalesPrimaryButton">
               Request brochure
             </a>
 
-            <a href="/inquiries" className="finalSalesPrimaryButton">
+            <a href="/register-interest" className="finalSalesPrimaryButton">
               Register interest
             </a>
 
-            <a href="/inquiries?type=site-visit" className="finalSalesSecondaryButton">
+            <a href="/arrange-site-visit" className="finalSalesSecondaryButton">
               Arrange site visit
             </a>
 

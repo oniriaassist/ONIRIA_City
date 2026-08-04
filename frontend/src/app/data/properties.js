@@ -6,11 +6,11 @@ export const propertyDetails = {
       location: "Fumba, Zanzibar",
       eyebrow: "GARDEN VILLA",
       heroImage:
-        "/media/oniria/v-avenue-commercial.png",
+        "/media/oniria/villa-gated-entry.png",
       overviewTitle:
-        "A peaceful family home connected to private gardens",
+        "A private garden home shaped for everyday ease",
       description:
-        "The Garden Villa combines contemporary tropical architecture with comfortable family rooms, landscaped outdoor spaces and generous natural light. It is designed for residents who value privacy, calm surroundings and indoor-outdoor living.",
+        "The Three-Bedroom Garden Villa balances generous family space with landscaped outdoor living. Natural light, calm interiors and a shaded terrace create a refined home for owners who value privacy and an effortless Zanzibar lifestyle.",
       facts: [
         {
           label: "Bedrooms",
@@ -62,31 +62,31 @@ export const propertyDetails = {
       ],
       features: [
         {
-          title: "Private garden",
+          title: "Private garden living",
           description:
-            "Landscaped outdoor space supports relaxation, family activities and entertaining.",
+            "Landscaped outdoor space creates a calm setting for family time, entertaining and quiet retreat.",
         },
         {
-          title: "Natural light",
+          title: "Light-filled interiors",
           description:
-            "Large openings brighten the home and connect the interior with its tropical surroundings.",
+            "Generous openings bring daylight deep into the home and frame a natural connection to the garden.",
         },
         {
-          title: "Family layout",
+          title: "Balanced family space",
           description:
-            "Shared living areas and private bedrooms create a comfortable balance for daily family life.",
+            "Open social areas and private bedrooms support daily family life, guests and moments of rest.",
         },
         {
-          title: "Outdoor terrace",
+          title: "Shaded terrace",
           description:
-            "A shaded terrace extends the living space into the garden and Zanzibar climate.",
+            "A covered terrace extends the living space outdoors for dining, relaxing and year-round island comfort.",
         },
       ],
       layoutImage:
         "/media/oniria/residence-aerial-masterplan.png",
-      layoutTitle: "A practical home with room to grow",
+      layoutTitle: "A considered layout with room to grow",
       layoutDescription:
-        "The Garden Villa provides comfortable shared spaces, three private bedrooms and direct access to landscaped outdoor areas.",
+        "Shared living areas flow naturally towards the garden, while three private bedrooms provide a calm and comfortable retreat for residents and guests.",
       layoutPoints: [
         "Three private bedrooms",
         "Three bathrooms",
