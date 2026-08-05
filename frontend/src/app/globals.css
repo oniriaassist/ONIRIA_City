@@ -11937,3 +11937,191 @@ footer *,
     padding: 68px 24px;
   }
 }
+
+/* =========================================================
+   BROCHURE REQUEST — PREMIUM CONVERSION FORM
+   Compact, focused and visually distinct without changing submission logic.
+========================================================= */
+.premiumInquiryPage--brochure .premiumInquiryForm {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(30px, 4vw, 52px) !important;
+  border: 1px solid rgba(149, 105, 77, 0.22) !important;
+  border-radius: 18px !important;
+  background: #f8f3ea !important;
+  box-shadow: 0 28px 70px rgba(67, 45, 35, 0.12) !important;
+}
+
+.premiumInquiryPage--brochure .premiumInquiryForm::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: #95694d;
+}
+
+.premiumInquiryPage--brochure .premiumFormSection {
+  padding: 0 0 clamp(28px, 3vw, 40px);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.18);
+}
+
+.premiumInquiryPage--brochure .premiumFormSection + .premiumFormSection {
+  padding-top: clamp(28px, 3vw, 40px);
+}
+
+.premiumInquiryPage--brochure .premiumFormSection > p {
+  margin: 0 0 24px;
+  padding: 0;
+  min-height: auto;
+  border: 0;
+  background: transparent;
+  color: #95694d !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.premiumInquiryPage--brochure .premiumFormGrid {
+  gap: 24px 20px;
+}
+
+.premiumInquiryPage--brochure .premiumFormGrid > label > span:first-child,
+.premiumInquiryPage--brochure .premiumDeliveryField legend {
+  display: block;
+  margin-bottom: 10px;
+  color: #6f4a38 !important;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.premiumInquiryPage--brochure .premiumFormGrid input,
+.premiumInquiryPage--brochure .premiumFormGrid select {
+  min-height: 58px;
+  border: 1px solid rgba(149, 105, 77, 0.28) !important;
+  border-radius: 8px !important;
+  background: #fffdf8 !important;
+  color: #5e4335 !important;
+  font-size: 16px !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.premiumInquiryPage--brochure .premiumFormGrid input:focus,
+.premiumInquiryPage--brochure .premiumFormGrid select:focus {
+  border-color: #95694d !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(149, 105, 77, 0.1) !important;
+}
+
+.premiumInquiryPage--brochure .premiumDeliveryField {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.premiumDeliveryOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.premiumDeliveryOptions > label {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  min-height: 104px;
+  padding: 18px;
+  border: 1px solid rgba(149, 105, 77, 0.24);
+  border-radius: 10px;
+  background: #fffdf8;
+  cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.premiumDeliveryOptions > label:hover {
+  transform: translateY(-2px);
+  border-color: rgba(149, 105, 77, 0.55);
+  box-shadow: 0 12px 28px rgba(76, 51, 39, 0.08);
+}
+
+.premiumDeliveryOptions > label.isSelected {
+  border-color: #95694d;
+  background: #efe3d2;
+  box-shadow: inset 0 0 0 1px #95694d;
+}
+
+.premiumDeliveryOptions input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.premiumDeliveryIcon {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(149, 105, 77, 0.34);
+  border-radius: 50%;
+  color: #95694d !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.premiumDeliveryOptions strong,
+.premiumDeliveryOptions small {
+  display: block;
+}
+
+.premiumDeliveryOptions strong {
+  color: #6f4a38 !important;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.premiumDeliveryOptions small {
+  margin-top: 6px;
+  color: rgba(111, 74, 56, 0.78) !important;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.premiumInquiryPage--brochure .premiumConsent {
+  margin: 28px 0 22px;
+  padding: 18px 20px;
+  border: 1px solid rgba(149, 105, 77, 0.18);
+  border-radius: 8px;
+  background: rgba(233, 221, 203, 0.42);
+}
+
+.premiumInquiryPage--brochure .premiumConsent span {
+  color: #6f4a38 !important;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.premiumInquiryPage--brochure .premiumInquirySubmit {
+  width: 100%;
+  min-height: 58px;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .premiumDeliveryOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .premiumInquiryPage--brochure .premiumInquiryForm {
+    padding: 28px 20px !important;
+    border-radius: 12px !important;
+  }
+}

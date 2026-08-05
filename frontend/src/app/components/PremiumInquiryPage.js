@@ -354,26 +354,53 @@ export default function PremiumInquiryPage({ mode }) {
           <div className="premiumFormSection">
             <p>02 · {mode === "brochure" ? "YOUR BROCHURE" : mode === "site-visit" ? "YOUR VISIT" : "YOUR PREFERENCE"}</p>
             <div className="premiumFormGrid">
-              <label>
-                <span>Collection of interest</span>
-                <select name="propertyCollection" value={formData.propertyCollection} onChange={handleChange}>
-                  <option value="">Select a collection</option>
-                  <option value="villas">ONIRIA Villas</option>
-                  <option value="residences">ONIRIA Residences</option>
-                  <option value="v-avenue">V Avenue</option>
-                  <option value="commercial">Commercial spaces</option>
-                </select>
-              </label>
-
-              {mode === "brochure" && (
+              {mode !== "brochure" && (
                 <label>
-                  <span>Send the brochure by</span>
-                  <select name="brochureDelivery" value={formData.brochureDelivery} onChange={handleChange}>
-                    <option value="email">Email</option>
-                    <option value="whatsapp">WhatsApp</option>
-                    <option value="phone">Phone follow-up</option>
+                  <span>Collection of interest</span>
+                  <select name="propertyCollection" value={formData.propertyCollection} onChange={handleChange}>
+                    <option value="">Select a collection</option>
+                    <option value="villas">ONIRIA Villas</option>
+                    <option value="residences">ONIRIA Residences</option>
+                    <option value="v-avenue">V Avenue</option>
+                    <option value="commercial">Commercial spaces</option>
                   </select>
                 </label>
+              )}
+
+              {mode === "brochure" && (
+                <fieldset className="premiumDeliveryField premiumFormFull">
+                  <legend>Send the brochure by</legend>
+                  <div className="premiumDeliveryOptions">
+                    <label className={formData.brochureDelivery === "email" ? "isSelected" : ""}>
+                      <input
+                        type="radio"
+                        name="brochureDelivery"
+                        value="email"
+                        checked={formData.brochureDelivery === "email"}
+                        onChange={handleChange}
+                      />
+                      <span className="premiumDeliveryIcon" aria-hidden="true">@</span>
+                      <span>
+                        <strong>Email</strong>
+                        <small>Receive the approved brochure in your inbox.</small>
+                      </span>
+                    </label>
+                    <label className={formData.brochureDelivery === "whatsapp" ? "isSelected" : ""}>
+                      <input
+                        type="radio"
+                        name="brochureDelivery"
+                        value="whatsapp"
+                        checked={formData.brochureDelivery === "whatsapp"}
+                        onChange={handleChange}
+                      />
+                      <span className="premiumDeliveryIcon" aria-hidden="true">WA</span>
+                      <span>
+                        <strong>WhatsApp</strong>
+                        <small>Receive the brochure through a direct conversation.</small>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
               )}
 
               {mode === "interest" && (
@@ -440,29 +467,28 @@ export default function PremiumInquiryPage({ mode }) {
                     <select name="preferredContact" value={formData.preferredContact} onChange={handleChange}>
                       <option value="">Select method</option>
                       <option value="email">Email</option>
-                      <option value="phone">Telephone</option>
                       <option value="whatsapp">WhatsApp</option>
                     </select>
                   </label>
                 </>
               )}
 
-              <label className="premiumFormFull">
-                <span>{mode === "site-visit" ? "What would you like to explore?" : mode === "brochure" ? "What would you like to learn about?" : "Tell us more about your ideal property"}</span>
-                <textarea
-                  name="message"
-                  rows="5"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder={
-                    mode === "brochure"
-                      ? "Tell us which part of ONIRIA City interests you most"
-                      : mode === "site-visit"
+              {mode !== "brochure" && (
+                <label className="premiumFormFull">
+                  <span>{mode === "site-visit" ? "What would you like to explore?" : "Tell us more about your ideal property"}</span>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder={
+                      mode === "site-visit"
                         ? "Tell us which collections you would like to focus on during your visit"
                         : "Share your priorities, questions or preferred way of living"
-                  }
-                />
-              </label>
+                    }
+                  />
+                </label>
+              )}
             </div>
           </div>
 
