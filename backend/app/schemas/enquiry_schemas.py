@@ -2,6 +2,8 @@ from datetime import datetime
 from enum import Enum
 import re
 
+from typing import Literal
+
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 _UNSAFE_PATTERN = re.compile(r"(<script|</script|javascript:|onerror=|onload=)", re.IGNORECASE)
@@ -113,6 +115,15 @@ class EnquiryCreate(BaseModel):
 
 class BrochureRequestCreate(EnquiryCreate):
     enquiry_type: EnquiryType = EnquiryType.brochure
+    delivery_method: Literal["email", "whatsapp"]
+
+    @model_validator(mode="after")
+    def validate_delivery_contact(self):
+        if self.delivery_method == "email" and not self.email:
+            raise ValueError("Email address is required for email brochure delivery")
+        if self.delivery_method == "whatsapp" and not self.phone:
+            raise ValueError("Phone number is required for WhatsApp brochure delivery")
+        return self
 
 
 class ConsultationRequestCreate(EnquiryCreate):
@@ -124,6 +135,17 @@ class SiteVisitRequestCreate(EnquiryCreate):
     enquiry_type: EnquiryType = EnquiryType.site_visit
     preferred_date: str | None = Field(default=None, max_length=40)
     number_of_guests: int | None = Field(default=None, ge=1, le=20)
+
+
+class BrochureRequestResponse(BaseModel):
+    reference_number: str
+    lead_id: int
+    lead_score: int
+    follow_up_status: str
+    message: str
+    delivery_method: Literal["email", "whatsapp"]
+    delivery_status: Literal["pending", "sent", "failed", "skipped"]
+    delivered: bool
 
 
 class EnquiryResponse(BaseModel):

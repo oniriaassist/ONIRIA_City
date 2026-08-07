@@ -56,15 +56,30 @@ class Settings(BaseSettings):
     # WhatsApp
     whatsapp_verify_token: str = "oniria-demo-verify-token"
     whatsapp_app_secret: str | None = None
+    whatsapp_access_token: str | None = None
+    whatsapp_phone_number_id: str | None = None
+    whatsapp_graph_version: str = "v23.0"
+    whatsapp_brochure_template_name: str | None = None
+    whatsapp_brochure_template_language: str = "en"
 
     # Email
     mail_provider: str | None = None
     resend_api_key: str | None = None
+    smtp_host: str | None = None
+    smtp_port: int = 587
+    smtp_username: str | None = None
+    smtp_password: str | None = None
+    smtp_use_tls: bool = False
+    smtp_starttls: bool = True
+    smtp_timeout_seconds: int = 10
     mail_from: str | None = None
     mail_from_name: str = "ONIRIA City"
     sales_notification_email: str | None = None
     sales_notification_emails: str | None = None
     reply_to_email: str | None = None
+
+    # Approved brochure asset
+    brochure_pdf_file: str = "app/assets/ONIRIA_City_Brochure.pdf"
 
     # Initial administrator
     oniria_admin_full_name: str | None = None
@@ -129,10 +144,17 @@ class Settings(BaseSettings):
         "mysql_password",
         "mail_provider",
         "resend_api_key",
+        "smtp_host",
+        "smtp_username",
+        "smtp_password",
         "mail_from",
         "sales_notification_email",
         "sales_notification_emails",
         "reply_to_email",
+        "whatsapp_access_token",
+        "whatsapp_phone_number_id",
+        "whatsapp_brochure_template_name",
+        "brochure_pdf_file",
         "oniria_admin_full_name",
         "oniria_admin_email",
         "oniria_admin_password",
@@ -228,6 +250,32 @@ class Settings(BaseSettings):
         if value < 1 or value > 65535:
             raise ValueError(
                 "MYSQL_PORT must be between 1 and 65535"
+            )
+
+        return value
+
+    @field_validator("smtp_port")
+    @classmethod
+    def validate_smtp_port(
+        cls,
+        value: int,
+    ) -> int:
+        if value < 1 or value > 65535:
+            raise ValueError(
+                "SMTP_PORT must be between 1 and 65535"
+            )
+
+        return value
+
+    @field_validator("smtp_timeout_seconds")
+    @classmethod
+    def validate_smtp_timeout(
+        cls,
+        value: int,
+    ) -> int:
+        if value < 1:
+            raise ValueError(
+                "SMTP_TIMEOUT_SECONDS must be at least 1"
             )
 
         return value
@@ -361,6 +409,29 @@ class Settings(BaseSettings):
             if missing:
                 raise ValueError(
                     "MAIL_PROVIDER=resend requires: "
+                    + ", ".join(missing)
+                )
+
+        if (
+            self.mail_provider or ""
+        ).strip().lower() == "smtp":
+            missing = []
+
+            if not self.smtp_host:
+                missing.append("SMTP_HOST")
+
+            if not self.mail_from:
+                missing.append("MAIL_FROM")
+
+            if not self.sales_notification_recipient_list:
+                missing.append(
+                    "SALES_NOTIFICATION_EMAIL or "
+                    "SALES_NOTIFICATION_EMAILS"
+                )
+
+            if missing:
+                raise ValueError(
+                    "MAIL_PROVIDER=smtp requires: "
                     + ", ".join(missing)
                 )
 
@@ -509,6 +580,11 @@ class Settings(BaseSettings):
             return "MYSQL_*"
 
         return "not_configured"
+
+    @property
+    def brochure_pdf_path(self) -> Path:
+        value = Path(self.brochure_pdf_file)
+        return value if value.is_absolute() else BACKEND_ROOT / value
 
     @property
     def resolved_env_file(self) -> Path:

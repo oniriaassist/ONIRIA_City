@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import AdminLayout from "../components/admin/AdminLayout";
 import DashboardCards from "../components/admin/DashboardCards";
@@ -35,7 +36,25 @@ function DashboardContent() {
     }
   }
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    let active = true;
+
+    adminApi.dashboard()
+      .then((dashboardData) => {
+        if (active) {
+          setData(dashboardData);
+        }
+      })
+      .catch((err) => {
+        if (active) {
+          setError(err.message);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <>
@@ -67,7 +86,7 @@ function DashboardContent() {
                 </div>
                 <div className="adminPanelTools">
                   <ExportMenu />
-                  <a href="/admin/leads">View all leads →</a>
+                  <Link href="/admin/leads">View all leads →</Link>
                 </div>
               </div>
               <LeadTable leads={data.recent_enquiries || []} />

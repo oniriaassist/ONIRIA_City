@@ -139,7 +139,7 @@ class Database:
 
         async with pool.acquire() as connection:
             async with connection.cursor(aiomysql.DictCursor) as cursor:
-                await cursor.execute(query, params)
+                await self._execute_cursor(cursor, query, params)
                 rows = await cursor.fetchall()
                 return list(rows)
 
@@ -152,7 +152,7 @@ class Database:
 
         async with pool.acquire() as connection:
             async with connection.cursor(aiomysql.DictCursor) as cursor:
-                await cursor.execute(query, params)
+                await self._execute_cursor(cursor, query, params)
                 return await cursor.fetchone()
 
     async def fetchval(
@@ -164,7 +164,7 @@ class Database:
 
         async with pool.acquire() as connection:
             async with connection.cursor() as cursor:
-                await cursor.execute(query, params)
+                await self._execute_cursor(cursor, query, params)
                 row = await cursor.fetchone()
                 return row[0] if row else None
 
@@ -177,7 +177,7 @@ class Database:
 
         async with pool.acquire() as connection:
             async with connection.cursor() as cursor:
-                await cursor.execute(query, params)
+                await self._execute_cursor(cursor, query, params)
                 return int(cursor.lastrowid)
 
     async def execute(
@@ -189,7 +189,7 @@ class Database:
 
         async with pool.acquire() as connection:
             async with connection.cursor() as cursor:
-                return int(await cursor.execute(query, params))
+                return int(await self._execute_cursor(cursor, query, params))
 
     @asynccontextmanager
     async def transaction(self) -> AsyncIterator[Any]:
@@ -211,6 +211,25 @@ class Database:
             raise RuntimeError("Database pool is not configured")
 
         return self.pool
+
+    async def _execute_cursor(
+        self,
+        cursor: Any,
+        query: str,
+        params: tuple[Any, ...],
+    ) -> int:
+        """Execute SQL without passing an empty parameter tuple.
+
+        PyMySQL applies Python percent interpolation whenever a params argument
+        is supplied. Calling execute(query, None) therefore breaks valid MySQL
+        DATE_FORMAT patterns such as ``%Y-%m``.
+        """
+        if params:
+            return int(await cursor.execute(query, params))
+        return int(await cursor.execute(query))
+
+    def _query_params(self, params: tuple[Any, ...]) -> tuple[Any, ...] | None:
+        return params or None
 
     def _parse_mysql_url(
         self,

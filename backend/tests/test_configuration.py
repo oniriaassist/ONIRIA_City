@@ -72,6 +72,25 @@ def test_accepts_valid_resend_configuration():
     )
 
 
+def test_rejects_invalid_smtp_configuration():
+    with pytest.raises(ValueError, match="MAIL_PROVIDER=smtp requires"):
+        Settings(mail_provider="smtp", mail_from="enquiries@example.com")
+    with pytest.raises(ValueError):
+        Settings(mail_provider="smtp", smtp_host="smtp.example.com", mail_from="oniriaassist.com", sales_notification_email="sales@example.com")
+
+
+def test_accepts_valid_smtp_configuration():
+    Settings(
+        mail_provider="smtp",
+        smtp_host="smtp.example.com",
+        smtp_port=587,
+        smtp_username="mailer",
+        smtp_password="secret",
+        mail_from="enquiries@example.com",
+        sales_notification_email="sales@example.com",
+    )
+
+
 def test_private_env_files_are_not_git_tracked():
     root = Path(__file__).resolve().parents[2]
     tracked = subprocess.check_output(["git", "ls-files"], cwd=root, text=True).splitlines()
@@ -88,7 +107,7 @@ def test_env_examples_contain_placeholders_only():
         text = (root / relative_path).read_text(encoding="utf-8")
         for value in forbidden:
             assert value not in text
-        for key in ["RESEND_API_KEY", "MYSQL_PASSWORD", "MYSQL_ROOT_PASSWORD", "WHATSAPP_APP_SECRET", "ONIRIA_ADMIN_PASSWORD"]:
+        for key in ["RESEND_API_KEY", "SMTP_PASSWORD", "MYSQL_PASSWORD", "MYSQL_ROOT_PASSWORD", "WHATSAPP_APP_SECRET", "ONIRIA_ADMIN_PASSWORD"]:
             match = re.search(rf"^{key}=(.+)$", text, flags=re.MULTILINE)
             if match:
                 assert match.group(1).strip() in {"", "<resend-api-key>", "<strong-password>"}

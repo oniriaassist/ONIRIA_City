@@ -53,7 +53,7 @@ def test_brochure_request_reuses_existing_lead_by_email():
     first = client.post("/api/enquiries", json=valid_payload()).json()["data"]
     second = client.post(
         "/api/brochure-requests",
-        json=valid_payload(message="Send brochure.", property_slug=None, enquiry_type="brochure"),
+        json=valid_payload(message="Send brochure.", property_slug=None, enquiry_type="brochure", delivery_method="email"),
     ).json()["data"]
     assert second["lead_id"] == first["lead_id"]
     assert second["reference_number"] != first["reference_number"]

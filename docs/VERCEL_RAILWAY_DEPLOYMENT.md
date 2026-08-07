@@ -119,9 +119,28 @@ The frontend public forms and admin API helpers use the shared API base URL. Do 
 - Add `api.oniriacity.com` to Railway.
 - Keep backend CORS aligned with the final frontend domain.
 
-## Resend
+## Email Delivery
 
-Set these backend variables only in Railway:
+SMTP is the recommended production email provider. Set these backend variables only in Railway:
+
+```text
+MAIL_PROVIDER=smtp
+SMTP_HOST=<smtp-host>
+SMTP_PORT=587
+SMTP_USERNAME=<smtp-username>
+SMTP_PASSWORD=<smtp-password>
+SMTP_USE_TLS=false
+SMTP_STARTTLS=true
+SMTP_TIMEOUT_SECONDS=10
+MAIL_FROM=<verified-sender-email>
+MAIL_FROM_NAME=ONIRIA City
+SALES_NOTIFICATION_EMAILS=<recipient-list>
+REPLY_TO_EMAIL=<optional-reply-to-email>
+```
+
+`MAIL_FROM` must be a full email address. SMTP notification failure is handled after enquiry persistence, so a provider failure must not roll back the saved customer, lead or enquiry.
+
+Resend remains supported for existing installations. To use Resend instead, set:
 
 ```text
 MAIL_PROVIDER=resend
@@ -131,8 +150,6 @@ MAIL_FROM_NAME=ONIRIA City
 SALES_NOTIFICATION_EMAILS=<recipient-list>
 REPLY_TO_EMAIL=<optional-reply-to-email>
 ```
-
-`MAIL_FROM` must be a full email address. Resend notification failure is handled after enquiry persistence, so a provider failure must not roll back the saved customer, lead or enquiry.
 
 ## Production Verification
 

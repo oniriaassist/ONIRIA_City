@@ -119,10 +119,10 @@ class AdminRepository:
             ),
             self.pool.fetch(
                 """
-                SELECT COALESCE(NULLIF(enquiry_type, ''), 'general') AS enquiry_type,
+                SELECT COALESCE(NULLIF(e.enquiry_type, ''), 'general') AS enquiry_type,
                        COUNT(*) AS count
-                FROM enquiries
-                GROUP BY enquiry_type
+                FROM enquiries e
+                GROUP BY COALESCE(NULLIF(e.enquiry_type, ''), 'general')
                 ORDER BY count DESC
                 """
             ),
@@ -346,6 +346,28 @@ class AdminRepository:
         )
 
     async def list_by_enquiry_type(self, enquiry_type: str | None = None) -> list[dict[str, Any]]:
+        if enquiry_type == "brochure":
+            return await self.pool.fetch(
+                """
+                SELECT
+                    e.*,
+                    br.delivery_method,
+                    br.delivery_status,
+                    br.delivered_at,
+                    bda.provider,
+                    bda.provider_message_id,
+                    bda.error_message AS delivery_error
+                FROM enquiries e
+                LEFT JOIN brochure_requests br ON br.enquiry_id = e.id
+                LEFT JOIN brochure_delivery_attempts bda ON bda.id = (
+                    SELECT MAX(bda2.id)
+                    FROM brochure_delivery_attempts bda2
+                    WHERE bda2.reference_number = e.reference_number
+                )
+                WHERE e.enquiry_type = 'brochure'
+                ORDER BY e.created_at DESC
+                """
+            )
         if enquiry_type:
             return await self.pool.fetch("SELECT * FROM enquiries WHERE enquiry_type = %s ORDER BY created_at DESC", enquiry_type)
         return await self.pool.fetch("SELECT * FROM enquiries ORDER BY created_at DESC")

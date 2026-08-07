@@ -15,7 +15,7 @@ class LeadService:
         self.campaign_service = campaign_service
         self.notification_service = notification_service
 
-    async def process_enquiry(self, payload: EnquiryCreate) -> EnquiryResponse:
+    async def process_enquiry(self, payload: EnquiryCreate, *, notify_sales: bool = True) -> EnquiryResponse:
         score = self.calculate_score(payload)
         follow_up_status = self.follow_up_status(score)
         campaign = self.campaign_service.attribution_from_payload(payload)
@@ -28,13 +28,14 @@ class LeadService:
         )
         lead = record["lead"]
         reference_number = record["reference_number"]
-        notification_status = await self.notification_service.notify_sales_team(
-            payload=payload,
-            reference_number=reference_number,
-            lead_id=lead["id"],
-            score=score,
-        )
-        await self.repository.update_notification_status(reference_number, notification_status)
+        if notify_sales:
+            notification_status = await self.notification_service.notify_sales_team(
+                payload=payload,
+                reference_number=reference_number,
+                lead_id=lead["id"],
+                score=score,
+            )
+            await self.repository.update_notification_status(reference_number, notification_status)
         return EnquiryResponse(
             reference_number=reference_number,
             lead_id=lead["id"],

@@ -59,11 +59,14 @@ def check_migration_files() -> bool:
 
 def check_email_configuration(settings) -> bool:
     provider = (settings.mail_provider or "").strip().lower()
-    if provider != "resend":
-        return ok("Email configuration", False, "MAIL_PROVIDER is not resend")
     has_recipients = bool(settings.sales_notification_recipient_list)
-    ready = bool(settings.resend_api_key and settings.mail_from and has_recipients)
-    return ok("Email configuration", ready, None if ready else "missing Resend key, sender, or recipient")
+    if provider == "smtp":
+        ready = bool(settings.smtp_host and settings.mail_from and has_recipients)
+        return ok("Email configuration", ready, None if ready else "missing SMTP host, sender, or recipient")
+    if provider == "resend":
+        ready = bool(settings.resend_api_key and settings.mail_from and has_recipients)
+        return ok("Email configuration", ready, None if ready else "missing Resend key, sender, or recipient")
+    return ok("Email configuration", False, "MAIL_PROVIDER is not smtp or resend")
 
 
 def check_backend_health(backend_url: str | None) -> bool:

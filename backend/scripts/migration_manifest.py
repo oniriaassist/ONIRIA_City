@@ -15,6 +15,8 @@ MYSQL_MIGRATION_FILES = (
     "014_audit_logs.sql",
     "015_staff_account_recovery.sql",
     "016_newsletter_subscriptions.sql",
+    "017_admin_lead_summary_deduplicate.sql",
+    "018_brochure_delivery.sql",
 )
 
 MYSQL_SEED_FILES = (

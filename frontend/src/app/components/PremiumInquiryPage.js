@@ -235,6 +235,7 @@ export default function PremiumInquiryPage({ mode }) {
           purchase_timeline: formData.purchaseTimeline || null,
           preferred_contact_method:
             mode === "brochure" ? formData.brochureDelivery : formData.preferredContact || null,
+          ...(mode === "brochure" ? { delivery_method: formData.brochureDelivery } : {}),
           anonymous_session_id: getAnonymousSessionId(),
           consent: formData.consent,
           campaign: getCampaignAttribution(),
@@ -246,7 +247,9 @@ export default function PremiumInquiryPage({ mode }) {
 
       setStatus({
         type: "success",
-        message: formatSubmissionSuccess(result, config.successMessage),
+        message: mode === "brochure"
+          ? result.message
+          : formatSubmissionSuccess(result, config.successMessage),
         reference: result.reference_number,
       });
       setFormData(EMPTY_FORM);

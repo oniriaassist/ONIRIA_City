@@ -1,5 +1,5 @@
 const REQUEST_TIMEOUT_MS = 12000;
-const DEFAULT_LOCAL_API_BASE_URL = "http://localhost:7000/api";
+const DEFAULT_API_BASE_URL = "/api";
 
 export class ApiError extends Error {
   constructor(message, { status, code, details } = {}) {
@@ -12,24 +12,39 @@ export class ApiError extends Error {
 }
 
 export function getApiBaseUrl() {
-  const value = process.env.NEXT_PUBLIC_API_BASE_URL || DEFAULT_LOCAL_API_BASE_URL;
-  if (process.env.NODE_ENV === "development" && !process.env.NEXT_PUBLIC_API_BASE_URL) {
-    throw new Error("NEXT_PUBLIC_API_BASE_URL is missing. Set it to http://localhost:7000/api in frontend/.env.local.");
+  const configured = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+  const value = configured || DEFAULT_API_BASE_URL;
+
+  if (value.startsWith("/")) {
+    const normalized = value.replace(/\/$/, "");
+    if (normalized !== "/api") {
+      throw new Error("A relative API URL must be /api.");
+    }
+    return normalized;
   }
+
   try {
     const url = new URL(value);
-    if (!url.pathname.endsWith("/api")) {
+    if (!url.pathname.replace(/\/$/, "").endsWith("/api")) {
       throw new Error("NEXT_PUBLIC_API_BASE_URL must include the /api path.");
     }
     return url.toString().replace(/\/$/, "");
   } catch (error) {
-    throw new Error("NEXT_PUBLIC_API_BASE_URL must be a valid URL such as http://localhost:7000/api.");
+    throw new Error("NEXT_PUBLIC_API_BASE_URL must be /api or a valid URL ending in /api.");
   }
 }
 
 export function joinApiUrl(path) {
   const base = getApiBaseUrl();
   const normalizedPath = `/${String(path || "").replace(/^\/+/, "")}`;
+
+  if (base.startsWith("/")) {
+    if (normalizedPath === "/api" || normalizedPath.startsWith("/api/")) {
+      return normalizedPath;
+    }
+    return `${base}${normalizedPath}`;
+  }
+
   const baseWithoutApi = base.replace(/\/api$/, "");
   if (normalizedPath === "/api" || normalizedPath.startsWith("/api/")) {
     return `${baseWithoutApi}${normalizedPath}`;
@@ -74,7 +89,7 @@ function normalizeNetworkError(error) {
     return new ApiError("The request took too long. Please try again.", { code: "timeout" });
   }
   if (error instanceof TypeError) {
-    return new ApiError("The ONIRIA service could not be reached from this browser. Please confirm the backend is running on localhost:7000 and reload the page.", { code: "network_unreachable" });
+    return new ApiError("We could not connect to the ONIRIA service. Please wait a moment and try again.", { code: "network_unreachable" });
   }
   return error;
 }
