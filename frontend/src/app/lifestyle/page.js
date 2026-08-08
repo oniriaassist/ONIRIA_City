@@ -25,6 +25,7 @@ export default function LifestylePage() {
       }}
       sections={[
         {
+          id: "wellness-and-nature",
           title: "Nature",
           description:
             "Tropical landscaping, shaded paths and outdoor spaces allow residents to remain close to nature.",
@@ -51,6 +52,7 @@ export default function LifestylePage() {
           ],
         },
         {
+          id: "community-and-belonging",
           title: "Dining and social life",
           description:
             "Restaurants, cafés and welcoming public spaces make it easy to meet, celebrate and share experiences.",
@@ -64,6 +66,7 @@ export default function LifestylePage() {
           ],
         },
         {
+          id: "ocean-living",
           title: "Ocean experiences",
           description:
             "Zanzibar’s sea, sunrise and sunset become part of the wider ONIRIA lifestyle.",

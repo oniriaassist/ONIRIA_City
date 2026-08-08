@@ -373,11 +373,11 @@ export default function InquiriesPage() {
                     </option>
 
                     <option value="villas">
-                      ONIRIA Villas
+                      Villas
                     </option>
 
                     <option value="residences">
-                      ONIRIA Residences
+                      Residences
                     </option>
 
                     <option value="v-avenue">

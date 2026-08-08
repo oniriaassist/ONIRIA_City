@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import InternationalPhoneInput from "../components/InternationalPhoneInput";
 import PublicPageHero from "../components/PublicPageHero";
 import Footer from "../components/Footer";
+import { buildWhatsAppLink, contactDetails } from "../data/contactDetails";
 import {
   getAnonymousSessionId,
   getCampaignAttribution,
@@ -137,16 +138,16 @@ export default function ContactPage() {
             <article>
               <span>02</span>
               <h3>Email</h3>
-              <a href="mailto:hello@oniriacity.com">
-                hello@oniriacity.com
+              <a href={`mailto:${contactDetails.email}`}>
+                {contactDetails.email}
               </a>
             </article>
 
             <article>
               <span>03</span>
               <h3>Telephone</h3>
-              <a href="tel:+255000000000">
-                +255 000 000 000
+              <a href={contactDetails.phoneHref}>
+                {contactDetails.phoneDisplay}
               </a>
             </article>
 
@@ -154,7 +155,7 @@ export default function ContactPage() {
               <span>04</span>
               <h3>WhatsApp</h3>
               <a
-                href="https://wa.me/255000000000"
+                href={buildWhatsAppLink("Hello ONIRIA City, I would like to speak with your sales team.")}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -163,7 +164,7 @@ export default function ContactPage() {
             </article>
           </div>
 
-          <form className="contactForm" onSubmit={handleSubmit}>
+          <form className="contactForm" id="contact-form" onSubmit={handleSubmit}>
             <div className="contactFormHeading">
               <p className="sectionLabel">SEND A MESSAGE</p>
               <h2>How can we help?</h2>

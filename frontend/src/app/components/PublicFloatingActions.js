@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
-const OniriaAIChat = dynamic(() => import("./OniriaAIChat"), { ssr: false });
 const WhatsAppButton = dynamic(() => import("./WhatsAppButton"), { ssr: false });
 
 export default function PublicFloatingActions() {
@@ -15,7 +14,6 @@ export default function PublicFloatingActions() {
 
   return (
     <>
-      <OniriaAIChat />
       <WhatsAppButton />
     </>
   );

@@ -25,11 +25,11 @@ export default function PublicPageHero({
 
       <div className="publicPageHeroContent">
         {eyebrow && <p className="publicPageHeroEyebrow">{eyebrow}</p>}
-        <h1>{renderTitle(title)}</h1>
-        <span className="publicPageHeroDescription">{description}</span>
+        <h1 className="hero-title">{renderTitle(title)}</h1>
+        <span className="publicPageHeroDescription hero-subtitle">{description}</span>
       </div>
 
-      <a href="#page-content" className="publicPageScroll">
+      <a href="#page-content" className="publicPageScroll hero-cta">
         Explore <span aria-hidden="true">↓</span>
       </a>
     </section>

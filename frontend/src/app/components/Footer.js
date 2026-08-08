@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { socialLinks } from "../data/socialLinks";
+import { contactDetails } from "../data/contactDetails";
 
 export default function Footer() {
   return (
@@ -7,11 +8,11 @@ export default function Footer() {
       <div className="oniriaMinimalFooterInner">
         <section className="oniriaMinimalFooterContact" aria-label="Company contact details">
           <p className="oniriaMinimalFooterCompany">VIGOR GROUP OF COMPANIES</p>
-          <p>ONIRIA CITY, FUMBA, ZANZIBAR</p>
+          <p>{contactDetails.location.toUpperCase()}</p>
 
           <div className="oniriaMinimalFooterContactLinks">
-            <a href="tel:+255770000000">+255 770000000</a>
-            <a href="mailto:oniriaassist@gmail.com">oniriaassist@gmail.com</a>
+            <a href={contactDetails.phoneHref}>{contactDetails.phoneDisplay}</a>
+            <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
           </div>
         </section>
 

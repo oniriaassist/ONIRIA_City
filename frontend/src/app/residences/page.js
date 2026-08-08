@@ -9,7 +9,7 @@ export const metadata = {
 const residences = [
   {
     title: "Three-Bedroom Garden Residence",
-    collection: "ONIRIA RESIDENCES",
+    collection: "RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/residence-aerial-masterplan.png",
@@ -25,7 +25,7 @@ const residences = [
   },
   {
     title: "Two-Bedroom Island Residence",
-    collection: "ONIRIA RESIDENCES",
+    collection: "RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/v-avenue-commercial.png",
@@ -40,7 +40,7 @@ const residences = [
   },
   {
     title: "One-Bedroom Studio Residence",
-    collection: "ONIRIA RESIDENCES",
+    collection: "RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/villa-pool-rear.png",
@@ -59,7 +59,7 @@ export default function ResidencesPage() {
   return (
     <PropertyCollectionPage
       hero={{
-        eyebrow: "ONIRIA RESIDENCES",
+        eyebrow: "RESIDENCES",
         title: "Contemporary Homes for Connected Living",
         description:
           "Modern residences offering comfort, convenience, natural light and access to the wider ONIRIA lifestyle.",
@@ -70,7 +70,7 @@ export default function ResidencesPage() {
         label: "THE RESIDENCE COLLECTION",
         title: "Modern homes shaped around daily life",
         description:
-          "ONIRIA Residences combine efficient layouts, refined interiors and convenient access to landscaped spaces, amenities and V Avenue.",
+          "Residences combine efficient layouts, refined interiors and convenient access to landscaped spaces, amenities and V Avenue.",
       }}
       features={[
         {

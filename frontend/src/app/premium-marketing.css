@@ -1,0 +1,276 @@
+/* =========================================================
+   ONIRIA CITY — PREMIUM SALES & MARKETING SYSTEM
+   A focused conversion layer that sits after globals.css.
+   It intentionally avoids admin, backend and form logic.
+========================================================= */
+
+:root {
+  --oniria-marketing-bg: #e9ddcb;
+  --oniria-marketing-panel: #f4eadc;
+  --oniria-marketing-text: #95694d;
+  --oniria-marketing-dark: #3a241c;
+  --oniria-marketing-line: rgba(149, 105, 77, 0.24);
+  --oniria-marketing-white: #ffffff;
+}
+
+/* -------------------------
+   Navigation clarity
+------------------------- */
+
+.edenNavGroup a,
+.edenMobileMenu a {
+  position: relative;
+}
+
+.edenNavGroup a::after {
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.35);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.edenNavGroup a:hover::after,
+.edenNavGroup a:focus-visible::after,
+.edenNavGroup a.isActive::after {
+  opacity: 0.9;
+  transform: scaleX(1);
+}
+
+.edenNavGroup a.isActive,
+.edenMobileMenu a.isActive {
+  font-weight: 700;
+}
+
+.edenMobileSalesCta {
+  margin-top: 18px !important;
+  padding: 15px 20px !important;
+  border: 1px solid currentColor !important;
+  text-align: center !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+/* -------------------------
+   Premium section rhythm
+------------------------- */
+
+.introductionSection,
+.editorialIntroduction,
+.propertyCollectionIntroduction,
+.vAvenueIntroduction,
+.contactPageSection,
+.premiumInquiryIntro {
+  scroll-margin-top: 90px;
+}
+
+.collectionsHeading,
+.propertyListingHeading,
+.vAvenueOpportunitiesHeading,
+.propertyDetailFeaturesHeading,
+.premiumInquiryIntroHeading,
+.contactPageIntroduction {
+  text-wrap: balance;
+}
+
+.sectionLabel,
+.vAvenueSectionLabel,
+.finalSalesLabel {
+  letter-spacing: 0.16em !important;
+}
+
+/* -------------------------
+   Cards feel more editorial
+------------------------- */
+
+.propertyCard,
+.vAvenueCard,
+.journalCard,
+.premiumInquiryHighlights article {
+  border: 1px solid var(--oniria-marketing-line);
+  box-shadow: none !important;
+}
+
+.collectionCard {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.collectionImage,
+.propertyCardImage,
+.vAvenueCardImage,
+.editorialSectionImage,
+.propertyDetailGalleryImage {
+  background-color: #d8c9b5;
+}
+
+.collectionCard:hover .collectionImage,
+.propertyCard:hover .propertyCardImage,
+.vAvenueCard:hover .vAvenueCardImage {
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* -------------------------
+   Conversion CTA hierarchy
+------------------------- */
+
+.finalSalesContent {
+  width: min(980px, calc(100% - 56px)) !important;
+}
+
+.finalSalesLabel {
+  margin-bottom: 14px !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+.finalSalesContent h2 {
+  max-width: 680px !important;
+  margin: 0 auto !important;
+  font-size: clamp(32px, 3vw, 38px) !important;
+  line-height: 1.04 !important;
+  text-wrap: balance;
+}
+
+.finalSalesDescription {
+  max-width: 620px !important;
+  margin: 20px auto 0 !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.finalSalesActions {
+  margin-top: 30px !important;
+  gap: 10px !important;
+}
+
+.finalSalesPrimaryButton,
+.finalSalesSecondaryButton {
+  min-width: 185px !important;
+  min-height: 48px !important;
+  padding: 13px 22px !important;
+  font-size: 10px !important;
+}
+
+.finalSalesInformation {
+  max-width: 820px !important;
+  margin-top: 46px !important;
+  padding-top: 28px !important;
+}
+
+.finalSalesInformation strong {
+  font-size: 13px !important;
+}
+
+/* -------------------------
+   Form confidence and polish
+------------------------- */
+
+.contactForm,
+.inquiryForm,
+.premiumInquiryForm {
+  border: 1px solid var(--oniria-marketing-line) !important;
+}
+
+.contactForm input:focus,
+.contactForm select:focus,
+.contactForm textarea:focus,
+.premiumInquiryForm input:focus,
+.premiumInquiryForm select:focus,
+.premiumInquiryForm textarea:focus,
+.inquiryForm input:focus,
+.inquiryForm select:focus,
+.inquiryForm textarea:focus {
+  border-color: var(--oniria-marketing-text) !important;
+  outline: 1px solid var(--oniria-marketing-text) !important;
+  outline-offset: 1px;
+}
+
+.premiumInquiryPrivacyNote,
+.premiumInquiryContactNote,
+.formStatus {
+  border-left: 2px solid var(--oniria-marketing-text) !important;
+}
+
+/* -------------------------
+   Property sales clarity
+------------------------- */
+
+.propertyDetailFacts {
+  border: 1px solid var(--oniria-marketing-line) !important;
+}
+
+.propertyDetailOverviewActions,
+.propertyDetailInquiryActions {
+  gap: 14px !important;
+}
+
+.propertyCardExplore,
+.vAvenueCardLink {
+  letter-spacing: 0.08em;
+}
+
+/* -------------------------
+   Footer finish
+------------------------- */
+
+.oniriaMinimalFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.oniriaMinimalFooter a {
+  text-underline-offset: 5px;
+}
+
+/* -------------------------
+   Responsive
+------------------------- */
+
+@media (max-width: 1050px) {
+}
+
+@media (max-width: 600px) {
+  .finalSalesContent {
+    width: calc(100% - 36px) !important;
+  }
+
+  .finalSalesPrimaryButton,
+  .finalSalesSecondaryButton {
+    width: 100%;
+    min-width: 0 !important;
+  }
+}
+
+/* -------------------------
+   Accessibility polish
+------------------------- */
+
+.finalSalesPrimaryButton:focus-visible,
+.finalSalesSecondaryButton:focus-visible,
+.edenMobileSalesCta:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edenNavGroup a::after,
+  .collectionImage,
+  .propertyCardImage,
+  .vAvenueCardImage {
+    transition: none !important;
+  }
+
+  .collectionCard:hover .collectionImage,
+  .propertyCard:hover .propertyCardImage,
+  .vAvenueCard:hover .vAvenueCardImage {
+    transform: none !important;
+  }
+}

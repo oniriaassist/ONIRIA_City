@@ -44,7 +44,7 @@ export default function PropertyCollectionPage({
         </section>
       )}
 
-      <section className="propertyListingSection">
+      <section className="propertyListingSection" id="available-collection">
         <div className="propertyListingHeading">
           <div>
             <p className="sectionLabel">AVAILABLE COLLECTION</p>

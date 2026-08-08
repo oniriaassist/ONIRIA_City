@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.migration_manifest import MYSQL_MIGRATION_FILES, MYSQL_SEED_FILES
 
 
-def test_active_mysql_manifest_has_all_16_migrations_and_seeds():
+def test_active_mysql_manifest_has_all_18_migrations_and_seeds():
     root = Path(__file__).resolve().parents[2]
     assert MYSQL_MIGRATION_FILES == (
         "001_database_setup.sql",
@@ -24,6 +24,8 @@ def test_active_mysql_manifest_has_all_16_migrations_and_seeds():
         "014_audit_logs.sql",
         "015_staff_account_recovery.sql",
         "016_newsletter_subscriptions.sql",
+        "017_admin_lead_summary_deduplicate.sql",
+        "018_brochure_delivery.sql",
     )
     assert MYSQL_SEED_FILES == ("staff_roles.sql", "property_seed.sql", "masterplan_seed.sql")
     for file_name in MYSQL_MIGRATION_FILES:

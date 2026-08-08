@@ -3,6 +3,18 @@ import PublicPageHero from "./PublicPageHero";
 import FinalSalesCTA from "./FinalSalesCTA";
 import Footer from "./Footer";
 
+function getSectionId(section) {
+  if (section.id) {
+    return section.id;
+  }
+
+  return section.title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export default function EditorialPage({
   hero,
   introduction,
@@ -28,12 +40,13 @@ export default function EditorialPage({
         <p>{introduction.description}</p>
       </section>
 
-      <section className="editorialSections">
+      <section className="editorialSections" id="editorial-sections">
         {sections.map((section, index) => (
           <article
             className={`editorialSection ${
               index % 2 !== 0 ? "editorialSectionReverse" : ""
             }`}
+            id={getSectionId(section)}
             key={section.title}
           >
             <div

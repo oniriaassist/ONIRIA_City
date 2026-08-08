@@ -64,7 +64,7 @@ export default function AmenitiesPage() {
           ],
           link: {
             label: "Explore V Avenue",
-            href: "/v-avenue",
+            href: "/v-avenue#v-avenue-opportunities",
           },
         },
         {

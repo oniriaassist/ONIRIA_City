@@ -4,7 +4,7 @@ import FinalSalesCTA from "../components/FinalSalesCTA";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Journal | ONIRIA City",
+  title: "Journal",
   description:
     "Read stories about ONIRIA City, architecture, lifestyle and Zanzibar.",
 };

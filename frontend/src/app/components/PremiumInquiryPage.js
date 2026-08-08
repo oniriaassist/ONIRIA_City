@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { buildWhatsAppLink } from "../data/contactDetails";
 import {
   formatSubmissionSuccess,
   getAnonymousSessionId,
@@ -267,9 +268,9 @@ export default function PremiumInquiryPage({ mode }) {
       <section className="premiumInquiryHero" style={{ backgroundImage: `url('${config.image}')` }}>
         <div className="premiumInquiryHeroOverlay" />
         <div className="premiumInquiryHeroContent">
-          <h1>{config.title.map((line) => <span key={line}>{line}</span>)}</h1>
-          <p>{config.description}</p>
-          <a href="#request-form">Continue to your request ↓</a>
+          <h1 className="hero-title">{config.title.map((line) => <span key={line}>{line}</span>)}</h1>
+          <p className="hero-subtitle">{config.description}</p>
+          <a className="hero-cta" href="#request-form">Continue to your request ↓</a>
         </div>
       </section>
 
@@ -303,7 +304,7 @@ export default function PremiumInquiryPage({ mode }) {
           </p>
           <div className="premiumInquiryContactNote">
             <span>Prefer a direct conversation?</span>
-            <a href="https://wa.me/255000000000" target="_blank" rel="noopener noreferrer">
+            <a href={buildWhatsAppLink("Hello ONIRIA City, I would like to discuss my request with your sales team.")} target="_blank" rel="noopener noreferrer">
               Continue on WhatsApp →
             </a>
           </div>
@@ -362,8 +363,8 @@ export default function PremiumInquiryPage({ mode }) {
                   <span>Collection of interest</span>
                   <select name="propertyCollection" value={formData.propertyCollection} onChange={handleChange}>
                     <option value="">Select a collection</option>
-                    <option value="villas">ONIRIA Villas</option>
-                    <option value="residences">ONIRIA Residences</option>
+                    <option value="villas">Villas</option>
+                    <option value="residences">Residences</option>
                     <option value="v-avenue">V Avenue</option>
                     <option value="commercial">Commercial spaces</option>
                   </select>

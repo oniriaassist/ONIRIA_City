@@ -1,16 +1,28 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function PropertyDetailPage({ property }) {
-  const inquiryHref = `/register-interest?collection=villas&property=${encodeURIComponent(
-    property.title,
-  )}`;
-  const visitHref = `/arrange-site-visit?collection=villas&property=${encodeURIComponent(
-    property.title,
-  )}`;
-  const brochureHref = `/request-brochure?collection=villas&property=${encodeURIComponent(
-    property.title,
-  )}`;
+function getCollectionSlug(collection = "") {
+  const normalized = collection.toLowerCase();
+
+  if (normalized.includes("residence")) return "residences";
+  if (normalized.includes("commercial")) return "commercial";
+  if (normalized.includes("v avenue")) return "v-avenue";
+
+  return "villas";
+}
+
+export default function PropertyDetailPage({ property, collectionSlug: collectionSlugOverride }) {
+  const collectionSlug = collectionSlugOverride || getCollectionSlug(property.collection);
+  const propertyName = encodeURIComponent(property.title);
+  const inquiryHref = `/register-interest?collection=${collectionSlug}&property=${propertyName}`;
+  const visitHref = `/arrange-site-visit?collection=${collectionSlug}&property=${propertyName}`;
+  const brochureHref = `/request-brochure?collection=${collectionSlug}&property=${propertyName}`;
+
+  const productType = collectionSlug === "villas" ? "villa" : "property";
+
+  const salesHeading = `Explore this ${productType} with our property team`;
+
+  const brochureLabel = `Request full details for ${property.title}`;
 
   return (
     <main className="propertyDetailPage">
@@ -23,9 +35,7 @@ export default function PropertyDetailPage({ property }) {
         <div className="propertyDetailHeroOverlay" />
 
         <div className="propertyDetailHeroContent">
-          <p>{property.collection}</p>
           <h1>{property.title}</h1>
-          <span>{property.location}</span>
         </div>
 
         <a href="#property-overview" className="propertyDetailScroll">
@@ -124,7 +134,11 @@ export default function PropertyDetailPage({ property }) {
             ))}
           </ul>
 
-          <a href={brochureHref} className="propertyDetailPrimaryButton">
+          <a
+            href={brochureHref}
+            className="propertyDetailPrimaryButton propertyDetailFullDetailsButton"
+            aria-label={brochureLabel}
+          >
             Request full details
           </a>
         </div>
@@ -133,7 +147,7 @@ export default function PropertyDetailPage({ property }) {
       <section className="propertyDetailInquiry">
         <div className="propertyDetailInquiryCopy">
           <p className="sectionLabel">YOUR NEXT STEP</p>
-          <h2>Explore this villa with our property team</h2>
+          <h2>{salesHeading}</h2>
           <p>
             Receive current information, discuss your requirements or arrange a
             private introduction to ONIRIA City in Fumba.

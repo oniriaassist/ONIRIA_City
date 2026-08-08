@@ -40,7 +40,7 @@ const properties = [
   },
   {
     title: "Three-Bedroom Garden Residence",
-    collection: "ONIRIA RESIDENCES",
+    collection: "RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/residence-parking-garden.png",
@@ -56,7 +56,7 @@ const properties = [
   },
   {
     title: "Two-Bedroom Island Residence",
-    collection: "ONIRIA RESIDENCES",
+    collection: "RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/residence-roundabout.png",

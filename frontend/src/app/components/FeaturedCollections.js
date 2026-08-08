@@ -1,21 +1,21 @@
 const collections = [
   {
-    title: "ONIRIA Villas",
+    title: "Villas",
     category: "PRIVATE LIVING",
     description:
       "Elegant private villas designed for comfort, privacy and modern island living.",
     image:
       "/media/oniria/villa-pool-rear.png",
-    link: "/villas",
+    link: "/villas#available-collection",
   },
   {
-    title: "ONIRIA Residences",
+    title: "Residences",
     category: "MODERN RESIDENCES",
     description:
       "Contemporary homes combining thoughtful design, natural light and community.",
     image:
       "/media/oniria/residence-roundabout.png",
-    link: "/residences",
+    link: "/residences#available-collection",
   },
   {
     title: "V Avenue",
@@ -24,7 +24,7 @@ const collections = [
       "A vibrant destination for shops, restaurants, services and everyday experiences.",
     image:
       "/media/oniria/v-avenue-commercial.png",
-    link: "/v-avenue",
+    link: "/v-avenue#v-avenue-opportunities",
   },
 ];
 

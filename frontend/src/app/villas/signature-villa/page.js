@@ -103,5 +103,5 @@ const property = {
 };
 
 export default function SignatureVillaPage() {
-  return <PropertyDetailPage property={property} />;
+  return <PropertyDetailPage property={property} collectionSlug="villas" />;
 }

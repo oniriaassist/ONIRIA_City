@@ -26,5 +26,5 @@ export default async function VAvenueDetailPage({ params }) {
     notFound();
   }
 
-  return <PropertyDetailPage property={property} />;
+  return <PropertyDetailPage property={property} collectionSlug="v-avenue" />;
 }

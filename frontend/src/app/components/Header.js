@@ -16,6 +16,11 @@ const rightNavigation = [
   { label: "Contact", href: "/contact" },
 ];
 
+function isActiveRoute(pathname, href) {
+  if (!pathname) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -38,6 +43,21 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  function renderDesktopLink(item) {
+    const active = isActiveRoute(pathname, item.href);
+
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        className={active ? "isActive" : undefined}
+        aria-current={active ? "page" : undefined}
+      >
+        {item.label}
+      </Link>
+    );
+  }
+
   return (
     <header
       className={`edenHeader ${
@@ -46,9 +66,7 @@ export default function Header() {
     >
       <nav className="edenHeaderDesktop" aria-label="Main navigation">
         <div className="edenNavGroup edenNavGroupLeft">
-          {leftNavigation.map((item) => (
-            <Link key={item.href} href={item.href}>{item.label}</Link>
-          ))}
+          {leftNavigation.map(renderDesktopLink)}
         </div>
 
         <Link href="/" className="edenHeaderBrand" aria-label="ONIRIA City home">
@@ -56,14 +74,15 @@ export default function Header() {
         </Link>
 
         <div className="edenNavGroup edenNavGroupRight">
-          {rightNavigation.map((item) => (
-            <Link key={item.href} href={item.href}>{item.label}</Link>
-          ))}
+          {rightNavigation.map(renderDesktopLink)}
         </div>
       </nav>
 
       <div className="edenHeaderMobile">
-        <Link href="/" className="edenHeaderBrand" onClick={closeMenu}>ONIRIA CITY</Link>
+        <Link href="/" className="edenHeaderBrand" onClick={closeMenu}>
+          ONIRIA CITY
+        </Link>
+
         <button
           type="button"
           className={`edenMenuButton ${menuOpen ? "isOpen" : ""}`}
@@ -77,9 +96,29 @@ export default function Header() {
       </div>
 
       <div className={`edenMobileMenu ${menuOpen ? "isOpen" : ""}`}>
-        {[...leftNavigation, ...rightNavigation].map((item) => (
-          <Link key={item.href} href={item.href} onClick={closeMenu}>{item.label}</Link>
-        ))}
+        {[...leftNavigation, ...rightNavigation].map((item) => {
+          const active = isActiveRoute(pathname, item.href);
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={active ? "isActive" : undefined}
+              aria-current={active ? "page" : undefined}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+
+        <Link
+          href="/request-brochure"
+          className="edenMobileSalesCta"
+          onClick={closeMenu}
+        >
+          Request brochure
+        </Link>
       </div>
     </header>
   );

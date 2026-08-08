@@ -63,7 +63,7 @@ export default function VisionPage() {
           ],
           link: {
             label: "Explore the masterplan",
-            href: "/masterplan",
+            href: "/masterplan#page-content",
           },
         },
       ]}

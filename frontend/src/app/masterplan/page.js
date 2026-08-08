@@ -25,7 +25,7 @@ export default function MasterplanPage() {
       }}
       sections={[
         {
-          title: "ONIRIA Villas",
+          title: "Villas",
           description:
             "Private villa neighbourhoods offer generous homes, gardens, quiet surroundings and a close relationship with nature.",
           image:
@@ -38,11 +38,11 @@ export default function MasterplanPage() {
           ],
           link: {
             label: "Explore villas",
-            href: "/villas",
+            href: "/villas#available-collection",
           },
         },
         {
-          title: "ONIRIA Residences",
+          title: "Residences",
           description:
             "Modern residences provide accessible community living with natural light, efficient layouts and shared amenities.",
           image:
@@ -55,7 +55,7 @@ export default function MasterplanPage() {
           ],
           link: {
             label: "Explore residences",
-            href: "/residences",
+            href: "/residences#available-collection",
           },
         },
         {
@@ -72,7 +72,7 @@ export default function MasterplanPage() {
           ],
           link: {
             label: "Explore V Avenue",
-            href: "/v-avenue",
+            href: "/v-avenue#v-avenue-opportunities",
           },
         },
         {

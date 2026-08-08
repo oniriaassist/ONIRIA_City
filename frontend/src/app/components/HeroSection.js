@@ -45,14 +45,14 @@ export default function HeroSection() {
       <div className="heroDarkOverlay" />
 
       <div className="heroMainContent edenHeroContent">
-        <h1>
+        <h1 className="hero-title">
           <span>WELCOME TO</span>
           <span>ONIRIA CITY</span>
         </h1>
-        <p className="heroSignature">The Art of Living</p>
+        <p className="heroSignature hero-subtitle">The Art of Living</p>
       </div>
 
-      <a href="#introduction" className="beginStoryLink" aria-label="Begin your story and continue to the next section">
+      <a href="#introduction" className="beginStoryLink hero-cta" aria-label="Begin your story and continue to the next section">
         <span>BEGIN YOUR STORY</span>
         <span className="beginStoryArrow" aria-hidden="true" />
       </a>

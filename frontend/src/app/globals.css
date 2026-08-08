@@ -33,6 +33,25 @@ textarea {
   font-family: inherit;
 }
 
+:root {
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --oniria-bg: #e9ddcb;
+  --oniria-text: #95694d;
+  --oniria-footer-bg: #3a241c;
+  --oniria-cream-panel: #f6f2e9;
+  --oniria-cta: #95694d;
+  --oniria-cta-hover: #7f573f;
+  --section-eyebrow-size: 11px;
+  --section-title-size: clamp(32px, 3vw, 42px);
+  --section-description-size: 16px;
+  --section-title-line-height: 1.05;
+  --section-description-line-height: 1.6;
+  --section-title-tracking: -0.02em;
+  --section-title-max-width: 820px;
+  --section-description-max-width: 720px;
+}
+
 /* =========================================================
    DYNAMIC ONIRIA HERO SLIDER
 ========================================================= */
@@ -126,18 +145,19 @@ textarea {
 .heroMainContent h1 {
   margin: 16px auto 4px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(72px, 8vw, 150px);
+  font-size: clamp(38px, 3.6vw, 46px);
   font-weight: 400;
-  line-height: 0.9;
-  letter-spacing: 0;
+  line-height: 1;
+  letter-spacing: -0.6px;
 }
 
 .heroSignature {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(28px, 3vw, 48px);
+  font-size: clamp(16px, 1.4vw, 18px);
   font-style: italic;
-  line-height: 1.2;
+  line-height: 1.45;
+  font-weight: 400;
 }
 
 .heroLocation {
@@ -419,7 +439,7 @@ textarea {
 ========================================================= */
 
 .collectionsSection {
-  background-color: #f5f1e9;
+  background-color: #e9ddcb;
   padding: 115px 40px;
 }
 
@@ -455,6 +475,9 @@ textarea {
 
 .collectionCard {
   min-width: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .collectionImage {
@@ -524,10 +547,15 @@ textarea {
 }
 
 .collectionDescription {
-  margin: 22px 8px 0;
-  color: #5d5d5d;
-  font-size: 15px;
-  line-height: 1.7;
+  margin: 0;
+  padding: 24px 0 0;
+  background: transparent;
+  background-color: transparent;
+  color: #95694d;
+  font-size: 16px;
+  line-height: 1.55;
+  border: 0;
+  box-shadow: none;
 }
 
 /* =========================================================
@@ -606,11 +634,13 @@ textarea {
 
   .heroMainContent h1 {
     margin-top: 12px;
-    font-size: clamp(32px, 9.6vw, 44px);
+    font-size: clamp(29px, 8vw, 34px);
+    line-height: 1.06;
   }
 
   .heroSignature {
-    font-size: clamp(22px, 6.6vw, 32px);
+    font-size: 15px;
+    line-height: 1.45;
   }
 
   .heroLocation {
@@ -833,7 +863,7 @@ textarea {
   }
 
   .heroMainContent h1 {
-    font-size: clamp(31px, 9vw, 35px);
+    font-size: 29px;
   }
 
   .collectionImage {
@@ -846,7 +876,7 @@ textarea {
 
 .masterplanSection {
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #e9ddcb;
   padding: 120px 0 0;
 }
 
@@ -945,9 +975,9 @@ textarea {
 .masterplanImageContent h3 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 400;
-  line-height: 1.04;
+  line-height: 1.05;
 }
 
 .masterplanImageContent > span {
@@ -1281,7 +1311,7 @@ textarea {
 }
 
 .residenceCard {
-  background-color: #ffffff;
+  background-color: #f6f2e9;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
   transition:
     transform 0.35s ease,
@@ -1476,7 +1506,7 @@ textarea {
 ========================================================= */
 
 .lifestylePreviewSection {
-  background-color: #ffffff;
+  background-color: #e9ddcb;
   padding: 120px 0;
 }
 
@@ -1493,7 +1523,7 @@ textarea {
   max-width: 900px;
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 400;
   line-height: 1.05;
 }
@@ -1774,7 +1804,7 @@ textarea {
 ========================================================= */
 
 .finalSalesSection {
-  background-color: #10221f;
+  background-color: #e9ddcb;
   padding: 0;
 }
 
@@ -1832,26 +1862,27 @@ textarea {
 .finalSalesLabel {
   margin: 0 0 25px;
   color: #d0b481;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
 }
 
 .finalSalesContent h2 {
-  max-width: 950px;
+  max-width: 680px;
   margin: 0 auto;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(54px, 7vw, 100px);
+  font-size: clamp(32px, 3vw, 38px);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.03;
+  letter-spacing: -0.4px;
 }
 
 .finalSalesDescription {
-  max-width: 700px;
+  max-width: 560px;
   margin: 30px auto 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 18px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .finalSalesActions {
@@ -1866,12 +1897,12 @@ textarea {
 .finalSalesSecondaryButton {
   display: inline-flex;
   min-width: 210px;
-  min-height: 56px;
+  min-height: 48px;
   padding: 15px 28px;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   transition:
@@ -1935,7 +1966,7 @@ textarea {
 
 .finalSalesInformation strong {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 400;
 }
 
@@ -1945,7 +1976,7 @@ textarea {
 
 .siteFooter {
   position: relative;
-  background-color: #0d1d1b;
+  background-color: #3a241c;
   color: #ffffff;
 }
 
@@ -2269,11 +2300,11 @@ textarea {
   }
 
   .finalSalesContent h2 {
-    font-size: 54px;
+    font-size: 30px;
   }
 
   .finalSalesDescription {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .finalSalesActions {
@@ -2363,7 +2394,7 @@ textarea {
 
 @media (max-width: 420px) {
   .finalSalesContent h2 {
-    font-size: 47px;
+    font-size: 28px;
   }
 
   .footerLogo {
@@ -2430,20 +2461,22 @@ textarea {
 }
 
 .publicPageHeroContent h1 {
-  max-width: 1000px;
+  max-width: 720px;
   margin: 0 auto;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 8vw, 110px);
+  font-size: clamp(37px, 3.6vw, 46px);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.02;
+  letter-spacing: -0.6px;
 }
 
 .publicPageHeroContent span {
   display: block;
-  max-width: 720px;
+  max-width: 620px;
   margin: 30px auto 0;
-  font-size: 19px;
-  line-height: 1.7;
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .publicPageScroll {
@@ -2573,11 +2606,12 @@ textarea {
   }
 
   .publicPageHeroContent h1 {
-    font-size: 52px;
+    font-size: clamp(29px, 8vw, 34px);
+    line-height: 1.06;
   }
 
   .publicPageHeroContent span {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .editorialIntroduction {
@@ -3089,7 +3123,7 @@ textarea {
 
 .propertyCard {
   min-width: 0;
-  background-color: #ffffff;
+  background-color: #f6f2e9;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
   transition:
     transform 0.35s ease,
@@ -3411,9 +3445,9 @@ textarea {
   max-width: 1050px;
   margin: 0 auto;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 8vw, 112px);
+  font-size: clamp(37px, 3.6vw, 46px);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.02;
 }
 
 .propertyDetailHeroContent span {
@@ -3638,7 +3672,7 @@ textarea {
 
 .propertyDetailLayoutContent {
   padding: 90px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -3745,8 +3779,8 @@ textarea {
 
 .propertyDetailInquiryActions .propertyDetailPrimaryButton {
   margin-top: 0;
-  background-color: #10221f;
-  border-color: #10221f;
+  background-color: #95694d;
+  border-color: #95694d;
   color: #ffffff;
 }
 
@@ -3909,7 +3943,7 @@ textarea {
 
 .contactPageSection,
 .inquiryPageSection {
-  background-color: #ffffff;
+  background-color: #e9ddcb;
   padding: 120px 40px;
 }
 
@@ -3928,9 +3962,9 @@ textarea {
   max-width: 850px;
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 400;
-  line-height: 1.06;
+  line-height: 1.05;
 }
 
 .contactPageIntroduction > p,
@@ -4150,8 +4184,8 @@ textarea {
   min-height: 56px;
   margin-top: 35px;
   padding: 14px 28px;
-  border: 1px solid #10221f;
-  background-color: #10221f;
+  border: 1px solid #95694d;
+  background-color: #95694d;
   color: #ffffff;
   cursor: pointer;
   font-size: 11px;
@@ -4202,7 +4236,7 @@ textarea {
 
 .contactMapSection {
   padding: 40px;
-  background-color: #10221f;
+  background-color: #95694d;
 }
 
 .contactMapPlaceholder {
@@ -4299,7 +4333,7 @@ textarea {
   width: 17px;
   height: 17px;
   margin-top: 2px;
-  accent-color: #10221f;
+  accent-color: #95694d;
 }
 
 /* =========================================================
@@ -4531,8 +4565,8 @@ textarea {
 }
 
 .oniriaHeaderScrolled .headerInquiryButton {
-  border-color: #10221f;
-  background-color: #10221f;
+  border-color: #95694d;
+  background-color: #95694d;
   color: #ffffff;
 }
 
@@ -4582,8 +4616,8 @@ textarea {
 
 .oniriaHeaderScrolled .headerSearchButton:hover,
 .oniriaHeaderScrolled .headerSearchButton:focus-visible {
-  border-color: #10221f;
-  background-color: #10221f;
+  border-color: #95694d;
+  background-color: #95694d;
   color: #ffffff;
 }
 
@@ -4672,7 +4706,7 @@ textarea {
   max-width: 850px;
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(50px, 7vw, 90px);
+  font-size: clamp(32px, 3vw, 42px);
   font-weight: 400;
   line-height: 1.05;
 }
@@ -4904,7 +4938,7 @@ textarea {
 .inquiryDrawerContact {
   margin-top: 48px;
   padding: 30px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
 }
 
@@ -4931,7 +4965,7 @@ textarea {
   z-index: 490;
   overflow-y: auto;
   padding: 100px 30px 50px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   opacity: 0;
   pointer-events: none;
@@ -5161,7 +5195,7 @@ textarea {
   padding: 8px 18px 8px 9px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 35px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   box-shadow: 0 16px 45px rgba(4, 20, 17, 0.26);
   cursor: pointer;
@@ -5266,7 +5300,7 @@ textarea {
 .oniriaAIChatHeader {
   min-height: 78px;
   padding: 15px 18px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -5367,7 +5401,7 @@ textarea {
   height: 29px;
   flex: 0 0 29px;
   border-radius: 50%;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -5386,7 +5420,7 @@ textarea {
 
 .oniriaAIMessageUser .oniriaAIMessageContent {
   border-radius: 15px 4px 15px 15px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
 }
 
@@ -5548,7 +5582,7 @@ textarea {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
   cursor: pointer;
   font-size: 19px;
@@ -6571,8 +6605,8 @@ textarea {
   min-height: 54px;
   margin-top: 20px;
   padding: 15px 26px;
-  border: 1px solid #10221f;
-  background-color: #10221f;
+  border: 1px solid #95694d;
+  background-color: #95694d;
   color: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -6731,8 +6765,8 @@ textarea {
 .adminTable a {
   min-height: 42px;
   padding: 11px 16px;
-  border: 1px solid #10221f;
-  background-color: #10221f;
+  border: 1px solid #95694d;
+  background-color: #95694d;
   color: #ffffff;
   cursor: pointer;
   display: inline-flex;
@@ -6757,7 +6791,7 @@ textarea {
 .adminSidebar {
   min-height: 100vh;
   padding: 26px 20px;
-  background-color: #10221f;
+  background-color: #95694d;
   color: #ffffff;
 }
 
@@ -6822,7 +6856,7 @@ textarea {
 .adminMetricCard strong {
   margin-top: 10px;
   display: block;
-  color: #10221f;
+  color: #95694d;
   font-size: 32px;
   line-height: 1;
 }
@@ -7970,9 +8004,9 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: clamp(42px, 4.6vw, 78px);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  font-size: clamp(38px, 3.6vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.6px;
 }
 
 .edenHeroContent h1 span:first-child,
@@ -7983,9 +8017,10 @@ textarea:focus-visible {
 .edenHeroContent .heroSignature {
   margin-top: 34px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(17px, 1.45vw, 24px);
+  font-size: clamp(16px, 1.4vw, 18px);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 1.45;
   letter-spacing: 0.01em;
 }
 
@@ -8000,8 +8035,8 @@ textarea:focus-visible {
   gap: 14px;
   color: #fff;
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   transform: translateX(-50%);
 }
 
@@ -8139,7 +8174,7 @@ textarea:focus-visible {
 
   .edenMobileMenu a {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(32px, 9vw, 54px);
+    font-size: clamp(29px, 8vw, 42px);
     line-height: 1.05;
   }
 }
@@ -8151,12 +8186,13 @@ textarea:focus-visible {
   }
 
   .edenHeroContent h1 {
-    font-size: clamp(38px, 12vw, 54px);
+    font-size: clamp(29px, 8vw, 34px);
+    line-height: 1.06;
   }
 
   .edenHeroContent .heroSignature {
     margin-top: 24px;
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .beginStoryLink { bottom: 26px; }
@@ -8395,8 +8431,8 @@ textarea:focus-visible {
 :root {
   --oniria-page-background: #e9ddcb;
   --oniria-page-text: #95694d;
-  --oniria-heading-size: 54px;
-  --oniria-description-size: 21px;
+  --oniria-heading-size: 42px;
+  --oniria-description-size: 17px;
 }
 
 /* Use the warm palette throughout all public pages. */
@@ -8548,18 +8584,18 @@ main {
   color: var(--oniria-page-text);
 }
 
-/* Responsive sizes preserve the 54px/21px desktop design without overflow. */
+/* Responsive sizes preserve the restrained desktop design without overflow. */
 @media (max-width: 900px) {
   :root {
-    --oniria-heading-size: 46px;
-    --oniria-description-size: 20px;
+    --oniria-heading-size: 38px;
+    --oniria-description-size: 16px;
   }
 }
 
 @media (max-width: 600px) {
   :root {
-    --oniria-heading-size: 36px;
-    --oniria-description-size: 18px;
+    --oniria-heading-size: 32px;
+    --oniria-description-size: 15px;
   }
 }
 
@@ -8989,7 +9025,7 @@ footer *,
   width: 100%;
   min-height: 455px;
   padding: 72px 60px;
-  background-color: #4b2f26;
+  background-color: #3A241C;
   color: #e9ddcb;
   border: 0;
 }
@@ -9144,7 +9180,7 @@ footer *,
    FINAL USER-REQUESTED FOOTER AND CTA COLOURS
 ========================================================= */
 .oniriaMinimalFooter {
-  background-color: #2A4933 !important;
+  background-color: #3A241C !important;
 }
 
 .finalSalesSection .finalSalesPrimaryButton,
@@ -9243,19 +9279,20 @@ footer *,
 }
 
 .vAvenueHeroContent h1 {
-  max-width: 900px;
+  max-width: 680px;
   margin: 28px auto 22px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(52px, 7vw, 96px);
-  line-height: 0.98;
+  font-size: clamp(37px, 3.6vw, 46px);
+  line-height: 1.02;
   font-weight: 400;
-  letter-spacing: -2px;
+  letter-spacing: -0.6px;
   text-transform: none;
 }
 
 .vAvenueHeroMeta {
   margin: 0;
-  font-size: clamp(16px, 1.7vw, 22px);
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.5;
   letter-spacing: 1.6px;
 }
 
@@ -9498,7 +9535,8 @@ footer *,
 
 @media (max-width: 720px) {
   .vAvenueHeroContent h1 {
-    font-size: 48px;
+    font-size: clamp(29px, 8vw, 34px);
+    line-height: 1.06;
   }
 
   .vAvenueScrollLink {
@@ -9572,7 +9610,7 @@ footer *,
 }
 
 .vAvenuePage > .oniriaMinimalFooter {
-  background-color: #2A4933 !important;
+  background-color: #3A241C !important;
 }
 
 /* =========================================================
@@ -9699,26 +9737,26 @@ footer *,
 .publicPageHeroContent h1,
 .propertyCollectionHeroContent h1,
 .vAvenueHeroContent h1 {
-  max-width: 820px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
-  font-size: clamp(38px, 4.4vw, 58px) !important;
+  font-size: clamp(37px, 3.6vw, 46px) !important;
   line-height: 1.02 !important;
-  letter-spacing: -1px !important;
+  letter-spacing: -0.6px !important;
   text-wrap: balance;
 }
 
 .publicPageHeroContent span,
 .propertyCollectionHeroContent span,
 .vAvenueHeroMeta {
-  max-width: 690px;
-  font-size: clamp(16px, 1.35vw, 19px) !important;
-  line-height: 1.55 !important;
+  max-width: 620px;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.5 !important;
 }
 
 /* The Mall title is longer, so keep it slightly narrower and calmer. */
 .vAvenueHeroContent h1 {
-  max-width: 760px;
+  max-width: 680px;
 }
 
 @media (max-width: 900px) {
@@ -9726,8 +9764,8 @@ footer *,
   .propertyCollectionHeroContent h1,
   .vAvenueHeroContent h1 {
     max-width: 680px;
-    font-size: clamp(35px, 6.2vw, 48px) !important;
-    line-height: 1.05 !important;
+    font-size: clamp(34px, 5vw, 40px) !important;
+    line-height: 1.02 !important;
   }
 }
 
@@ -9742,15 +9780,15 @@ footer *,
   .propertyCollectionHeroContent h1,
   .vAvenueHeroContent h1 {
     max-width: 100%;
-    font-size: clamp(30px, 9vw, 39px) !important;
-    line-height: 1.08 !important;
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
     letter-spacing: -0.5px !important;
   }
 
   .publicPageHeroContent span,
   .propertyCollectionHeroContent span,
   .vAvenueHeroMeta {
-    font-size: 16px !important;
+    font-size: 15px !important;
     line-height: 1.5 !important;
   }
 }
@@ -9896,37 +9934,40 @@ footer *,
 .homePage .introductionSection .sectionLabel,
 .homePage .collectionsHeading .sectionLabel,
 .homePage .masterplanHeading .sectionLabel {
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   color: #95694d !important;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 4.5px;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
 }
 
 .homePage .introductionSection h2 {
-  max-width: 900px;
-  margin: 0 auto 40px;
-  font-size: clamp(42px, 4.8vw, 64px);
-  line-height: 1;
-  letter-spacing: -1.8px;
+  max-width: 1320px;
+  margin: 0 auto 54px;
+  font-size: clamp(52px, 5.6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -1.2px;
   text-wrap: balance;
 }
 
 .homePage .introductionCopy {
-  width: min(940px, 100%);
+  width: min(1320px, 100%);
 }
 
 .homePage .introductionText {
-  margin-bottom: 20px;
-  font-size: clamp(18px, 1.45vw, 21px);
-  line-height: 1.55;
+  margin-bottom: 34px;
+  font-size: clamp(21px, 1.55vw, 25px);
+  line-height: 1.48;
   text-wrap: pretty;
 }
 
 .homePage .introductionLink {
-  margin-top: 38px;
+  margin-top: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 /* Featured collections: premium three-card composition */
@@ -10000,9 +10041,14 @@ footer *,
 }
 
 .homePage .collectionDescription {
-  margin: 24px 4px 0;
+  margin: 0;
+  padding: 24px 0 0;
+  border: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none;
   color: #95694d !important;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.55;
 }
 
@@ -10744,36 +10790,40 @@ footer *,
 }
 
 .premiumInquiryHeroContent h1 {
-  max-width: 850px;
+  max-width: 720px;
   margin: 0 auto 30px;
   color: #fff;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(46px, 6.6vw, 92px);
-  line-height: .98;
+  font-size: clamp(37px, 3.6vw, 46px);
+  line-height: 1.02;
   font-weight: 400;
-  letter-spacing: -2px;
+  letter-spacing: -0.6px;
   text-wrap: balance;
 }
 
 .premiumInquiryHeroContent > span {
   display: block;
-  max-width: 700px;
+  max-width: 620px;
   margin: 0 auto;
   color: rgba(255,255,255,.92);
-  font-size: clamp(18px, 1.6vw, 23px);
-  line-height: 1.55;
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.5;
 }
 
 .premiumInquiryHeroContent > a {
   display: inline-block;
-  margin-top: 48px;
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  margin-top: 0;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(255,255,255,.7);
   color: #fff;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: .18em;
   text-transform: uppercase;
+  transform: translateX(-50%);
 }
 
 .premiumInquiryIntro {
@@ -10934,7 +10984,7 @@ footer *,
 .premiumInquirySubmit:disabled { cursor: wait; opacity: .65; }
 .premiumFormStatus { margin: 0 0 24px; padding: 18px; border: 1px solid; }
 .premiumFormStatus p { margin: 0 0 8px; }
-.premiumFormStatus.isSuccess { background: #e8f0e9; border-color: #2a4933; color: #2a4933; }
+.premiumFormStatus.isSuccess { background: #e8f0e9; border-color: #95694d; color: #95694d; }
 .premiumFormStatus.isError { background: #f8e7e2; border-color: #8d3c2c; color: #8d3c2c; }
 
 @media (max-width: 900px) {
@@ -10949,7 +10999,7 @@ footer *,
 @media (max-width: 620px) {
   .premiumInquiryHero { min-height: 76vh; }
   .premiumInquiryHeroContent { width: min(100% - 32px, 920px); padding-top: 125px; }
-  .premiumInquiryHeroContent h1 { font-size: clamp(38px, 13vw, 54px); letter-spacing: -1px; }
+  .premiumInquiryHeroContent h1 { font-size: clamp(29px, 8vw, 34px); line-height: 1.06; letter-spacing: -0.5px; }
   .premiumInquiryIntro,
   .premiumInquiryFormSection { padding-left: 20px; padding-right: 20px; }
   .premiumInquiryHighlights { padding: 0 20px; }
@@ -11259,15 +11309,15 @@ footer *,
 .vAvenueHeroContent h1,
 .premiumInquiryHeroContent h1 {
   width: min(100%, 760px);
-  max-width: 760px !important;
+  max-width: 720px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   color: #ffffff !important;
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: clamp(38px, 4.15vw, 54px) !important;
+  font-size: clamp(37px, 3.6vw, 46px) !important;
   line-height: 1.02 !important;
   font-weight: 400 !important;
-  letter-spacing: -0.9px !important;
+  letter-spacing: -0.6px !important;
   text-align: center !important;
   text-transform: uppercase !important;
   text-wrap: balance;
@@ -11278,11 +11328,11 @@ footer *,
 .vAvenueHeroMeta,
 .premiumInquiryHeroContent > p {
   display: block;
-  width: min(100%, 650px);
-  max-width: 650px !important;
+  width: min(100%, 620px);
+  max-width: 620px !important;
   margin: 22px auto 0 !important;
   color: rgba(255, 255, 255, 0.92) !important;
-  font-size: clamp(16px, 1.25vw, 18px) !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
   line-height: 1.5 !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
@@ -11308,8 +11358,8 @@ footer *,
   .propertyCollectionHeroContent h1,
   .vAvenueHeroContent h1,
   .premiumInquiryHeroContent h1 {
-    font-size: clamp(32px, 10vw, 43px) !important;
-    line-height: 1.05 !important;
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
     letter-spacing: -0.5px !important;
   }
 
@@ -11318,7 +11368,7 @@ footer *,
   .vAvenueHeroMeta,
   .premiumInquiryHeroContent > p {
     max-width: 520px !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     line-height: 1.5 !important;
   }
 }
@@ -11486,14 +11536,14 @@ footer *,
 .premiumInquiryHeroContent h1,
 .vAvenueHeroContent h1 {
   width: 100% !important;
-  max-width: 880px !important;
+  max-width: 720px !important;
   margin: 0 auto !important;
   color: #ffffff !important;
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: clamp(50px, 5.3vw, 72px) !important;
-  line-height: 0.96 !important;
+  font-size: clamp(37px, 3.6vw, 46px) !important;
+  line-height: 1.02 !important;
   font-weight: 400 !important;
-  letter-spacing: -1.8px !important;
+  letter-spacing: -0.6px !important;
   text-align: center !important;
   text-transform: uppercase !important;
 }
@@ -11521,13 +11571,13 @@ footer *,
 .premiumInquiryHeroContent > p,
 .vAvenueHeroMeta {
   display: block !important;
-  width: min(100%, 690px) !important;
-  max-width: 690px !important;
+  width: min(100%, 620px) !important;
+  max-width: 620px !important;
   margin: 34px auto 0 !important;
   color: rgba(255, 255, 255, 0.96) !important;
   font-family: Arial, Helvetica, sans-serif !important;
-  font-size: clamp(17px, 1.35vw, 20px) !important;
-  line-height: 1.45 !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.5 !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   text-align: center !important;
@@ -11559,9 +11609,9 @@ footer *,
   .publicPageHeroContent h1,
   .premiumInquiryHeroContent h1,
   .vAvenueHeroContent h1 {
-    font-size: clamp(39px, 11.5vw, 54px) !important;
-    line-height: 0.98 !important;
-    letter-spacing: -1px !important;
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.5px !important;
   }
 
   .publicPageHeroDescription,
@@ -11570,8 +11620,8 @@ footer *,
   .vAvenueHeroMeta {
     max-width: 540px !important;
     margin-top: 26px !important;
-    font-size: 17px !important;
-    line-height: 1.45 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -11579,7 +11629,7 @@ footer *,
   .publicPageHeroContent h1,
   .premiumInquiryHeroContent h1,
   .vAvenueHeroContent h1 {
-    font-size: clamp(36px, 12vw, 46px) !important;
+    font-size: 29px !important;
   }
 }
 
@@ -11639,9 +11689,9 @@ footer *,
 .propertyDetailPage .propertyDetailHeroContent h1 {
   max-width: 880px;
   margin-inline: auto;
-  font-size: clamp(48px, 6.2vw, 82px);
-  line-height: 0.96;
-  letter-spacing: -1.8px;
+  font-size: clamp(37px, 3.6vw, 46px);
+  line-height: 1.02;
+  letter-spacing: -0.6px;
   text-wrap: balance;
 }
 
@@ -11670,9 +11720,9 @@ footer *,
 .propertyDetailPage .propertyDetailOverviewText h2 {
   max-width: 720px;
   color: #95694d !important;
-  font-size: clamp(44px, 5vw, 66px);
-  line-height: 1.02;
-  letter-spacing: -1px;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   text-wrap: balance;
 }
@@ -11745,10 +11795,10 @@ footer *,
 
 .propertyDetailPage .propertyDetailFeaturesHeading h2 {
   color: #95694d !important;
-  font-size: clamp(42px, 4.8vw, 64px);
-  line-height: 1.02;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.05;
   text-transform: uppercase;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -11800,21 +11850,21 @@ footer *,
 
 .propertyDetailPage .propertyDetailLayoutContent {
   padding: clamp(64px, 7vw, 110px);
-  background: #2a4933;
+  background: #f6f2e9;
 }
 
 .propertyDetailPage .propertyDetailLayoutContent h2 {
-  color: #ffffff !important;
-  font-size: clamp(42px, 4.7vw, 64px);
-  line-height: 1.02;
+  color: #95694d !important;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.05;
   text-transform: uppercase;
-  letter-spacing: -1px;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
 .propertyDetailPage .propertyDetailLayoutContent > p,
 .propertyDetailPage .propertyDetailLayoutContent li {
-  color: rgba(255, 255, 255, 0.88) !important;
+  color: #95694d !important;
 }
 
 .propertyDetailPage .propertyDetailLayoutContent li {
@@ -11870,9 +11920,9 @@ footer *,
 .propertyDetailPage .propertyDetailInquiry h2 {
   max-width: 760px;
   color: #95694d !important;
-  font-size: clamp(42px, 4.8vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -1px;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   text-wrap: balance;
 }
@@ -11894,7 +11944,7 @@ footer *,
   }
 
   .propertyDetailPage .propertyDetailHeroContent h1 {
-    font-size: clamp(40px, 12vw, 54px);
+    font-size: clamp(29px, 8vw, 34px);
   }
 
   .propertyDetailPage .propertyDetailOverview,
@@ -12125,3 +12175,1001 @@ footer *,
     border-radius: 12px !important;
   }
 }
+
+
+/* =========================================================
+   FINAL ONIRIA FOOTER COLOUR LOCK — DARK BROWN
+   Keeps the footer consistent across every public page.
+========================================================= */
+.oniriaMinimalFooter,
+.vAvenuePage > .oniriaMinimalFooter {
+  background-color: #3A241C !important;
+  color: #FFFFFF !important;
+}
+
+.oniriaMinimalFooter *,
+.oniriaMinimalFooter p,
+.oniriaMinimalFooter a,
+.oniriaMinimalFooter span {
+  color: #FFFFFF !important;
+}
+
+.oniriaMinimalFooter a:focus-visible {
+  outline-color: #FFFFFF !important;
+}
+
+
+/* =========================================================
+   FINAL UNIFIED HERO TYPOGRAPHY — ONIRIA CITY
+   Applies to Home, Vision, Lifestyle, Masterplan, Villas,
+   V Avenue, Contact and all three premium request journeys.
+========================================================= */
+
+.hero-title {
+  margin-bottom: 18px !important;
+  font-size: clamp(37px, 3.6vw, 46px) !important;
+  line-height: 1.02 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.6px !important;
+}
+
+.hero-subtitle {
+  max-width: 680px !important;
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+}
+
+.hero-cta {
+  margin-top: 8px !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.publicPageHeroEyebrow,
+.premiumInquiryEyebrow,
+.sectionEyebrow {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+/* Keep all title lines visually consistent across every first-screen hero. */
+.hero-title > span,
+.publicPageHeroTitleLine {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+}
+
+/* Preserve the requested typography despite older page-specific rules. */
+.heroSlider.edenInspiredHero .hero-title,
+.publicPageHeroContent .hero-title,
+.propertyCollectionHeroContent .hero-title,
+.vAvenueHeroContent .hero-title,
+.premiumInquiryHeroContent .hero-title {
+  font-size: clamp(37px, 3.6vw, 46px) !important;
+  line-height: 1.02 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.6px !important;
+}
+
+.heroSlider.edenInspiredHero .hero-subtitle,
+.publicPageHeroContent .hero-subtitle,
+.propertyCollectionHeroContent .hero-subtitle,
+.vAvenueHeroContent .hero-subtitle,
+.premiumInquiryHeroContent .hero-subtitle {
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+}
+
+.heroSlider.edenInspiredHero .hero-cta,
+.publicPageHero .hero-cta,
+.propertyCollectionHero .hero-cta,
+.vAvenueHero .hero-cta,
+.premiumInquiryHero .hero-cta {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.premiumInquiryHero .hero-cta {
+  position: absolute !important;
+  bottom: 36px !important;
+  left: 50% !important;
+  margin-top: 0 !important;
+  white-space: nowrap;
+  transform: translateX(-50%) !important;
+}
+
+.heroSlider.edenInspiredHero .heroSignature.hero-subtitle {
+  max-width: none !important;
+  margin-top: 34px !important;
+  margin-bottom: 0 !important;
+  font-size: clamp(16px, 1.4vw, 18px) !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+}
+
+/* Responsive refinement: the desktop system above remains the source of truth,
+   while smaller screens scale safely without changing hierarchy. */
+@media (max-width: 760px) {
+  .heroSlider.edenInspiredHero .hero-title,
+  .publicPageHeroContent .hero-title,
+  .propertyCollectionHeroContent .hero-title,
+  .vAvenueHeroContent .hero-title,
+  .premiumInquiryHeroContent .hero-title {
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .heroSlider.edenInspiredHero .hero-subtitle,
+  .publicPageHeroContent .hero-subtitle,
+  .propertyCollectionHeroContent .hero-subtitle,
+  .vAvenueHeroContent .hero-subtitle,
+  .premiumInquiryHeroContent .hero-subtitle {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+
+  .heroSlider.edenInspiredHero .heroSignature.hero-subtitle {
+    margin-top: 24px !important;
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+  }
+
+  .heroSlider.edenInspiredHero .hero-cta,
+  .publicPageHero .hero-cta,
+  .propertyCollectionHero .hero-cta,
+  .vAvenueHero .hero-cta,
+  .premiumInquiryHero .hero-cta {
+    font-size: 11px !important;
+  }
+
+  .premiumInquiryHero .hero-cta {
+    bottom: 28px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .heroSlider.edenInspiredHero .hero-title,
+  .publicPageHeroContent .hero-title,
+  .propertyCollectionHeroContent .hero-title,
+  .vAvenueHeroContent .hero-title,
+  .premiumInquiryHeroContent .hero-title {
+    font-size: 29px !important;
+  }
+}
+
+.finalSalesLabel {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+.finalSalesContent h2 {
+  max-width: 680px !important;
+  font-size: clamp(32px, 3vw, 38px) !important;
+  line-height: 1.03 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.4px !important;
+}
+
+.finalSalesDescription {
+  max-width: 560px !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.finalSalesPrimaryButton,
+.finalSalesSecondaryButton {
+  min-height: 48px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.finalSalesInformation span {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  opacity: 0.7 !important;
+}
+
+.finalSalesInformation strong {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 900px) {
+  .heroSlider.edenInspiredHero .hero-title,
+  .publicPageHeroContent .hero-title,
+  .propertyCollectionHeroContent .hero-title,
+  .vAvenueHeroContent .hero-title,
+  .premiumInquiryHeroContent .hero-title {
+    font-size: clamp(34px, 5vw, 40px) !important;
+  }
+
+  .heroSlider.edenInspiredHero .hero-subtitle,
+  .publicPageHeroContent .hero-subtitle,
+  .propertyCollectionHeroContent .hero-subtitle,
+  .vAvenueHeroContent .hero-subtitle,
+  .premiumInquiryHeroContent .hero-subtitle {
+    font-size: 16px !important;
+  }
+
+  .finalSalesContent h2 {
+    font-size: clamp(30px, 4.5vw, 36px) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSlider.edenInspiredHero .hero-title,
+  .publicPageHeroContent .hero-title,
+  .propertyCollectionHeroContent .hero-title,
+  .vAvenueHeroContent .hero-title,
+  .premiumInquiryHeroContent .hero-title {
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
+  }
+
+  .heroSlider.edenInspiredHero .hero-subtitle,
+  .publicPageHeroContent .hero-subtitle,
+  .propertyCollectionHeroContent .hero-subtitle,
+  .vAvenueHeroContent .hero-subtitle,
+  .premiumInquiryHeroContent .hero-subtitle {
+    font-size: 15px !important;
+  }
+
+  .heroSlider.edenInspiredHero .hero-cta,
+  .publicPageHero .hero-cta,
+  .propertyCollectionHero .hero-cta,
+  .vAvenueHero .hero-cta,
+  .premiumInquiryHero .hero-cta {
+    font-size: 11px !important;
+  }
+
+  .finalSalesContent h2 {
+    font-size: 30px !important;
+  }
+
+  .finalSalesDescription {
+    font-size: 14px !important;
+  }
+
+  .finalSalesInformation strong {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroSlider.edenInspiredHero .hero-title,
+  .publicPageHeroContent .hero-title,
+  .propertyCollectionHeroContent .hero-title,
+  .vAvenueHeroContent .hero-title,
+  .premiumInquiryHeroContent .hero-title {
+    font-size: 29px !important;
+  }
+
+  .finalSalesContent h2 {
+    font-size: 28px !important;
+  }
+}
+
+/* =========================================================
+   GLOBAL EDEN-INSPIRED CONTENT TYPOGRAPHY SYSTEM
+   Reusable restrained scale for non-hero editorial sections.
+========================================================= */
+
+.section-eyebrow,
+.homePage .introductionSection .sectionLabel,
+.homePage .collectionsHeading .sectionLabel,
+.homePage .masterplanHeading .sectionLabel,
+.homePage .lifestylePreviewHeading .sectionLabel,
+.homePage .featuredResidencesHeading .sectionLabel,
+.introductionSection .sectionLabel,
+.collectionsHeading .sectionLabel,
+.masterplanHeading .sectionLabel,
+.lifestylePreviewHeading .sectionLabel,
+.featuredResidencesHeading .sectionLabel,
+.editorialIntroduction .sectionLabel,
+.propertyCollectionIntroduction .sectionLabel,
+.propertyListingHeading .sectionLabel,
+.contactPageIntroduction .sectionLabel,
+.contactFormHeading .sectionLabel,
+.contactMapPlaceholder .sectionLabel,
+.inquiryPageHeading .sectionLabel,
+.premiumInquiryIntroHeading .sectionLabel,
+.premiumInquiryFormAside .sectionLabel,
+.propertyDetailPage .propertyDetailOverviewText .sectionLabel,
+.propertyDetailPage .propertyDetailFeaturesHeading .sectionLabel,
+.propertyDetailPage .propertyDetailLayoutContent .sectionLabel,
+.propertyDetailPage .propertyDetailInquiry .sectionLabel,
+.galleryIntroduction .sectionLabel,
+.journalIntroduction .sectionLabel,
+.faqIntroduction .sectionLabel,
+.legalPageSidebar .sectionLabel,
+.sectionLabel,
+.vAvenueSectionLabel {
+  font-family: var(--font-sans) !important;
+  font-size: var(--section-eyebrow-size) !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.section-title,
+.homePage .introductionSection h2,
+.collectionsHeading h2,
+.masterplanHeading h2,
+.masterplanImageContent h3,
+.lifestylePreviewHeading h2,
+.featuredResidencesHeading h2,
+.editorialIntroduction h2,
+.propertyCollectionIntroduction h2,
+.propertyListingHeading h2,
+.contactPageIntroduction h2,
+.inquiryPageHeading h2,
+.premiumInquiryIntroHeading h2,
+.vAvenueIntroduction h2,
+.vAvenueOpportunitiesHeading h2,
+.vAvenueExperienceContent h2,
+.galleryIntroduction h2,
+.journalIntroduction h2,
+.faqIntroduction h2,
+.faqGroupHeading h2,
+.legalContentSection h2,
+.legalPageContent h2,
+.sitemapSection h2,
+.journalArticleSection h2,
+.propertyDetailPage .propertyDetailOverviewText h2,
+.propertyDetailPage .propertyDetailFeaturesHeading h2,
+.propertyDetailPage .propertyDetailLayoutContent h2,
+.propertyDetailPage .propertyDetailInquiry h2 {
+  max-width: var(--section-title-max-width) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  color: var(--oniria-text) !important;
+  font-family: var(--font-display) !important;
+  font-size: var(--section-title-size) !important;
+  line-height: var(--section-title-line-height) !important;
+  font-weight: 400 !important;
+  letter-spacing: var(--section-title-tracking) !important;
+  text-align: center !important;
+  text-wrap: balance;
+}
+
+.section-description,
+.homePage .introductionText,
+.collectionsHeading > p,
+.masterplanHeading > p,
+.lifestylePreviewIntro > p,
+.featuredResidencesIntro > p,
+.editorialIntroduction > p:last-child,
+.propertyCollectionIntroduction > p:last-child,
+.propertyListingHeading > p,
+.contactPageIntroduction > p,
+.inquiryPageHeading > p,
+.premiumInquiryIntroCopy,
+.vAvenueLead,
+.vAvenueExperienceContent > p:not(.vAvenueSectionLabel),
+.galleryIntroduction > p:last-child,
+.journalIntroduction > p:last-child,
+.faqIntroduction > p:last-child,
+.legalContentSection p,
+.legalPageContent p,
+.sitemapSection a,
+.journalArticleSection p,
+.propertyDetailPage .propertyDetailOverviewText > p:last-of-type,
+.propertyDetailPage .propertyDetailFeaturesHeading > p:last-child,
+.propertyDetailPage .propertyDetailLayoutContent > p,
+.propertyDetailInquiryCopy > p:last-child {
+  max-width: var(--section-description-max-width) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  color: var(--oniria-text) !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--section-description-size) !important;
+  line-height: var(--section-description-line-height) !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-align: center !important;
+}
+
+.editorialSectionContent h2 {
+  font-family: var(--font-display) !important;
+  font-size: clamp(38px, 3vw, 56px) !important;
+  line-height: 0.98 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.03em !important;
+  text-wrap: balance;
+}
+
+.editorialSectionContent > p {
+  font-family: var(--font-sans) !important;
+  font-size: clamp(17px, 1.15vw, 20px) !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-eyebrow-size: 11px;
+    --section-title-size: clamp(32px, 4.6vw, 40px);
+    --section-description-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --section-eyebrow-size: 10px;
+    --section-title-size: clamp(29px, 8vw, 34px);
+    --section-description-size: 15px;
+    --section-title-line-height: 1.06;
+    --section-description-line-height: 1.55;
+  }
+
+  .introductionSection,
+  .collectionsSection,
+  .masterplanPreview,
+  .lifestylePreviewSection,
+  .featuredResidencesSection,
+  .editorialIntroduction,
+  .propertyCollectionIntroduction,
+  .propertyListingSection,
+  .contactPageIntroduction,
+  .inquiryPageHeading,
+  .premiumInquiryIntro,
+  .vAvenueIntroduction,
+  .vAvenueOpportunities,
+  .vAvenueExperienceContent {
+    padding-right: max(24px, env(safe-area-inset-right)) !important;
+    padding-left: max(24px, env(safe-area-inset-left)) !important;
+  }
+
+  .editorialSectionContent h2 {
+    font-size: clamp(34px, 9vw, 42px) !important;
+    line-height: 0.98 !important;
+  }
+}
+
+/* =========================================================
+   FINAL PUBLIC ONIRIA VISUAL SYSTEM
+   Applies the approved public style across all non-admin routes.
+========================================================= */
+
+body,
+main,
+.premiumInquiryPage,
+.propertyDetailPage {
+  background-color: var(--oniria-bg);
+  color: var(--oniria-text);
+}
+
+.publicPageHeroContent h1,
+.propertyDetailPage .propertyDetailHeroContent h1,
+.vAvenueHeroContent h1,
+.premiumInquiryHeroContent h1 {
+  max-width: 720px !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(37px, 3.6vw, 46px) !important;
+  line-height: 1.02 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.6px !important;
+  text-align: center !important;
+  text-wrap: balance;
+}
+
+.publicPageHeroContent > p,
+.publicPageHeroEyebrow,
+.propertyDetailPage .propertyDetailHeroContent > p,
+.premiumInquiryHeroContent > p:first-child {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.publicPageHeroContent > span,
+.publicPageHeroDescription,
+.propertyDetailPage .propertyDetailHeroContent > span,
+.vAvenueHeroMeta,
+.premiumInquiryHeroContent > p.hero-subtitle {
+  max-width: 620px !important;
+  font-size: clamp(15px, 1.25vw, 17px) !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+}
+
+.publicPageHero *,
+.propertyDetailHero *,
+.premiumInquiryHero *,
+.vAvenueHero * {
+  color: #ffffff !important;
+}
+
+.galleryIntroduction,
+.journalIntroduction,
+.faqIntroduction,
+.editorialIntroduction,
+.propertyCollectionIntroduction,
+.contactPageIntroduction,
+.inquiryPageHeading,
+.premiumInquiryIntro,
+.vAvenueIntroduction,
+.sitemapSection,
+.legalContentSection,
+.legalPageSection,
+.journalArticleSection,
+.propertyDetailPage .propertyDetailOverview,
+.propertyDetailPage .propertyDetailInquiry {
+  background-color: var(--oniria-bg) !important;
+  color: var(--oniria-text) !important;
+}
+
+.editorialSections,
+.propertyListingSection,
+.journalGrid,
+.faqGroups,
+.propertyDetailPage .propertyDetailFeaturesSection,
+.propertyDetailPage .propertyDetailLayoutContent,
+.inquiryForm,
+.contactForm,
+.premiumInquiryForm,
+.legalPageContent,
+.legalPageSidebar,
+.sitemapSection article,
+.journalArticleSection section,
+.journalCard,
+.propertyCard,
+.vAvenueCard,
+.vAvenueCardBody,
+.propertyDetailPage .propertyDetailFacts,
+.propertyDetailPage .propertyDetailFeaturesGrid article {
+  background-color: var(--oniria-cream-panel) !important;
+  color: var(--oniria-text) !important;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent,
+.propertyDetailPage .propertyDetailLayoutContent *,
+.legalPageContent,
+.legalPageContent *,
+.legalPageSidebar,
+.legalPageSidebar *,
+.sitemapSection,
+.sitemapSection *,
+.journalArticleSection,
+.journalArticleSection *,
+.galleryIntroduction,
+.galleryIntroduction *,
+.journalIntroduction,
+.journalIntroduction *,
+.faqIntroduction,
+.faqIntroduction *,
+.faqGroups,
+.faqGroups *,
+.propertyDetailOverview,
+.propertyDetailOverview *,
+.propertyDetailFeaturesSection,
+.propertyDetailFeaturesSection *,
+.propertyDetailInquiry,
+.propertyDetailInquiry * {
+  color: var(--oniria-text) !important;
+}
+
+.galleryGrid,
+.propertyDetailPage .propertyDetailGallery {
+  background-color: var(--oniria-bg) !important;
+}
+
+.journalArticleSection {
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(90px, 10vw, 140px) 0;
+}
+
+.journalArticleSection section + section {
+  margin-top: 34px;
+}
+
+.journalArticleSection section {
+  padding: clamp(34px, 4vw, 54px);
+  border: 1px solid rgba(149, 105, 77, 0.22);
+}
+
+.journalArticleSection span {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.galleryItemImage *,
+.journalImage *,
+.propertyCardImage *,
+.residenceImage *,
+.collectionImage *,
+.propertyDetailGalleryImage *,
+.lifestylePreviewHeroImage * {
+  color: #ffffff !important;
+}
+
+.textLink,
+.propertyDetailTextLink,
+.collectionCard a,
+.propertyCardFooter a,
+.residenceCardFooter a,
+.journalCardContent .textLink,
+.sitemapSection a,
+.legalPageSidebar a {
+  color: var(--oniria-text) !important;
+  border-color: currentColor !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.propertySearchButton,
+.mobilePropertySearch button,
+.mobileFilterActions button:last-child,
+.masterplanButton,
+.lifestylePreviewButton,
+.propertyDetailPrimaryButton,
+.propertyDetailSecondaryButton,
+.formSubmitButton,
+.premiumInquirySubmit,
+.legalPageButton,
+.finalSalesPrimaryButton,
+.finalSalesSecondaryButton,
+.footerInquiryButton {
+  min-height: 46px;
+  border: 1px solid var(--oniria-cta) !important;
+  border-radius: 0 !important;
+  background-color: var(--oniria-cta) !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.propertySearchButton:hover,
+.mobilePropertySearch button:hover,
+.mobileFilterActions button:last-child:hover,
+.masterplanButton:hover,
+.lifestylePreviewButton:hover,
+.propertyDetailPrimaryButton:hover,
+.propertyDetailSecondaryButton:hover,
+.formSubmitButton:hover,
+.premiumInquirySubmit:hover,
+.legalPageButton:hover,
+.finalSalesPrimaryButton:hover,
+.finalSalesSecondaryButton:hover,
+.footerInquiryButton:hover {
+  border-color: var(--oniria-cta-hover) !important;
+  background-color: var(--oniria-cta-hover) !important;
+  color: #ffffff !important;
+}
+
+.formField input,
+.formField select,
+.formField textarea,
+.premiumFormGrid input,
+.premiumFormGrid select,
+.premiumInquiryForm input,
+.premiumInquiryForm select,
+.premiumInquiryForm textarea,
+.footerNewsletterForm input {
+  min-height: 48px;
+  border-color: rgba(149, 105, 77, 0.28) !important;
+  border-radius: 0 !important;
+  background-color: #fffdf8 !important;
+  color: var(--oniria-text) !important;
+  font-size: 15px !important;
+}
+
+.formField label,
+.premiumFormGrid > label > span:first-child,
+.premiumDeliveryField legend,
+.formSectionLabel,
+.premiumConsent,
+.consentField {
+  color: var(--oniria-text) !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.formStatus,
+.premiumPrivacyNote,
+.premiumInquiryPrivacyNote,
+.legalNotice {
+  border-color: rgba(149, 105, 77, 0.24) !important;
+  background-color: #fffdf8 !important;
+  color: var(--oniria-text) !important;
+}
+
+.finalSalesSection {
+  background-color: var(--oniria-bg) !important;
+}
+
+.finalSalesSection,
+.finalSalesSection * {
+  color: #ffffff !important;
+}
+
+.finalSalesContent h2 {
+  font-size: clamp(32px, 3vw, 38px) !important;
+  line-height: 1.04 !important;
+}
+
+.finalSalesDescription {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+.oniriaMinimalFooter,
+.vAvenuePage > .oniriaMinimalFooter,
+footer.oniriaMinimalFooter {
+  background-color: var(--oniria-footer-bg) !important;
+  color: #ffffff !important;
+}
+
+.oniriaMinimalFooter *,
+.oniriaMinimalFooter p,
+.oniriaMinimalFooter a,
+.oniriaMinimalFooter span {
+  color: #ffffff !important;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton {
+  width: fit-content !important;
+  min-width: 220px;
+  min-height: 50px;
+  margin-top: 30px;
+  padding: 0 28px !important;
+  border: 1px solid var(--oniria-cta) !important;
+  background-color: var(--oniria-cta) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-align: center;
+  text-transform: uppercase !important;
+  white-space: nowrap;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton,
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton:visited,
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton:hover,
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton:focus-visible {
+  text-decoration: none;
+}
+
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton:hover,
+.propertyDetailPage .propertyDetailLayoutContent .propertyDetailFullDetailsButton:focus-visible {
+  border-color: var(--oniria-cta-hover) !important;
+  background-color: var(--oniria-cta-hover) !important;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   FINAL PUBLIC SURFACE COLOUR LOCK
+   Beige/cream replaces white on public non-photo content.
+========================================================= */
+
+body > main:not(.adminLoginPage):not(.adminShell),
+body > main:not(.adminLoginPage):not(.adminShell) > section:not(.heroSlider):not(.edenInspiredHero):not(.publicPageHero):not(.premiumInquiryHero):not(.vAvenueHero):not(.propertyDetailHero):not(.contactMapSection):not(.finalSalesSection) {
+  background-color: var(--oniria-bg) !important;
+}
+
+.introductionSection,
+.collectionsSection,
+.masterplanSection,
+.featuredResidencesSection,
+.lifestylePreviewSection,
+.editorialIntroduction,
+.editorialSections,
+.propertyCollectionIntroduction,
+.propertyListingSection,
+.galleryIntroduction,
+.galleryGrid,
+.journalIntroduction,
+.journalGrid,
+.journalArticleSection,
+.faqIntroduction,
+.faqGroups,
+.contactPageSection,
+.inquiryPageSection,
+.premiumInquiryIntro,
+.premiumInquiryHighlights,
+.premiumInquiryFormSection,
+.propertyDetailOverview,
+.propertyDetailFeaturesSection,
+.propertyDetailLayout,
+.propertyDetailInquiry,
+.legalContentSection,
+.legalPageSection,
+.sitemapSection,
+.vAvenueIntroduction,
+.vAvenueExperience,
+.vAvenueOpportunities {
+  background-color: var(--oniria-bg) !important;
+}
+
+.residenceCard,
+.propertyCard,
+.journalCard,
+.faqItem,
+.faqGroup,
+.legalPageContent,
+.legalPageSidebar,
+.legalNotice,
+.sitemapSection article,
+.journalArticleSection section,
+.propertyDetailFacts,
+.propertyDetailFeaturesGrid article,
+.propertyDetailLayoutContent,
+.inquiryForm,
+.contactForm,
+.premiumInquiryForm,
+.premiumInquiryHighlights article,
+.vAvenueCard,
+.vAvenueCardBody,
+.lifestylePreviewCard {
+  background-color: var(--oniria-cream-panel) !important;
+  color: var(--oniria-text) !important;
+}
+
+.collectionCard {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.formField input,
+.formField select,
+.formField textarea,
+.premiumFormGrid input,
+.premiumFormGrid select,
+.premiumInquiryForm input,
+.premiumInquiryForm select,
+.premiumInquiryForm textarea,
+.contactForm input,
+.contactForm select,
+.contactForm textarea,
+.inquiryForm input,
+.inquiryForm select,
+.inquiryForm textarea {
+  background-color: #efe3d2 !important;
+  color: var(--oniria-text) !important;
+}
+
+.propertyCardImage,
+.residenceImage,
+.collectionImage,
+.galleryItemImage,
+.journalImage,
+.editorialSectionImage,
+.propertyDetailGalleryImage,
+.propertyDetailLayoutImage,
+.lifestylePreviewHeroImage,
+.lifestylePreviewCardImage,
+.masterplanImage,
+.vAvenueCardImage,
+.vAvenueExperienceImage,
+.oniriaMapFrame,
+.contactMapPlaceholder,
+.contactMapSection,
+.oniriaMinimalFooter,
+footer,
+.finalSalesBackground {
+  background-color: initial;
+}
+
+@media (max-width: 900px) {
+  .publicPageHeroContent h1,
+  .propertyDetailPage .propertyDetailHeroContent h1,
+  .vAvenueHeroContent h1,
+  .premiumInquiryHeroContent h1 {
+    font-size: clamp(34px, 5vw, 40px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .publicPageHeroContent h1,
+  .propertyDetailPage .propertyDetailHeroContent h1,
+  .vAvenueHeroContent h1,
+  .premiumInquiryHeroContent h1 {
+    font-size: clamp(29px, 8vw, 34px) !important;
+    line-height: 1.06 !important;
+  }
+
+  .publicPageHeroContent > span,
+  .publicPageHeroDescription,
+  .propertyDetailPage .propertyDetailHeroContent > span,
+  .vAvenueHeroMeta,
+  .premiumInquiryHeroContent > p.hero-subtitle {
+    font-size: 15px !important;
+  }
+}
+
+/* Final WhatsApp size lock */
+.oniriaWhatsappFabV2 {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  border-width: 2px !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24) !important;
+}
+
+.oniriaWhatsappFabV2Icon {
+  width: 23px !important;
+  height: 23px !important;
+}
+
+@media (max-width: 700px) {
+  .oniriaWhatsappFabV2 {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    right: 14px !important;
+    bottom: 14px !important;
+  }
+
+  .oniriaWhatsappFabV2Icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
+/* Keep collection descriptions on the section background, without boxed panels. */
+.collectionDescription,
+.homePage .collectionDescription {
+  padding: 24px 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #95694d !important;
+}
+
+/* Keep admin login submit text visible on the brown button. */
+.adminLoginForm button[type="submit"] {
+  background-color: #95694d !important;
+  border-color: #95694d !important;
+  color: #ffffff !important;
+}
+

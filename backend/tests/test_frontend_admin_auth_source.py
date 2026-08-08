@@ -8,12 +8,14 @@ def read_frontend(path: str) -> str:
     return (FRONTEND_SRC / path).read_text(encoding="utf-8")
 
 
-def test_frontend_admin_requests_include_credentials_and_use_localhost_fallback():
+def test_frontend_admin_requests_include_credentials_and_use_api_rewrite_fallback():
     public_api = read_frontend("services/api.js")
     admin_api = read_frontend("services/adminApi.js")
-    assert '"http://localhost:7000/api"' in public_api
+    assert 'const DEFAULT_API_BASE_URL = "/api";' in public_api
+    assert "A relative API URL must be /api." in public_api
     assert "joinApiUrl(path)" in admin_api
     assert 'credentials: "include"' in admin_api
+    assert "http://backend:7000" not in public_api
     assert "127.0.0.1:7000" not in admin_api
 
 
@@ -68,7 +70,7 @@ def test_frontend_api_helper_distinguishes_http_and_network_errors():
     assert "safeValidationMessage" in public_api
     assert "network_unreachable" in public_api
     assert "The request took too long. Please try again." in public_api
-    assert "The ONIRIA service could not be reached from this browser." in public_api
+    assert "We could not connect to the ONIRIA service. Please wait a moment and try again." in public_api
 
 
 def test_frontend_api_helper_prevents_bad_api_url_joins():

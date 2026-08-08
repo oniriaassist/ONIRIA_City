@@ -9,19 +9,19 @@ export const metadata = {
 const groups = [
   {
     title: "Discover",
-    links: [["Vision", "/vision"], ["Architecture", "/architecture"], ["Amenities", "/amenities"], ["Lifestyle", "/lifestyle"], ["Masterplan", "/masterplan"], ["Gallery", "/gallery"], ["Journal", "/journal"]],
+    links: [["Vision", "/vision#page-content"], ["Architecture", "/architecture#page-content"], ["Amenities", "/amenities#page-content"], ["Lifestyle", "/lifestyle#editorial-sections"], ["Masterplan", "/masterplan#page-content"], ["Gallery", "/gallery"], ["Journal", "/journal"]],
   },
   {
     title: "Properties",
-    links: [["All Properties", "/properties"], ["Villas", "/villas"], ["Residences", "/residences"], ["Signature Villa", "/villas/signature-villa"], ["V Avenue", "/v-avenue"], ["Commercial", "/commercial"]],
+    links: [["All Properties", "/properties#available-collection"], ["Villas", "/villas#available-collection"], ["Residences", "/residences#available-collection"], ["Signature Villa", "/villas/signature-villa"], ["V Avenue", "/v-avenue#v-avenue-opportunities"], ["Commercial", "/commercial#available-collection"]],
   },
   {
     title: "Sales",
-    links: [["Register Interest", "/inquiries"], ["Request Brochure", "/inquiries?type=brochure"], ["Book Consultation", "/inquiries?type=consultation"], ["Arrange Site Visit", "/inquiries?type=site-visit"], ["Contact", "/contact"]],
+    links: [["Register Interest", "/register-interest"], ["Request Brochure", "/request-brochure"], ["Book Consultation", "/contact#contact-form"], ["Arrange Site Visit", "/arrange-site-visit"], ["Contact", "/contact#contact-form"]],
   },
   {
     title: "Resources",
-    links: [["Investment", "/investment"], ["FAQs", "/faqs"], ["Properties in Fumba", "/properties?location=fumba"], ["V Avenue Commercial Spaces", "/commercial"]],
+    links: [["Investment", "/investment#page-content"], ["FAQs", "/faqs"], ["Properties in Fumba", "/properties#available-collection"], ["V Avenue Commercial Spaces", "/commercial#available-collection"]],
   },
   {
     title: "Legal",

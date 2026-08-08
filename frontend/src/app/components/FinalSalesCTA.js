@@ -1,38 +1,49 @@
+import Link from "next/link";
+import { buildWhatsAppLink } from "../data/contactDetails";
+
 export default function FinalSalesCTA() {
+  const whatsappHref = buildWhatsAppLink(
+    "Hello ONIRIA City, I would like to discuss villas, residences or V Avenue opportunities."
+  );
+
   return (
-    <section className="finalSalesSection">
+    <section className="finalSalesSection" aria-label="Start your ONIRIA City journey">
       <div
         className="finalSalesBackground"
         style={{
-          backgroundImage:
-            "url('/media/oniria/villa-pool-rear.png')",
+          backgroundImage: "url('/media/oniria/villa-pool-rear.png')",
         }}
       >
         <div className="finalSalesOverlay" />
 
         <div className="finalSalesContent">
           <p className="finalSalesLabel">BEGIN YOUR</p>
-
           <h2>ONIRIA story</h2>
 
           <p className="finalSalesDescription">
-            Explore a collection shaped around the way you want to live.
+            Choose your next step and our team will help you explore the
+            collection that best fits the way you want to live, visit or invest.
           </p>
 
           <div className="finalSalesActions">
-            <a href="/request-brochure" className="finalSalesPrimaryButton">
+            <Link href="/request-brochure" className="finalSalesPrimaryButton">
               Request brochure
-            </a>
+            </Link>
 
-            <a href="/register-interest" className="finalSalesPrimaryButton">
+            <Link href="/register-interest" className="finalSalesPrimaryButton">
               Register interest
-            </a>
+            </Link>
 
-            <a href="/arrange-site-visit" className="finalSalesSecondaryButton">
+            <Link href="/arrange-site-visit" className="finalSalesSecondaryButton">
               Arrange site visit
-            </a>
+            </Link>
 
-            <a href="https://wa.me/255000000000" className="finalSalesSecondaryButton" target="_blank" rel="noopener noreferrer">
+            <a
+              href={whatsappHref}
+              className="finalSalesSecondaryButton"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Continue on WhatsApp
             </a>
           </div>
@@ -45,12 +56,12 @@ export default function FinalSalesCTA() {
 
             <div>
               <span>Collections</span>
-              <strong>Villas, Residences & V Avenue</strong>
+              <strong>Villas, Residences &amp; V Avenue</strong>
             </div>
 
             <div>
-              <span>Availability</span>
-              <strong>Register your interest</strong>
+              <span>Private introduction</span>
+              <strong>Brochure &amp; site visits</strong>
             </div>
           </div>
         </div>

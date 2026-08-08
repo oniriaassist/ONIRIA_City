@@ -214,7 +214,7 @@ export default function PrivacyPage() {
                 through the ONIRIA City contact page.
               </p>
 
-              <a href="/contact" className="legalPageButton">
+              <a href="/contact#contact-form" className="legalPageButton">
                 Contact ONIRIA City
               </a>
             </section>

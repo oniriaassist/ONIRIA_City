@@ -51,7 +51,7 @@ export default function InvestmentPage() {
           ],
           link: {
             label: "View property collections",
-            href: "/properties",
+            href: "/properties#available-collection",
           },
         },
         {
@@ -81,7 +81,7 @@ export default function InvestmentPage() {
           ],
           link: {
             label: "Register your interest",
-            href: "/inquiries",
+            href: "/register-interest",
           },
         },
       ]}

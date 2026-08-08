@@ -218,7 +218,7 @@ export default function TermsPage() {
                 effective date on this page.
               </p>
 
-              <a href="/contact" className="legalPageButton">
+              <a href="/contact#contact-form" className="legalPageButton">
                 Contact ONIRIA City
               </a>
             </section>

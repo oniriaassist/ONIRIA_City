@@ -1,13 +1,28 @@
 import PublicFloatingActions from "./components/PublicFloatingActions";
 import "./globals.css";
+import "./premium-marketing.css";
 
 export const metadata = {
   title: {
-    default: "ONIRIA City",
+    default: "ONIRIA City | The Art of Living in Zanzibar",
     template: "%s | ONIRIA City",
   },
   description:
-    "Explore ONIRIA City, a destination for modern living, lifestyle, investment and commercial opportunities in Zanzibar.",
+    "Discover ONIRIA City in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+  applicationName: "ONIRIA City",
+  category: "Real Estate",
+  keywords: [
+    "ONIRIA City",
+    "Zanzibar real estate",
+    "Fumba property",
+    "Zanzibar villas",
+    "Zanzibar residences",
+    "V Avenue",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: "/oniria-favicon.svg",
     shortcut: "/oniria-favicon.svg",

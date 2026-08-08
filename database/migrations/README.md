@@ -6,9 +6,9 @@ Do not bulk-run every `.sql` file. Production and local development use MySQL 8.
 
 Historical PostgreSQL drafts have been moved to `database/archive/postgresql-drafts/`. They must not be executed.
 
-The active MySQL sequence starts with `001_database_setup.sql` and continues through `016_newsletter_subscriptions.sql`.
+The active MySQL sequence starts with `001_database_setup.sql` and continues through `018_brochure_delivery.sql`.
 
-After the 16 active migrations, apply safe seed data in this order:
+After the active migrations, apply safe seed data in this order:
 
 1. `staff_roles.sql`
 2. `property_seed.sql`

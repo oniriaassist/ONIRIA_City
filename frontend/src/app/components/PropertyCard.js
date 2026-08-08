@@ -10,12 +10,6 @@ export default function PropertyCard({ property, showImageLabels = true }) {
         >
           <div className="propertyCardOverlay" />
 
-          {showImageLabels && property.collection && (
-            <span className="propertyCardCollection">
-              {property.collection}
-            </span>
-          )}
-
           {showImageLabels && property.status && (
             <span className="propertyCardStatus">{property.status}</span>
           )}
@@ -25,10 +19,6 @@ export default function PropertyCard({ property, showImageLabels = true }) {
       </a>
 
       <div className="propertyCardContent">
-        <div className="propertyCardLocation">
-          <span>{property.location}</span>
-        </div>
-
         <h3>{property.title}</h3>
 
         <div className="propertyCardDetails">

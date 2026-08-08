@@ -1,12 +1,9 @@
+import { buildWhatsAppLink } from "../data/contactDetails";
+
 export default function WhatsAppButton() {
-  const phoneNumber = "255777221121";
-
-  const message =
-    "Hello ONIRIA City, I would like to receive more information.";
-
-  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-    message
-  )}`;
+  const whatsappLink = buildWhatsAppLink(
+    "Hello ONIRIA City, I would like to receive more information."
+  );
 
   return (
     <a

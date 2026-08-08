@@ -26,5 +26,5 @@ export default async function ResidenceDetailPage({ params }) {
     notFound();
   }
 
-  return <PropertyDetailPage property={property} />;
+  return <PropertyDetailPage property={property} collectionSlug="residences" />;
 }

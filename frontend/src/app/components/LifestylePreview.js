@@ -5,6 +5,7 @@ const lifestyleItems = [
       "Enjoy the calm rhythm of Zanzibar with refreshing sea views, coastal experiences and beautiful sunsets.",
     image:
       "/media/oniria/villa-pool-rear.png",
+    href: "/lifestyle#ocean-living",
   },
   {
     title: "Wellness and Nature",
@@ -12,6 +13,7 @@ const lifestyleItems = [
       "Walk through landscaped spaces, relax in peaceful surroundings and reconnect with nature every day.",
     image:
       "/media/oniria/villa-front-entry.png",
+    href: "/lifestyle#wellness-and-nature",
   },
   {
     title: "Community and Belonging",
@@ -19,6 +21,7 @@ const lifestyleItems = [
       "Shared spaces, family-friendly areas and social destinations create a welcoming place for every generation.",
     image:
       "/media/oniria/villa-gated-entry.png",
+    href: "/lifestyle#community-and-belonging",
   },
 ];
 
@@ -39,7 +42,7 @@ export default function LifestylePreview() {
             community and a relaxed way of life.
           </p>
 
-          <a href="/lifestyle" className="textLink">
+          <a href="/lifestyle#editorial-sections" className="textLink">
             Explore the lifestyle →
           </a>
         </div>
@@ -65,7 +68,7 @@ export default function LifestylePreview() {
               experiences designed for comfort and belonging.
             </span>
 
-            <a href="/lifestyle" className="lifestylePreviewButton">
+            <a href="/lifestyle#editorial-sections" className="lifestylePreviewButton">
               Discover ONIRIA Lifestyle
             </a>
           </div>
@@ -89,7 +92,7 @@ export default function LifestylePreview() {
 
               <p>{item.description}</p>
 
-              <a href="/lifestyle">
+              <a href={item.href}>
                 Discover more <span>→</span>
               </a>
             </div>

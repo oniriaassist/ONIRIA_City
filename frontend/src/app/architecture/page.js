@@ -77,7 +77,7 @@ export default function ArchitecturePage() {
           ],
           link: {
             label: "Explore ONIRIA properties",
-            href: "/properties",
+            href: "/properties#available-collection",
           },
         },
       ]}

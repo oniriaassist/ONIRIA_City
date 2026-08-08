@@ -72,7 +72,8 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-oniria_city}
       MYSQL_USER: ${MYSQL_USER:-oniria_user}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
     ports:
       - "7000:7000"
     depends_on:

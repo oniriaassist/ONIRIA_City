@@ -20,7 +20,7 @@ export default function IntroductionSection() {
           </p>
         </div>
 
-        <a href="/vision" className="textLink introductionLink">
+        <a href="/vision#page-content" className="textLink introductionLink">
           Discover our vision <span aria-hidden="true">→</span>
         </a>
       </div>

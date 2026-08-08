@@ -197,7 +197,7 @@ export const propertyDetails = {
 
   residences: {
     "garden-residence": {
-      collection: "ONIRIA RESIDENCES",
+      collection: "RESIDENCES",
       title: "Three-Bedroom Garden Residence",
       location: "Fumba, Zanzibar",
       eyebrow: "GARDEN RESIDENCE",
@@ -294,7 +294,7 @@ export const propertyDetails = {
     },
 
     "island-residence": {
-      collection: "ONIRIA RESIDENCES",
+      collection: "RESIDENCES",
       title: "Two-Bedroom Island Residence",
       location: "Fumba, Zanzibar",
       eyebrow: "ISLAND RESIDENCE",
@@ -391,7 +391,7 @@ export const propertyDetails = {
     },
 
     "studio-residence": {
-      collection: "ONIRIA RESIDENCES",
+      collection: "RESIDENCES",
       title: "One-Bedroom Studio Residence",
       location: "Fumba, Zanzibar",
       eyebrow: "STUDIO RESIDENCE",

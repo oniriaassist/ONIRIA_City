@@ -26,5 +26,5 @@ export default async function CommercialDetailPage({ params }) {
     notFound();
   }
 
-  return <PropertyDetailPage property={property} />;
+  return <PropertyDetailPage property={property} collectionSlug="commercial" />;
 }
