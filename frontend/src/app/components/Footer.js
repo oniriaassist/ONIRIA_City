@@ -17,8 +17,8 @@ export default function Footer() {
         </section>
 
         <div className="oniriaMinimalFooterBrand">
-          <Link href="/" aria-label="Return to ONIRIA City homepage">
-            ONIRIA CITY
+          <Link href="/" aria-label="Return to ROHO homepage">
+            ROHO
           </Link>
         </div>
 

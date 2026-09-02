@@ -69,8 +69,8 @@ export default function Header() {
           {leftNavigation.map(renderDesktopLink)}
         </div>
 
-        <Link href="/" className="edenHeaderBrand" aria-label="ONIRIA City home">
-          ONIRIA CITY
+        <Link href="/" className="edenHeaderBrand" aria-label="ROHO home">
+          ROHO
         </Link>
 
         <div className="edenNavGroup edenNavGroupRight">
@@ -80,7 +80,7 @@ export default function Header() {
 
       <div className="edenHeaderMobile">
         <Link href="/" className="edenHeaderBrand" onClick={closeMenu}>
-          ONIRIA CITY
+          ROHO
         </Link>
 
         <button
