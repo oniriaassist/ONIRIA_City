@@ -124,7 +124,7 @@ class WhatsAppService:
                             "id": media_id,
                             "filename": "ONIRIA_City_Brochure.pdf",
                             "caption": (
-                                f"Hello {customer_name}, here is your ONIRIA City brochure. "
+                                f"Hello {customer_name}, here is your Roho brochure. "
                                 f"Reference: {reference_number}."
                             ),
                         },

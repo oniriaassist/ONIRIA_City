@@ -1,16 +1,16 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Investment | ONIRIA City",
+  title: "Investment | Roho",
   description:
-    "Learn about the investment opportunity offered by ONIRIA City in Fumba, Zanzibar.",
+    "Learn about the investment opportunity offered by Roho in Fumba, Zanzibar.",
 };
 
 export default function InvestmentPage() {
   return (
     <EditorialPage
       hero={{
-        eyebrow: "INVEST IN ONIRIA",
+        eyebrow: "INVEST IN ROHO",
         title: "A New Opportunity in Zanzibar",
         description:
           "Own a home or property within a carefully planned destination designed for long-term value, lifestyle and growth.",
@@ -21,7 +21,7 @@ export default function InvestmentPage() {
         label: "A STRATEGIC DESTINATION",
         title: "An investment connected to place and potential",
         description:
-          "ONIRIA City combines residential quality, lifestyle appeal and a growing Zanzibar location within one integrated development.",
+          "Roho combines residential quality, lifestyle appeal and a growing Zanzibar location within one integrated development.",
       }}
       sections={[
         {
@@ -40,7 +40,7 @@ export default function InvestmentPage() {
         {
           title: "Different property opportunities",
           description:
-            "ONIRIA offers villas, residences, apartments and commercial spaces for different ownership and investment goals.",
+            "ROHO offers villas, residences, apartments and commercial spaces for different ownership and investment goals.",
           image:
             "/media/oniria/residence-aerial-masterplan.png",
           points: [

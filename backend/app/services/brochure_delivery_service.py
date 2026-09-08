@@ -84,7 +84,7 @@ class BrochureDeliveryService:
 
         delivered = outcome.status == "sent"
         message = (
-            f"Your ONIRIA City brochure has been sent by {method.title()}."
+            f"Your Roho brochure has been sent by {method.title()}."
             if delivered
             else "Your request has been saved. Our sales team will contact you shortly because automatic delivery could not be completed."
         )

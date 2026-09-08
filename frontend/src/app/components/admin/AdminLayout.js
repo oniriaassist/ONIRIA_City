@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { adminApi } from "../../services/adminApi";
 import { AdminLoadingScreen, StaffAvatar } from "./AdminUI";
+import BrandLogo from "../BrandLogo";
 
 const navGroups = [
   ["Core", [
@@ -110,8 +111,8 @@ export default function AdminLayout({ title, children }) {
       {sidebarOpen && <button className="adminSidebarBackdrop" type="button" aria-label="Close navigation" onClick={() => setSidebarOpen(false)} />}
       <aside className={`adminSidebar ${sidebarOpen ? "isOpen" : ""}`}>
         <div className="adminBrandBlock">
-          <Link href="/admin" className="adminBrand" prefetch={false} onClick={() => setSidebarOpen(false)}>
-            ONIRIA CITY
+          <Link href="/admin" className="adminBrand" aria-label="ROHO dashboard" prefetch={false} onClick={() => setSidebarOpen(false)}>
+            <BrandLogo />
           </Link>
           <span>Private Staff Area</span>
         </div>

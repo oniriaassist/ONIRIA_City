@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "Privacy Policy",
   description:
-    "Read the ONIRIA City website privacy policy and learn how submitted information may be handled.",
+    "Read the Roho website privacy policy and learn how submitted information may be handled.",
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <PublicPageHero
         eyebrow="LEGAL INFORMATION"
         title="Privacy Policy"
-        description="This page explains how information submitted through the ONIRIA City website prototype may be collected, used and protected."
+        description="This page explains how information submitted through the Roho website prototype may be collected, used and protected."
         image="/media/oniria/residence-roundabout.png"
       />
 
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
               <strong>Prototype notice</strong>
 
               <p>
-                This privacy policy is demonstration content for the ONIRIA City
+                This privacy policy is demonstration content for the Roho
                 website prototype. It should be reviewed and approved by the
                 project owner and a qualified legal professional before the
                 website is published for real customers.
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
               <h2>Introduction</h2>
 
               <p>
-                ONIRIA City respects the privacy of visitors who use this
+                Roho respects the privacy of visitors who use this
                 website. This policy describes the types of information that
                 may be submitted through the website and the general purposes
                 for which that information may be used.
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
 
               <p>
                 Personal information should not be sold. Information may be
-                shared only with authorised ONIRIA City team members or service
+                shared only with authorised Roho team members or service
                 providers who need it to respond to the visitor&apos;s request
                 or operate the website.
               </p>
@@ -173,7 +173,7 @@ export default function PrivacyPage() {
               <h2>Your choices</h2>
 
               <p>
-                Visitors may contact the ONIRIA City team to ask about personal
+                Visitors may contact the Roho team to ask about personal
                 information they previously submitted. Depending on applicable
                 requirements, they may also request correction, updating or
                 deletion of that information.
@@ -211,11 +211,11 @@ export default function PrivacyPage() {
 
               <p>
                 Questions or requests relating to privacy may be submitted
-                through the ONIRIA City contact page.
+                through the Roho contact page.
               </p>
 
               <a href="/contact#contact-form" className="legalPageButton">
-                Contact ONIRIA City
+                Contact Roho
               </a>
             </section>
 

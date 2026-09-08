@@ -8,22 +8,22 @@ import Footer from "../components/Footer";
 
 const faqGroups = [
   {
-    category: "ABOUT ONIRIA",
+    category: "ABOUT ROHO",
     questions: [
       {
-        question: "What is ONIRIA City?",
+        question: "What is Roho?",
         answer:
-          "ONIRIA City is a planned residential and lifestyle destination in Fumba, Zanzibar. It brings together villas, residences, commercial spaces, amenities, landscaped areas and community experiences.",
+          "Roho is a planned residential and lifestyle destination in Fumba, Zanzibar. It brings together villas, residences, commercial spaces, amenities, landscaped areas and community experiences.",
       },
       {
-        question: "Where is ONIRIA City located?",
+        question: "Where is Roho located?",
         answer:
-          "ONIRIA City is planned for Fumba, Zanzibar, Tanzania. Detailed directions and location information will be shared through the official sales team.",
+          "Roho is planned for Fumba, Zanzibar, Tanzania. Detailed directions and location information will be shared through the official sales team.",
       },
       {
-        question: "What makes ONIRIA different?",
+        question: "What makes ROHO different?",
         answer:
-          "ONIRIA combines contemporary architecture, tropical landscape, wellness, commercial activity and community living within one connected masterplan.",
+          "ROHO combines contemporary architecture, tropical landscape, wellness, commercial activity and community living within one connected masterplan.",
       },
     ],
   },
@@ -105,19 +105,19 @@ export default function FAQsPage() {
       <PublicPageHero
         eyebrow="FREQUENTLY ASKED QUESTIONS"
         title="How Can We Help?"
-        description="Find answers about ONIRIA City, its properties, lifestyle and purchasing journey."
+        description="Find answers about Roho, its properties, lifestyle and purchasing journey."
         image="/media/oniria/v-avenue-commercial.png"
       />
 
       <section className="faqIntroduction" id="page-content">
-        <p className="sectionLabel">ONIRIA INFORMATION</p>
+        <p className="sectionLabel">ROHO INFORMATION</p>
 
         <h2>Answers to common questions</h2>
 
         <p>
           Information may change as the project develops. Final prices,
           availability, legal terms and delivery details must come from the
-          authorized ONIRIA team.
+          authorized ROHO team.
         </p>
       </section>
 

@@ -35,14 +35,14 @@ class EmailService:
         self.settings = settings
 
     async def send_staff_password_reset(self, *, recipient: str, reset_url: str, expires_minutes: int) -> EmailSendResult:
-        subject = "Reset your ONIRIA City staff password"
+        subject = "Reset your Roho staff password"
         text = (
-            "A password reset was requested for your ONIRIA City staff account.\n\n"
+            "A password reset was requested for your Roho staff account.\n\n"
             f"Reset link: {reset_url}\n\n"
             f"This link expires in {expires_minutes} minutes. If you did not request it, ignore this message."
         )
         html = (
-            "<p>A password reset was requested for your ONIRIA City staff account.</p>"
+            "<p>A password reset was requested for your Roho staff account.</p>"
             f"<p><a href=\"{escape(reset_url)}\">Reset your password</a></p>"
             f"<p>This link expires in {expires_minutes} minutes. If you did not request it, ignore this message.</p>"
         )
@@ -57,16 +57,16 @@ class EmailService:
         reference_number: str,
         brochure_path: Path,
     ) -> EmailSendResult:
-        subject = "Your ONIRIA City brochure"
+        subject = "Your Roho brochure"
         text = (
             f"Hello {customer_name},\n\n"
-            "Thank you for your interest in ONIRIA City. Your approved brochure is attached.\n\n"
+            "Thank you for your interest in Roho. Your approved brochure is attached.\n\n"
             f"Reference: {reference_number}\n\n"
             "Our sales team is available to help with availability, consultations and private site visits."
         )
         html = (
             f"<p>Hello {escape(customer_name)},</p>"
-            "<p>Thank you for your interest in ONIRIA City. Your approved brochure is attached.</p>"
+            "<p>Thank you for your interest in Roho. Your approved brochure is attached.</p>"
             f"<p><strong>Reference:</strong> {escape(reference_number)}</p>"
             "<p>Our sales team is available to help with availability, consultations and private site visits.</p>"
         )
@@ -122,9 +122,9 @@ class EmailService:
     async def send_test_email(self, *, recipient: str) -> EmailSendResult:
         return await self._send_email(
             to=[recipient],
-            subject="ONIRIA City email test",
-            text="This is a test email from ONIRIA City.",
-            html="<p>This is a test email from ONIRIA City.</p>",
+            subject="Roho email test",
+            text="This is a test email from Roho.",
+            html="<p>This is a test email from Roho.</p>",
         )
 
     def _provider_name(self) -> str:

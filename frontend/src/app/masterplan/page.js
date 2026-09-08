@@ -1,9 +1,9 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Masterplan | ONIRIA City",
+  title: "Masterplan | Roho",
   description:
-    "Explore the connected masterplan of ONIRIA City in Fumba, Zanzibar.",
+    "Explore the connected masterplan of Roho in Fumba, Zanzibar.",
 };
 
 export default function MasterplanPage() {
@@ -21,7 +21,7 @@ export default function MasterplanPage() {
         label: "THE BIG PICTURE",
         title: "Everything connected by one clear vision",
         description:
-          "The ONIRIA masterplan is designed to make daily life convenient, comfortable and inspiring. Residential areas are connected to landscaped spaces, social destinations and everyday services.",
+          "The ROHO masterplan is designed to make daily life convenient, comfortable and inspiring. Residential areas are connected to landscaped spaces, social destinations and everyday services.",
       }}
       sections={[
         {

@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "V Avenue",
   description:
-    "Discover apartments, retail, dining and professional opportunities at V Avenue, the social and commercial heart of ONIRIA City.",
+    "Discover apartments, retail, dining and professional opportunities at V Avenue, the social and commercial heart of Roho.",
 };
 
 const opportunities = [

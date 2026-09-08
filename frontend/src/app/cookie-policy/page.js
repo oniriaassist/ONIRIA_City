@@ -3,7 +3,7 @@ import PublicPageHero from "../components/PublicPageHero";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Cookie Policy | ONIRIA City",
+  title: "Cookie Policy | Roho",
 };
 
 export default function CookiePolicyPage() {
@@ -12,15 +12,15 @@ export default function CookiePolicyPage() {
       <Header />
       <PublicPageHero
         eyebrow="COOKIE POLICY"
-        title="How ONIRIA City Uses Cookies"
+        title="How Roho Uses Cookies"
         description="A clear summary of the cookies and similar browser storage used by this website."
         image="/media/oniria/villa-front-entry.png"
       />
       <section className="legalContentSection" id="page-content">
         <h2>Necessary website storage</h2>
-        <p>ONIRIA City may use necessary browser storage for anonymous session identifiers, enquiry form continuity and basic website operation.</p>
+        <p>Roho may use necessary browser storage for anonymous session identifiers, enquiry form continuity and basic website operation.</p>
         <h2>Campaign attribution</h2>
-        <p>When visitors arrive through approved campaigns, the website may preserve source-page and UTM information so enquiries and newsletter subscriptions can be understood by the ONIRIA team.</p>
+        <p>When visitors arrive through approved campaigns, the website may preserve source-page and UTM information so enquiries and newsletter subscriptions can be understood by the ROHO team.</p>
         <h2>Staff authentication cookies</h2>
         <p>Authorised staff use a secure HTTP-only session cookie for the private admin dashboard. Public visitors do not need staff cookies or customer accounts.</p>
         <h2>Analytics cookies</h2>

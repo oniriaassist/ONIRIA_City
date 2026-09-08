@@ -757,5 +757,5 @@ class LeadRepository:
         return {}
 
     def _activity_summary(self, payload: EnquiryCreate) -> str:
-        interest = payload.property_slug or payload.collection_slug or "general ONIRIA City"
+        interest = payload.property_slug or payload.collection_slug or "general Roho"
         return f"{payload.enquiry_type.value.replace('_', ' ').title()} enquiry for {interest}"

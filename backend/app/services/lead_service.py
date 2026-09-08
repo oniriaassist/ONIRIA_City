@@ -41,7 +41,7 @@ class LeadService:
             lead_id=lead["id"],
             lead_score=score,
             follow_up_status=follow_up_status,
-            message="Thank you. The ONIRIA City sales team will follow up with you.",
+            message="Thank you. The Roho sales team will follow up with you.",
         )
 
     async def list_leads(self) -> list[LeadSummary]:

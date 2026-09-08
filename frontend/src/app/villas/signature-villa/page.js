@@ -1,13 +1,13 @@
 import PropertyDetailPage from "../../components/PropertyDetailPage";
 
 export const metadata = {
-  title: "Signature Villa | ONIRIA City",
+  title: "Signature Villa | Roho",
   description:
-    "Explore the Signature Four-Bedroom Villa at ONIRIA City in Fumba, Zanzibar.",
+    "Explore the Signature Four-Bedroom Villa at Roho in Fumba, Zanzibar.",
 };
 
 const property = {
-  collection: "ONIRIA VILLAS",
+  collection: "ROHO VILLAS",
   title: "Signature Four-Bedroom Villa",
   location: "Fumba, Zanzibar",
   eyebrow: "SIGNATURE VILLA",

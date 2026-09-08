@@ -1,20 +1,5 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-
-const WhatsAppButton = dynamic(() => import("./WhatsAppButton"), { ssr: false });
+import WhatsAppButton from "./WhatsAppButton";
 
 export default function PublicFloatingActions() {
-  const pathname = usePathname();
-
-  if (pathname?.startsWith("/admin")) {
-    return null;
-  }
-
-  return (
-    <>
-      <WhatsAppButton />
-    </>
-  );
+  return <WhatsAppButton />;
 }

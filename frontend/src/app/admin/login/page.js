@@ -1,16 +1,17 @@
 import StaffLoginForm from "../../components/admin/StaffLoginForm";
+import BrandLogo from "../../components/BrandLogo";
 
 export const metadata = {
-  title: "Staff Login | ONIRIA City",
+  title: "Staff Login | Roho",
 };
 
 export default function AdminLoginPage() {
   return (
     <main className="adminLoginPage">
       <div className="adminLoginHero">
-        <p>ONIRIA CITY STAFF</p>
+        <div className="adminLoginBrandRow"><BrandLogo label="ROHO" /><span>Staff</span></div>
         <h1>Secure access for authorised team members</h1>
-        <span>Manage leads, enquiries, appointments and staff operations from the private ONIRIA workspace.</span>
+        <span>Manage leads, enquiries, appointments and staff operations from the private ROHO workspace.</span>
       </div>
       <div className="adminLoginCard">
         <p>Staff Portal</p>

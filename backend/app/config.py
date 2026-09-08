@@ -23,7 +23,7 @@ email_adapter = TypeAdapter(EmailStr)
 
 class Settings(BaseSettings):
     # Application
-    app_name: str = "ONIRIA City Backend"
+    app_name: str = "Roho Backend"
     app_env: str = "local"
     app_debug: bool = False
     api_prefix: str = "/api"
@@ -73,7 +73,7 @@ class Settings(BaseSettings):
     smtp_starttls: bool = True
     smtp_timeout_seconds: int = 10
     mail_from: str | None = None
-    mail_from_name: str = "ONIRIA City"
+    mail_from_name: str = "Roho"
     sales_notification_email: str | None = None
     sales_notification_emails: str | None = None
     reply_to_email: str | None = None

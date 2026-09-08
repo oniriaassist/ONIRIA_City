@@ -11,7 +11,7 @@ Email delivery is optional in local development. If `MAIL_PROVIDER` is blank, de
 MAIL_PROVIDER=resend
 RESEND_API_KEY=<resend-api-key>
 MAIL_FROM=hello@example.com
-MAIL_FROM_NAME=ONIRIA City
+MAIL_FROM_NAME=Roho
 SALES_NOTIFICATION_EMAIL=sales@example.com
 SALES_NOTIFICATION_EMAILS=
 REPLY_TO_EMAIL=

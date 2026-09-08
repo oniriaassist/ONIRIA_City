@@ -13139,6 +13139,11 @@ footer,
   height: 23px !important;
 }
 
+body:has(.adminLoginPage) .oniriaWhatsappFabV2,
+body:has(.adminShell) .oniriaWhatsappFabV2 {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .oniriaWhatsappFabV2 {
     width: 42px !important;
@@ -13173,3 +13178,70 @@ footer,
   color: #ffffff !important;
 }
 
+/* =========================================================
+   ROHO WORDMARK
+   Uses the supplied ROHO artwork as an alpha mask so the
+   exact wordmark shape can inherit the existing foreground
+   colour in the header, footer and staff workspace.
+========================================================= */
+.rohoBrandLogo {
+  display: inline-block;
+  width: 2.45em;
+  height: 1em;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask: url("/brand/roho-logo.png") center / contain no-repeat;
+  mask: url("/brand/roho-logo.png") center / contain no-repeat;
+  vertical-align: middle;
+}
+
+.edenHeaderBrand .rohoBrandLogo {
+  background-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.edenHeaderBrand,
+.oniriaMinimalFooterBrand a,
+.adminBrand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminSessionMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #97694d;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.adminLoginBrandRow {
+  margin: 0;
+  color: #a17f4d;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.adminLoginBrandRow .rohoBrandLogo {
+  font-size: 14px;
+}
+
+@media (max-width: 1080px) {
+  .edenHeaderMobile .edenHeaderBrand {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 980px) {
+  .oniriaMinimalFooterBrand a {
+    justify-content: flex-start;
+  }
+}

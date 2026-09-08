@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "Terms and Conditions",
   description:
-    "Read the terms and conditions for using the ONIRIA City website prototype.",
+    "Read the terms and conditions for using the Roho website prototype.",
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
       <PublicPageHero
         eyebrow="LEGAL INFORMATION"
         title="Terms and Conditions"
-        description="These terms describe the general conditions for accessing and using the ONIRIA City website prototype."
+        description="These terms describe the general conditions for accessing and using the Roho website prototype."
         image="/media/oniria/villa-gated-entry.png"
       />
 
@@ -44,7 +44,7 @@ export default function TermsPage() {
               <strong>Prototype notice</strong>
 
               <p>
-                These terms are demonstration content for the ONIRIA City
+                These terms are demonstration content for the Roho
                 website prototype. They must be reviewed and approved by the
                 project owner and a qualified legal professional before the
                 website is used for real property marketing, sales or customer
@@ -58,7 +58,7 @@ export default function TermsPage() {
               <h2>Acceptance of these terms</h2>
 
               <p>
-                By accessing or using the ONIRIA City website, you agree to use
+                By accessing or using the Roho website, you agree to use
                 it according to these terms. Visitors who do not agree with the
                 terms should stop using the website.
               </p>
@@ -71,7 +71,7 @@ export default function TermsPage() {
 
               <p>
                 The current website is a project prototype created to
-                demonstrate a possible digital experience for ONIRIA City.
+                demonstrate a possible digital experience for Roho.
                 Certain property information, images, layouts, features,
                 availability and services may be conceptual or incomplete.
               </p>
@@ -114,7 +114,7 @@ export default function TermsPage() {
               <p>
                 Final specifications, approved plans, prices, payment terms,
                 ownership conditions and availability must be confirmed
-                directly with the authorised ONIRIA City team before any
+                directly with the authorised Roho team before any
                 decision is made.
               </p>
             </section>
@@ -161,7 +161,7 @@ export default function TermsPage() {
               <h2>Intellectual property</h2>
 
               <p>
-                The ONIRIA City name, website design, written content, visual
+                The Roho name, website design, written content, visual
                 identity and project materials may be protected by applicable
                 intellectual-property rights.
               </p>
@@ -185,7 +185,7 @@ export default function TermsPage() {
               </p>
 
               <p>
-                ONIRIA City is not responsible for the availability, security
+                Roho is not responsible for the availability, security
                 or content of an external service that it does not control.
               </p>
             </section>
@@ -219,7 +219,7 @@ export default function TermsPage() {
               </p>
 
               <a href="/contact#contact-form" className="legalPageButton">
-                Contact ONIRIA City
+                Contact Roho
               </a>
             </section>
 

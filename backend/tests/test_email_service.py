@@ -43,7 +43,7 @@ def test_smtp_provider_sends_message(monkeypatch):
         smtp_username="mailer",
         smtp_password="smtp-secret",
         mail_from="enquiries@example.com",
-        mail_from_name="ONIRIA City",
+        mail_from_name="Roho",
         sales_notification_email="sales@example.com",
     )
     service = EmailService(settings)
@@ -61,7 +61,7 @@ def test_smtp_provider_sends_message(monkeypatch):
     message, from_addr, to_addrs = smtp.sent
     assert from_addr == "enquiries@example.com"
     assert to_addrs == ["buyer@example.com"]
-    assert message["From"] == "ONIRIA City <enquiries@example.com>"
+    assert message["From"] == "Roho <enquiries@example.com>"
     assert message["To"] == "buyer@example.com"
 
 

@@ -4,15 +4,15 @@ import "./premium-marketing.css";
 
 export const metadata = {
   title: {
-    default: "ONIRIA City | The Art of Living in Zanzibar",
-    template: "%s | ONIRIA City",
+    default: "Roho | The Art of Living in Zanzibar",
+    template: "%s | Roho",
   },
   description:
-    "Discover ONIRIA City in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
-  applicationName: "ONIRIA City",
+    "Discover Roho in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+  applicationName: "Roho",
   category: "Real Estate",
   keywords: [
-    "ONIRIA City",
+    "Roho",
     "Zanzibar real estate",
     "Fumba property",
     "Zanzibar villas",

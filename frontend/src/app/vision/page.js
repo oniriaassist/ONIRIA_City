@@ -1,9 +1,9 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Vision | ONIRIA City",
+  title: "Vision | Roho",
   description:
-    "Discover the vision behind ONIRIA City in Fumba, Zanzibar.",
+    "Discover the vision behind Roho in Fumba, Zanzibar.",
 };
 
 export default function VisionPage() {
@@ -20,13 +20,13 @@ export default function VisionPage() {
         label: "OUR PURPOSE",
         title: "Creating a place to live, connect and belong",
         description:
-          "ONIRIA City is envisioned as a complete residential and lifestyle community in Fumba. It brings together homes, commerce, wellness, landscape and shared experiences within one carefully considered destination.",
+          "Roho is envisioned as a complete residential and lifestyle community in Fumba. It brings together homes, commerce, wellness, landscape and shared experiences within one carefully considered destination.",
       }}
       sections={[
         {
           title: "Designed around people",
           description:
-            "Every part of ONIRIA City is planned to support comfortable living, meaningful connections and a strong sense of belonging.",
+            "Every part of Roho is planned to support comfortable living, meaningful connections and a strong sense of belonging.",
           image:
             "/media/oniria/v-avenue-commercial.png",
           points: [
@@ -52,7 +52,7 @@ export default function VisionPage() {
         {
           title: "Built for the future",
           description:
-            "ONIRIA combines modern infrastructure, responsible planning and investment potential to create lasting value for residents and the wider community.",
+            "ROHO combines modern infrastructure, responsible planning and investment potential to create lasting value for residents and the wider community.",
           image:
             "/media/oniria/villa-front-entry.png",
           points: [

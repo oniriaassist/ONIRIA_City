@@ -17,6 +17,6 @@ FROM property_collections pc WHERE pc.slug = 'residence-collection'
 ON DUPLICATE KEY UPDATE title = VALUES(title), hero_image = VALUES(hero_image), description = VALUES(description);
 
 INSERT INTO properties (slug, collection_id, title, property_type, bedrooms, status, price_label, hero_image, description)
-SELECT 'v-avenue-retail-suite', pc.id, 'V Avenue Retail Suite', 'commercial', NULL, 'published', 'Leasing enquiries open', '/media/oniria/v-avenue-commercial.png', 'A commercial suite positioned within ONIRIA City retail and hospitality corridor.'
+SELECT 'v-avenue-retail-suite', pc.id, 'V Avenue Retail Suite', 'commercial', NULL, 'published', 'Leasing enquiries open', '/media/oniria/v-avenue-commercial.png', 'A commercial suite positioned within Roho retail and hospitality corridor.'
 FROM property_collections pc WHERE pc.slug = 'v-avenue'
 ON DUPLICATE KEY UPDATE title = VALUES(title), hero_image = VALUES(hero_image), description = VALUES(description);

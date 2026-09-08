@@ -59,7 +59,7 @@ function AdminLeadsContent() {
       <AdminPageHeader
         eyebrow="Core"
         title="Leads"
-        description="Track and manage potential ONIRIA City clients."
+        description="Track and manage potential Roho clients."
       />
       <LeadFilters filters={filters} onChange={setFilters} onClear={clearFilters} onSubmit={(event) => { event.preventDefault(); load(filters); }} />
       {error && <ErrorState message={error} onRetry={() => load(filters)} />}

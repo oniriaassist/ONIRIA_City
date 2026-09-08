@@ -1,4 +1,4 @@
-# ONIRIA City Vercel and Railway Deployment
+# Roho Vercel and Railway Deployment
 
 This guide prepares production deployment without committing secrets or changing business logic.
 
@@ -133,7 +133,7 @@ SMTP_USE_TLS=false
 SMTP_STARTTLS=true
 SMTP_TIMEOUT_SECONDS=10
 MAIL_FROM=<verified-sender-email>
-MAIL_FROM_NAME=ONIRIA City
+MAIL_FROM_NAME=Roho
 SALES_NOTIFICATION_EMAILS=<recipient-list>
 REPLY_TO_EMAIL=<optional-reply-to-email>
 ```
@@ -146,7 +146,7 @@ Resend remains supported for existing installations. To use Resend instead, set:
 MAIL_PROVIDER=resend
 RESEND_API_KEY=<resend-api-key>
 MAIL_FROM=<verified-sender-email>
-MAIL_FROM_NAME=ONIRIA City
+MAIL_FROM_NAME=Roho
 SALES_NOTIFICATION_EMAILS=<recipient-list>
 REPLY_TO_EMAIL=<optional-reply-to-email>
 ```

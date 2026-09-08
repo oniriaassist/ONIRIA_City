@@ -3,7 +3,7 @@ import PublicPageHero from "../components/PublicPageHero";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Sitemap | ONIRIA City",
+  title: "Sitemap | Roho",
 };
 
 const groups = [
@@ -35,7 +35,7 @@ export default function SitemapPage() {
       <Header />
       <PublicPageHero
         eyebrow="SITE MAP"
-        title="Find Your Way Around ONIRIA City"
+        title="Find Your Way Around Roho"
         description="Explore public pages, property collections, resources and legal information."
         image="/media/oniria/residence-aerial-masterplan.png"
       />

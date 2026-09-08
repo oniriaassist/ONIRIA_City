@@ -1,4 +1,4 @@
-\# ONIRIA City — Database Dictionary
+\# Roho — Database Dictionary
 
 
 
@@ -8,7 +8,7 @@ Maintained by: Kelvin — Database \& Knowledge Integration
 
 
 
-This document explains every table and field in the ONIRIA City database.
+This document explains every table and field in the Roho database.
 
 No customer authentication tables exist in this schema (public access model, no login required).
 

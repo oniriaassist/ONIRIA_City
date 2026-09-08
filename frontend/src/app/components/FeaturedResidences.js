@@ -1,7 +1,7 @@
 const residences = [
   {
     title: "Signature Villa",
-    type: "ONIRIA VILLAS",
+    type: "ROHO VILLAS",
     image:
       "/media/oniria/villa-pool-rear.png",
     bedrooms: "4 Bedrooms",
@@ -32,7 +32,7 @@ const residences = [
     area: "145 m²",
     price: "Price on request",
     description:
-      "A modern apartment close to shops, dining, services and everyday experiences within the heart of ONIRIA City.",
+      "A modern apartment close to shops, dining, services and everyday experiences within the heart of Roho.",
     link: "/v-avenue/apartment",
   },
 ];

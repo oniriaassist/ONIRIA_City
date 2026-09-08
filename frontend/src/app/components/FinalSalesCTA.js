@@ -3,11 +3,11 @@ import { buildWhatsAppLink } from "../data/contactDetails";
 
 export default function FinalSalesCTA() {
   const whatsappHref = buildWhatsAppLink(
-    "Hello ONIRIA City, I would like to discuss villas, residences or V Avenue opportunities."
+    "Hello Roho, I would like to discuss villas, residences or V Avenue opportunities."
   );
 
   return (
-    <section className="finalSalesSection" aria-label="Start your ONIRIA City journey">
+    <section className="finalSalesSection" aria-label="Start your Roho journey">
       <div
         className="finalSalesBackground"
         style={{
@@ -18,7 +18,7 @@ export default function FinalSalesCTA() {
 
         <div className="finalSalesContent">
           <p className="finalSalesLabel">BEGIN YOUR</p>
-          <h2>ONIRIA story</h2>
+          <h2>ROHO story</h2>
 
           <p className="finalSalesDescription">
             Choose your next step and our team will help you explore the

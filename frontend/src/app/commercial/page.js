@@ -1,16 +1,16 @@
 import PropertyCollectionPage from "../components/PropertyCollectionPage";
 
 export const metadata = {
-  title: "Commercial | ONIRIA City",
+  title: "Commercial | Roho",
   description:
-    "Explore commercial and retail opportunities at ONIRIA City.",
+    "Explore commercial and retail opportunities at Roho.",
 };
 
 const commercialSpaces = [
   {
     title: "V Avenue Retail Space",
     collection: "COMMERCIAL",
-    location: "V Avenue, ONIRIA City",
+    location: "V Avenue, Roho",
     image:
       "/media/oniria/residence-parking-garden.png",
     area: "Flexible layouts",
@@ -18,13 +18,13 @@ const commercialSpaces = [
     price: "Enquire now",
     status: "Opportunity",
     description:
-      "A retail space positioned within the planned social, dining and commercial centre of ONIRIA City.",
+      "A retail space positioned within the planned social, dining and commercial centre of Roho.",
     link: "/commercial/retail-space",
   },
   {
     title: "Restaurant and Café Space",
     collection: "FOOD & BEVERAGE",
-    location: "V Avenue, ONIRIA City",
+    location: "V Avenue, Roho",
     image:
       "/media/oniria/residence-roundabout.png",
     area: "Flexible layouts",
@@ -37,7 +37,7 @@ const commercialSpaces = [
   {
     title: "Professional Office Space",
     collection: "OFFICES",
-    location: "V Avenue, ONIRIA City",
+    location: "V Avenue, Roho",
     image:
       "/media/oniria/residence-aerial-masterplan.png",
     area: "Flexible layouts",
@@ -54,7 +54,7 @@ export default function CommercialPage() {
     <PropertyCollectionPage
       hero={{
         eyebrow: "COMMERCIAL OPPORTUNITIES",
-        title: "Build Your Business within ONIRIA City",
+        title: "Build Your Business within Roho",
         description:
           "Retail, dining, office and service opportunities positioned within a growing residential and lifestyle destination.",
         image:
@@ -64,13 +64,13 @@ export default function CommercialPage() {
         label: "V AVENUE BUSINESS",
         title: "A destination for commerce, dining and connection",
         description:
-          "Commercial spaces at ONIRIA are planned to support residents, visitors and businesses through a connected mixed-use environment.",
+          "Commercial spaces at ROHO are planned to support residents, visitors and businesses through a connected mixed-use environment.",
       }}
       features={[
         {
           title: "Resident demand",
           description:
-            "Businesses benefit from proximity to the wider ONIRIA residential community.",
+            "Businesses benefit from proximity to the wider ROHO residential community.",
         },
         {
           title: "Flexible spaces",
@@ -80,7 +80,7 @@ export default function CommercialPage() {
         {
           title: "Destination setting",
           description:
-            "V Avenue is planned as a social and commercial centre for ONIRIA City.",
+            "V Avenue is planned as a social and commercial centre for ROHO."
         },
       ]}
       properties={commercialSpaces}

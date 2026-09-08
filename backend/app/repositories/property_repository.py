@@ -18,7 +18,7 @@ SEEDED_PROPERTIES: list[dict[str, Any]] = [
         "price_label": "Available on request",
         "status": "published",
         "hero_image": "/media/oniria/villa-pool-rear.png",
-        "description": "A private family villa with elevated views, generous outdoor living, and direct access to ONIRIA City lifestyle amenities.",
+        "description": "A private family villa with elevated views, generous outdoor living, and direct access to Roho lifestyle amenities.",
         "features": ["Private garden", "Pool deck", "Family lounge", "Staff quarters"],
         "media": [{"type": "image", "url": "/media/oniria/villa-pool-rear.png", "alt": "Skyline Villa pool and rear facade"}],
         "floor_plans": [{"name": "Five-bedroom villa", "bedrooms": 5, "size_sqm": 520, "url": "/media/floorplans/skyline-villa.pdf"}],
@@ -50,7 +50,7 @@ SEEDED_PROPERTIES: list[dict[str, Any]] = [
         "price_label": "Leasing enquiries open",
         "status": "published",
         "hero_image": "/media/oniria/v-avenue-commercial.png",
-        "description": "A public-facing commercial suite positioned within ONIRIA City's retail and hospitality corridor.",
+        "description": "A public-facing commercial suite positioned within Roho's retail and hospitality corridor.",
         "features": ["High-street frontage", "Flexible fit-out", "Service access", "Pedestrian traffic"],
         "media": [{"type": "image", "url": "/media/oniria/v-avenue-commercial.png", "alt": "V Avenue commercial frontage"}],
         "floor_plans": [{"name": "Commercial shell", "bedrooms": None, "size_sqm": 140, "url": "/media/floorplans/v-avenue-retail-suite.pdf"}],
@@ -94,7 +94,7 @@ SEEDED_ZONES = [
     {
         "slug": "v-avenue",
         "title": "V Avenue",
-        "description": "The commercial and lifestyle spine of ONIRIA City.",
+        "description": "The commercial and lifestyle spine of Roho.",
         "related_collections": ["V Avenue"],
     },
 ]

@@ -1,9 +1,9 @@
 import PropertyCollectionPage from "../components/PropertyCollectionPage";
 
 export const metadata = {
-  title: "Residences | ONIRIA City",
+  title: "Residences | Roho",
   description:
-    "Explore modern residences and apartments at ONIRIA City.",
+    "Explore modern residences and apartments at Roho.",
 };
 
 const residences = [
@@ -62,7 +62,7 @@ export default function ResidencesPage() {
         eyebrow: "RESIDENCES",
         title: "Contemporary Homes for Connected Living",
         description:
-          "Modern residences offering comfort, convenience, natural light and access to the wider ONIRIA lifestyle.",
+          "Modern residences offering comfort, convenience, natural light and access to the wider ROHO lifestyle.",
         image:
           "/media/oniria/villa-front-entry.png",
       }}

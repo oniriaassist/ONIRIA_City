@@ -1,9 +1,9 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Amenities | ONIRIA City",
+  title: "Amenities | Roho",
   description:
-    "Explore the amenities, wellness spaces and community facilities at ONIRIA City.",
+    "Explore the amenities, wellness spaces and community facilities at Roho.",
 };
 
 export default function AmenitiesPage() {
@@ -21,7 +21,7 @@ export default function AmenitiesPage() {
         label: "EVERYDAY COMFORT",
         title: "Amenities designed for a complete lifestyle",
         description:
-          "ONIRIA City is planned to support relaxation, movement, family life, social connection and everyday convenience.",
+          "Roho is planned to support relaxation, movement, family life, social connection and everyday convenience.",
       }}
       sections={[
         {

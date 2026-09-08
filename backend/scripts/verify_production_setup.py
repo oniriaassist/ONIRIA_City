@@ -147,7 +147,7 @@ async def check_database(settings) -> bool:
 
 
 async def main() -> int:
-    parser = argparse.ArgumentParser(description="Safely verify an ONIRIA City production backend setup.")
+    parser = argparse.ArgumentParser(description="Safely verify an Roho production backend setup.")
     parser.add_argument("--backend-url", default=os.getenv("ONIRIA_BACKEND_URL"), help="Backend origin, for example https://api.oniriacity.com")
     args = parser.parse_args()
 

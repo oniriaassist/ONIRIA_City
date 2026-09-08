@@ -6,12 +6,12 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "Gallery",
   description:
-    "Explore the architecture, interiors and Zanzibar lifestyle of ONIRIA City.",
+    "Explore the architecture, interiors and Zanzibar lifestyle of Roho.",
 };
 
 const galleryImages = [
   {
-    title: "ONIRIA City",
+    title: "Roho",
     category: "THE DESTINATION",
     image:
       "/media/oniria/villa-pool-rear.png",
@@ -74,19 +74,19 @@ export default function GalleryPage() {
       <Header />
 
       <PublicPageHero
-        eyebrow="ONIRIA GALLERY"
+        eyebrow="ROHO GALLERY"
         title="See the Vision Come to Life"
-        description="Explore the architecture, interiors, landscape and island lifestyle that shape ONIRIA City."
+        description="Explore the architecture, interiors, landscape and island lifestyle that shape Roho."
         image="/media/oniria/villa-front-entry.png"
       />
 
       <section className="galleryIntroduction" id="page-content">
-        <p className="sectionLabel">DISCOVER ONIRIA</p>
+        <p className="sectionLabel">DISCOVER ROHO</p>
 
         <h2>A visual journey through the destination</h2>
 
         <p>
-          These ONIRIA renders present the architectural, residential,
+          These ROHO renders present the architectural, residential,
           commercial and landscape direction for the destination.
         </p>
       </section>

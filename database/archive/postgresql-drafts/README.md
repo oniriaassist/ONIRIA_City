@@ -1,6 +1,6 @@
 # Historical PostgreSQL Drafts
 
-These SQL files are historical PostgreSQL drafts from early ONIRIA City schema planning.
+These SQL files are historical PostgreSQL drafts from early Roho schema planning.
 
 They must not be executed for local development, Docker, staging, or production.
 

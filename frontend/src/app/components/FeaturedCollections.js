@@ -32,13 +32,13 @@ export default function FeaturedCollections() {
   return (
     <section className="collectionsSection">
       <div className="collectionsHeading">
-        <p className="sectionLabel">DISCOVER ONIRIA</p>
+        <p className="sectionLabel">DISCOVER ROHO</p>
 
         <h2>Featured Collections</h2>
 
         <p>
-          Explore the different spaces that come together to create the ONIRIA
-          City experience.
+          Explore the different spaces that come together to create the ROHO
+           experience.
         </p>
       </div>
 

@@ -6,12 +6,12 @@ import { AdminPageHeader, EmptyState, ErrorState, LoadingSkeleton, StatusBadge }
 import { adminApi } from "../../services/adminApi";
 
 const pageDescriptions = {
-  "Enquiries": "Review all public enquiries captured across ONIRIA City forms.",
+  "Enquiries": "Review all public enquiries captured across Roho forms.",
   "Brochure Requests": "Track buyers who requested project and property brochures.",
   "Consultations": "Manage consultation requests from prospective clients.",
   "Site Visits": "Review requested property tours and visit scheduling activity.",
-  "AI Conversations": "Monitor ONIRIA assistant conversations and sales signals.",
-  "WhatsApp Conversations": "View WhatsApp interactions connected to ONIRIA City.",
+  "AI Conversations": "Monitor ROHO assistant conversations and sales signals.",
+  "WhatsApp Conversations": "View WhatsApp interactions connected to Roho.",
   "Campaign Sources": "Review marketing campaign performance and source quality.",
   "Follow-ups": "Stay on top of staff follow-up commitments.",
 };
@@ -41,7 +41,7 @@ function AdminListContent({ title, endpoint }) {
 
   return (
     <>
-      <AdminPageHeader title={title} description={pageDescriptions[title] || "Review and manage ONIRIA City staff records."} />
+      <AdminPageHeader title={title} description={pageDescriptions[title] || "Review and manage Roho staff records."} />
       {error && <ErrorState message={error} onRetry={() => load()} />}
       {!items && !error ? <LoadingSkeleton /> : items && (
         <div className="adminTableWrap">

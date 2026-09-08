@@ -1,4 +1,4 @@
-# ONIRIA City Backend
+# Roho Backend
 
 FastAPI backend for public content, enquiries, newsletter, AI, WhatsApp, staff authentication, and admin lead management.
 
@@ -53,7 +53,7 @@ If `MAIL_PROVIDER` is blank, email delivery is skipped safely. To send through R
 MAIL_PROVIDER=resend
 RESEND_API_KEY=<resend-api-key>
 MAIL_FROM=verified-sender@example.com
-MAIL_FROM_NAME=ONIRIA City
+MAIL_FROM_NAME=Roho
 SALES_NOTIFICATION_EMAIL=team@example.com
 ```
 

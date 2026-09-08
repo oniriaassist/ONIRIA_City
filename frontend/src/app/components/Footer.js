@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { socialLinks } from "../data/socialLinks";
 import { contactDetails } from "../data/contactDetails";
+import BrandLogo from "./BrandLogo";
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
 
         <div className="oniriaMinimalFooterBrand">
           <Link href="/" aria-label="Return to ROHO homepage">
-            ROHO
+            <BrandLogo />
           </Link>
         </div>
 

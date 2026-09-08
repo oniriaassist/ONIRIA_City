@@ -1,4 +1,4 @@
-# ONIRIA City Deployment Guide
+# Roho Deployment Guide
 
 This guide prepares the existing Docker Compose architecture for production without changing application behavior.
 

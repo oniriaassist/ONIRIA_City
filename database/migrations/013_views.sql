@@ -8,7 +8,7 @@ SELECT
   COALESCE(c.full_name, l.name) AS customer,
   COALESCE(c.email, l.email) AS email,
   COALESCE(c.phone, l.phone) AS phone,
-  COALESCE(l.property_interest, JSON_UNQUOTE(JSON_EXTRACT(l.property_interests, '$[0]')), 'General ONIRIA City') AS interest,
+  COALESCE(l.property_interest, JSON_UNQUOTE(JSON_EXTRACT(l.property_interests, '$[0]')), 'General Roho') AS interest,
   COALESCE(l.source_platform, l.utm_source, 'Direct') AS source,
   COALESCE(l.campaign_name, l.utm_campaign) AS campaign,
   COALESCE(l.lead_status, l.follow_up_status) AS status,

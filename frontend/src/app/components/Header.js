@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import BrandLogo from "./BrandLogo";
 
 const leftNavigation = [
   { label: "Vision", href: "/vision" },
@@ -70,7 +71,7 @@ export default function Header() {
         </div>
 
         <Link href="/" className="edenHeaderBrand" aria-label="ROHO home">
-          ROHO
+          <BrandLogo />
         </Link>
 
         <div className="edenNavGroup edenNavGroupRight">
@@ -79,8 +80,8 @@ export default function Header() {
       </nav>
 
       <div className="edenHeaderMobile">
-        <Link href="/" className="edenHeaderBrand" onClick={closeMenu}>
-          ROHO
+        <Link href="/" className="edenHeaderBrand" aria-label="ROHO home" onClick={closeMenu}>
+          <BrandLogo />
         </Link>
 
         <button

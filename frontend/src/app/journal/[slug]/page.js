@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 
 const articles = {
   "introducing-oniria-city": {
-    category: "ONIRIA CITY",
+    category: "ROHO",
     title: "Introducing a New Way of Living in Fumba",
     description:
       "Discover the vision behind a connected residential and lifestyle destination shaped by Zanzibar.",
@@ -15,7 +15,7 @@ const articles = {
       {
         title: "A destination shaped around daily life",
         body:
-          "ONIRIA City brings homes, landscape, amenities and commercial spaces together in one planned destination. The ambition is to create a calm, connected place where living, working and gathering feel naturally close.",
+          "Roho brings homes, landscape, amenities and commercial spaces together in one planned destination. The ambition is to create a calm, connected place where living, working and gathering feel naturally close.",
       },
       {
         title: "Connected to Zanzibar",
@@ -33,13 +33,13 @@ const articles = {
     category: "ARCHITECTURE",
     title: "Designing Contemporary Homes for a Tropical Climate",
     description:
-      "Explore how light, airflow, shade and natural materials influence ONIRIA's architectural direction.",
+      "Explore how light, airflow, shade and natural materials influence ROHO's architectural direction.",
     image: "/media/oniria/villa-gated-entry.png",
     sections: [
       {
         title: "Designing with climate",
         body:
-          "Tropical living depends on comfort, shade and natural movement of air. ONIRIA's architecture is planned around generous openings, protected outdoor areas and a close relationship with landscape.",
+          "Tropical living depends on comfort, shade and natural movement of air. ROHO's architecture is planned around generous openings, protected outdoor areas and a close relationship with landscape.",
       },
       {
         title: "A calmer material palette",
@@ -63,7 +63,7 @@ const articles = {
       {
         title: "A rhythm shaped by place",
         body:
-          "Zanzibar offers a rare blend of ocean, culture, climate and calm. ONIRIA City is planned to make that rhythm part of everyday residential life.",
+          "Zanzibar offers a rare blend of ocean, culture, climate and calm. Roho is planned to make that rhythm part of everyday residential life.",
       },
       {
         title: "Wellness and community",
@@ -79,7 +79,7 @@ const articles = {
   },
   "property-collections": {
     category: "INVESTMENT",
-    title: "Understanding the ONIRIA Property Collections",
+    title: "Understanding the ROHO Property Collections",
     description:
       "Learn about the villas, residences, apartments and commercial opportunities planned for the community.",
     image: "/media/oniria/residence-roundabout.png",
@@ -87,7 +87,7 @@ const articles = {
       {
         title: "Different ways to belong",
         body:
-          "ONIRIA City includes private villas, modern residences, apartments and commercial spaces so buyers can choose the setting that matches their lifestyle or investment goals.",
+          "Roho includes private villas, modern residences, apartments and commercial spaces so buyers can choose the setting that matches their lifestyle or investment goals.",
       },
       {
         title: "A shared destination",
@@ -97,7 +97,7 @@ const articles = {
       {
         title: "Guided information",
         body:
-          "The ONIRIA team can provide current availability, details and next steps through the register interest and request brochure pages.",
+          "The ROHO team can provide current availability, details and next steps through the register interest and request brochure pages.",
       },
     ],
   },
@@ -129,13 +129,13 @@ const articles = {
     category: "WELLNESS",
     title: "Creating Space for Health, Nature and Belonging",
     description:
-      "ONIRIA's lifestyle vision includes wellness, landscaped spaces and opportunities for social connection.",
+      "ROHO's lifestyle vision includes wellness, landscaped spaces and opportunities for social connection.",
     image: "/media/oniria/v-avenue-commercial.png",
     sections: [
       {
         title: "Everyday wellbeing",
         body:
-          "Wellness at ONIRIA is planned as part of daily life: spaces to walk, rest, gather and reconnect with nature.",
+          "Wellness at ROHO is planned as part of daily life: spaces to walk, rest, gather and reconnect with nature.",
       },
       {
         title: "Shared experiences",

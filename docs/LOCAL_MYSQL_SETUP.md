@@ -1,6 +1,6 @@
 # Local MySQL Setup
 
-ONIRIA City supports MySQL 8.4 only.
+Roho supports MySQL 8.4 only.
 
 1. Start MySQL.
 2. Create the database if needed:

@@ -6,7 +6,7 @@ export default function MasterplanPreview() {
           <h2 id="oniria-location-title">Location</h2>
 
           <p>
-            Set in Fumba, Zanzibar, ONIRIA City offers a peaceful island setting
+            Set in Fumba, Zanzibar, Roho offers a peaceful island setting
             with convenient access to everyday services, the coast and the wider
             Zanzibar community. It is a place designed for connected living,
             growth and a relaxed way of life.

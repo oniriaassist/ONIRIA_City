@@ -1,9 +1,9 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Lifestyle | ONIRIA City",
+  title: "Lifestyle | Roho",
   description:
-    "Discover the ocean, nature, wellness and community lifestyle of ONIRIA City.",
+    "Discover the ocean, nature, wellness and community lifestyle of Roho.",
 };
 
 export default function LifestylePage() {
@@ -21,7 +21,7 @@ export default function LifestylePage() {
         label: "LIVE DIFFERENTLY",
         title: "More than a home, a complete way of life",
         description:
-          "ONIRIA City creates opportunities to relax, connect, explore and enjoy Zanzibar every day.",
+          "Roho creates opportunities to relax, connect, explore and enjoy Zanzibar every day.",
       }}
       sections={[
         {
@@ -69,7 +69,7 @@ export default function LifestylePage() {
           id: "ocean-living",
           title: "Ocean experiences",
           description:
-            "Zanzibar’s sea, sunrise and sunset become part of the wider ONIRIA lifestyle.",
+            "Zanzibar’s sea, sunrise and sunset become part of the wider ROHO lifestyle.",
           image:
             "/media/oniria/residence-aerial-masterplan.png",
           points: [

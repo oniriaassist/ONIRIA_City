@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BrandLogo from "../BrandLogo";
 
 export function StaffAvatar({ name = "Staff" }) {
   const initials = name
@@ -20,7 +21,7 @@ export function AdminLoadingScreen({
   return (
     <main className="adminSessionScreen">
       <section className="adminSessionCard" aria-live="polite">
-        <div className="adminSessionMark">ONIRIA CITY</div>
+        <div className="adminSessionMark"><BrandLogo label="ROHO" /></div>
         <p>Staff Portal</p>
         <div className="adminSpinner" aria-hidden="true" />
         <h1>{timedOut ? "Connection is taking longer than expected" : title}</h1>

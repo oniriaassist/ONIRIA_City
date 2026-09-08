@@ -1,6 +1,6 @@
-# ONIRIA City
+# Roho
 
-Full-stack ONIRIA City website with a Next.js frontend, FastAPI backend, MySQL 8.4 database, public enquiry flows, brochure delivery, WhatsApp hooks, staff authentication, and a private admin dashboard.
+Full-stack Roho website with a Next.js frontend, FastAPI backend, MySQL 8.4 database, public enquiry flows, brochure delivery, WhatsApp hooks, staff authentication, and a private admin dashboard.
 
 ## Project Structure
 
@@ -61,6 +61,7 @@ Frontend:
 ```powershell
 cd frontend
 npm install
+npm run typecheck
 npm run dev
 ```
 
@@ -152,6 +153,7 @@ Frontend:
 ```powershell
 cd frontend
 npm run lint
+npm run typecheck
 npm run build
 ```
 

@@ -1,4 +1,4 @@
-# ONIRIA City Database
+# Roho Database
 
 MySQL 8.x migration files live in `database/migrations` and should be applied in filename order.
 

@@ -43,25 +43,25 @@ const COUNTRY_OPTIONS = [
 
 const CONFIG = {
   brochure: {
-    title: ["DISCOVER", "ONIRIA"],
+    title: ["DISCOVER", "ROHO"],
     description:
       "The vision, collections and lifestyle—curated for you.",
     image: "/media/oniria/residence-aerial-masterplan.png",
     sectionLabel: "YOUR PRIVATE PROJECT INTRODUCTION",
-    formTitle: "Request the ONIRIA brochure",
+    formTitle: "Request the ROHO brochure",
     formDescription:
       "Choose what interests you most. We will send the latest approved information and help you understand the next step.",
     requestLabel: "A PRIVATE BROCHURE REQUEST",
-    requestTitle: "Let us curate your introduction to ONIRIA.",
+    requestTitle: "Let us curate your introduction to ROHO.",
     requestDescription:
       "Share your interests and our sales team will prepare the most relevant approved project information for you.",
     submitLabel: "Send my brochure request",
     successMessage:
-      "Thank you. Your brochure request has been received and the ONIRIA team will contact you with the available project information.",
+      "Thank you. Your brochure request has been received and the ROHO team will contact you with the available project information.",
     inquiryType: "brochure",
     endpoint: "/brochure-requests",
     highlights: [
-      ["01", "The vision", "Understand the idea, location and lifestyle behind ONIRIA City."],
+      ["01", "The vision", "Understand the idea, location and lifestyle behind Roho."],
       ["02", "The collections", "Explore villas, contemporary residences and opportunities within V Avenue."],
       ["03", "Your next step", "Move from project discovery to availability, consultation or a private site visit."],
     ],
@@ -69,7 +69,7 @@ const CONFIG = {
   interest: {
     title: ["FIND YOUR", "PLACE"],
     description:
-      "A private path to the right ONIRIA opportunity.",
+      "A private path to the right ROHO opportunity.",
     image: "/media/oniria/villa-pool-rear.png",
     sectionLabel: "A PERSONALISED PROPERTY CONVERSATION",
     formTitle: "Tell us what matters to you",
@@ -78,10 +78,10 @@ const CONFIG = {
     requestLabel: "YOUR PRIVATE PROPERTY REQUEST",
     requestTitle: "Let us understand the way you want to live or invest.",
     requestDescription:
-      "Tell us your priorities and our team will guide you towards the most suitable ONIRIA collection and next step.",
-    submitLabel: "Begin my ONIRIA journey",
+      "Tell us your priorities and our team will guide you towards the most suitable ROHO collection and next step.",
+    submitLabel: "Begin my ROHO journey",
     successMessage:
-      "Thank you. Your interest has been registered and a member of the ONIRIA team will contact you using the details provided.",
+      "Thank you. Your interest has been registered and a member of the ROHO team will contact you using the details provided.",
     inquiryType: "property-information",
     endpoint: "/enquiries",
     highlights: [
@@ -91,7 +91,7 @@ const CONFIG = {
     ],
   },
   "site-visit": {
-    title: ["EXPERIENCE", "ONIRIA"],
+    title: ["EXPERIENCE", "ROHO"],
     description:
       "See the setting, explore the collections and meet our team.",
     image: "/media/oniria/villa-gated-entry.png",
@@ -102,14 +102,14 @@ const CONFIG = {
     requestLabel: "A PERSONALISED SITE EXPERIENCE",
     requestTitle: "Let us prepare a visit around your interests.",
     requestDescription:
-      "Share your preferred date and priorities so our team can arrange a focused introduction to ONIRIA in Fumba.",
+      "Share your preferred date and priorities so our team can arrange a focused introduction to ROHO in Fumba.",
     submitLabel: "Request my site visit",
     successMessage:
-      "Thank you. Your site-visit request has been received. The ONIRIA team will contact you to confirm the date and visit arrangements.",
+      "Thank you. Your site-visit request has been received. The ROHO team will contact you to confirm the date and visit arrangements.",
     inquiryType: "site-visit",
     endpoint: "/site-visits",
     highlights: [
-      ["01", "A guided introduction", "Meet the team and receive a clear introduction to the ONIRIA vision and location."],
+      ["01", "A guided introduction", "Meet the team and receive a clear introduction to the ROHO vision and location."],
       ["02", "A focused experience", "Shape the visit around villas, residences, V Avenue or commercial interests."],
       ["03", "A clear next step", "Discuss approved information, availability and the most suitable follow-up."],
     ],
@@ -300,11 +300,11 @@ export default function PremiumInquiryPage({ mode }) {
           <h2>{config.requestTitle}</h2>
           <p>{config.requestDescription}</p>
           <p className="premiumInquiryPrivacyNote">
-            Your information is sent securely to the ONIRIA sales team and is used only to respond to this request.
+            Your information is sent securely to the ROHO sales team and is used only to respond to this request.
           </p>
           <div className="premiumInquiryContactNote">
             <span>Prefer a direct conversation?</span>
-            <a href={buildWhatsAppLink("Hello ONIRIA City, I would like to discuss my request with your sales team.")} target="_blank" rel="noopener noreferrer">
+            <a href={buildWhatsAppLink("Hello Roho, I would like to discuss my request with your sales team.")} target="_blank" rel="noopener noreferrer">
               Continue on WhatsApp →
             </a>
           </div>
@@ -498,7 +498,7 @@ export default function PremiumInquiryPage({ mode }) {
 
           <label className="premiumConsent">
             <input type="checkbox" name="consent" checked={formData.consent} onChange={handleChange} required />
-            <span>I agree that the ONIRIA team may contact me regarding this request. *</span>
+            <span>I agree that the ROHO team may contact me regarding this request. *</span>
           </label>
 
           {status.message && (

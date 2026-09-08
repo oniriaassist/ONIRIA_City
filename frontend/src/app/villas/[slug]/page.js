@@ -8,12 +8,12 @@ export async function generateMetadata({ params }) {
 
   if (!property) {
     return {
-      title: "Villa Not Found | ONIRIA City",
+      title: "Villa Not Found | Roho",
     };
   }
 
   return {
-    title: `${property.title} | ONIRIA City`,
+    title: `${property.title} | Roho`,
     description: property.description,
   };
 }

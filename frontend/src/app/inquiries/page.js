@@ -177,7 +177,7 @@ export default function InquiriesPage() {
 
       <PublicPageHero
         eyebrow="REGISTER YOUR INTEREST"
-        title="Begin Your ONIRIA Journey"
+        title="Begin Your ROHO Journey"
         description="Tell us what you are interested in and our team will guide you through the next step."
         image="/media/oniria/villa-gated-entry.png"
       />
@@ -537,7 +537,7 @@ export default function InquiriesPage() {
               />
 
               <span>
-                I agree that the ONIRIA team may contact me regarding this
+                I agree that the ROHO team may contact me regarding this
                 inquiry. *
               </span>
             </label>

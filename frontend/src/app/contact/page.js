@@ -103,7 +103,7 @@ export default function ContactPage() {
       <Header />
 
       <PublicPageHero
-        title={["BEGIN YOUR", "ONIRIA STORY"]}
+        title={["BEGIN YOUR", "ROHO STORY"]}
         description="A private conversation about ownership, visits and opportunities."
         image="/media/oniria/residence-aerial-masterplan.png"
       />
@@ -113,7 +113,7 @@ export default function ContactPage() {
           <div>
             <p className="sectionLabel">CONTACT OUR TEAM</p>
 
-            <h2>We are here to help you explore ONIRIA City</h2>
+            <h2>We are here to help you explore Roho</h2>
           </div>
 
           <p>
@@ -155,7 +155,7 @@ export default function ContactPage() {
               <span>04</span>
               <h3>WhatsApp</h3>
               <a
-                href={buildWhatsAppLink("Hello ONIRIA City, I would like to speak with your sales team.")}
+                href={buildWhatsAppLink("Hello Roho, I would like to speak with your sales team.")}
                 target="_blank"
                 rel="noreferrer"
               >

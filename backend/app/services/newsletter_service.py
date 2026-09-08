@@ -6,8 +6,8 @@ from app.repositories.newsletter_repository import NewsletterRepository
 from app.schemas.newsletter_schemas import NewsletterSubscribeRequest
 
 
-NEWSLETTER_SUBSCRIBED_MESSAGE = "Thank you for subscribing to ONIRIA City updates."
-NEWSLETTER_ALREADY_SUBSCRIBED_MESSAGE = "This email is already subscribed to ONIRIA City updates."
+NEWSLETTER_SUBSCRIBED_MESSAGE = "Thank you for subscribing to Roho updates."
+NEWSLETTER_ALREADY_SUBSCRIBED_MESSAGE = "This email is already subscribed to Roho updates."
 
 
 class NewsletterService:
@@ -24,4 +24,4 @@ class NewsletterService:
 
     async def unsubscribe(self, email: str) -> dict[str, str]:
         await self.repo.unsubscribe(email)
-        return {"message": "You have been unsubscribed from ONIRIA City updates."}
+        return {"message": "You have been unsubscribed from Roho updates."}

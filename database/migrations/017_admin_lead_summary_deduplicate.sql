@@ -12,7 +12,7 @@ SELECT
   COALESCE(
     l.property_interest,
     JSON_UNQUOTE(JSON_EXTRACT(l.property_interests, '$[0]')),
-    'General ONIRIA City'
+    'General Roho'
   ) AS interest,
   COALESCE(l.source_platform, l.utm_source, 'Direct') AS source,
   COALESCE(l.campaign_name, l.utm_campaign) AS campaign,

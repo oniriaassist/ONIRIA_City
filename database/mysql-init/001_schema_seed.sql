@@ -131,7 +131,7 @@ GROUP BY pc.slug, pc.title, pc.description, pc.status, pc.sort_order;
 INSERT INTO public_masterplan_zones (slug, title, description, related_collections, status, sort_order) VALUES
 ('hillside-residences', 'Hillside Residences', 'Low-density residential living with privacy, greenery, and long views.', JSON_ARRAY('Villa Collection'), 'published', 1),
 ('central-living-district', 'Central Living District', 'Walkable residential streets connected to wellness, retail, and services.', JSON_ARRAY('Residence Collection'), 'published', 2),
-('v-avenue', 'V Avenue', 'The commercial and lifestyle spine of ONIRIA City.', JSON_ARRAY('V Avenue'), 'published', 3)
+('v-avenue', 'V Avenue', 'The commercial and lifestyle spine of Roho.', JSON_ARRAY('V Avenue'), 'published', 3)
 ON DUPLICATE KEY UPDATE title = VALUES(title), description = VALUES(description), related_collections = VALUES(related_collections), status = VALUES(status), sort_order = VALUES(sort_order);
 
 INSERT INTO public_properties (
@@ -142,7 +142,7 @@ INSERT INTO public_properties (
   'skyline-villa', 'Skyline Villa', 'Villa Collection', 'villa-collection', 'Hillside Residences',
   'hillside-residences', 'villa', 5, 'Available on request', 'published',
   '/media/oniria/villa-pool-rear.png',
-  'A private family villa with elevated views, generous outdoor living, and direct access to ONIRIA City lifestyle amenities.',
+  'A private family villa with elevated views, generous outdoor living, and direct access to Roho lifestyle amenities.',
   JSON_ARRAY('Private garden', 'Pool deck', 'Family lounge', 'Staff quarters'),
   JSON_ARRAY(JSON_OBJECT('type','image','url','/media/oniria/villa-pool-rear.png','alt','Skyline Villa pool and rear facade')),
   JSON_ARRAY(JSON_OBJECT('name','Five-bedroom villa','bedrooms',5,'size_sqm',520,'url','/media/floorplans/skyline-villa.pdf')),
@@ -162,7 +162,7 @@ INSERT INTO public_properties (
   'v-avenue-retail-suite', 'V Avenue Retail Suite', 'V Avenue', 'v-avenue', 'V Avenue',
   'v-avenue', 'commercial', NULL, 'Leasing enquiries open', 'published',
   '/media/oniria/v-avenue-commercial.png',
-  'A public-facing commercial suite positioned within ONIRIA City''s retail and hospitality corridor.',
+  'A public-facing commercial suite positioned within Roho''s retail and hospitality corridor.',
   JSON_ARRAY('High-street frontage', 'Flexible fit-out', 'Service access', 'Pedestrian traffic'),
   JSON_ARRAY(JSON_OBJECT('type','image','url','/media/oniria/v-avenue-commercial.png','alt','V Avenue commercial frontage')),
   JSON_ARRAY(JSON_OBJECT('name','Commercial shell','bedrooms',NULL,'size_sqm',140,'url','/media/floorplans/v-avenue-retail-suite.pdf')),
@@ -180,7 +180,7 @@ INSERT INTO public_search_index (type, title, slug, excerpt, content, status) VA
 ON DUPLICATE KEY UPDATE excerpt = VALUES(excerpt), content = VALUES(content), status = VALUES(status);
 
 INSERT INTO knowledge_chunks (document_id, answer, actions, content, status, channel, active) VALUES
-('oniria-property-collections-v1', 'ONIRIA City presents three public property groups: Villa Collection, Residence Collection and V Avenue commercial opportunities.', JSON_ARRAY(JSON_OBJECT('label', 'Explore properties', 'href', '/properties'), JSON_OBJECT('label', 'Make an inquiry', 'href', '/inquiries')), 'property properties villa villas residence residences commercial v avenue collection collections', 'approved', 'public', 1),
-('oniria-masterplan-v1', 'ONIRIA City is presented as a connected community in Fumba, Zanzibar, with residential zones, V Avenue and lifestyle amenities.', JSON_ARRAY(JSON_OBJECT('label', 'View masterplan', 'href', '/masterplan')), 'masterplan zone zones community fumba zanzibar residential v avenue lifestyle amenities', 'approved', 'public', 1),
+('oniria-property-collections-v1', 'Roho presents three public property groups: Villa Collection, Residence Collection and V Avenue commercial opportunities.', JSON_ARRAY(JSON_OBJECT('label', 'Explore properties', 'href', '/properties'), JSON_OBJECT('label', 'Make an inquiry', 'href', '/inquiries')), 'property properties villa villas residence residences commercial v avenue collection collections', 'approved', 'public', 1),
+('oniria-masterplan-v1', 'Roho is presented as a connected community in Fumba, Zanzibar, with residential zones, V Avenue and lifestyle amenities.', JSON_ARRAY(JSON_OBJECT('label', 'View masterplan', 'href', '/masterplan')), 'masterplan zone zones community fumba zanzibar residential v avenue lifestyle amenities', 'approved', 'public', 1),
 ('oniria-site-visits-v1', 'Visitors can request a brochure, consultation or site visit without creating an account. The sales team follows up using the submitted contact details.', JSON_ARRAY(JSON_OBJECT('label', 'Request a site visit', 'href', '/inquiries?type=site-visit')), 'visit site visit tour consultation appointment brochure inquiry sales team contact details', 'approved', 'public', 1)
 ON DUPLICATE KEY UPDATE answer = VALUES(answer), actions = VALUES(actions), content = VALUES(content), status = VALUES(status), channel = VALUES(channel), active = VALUES(active);

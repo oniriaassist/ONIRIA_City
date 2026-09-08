@@ -1,1 +1,1 @@
-"""ONIRIA City backend package."""
+"""Roho backend package."""

@@ -6,12 +6,12 @@ import Footer from "../components/Footer";
 export const metadata = {
   title: "Journal",
   description:
-    "Read stories about ONIRIA City, architecture, lifestyle and Zanzibar.",
+    "Read stories about Roho, architecture, lifestyle and Zanzibar.",
 };
 
 const articles = [
   {
-    category: "ONIRIA CITY",
+    category: "ROHO",
     date: "Coming soon",
     title: "Introducing a New Way of Living in Fumba",
     description:
@@ -25,7 +25,7 @@ const articles = [
     date: "Coming soon",
     title: "Designing Contemporary Homes for a Tropical Climate",
     description:
-      "Explore how light, airflow, shade and natural materials influence ONIRIA’s architectural direction.",
+      "Explore how light, airflow, shade and natural materials influence ROHO’s architectural direction.",
     image:
       "/media/oniria/villa-gated-entry.png",
     slug: "tropical-architecture",
@@ -43,7 +43,7 @@ const articles = [
   {
     category: "INVESTMENT",
     date: "Coming soon",
-    title: "Understanding the ONIRIA Property Collections",
+    title: "Understanding the ROHO Property Collections",
     description:
       "Learn about the villas, residences, apartments and commercial opportunities planned for the community.",
     image:
@@ -65,7 +65,7 @@ const articles = [
     date: "Coming soon",
     title: "Creating Space for Health, Nature and Belonging",
     description:
-      "ONIRIA’s lifestyle vision includes wellness, landscaped spaces and opportunities for social connection.",
+      "ROHO’s lifestyle vision includes wellness, landscaped spaces and opportunities for social connection.",
     image:
       "/media/oniria/v-avenue-commercial.png",
     slug: "wellness-and-belonging",
@@ -78,8 +78,8 @@ export default function JournalPage() {
       <Header />
 
       <PublicPageHero
-        eyebrow="THE ONIRIA JOURNAL"
-        title="Stories from ONIRIA City"
+        eyebrow="THE ROHO JOURNAL"
+        title="Stories from Roho"
         description="Architecture, lifestyle, investment and stories inspired by Zanzibar."
         image="/media/oniria/villa-pool-rear.png"
       />
@@ -87,7 +87,7 @@ export default function JournalPage() {
       <section className="journalIntroduction" id="page-content">
         <p className="sectionLabel">NEWS & STORIES</p>
 
-        <h2>Ideas shaping the ONIRIA experience</h2>
+        <h2>Ideas shaping the ROHO experience</h2>
 
         <p>
           Follow the development journey and explore stories about design,

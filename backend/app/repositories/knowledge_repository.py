@@ -12,7 +12,7 @@ APPROVED_PUBLIC_KNOWLEDGE = [
         "status": "approved",
         "channel": "public",
         "keywords": ["property", "properties", "villa", "villas", "residence", "residences", "commercial", "v avenue"],
-        "answer": "ONIRIA City presents three public property groups: Villa Collection, Residence Collection and V Avenue commercial opportunities.",
+        "answer": "Roho presents three public property groups: Villa Collection, Residence Collection and V Avenue commercial opportunities.",
         "actions": [{"label": "Explore properties", "href": "/properties"}, {"label": "Make an inquiry", "href": "/inquiries"}],
     },
     {
@@ -20,7 +20,7 @@ APPROVED_PUBLIC_KNOWLEDGE = [
         "status": "approved",
         "channel": "public",
         "keywords": ["masterplan", "zone", "zones", "community", "fumba", "zanzibar"],
-        "answer": "ONIRIA City is presented as a connected community in Fumba, Zanzibar, with residential zones, V Avenue and lifestyle amenities.",
+        "answer": "Roho is presented as a connected community in Fumba, Zanzibar, with residential zones, V Avenue and lifestyle amenities.",
         "actions": [{"label": "View masterplan", "href": "/masterplan"}],
     },
     {

@@ -1,15 +1,15 @@
 import PropertyCollectionPage from "../components/PropertyCollectionPage";
 
 export const metadata = {
-  title: "Villas | ONIRIA City",
+  title: "Villas | Roho",
   description:
-    "Explore private villas designed for tropical living at ONIRIA City.",
+    "Explore private villas designed for tropical living at Roho.",
 };
 
 const villas = [
   {
     title: "Signature Four-Bedroom Villa",
-    collection: "ONIRIA VILLAS",
+    collection: "ROHO VILLAS",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/villa-front-entry.png",
@@ -25,7 +25,7 @@ const villas = [
   },
   {
     title: "Three-Bedroom Garden Villa",
-    collection: "ONIRIA VILLAS",
+    collection: "ROHO VILLAS",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/villa-gated-entry.png",
@@ -40,7 +40,7 @@ const villas = [
   },
   {
     title: "Courtyard Villa",
-    collection: "ONIRIA VILLAS",
+    collection: "ROHO VILLAS",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/residence-parking-garden.png",
@@ -71,7 +71,7 @@ export default function VillasPage() {
         label: "THE VILLA COLLECTION",
         title: "More space, more privacy, more possibility",
         description:
-          "The ONIRIA Villa Collection is designed for families and owners seeking generous living areas, private outdoor spaces and timeless tropical architecture.",
+          "The ROHO Villa Collection is designed for families and owners seeking generous living areas, private outdoor spaces and timeless tropical architecture.",
       }}
       featuresClassName="villaPremiumFeatures"
       features={[

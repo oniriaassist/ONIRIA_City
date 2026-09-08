@@ -1,9 +1,9 @@
 import EditorialPage from "../components/EditorialPage";
 
 export const metadata = {
-  title: "Architecture | ONIRIA City",
+  title: "Architecture | Roho",
   description:
-    "Discover the architectural vision and design language of ONIRIA City.",
+    "Discover the architectural vision and design language of Roho.",
 };
 
 export default function ArchitecturePage() {
@@ -21,7 +21,7 @@ export default function ArchitecturePage() {
         label: "DESIGN PHILOSOPHY",
         title: "Modern architecture connected to place",
         description:
-          "ONIRIA City combines contemporary design with ideas inspired by Zanzibar’s climate, landscape, craftsmanship and way of life.",
+          "Roho combines contemporary design with ideas inspired by Zanzibar’s climate, landscape, craftsmanship and way of life.",
       }}
       sections={[
         {

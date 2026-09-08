@@ -30,14 +30,14 @@ export default function LifestylePreview() {
     <section className="lifestylePreviewSection" id="lifestyle">
       <div className="lifestylePreviewHeading">
         <div>
-          <p className="sectionLabel">THE ONIRIA LIFESTYLE</p>
+          <p className="sectionLabel">THE ROHO LIFESTYLE</p>
 
           <h2>Inspired by the beauty and spirit of Zanzibar</h2>
         </div>
 
         <div className="lifestylePreviewIntro">
           <p>
-            ONIRIA City combines modern living with the experiences that make
+            Roho combines modern living with the experiences that make
             Zanzibar special: the ocean, tropical landscapes, wellness,
             community and a relaxed way of life.
           </p>
@@ -69,7 +69,7 @@ export default function LifestylePreview() {
             </span>
 
             <a href="/lifestyle#editorial-sections" className="lifestylePreviewButton">
-              Discover ONIRIA Lifestyle
+              Discover ROHO Lifestyle
             </a>
           </div>
         </div>

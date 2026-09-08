@@ -1,15 +1,15 @@
 import PropertyCollectionPage from "../components/PropertyCollectionPage";
 
 export const metadata = {
-  title: "Properties | ONIRIA City",
+  title: "Properties | Roho",
   description:
-    "Explore villas, residences, apartments and commercial spaces at ONIRIA City.",
+    "Explore villas, residences, apartments and commercial spaces at Roho.",
 };
 
 const properties = [
   {
     title: "Signature Four-Bedroom Villa",
-    collection: "ONIRIA VILLAS",
+    collection: "ROHO VILLAS",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/villa-pool-rear.png",
@@ -25,7 +25,7 @@ const properties = [
   },
   {
     title: "Three-Bedroom Garden Villa",
-    collection: "ONIRIA VILLAS",
+    collection: "ROHO VILLAS",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/villa-front-entry.png",
@@ -40,7 +40,7 @@ const properties = [
   },
   {
     title: "Three-Bedroom Garden Residence",
-    collection: "RESIDENCES",
+    collection: "ROHO RESIDENCES",
     location: "Fumba, Zanzibar",
     image:
       "/media/oniria/residence-parking-garden.png",
@@ -81,7 +81,7 @@ const properties = [
     priceLabel: "Availability",
     price: "Register interest",
     description:
-      "A connected apartment close to dining, retail, services and the social heart of ONIRIA City.",
+      "A connected apartment close to dining, retail, services and the social heart of Roho.",
     link: "/v-avenue/apartment",
   },
   {
@@ -94,7 +94,7 @@ const properties = [
     priceLabel: "Leasing",
     price: "Enquire now",
     description:
-      "A flexible retail opportunity positioned within ONIRIA City’s planned commercial and lifestyle destination.",
+      "A flexible retail opportunity positioned within Roho’s planned commercial and lifestyle destination.",
     link: "/commercial/retail-space",
   },
 ];
@@ -104,7 +104,7 @@ export default function PropertiesPage() {
     <PropertyCollectionPage
       hero={{
         eyebrow: "ONIRIA PROPERTIES",
-        title: "Find Your Place in ONIRIA City",
+        title: "Find Your Place in Roho",
         description:
           "Explore private villas, modern residences, apartments and commercial opportunities in Fumba, Zanzibar.",
         image:

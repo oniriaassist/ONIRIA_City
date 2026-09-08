@@ -6,7 +6,7 @@ export default function LeadTable({ leads, onClearFilters, filtersActive = false
     return (
       <EmptyState
         title={filtersActive ? "No leads match these filters" : "No leads yet"}
-        description={filtersActive ? "Adjust the filters to broaden the lead list." : "New ONIRIA enquiries will appear here once they are captured."}
+        description={filtersActive ? "Adjust the filters to broaden the lead list." : "New ROHO enquiries will appear here once they are captured."}
         actionLabel={filtersActive ? "Clear filters" : undefined}
         onAction={filtersActive ? onClearFilters : undefined}
       />
