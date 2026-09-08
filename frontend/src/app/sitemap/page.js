@@ -25,7 +25,7 @@ const groups = [
   },
   {
     title: "Legal",
-    links: [["Privacy Policy", "/privacy"], ["Terms and Conditions", "/terms"], ["Cookie Policy", "/cookie-policy"], ["Accessibility", "/accessibility"]],
+    links: [["Privacy Policy", "/privacy"], ["Cookie Policy", "/cookie-policy"], ["Accessibility", "/accessibility"]],
   },
 ];
 

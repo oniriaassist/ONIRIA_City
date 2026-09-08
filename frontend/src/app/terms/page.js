@@ -18,6 +18,7 @@ export default function TermsPage() {
         title="Terms and Conditions"
         description="These terms describe the general conditions for accessing and using the Roho website prototype."
         image="/media/oniria/villa-gated-entry.png"
+        scrollLink={false}
       />
 
       <section className="legalPageSection" id="page-content">
@@ -25,18 +26,18 @@ export default function TermsPage() {
           <aside className="legalPageSidebar">
             <p className="sectionLabel">TERMS OF USE</p>
 
-            <nav aria-label="Terms and conditions sections">
-              <a href="#acceptance">Acceptance</a>
-              <a href="#prototype">Prototype status</a>
-              <a href="#information">Website information</a>
-              <a href="#property">Property information</a>
-              <a href="#inquiries">Inquiries</a>
-              <a href="#acceptable-use">Acceptable use</a>
-              <a href="#ownership">Intellectual property</a>
-              <a href="#third-parties">Third-party links</a>
-              <a href="#liability">Responsibility</a>
-              <a href="#changes">Changes</a>
-            </nav>
+            <div className="legalPageNavText" aria-label="Terms and conditions sections">
+              <span>Acceptance</span>
+              <span>Prototype status</span>
+              <span>Website information</span>
+              <span>Property information</span>
+              <span>Inquiries</span>
+              <span>Acceptable use</span>
+              <span>Intellectual property</span>
+              <span>Third-party links</span>
+              <span>Responsibility</span>
+              <span>Changes</span>
+            </div>
           </aside>
 
           <article className="legalPageContent">
@@ -218,9 +219,9 @@ export default function TermsPage() {
                 effective date on this page.
               </p>
 
-              <a href="/contact#contact-form" className="legalPageButton">
+              <p className="legalPageButton">
                 Contact Roho
-              </a>
+              </p>
             </section>
 
             <div className="legalLastUpdated">

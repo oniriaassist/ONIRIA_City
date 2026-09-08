@@ -20,7 +20,6 @@ const routes = [
   "/contact",
   "/inquiries",
   "/privacy",
-  "/terms",
   "/cookie-policy",
   "/accessibility",
   "/sitemap",

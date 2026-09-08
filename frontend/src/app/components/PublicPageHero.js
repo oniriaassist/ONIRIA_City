@@ -13,6 +13,7 @@ export default function PublicPageHero({
   title,
   description,
   image,
+  scrollLink = true,
 }) {
   return (
     <section
@@ -29,9 +30,15 @@ export default function PublicPageHero({
         <span className="publicPageHeroDescription hero-subtitle">{description}</span>
       </div>
 
-      <a href="#page-content" className="publicPageScroll hero-cta">
-        Explore <span aria-hidden="true">↓</span>
-      </a>
+      {scrollLink ? (
+        <a href="#page-content" className="publicPageScroll hero-cta">
+          Explore <span aria-hidden="true">↓</span>
+        </a>
+      ) : (
+        <span className="publicPageScroll hero-cta">
+          Explore <span aria-hidden="true">↓</span>
+        </span>
+      )}
     </section>
   );
 }

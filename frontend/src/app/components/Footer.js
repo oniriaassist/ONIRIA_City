@@ -27,7 +27,7 @@ export default function Footer() {
           <nav className="oniriaMinimalFooterLegal" aria-label="Press and legal links">
             <Link href="/journal">PRESS</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/terms">TERMS AND CONDITIONS</Link>
+            <span>TERMS AND CONDITIONS</span>
           </nav>
 
           <nav className="oniriaMinimalFooterSocial" aria-label="Social media links">
