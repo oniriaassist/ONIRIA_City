@@ -1,18 +1,18 @@
-import HeroCarousel from "./HeroCarousel";
-
-const slides = [
-  { image: "/media/oniria/residence-roundabout.png", position: "center" },
-  { image: "/media/oniria/villa-pool-rear.png", position: "center" },
-  { image: "/media/oniria/residence-aerial-masterplan.png", position: "center" },
-];
-
 export default function HeroSection() {
   return (
     <section
       className="heroSlider edenInspiredHero"
       aria-label="Welcome to Roho"
     >
-      <HeroCarousel slides={slides} />
+      <div className="heroSlides" aria-hidden="true">
+        <div
+          className="heroSlide heroSlideActive"
+          style={{
+            backgroundImage: 'url("/media/oniria/villa-pool-rear.png")',
+            backgroundPosition: "center",
+          }}
+        />
+      </div>
 
       <div className="heroDarkOverlay" />
 

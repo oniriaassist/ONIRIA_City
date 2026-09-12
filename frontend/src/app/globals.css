@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wdth,wght@62.5,200;62.5,300;62.5,400;62.5,500;62.5,600;62.5,700&display=swap");
 @import "tailwindcss";
 @import "react-phone-number-input/style.css";
 
@@ -35,7 +36,8 @@ textarea {
 
 :root {
   --font-sans: Arial, Helvetica, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-logo: "Noto Serif Display", Georgia, "Times New Roman", serif;
+  --font-display: var(--font-logo);
   --oniria-bg: #e9ddcb;
   --oniria-text: #95694d;
   --oniria-footer-bg: #3a241c;
@@ -13319,4 +13321,26 @@ body:has(.adminShell) .oniriaWhatsappFabV2 {
   .oniriaMinimalFooterBrand a {
     justify-content: flex-start;
   }
+}
+
+/* Final logo-font typography lock for public headings and brand text. */
+.edenHeaderBrand,
+.oniriaMinimalFooterBrand a,
+main :is(h1, h2, h3, h4, h5, h6),
+.hero-title,
+.publicPageHeroTitleLine {
+  font-family: var(--font-logo) !important;
+  font-stretch: 62.5%;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 62.5;
+}
+
+.heroSlider.edenInspiredHero .hero-title,
+.heroSlider.edenInspiredHero .hero-title > span,
+.heroSlider.edenInspiredHero .heroSignature.hero-subtitle {
+  font-family: var(--font-logo) !important;
+  font-stretch: 62.5%;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 62.5;
+  font-weight: 300 !important;
 }
