@@ -42,14 +42,14 @@ def connection_url():
             "Required values are missing: ONIRIA_ADMIN_EMAIL"
         )
 
-    return settings.effective_database_url, settings
+    return settings.asyncpg_database_url, settings
 
 
 async def main() -> None:
     database_url, settings = connection_url()
 
     try:
-        connection = await asyncpg.connect(database_url)
+        connection = await asyncpg.connect(database_url, statement_cache_size=0)
     except Exception as exc:
         raise SystemExit(
             f"Could not connect to PostgreSQL: {exc}"

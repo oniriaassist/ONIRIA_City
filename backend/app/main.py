@@ -168,15 +168,26 @@ async def readiness():
                 table_status[table] = True
             except Exception:
                 table_status[table] = False
-    return {
-        "success": True,
-        "data": {
-            "service": settings.app_name,
-            "environment": settings.app_env,
-            "database": "connected" if database_connected else "unavailable",
-            "tables": table_status,
-        },
+    data = {
+        "service": settings.app_name,
+        "environment": settings.app_env,
+        "database": "connected" if database_connected else "unavailable",
+        "tables": table_status,
     }
+    production_ready = database_connected and all(table_status.values())
+    if settings.app_env.strip().lower() == "production" and not production_ready:
+        return JSONResponse(
+            status_code=503,
+            content={
+                "success": False,
+                "error": {
+                    "code": "service_not_ready",
+                    "message": "Database or required schema is unavailable",
+                },
+                "data": data,
+            },
+        )
+    return {"success": True, "data": data}
 
 
 app.include_router(property_routes.router, prefix=settings.api_prefix)

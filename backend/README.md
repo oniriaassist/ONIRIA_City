@@ -1,57 +1,63 @@
 # Roho Backend
 
-FastAPI backend for public content, enquiries, newsletter, AI, WhatsApp, staff authentication, and admin lead management.
+FastAPI API for public content, enquiries, newsletter, AI/WhatsApp integrations, staff authentication and the admin dashboard.
 
-The supported database is PostgreSQL. Supabase works through its PostgreSQL connection string in `DATABASE_URL`.
+## Install
 
-## Local Setup
+For runtime only:
 
 ```powershell
-cd backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-Copy-Item .env.example .env
+python -m pip install -r backend\requirements.txt
 ```
 
-Use either:
+For development/testing:
+
+```powershell
+python -m pip install -r backend\requirements-dev.txt
+```
+
+## Database
+
+Use PostgreSQL. Supabase is supported through `DATABASE_URL`.
+
+For Vercel runtime use the Supabase Transaction Pooler URL and:
 
 ```text
-DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres?sslmode=require
+DATABASE_MIN_SIZE=1
+DATABASE_MAX_SIZE=1
 ```
 
-or raw local PostgreSQL fields:
+The asyncpg connection is normalized automatically, Supabase TLS is required automatically, and prepared-statement caching is disabled for transaction-pooler compatibility.
 
-```text
-POSTGRES_HOST=127.0.0.1
-POSTGRES_PORT=5433
-POSTGRES_DATABASE=oniria_city
-POSTGRES_USER=oniria_user
-POSTGRES_PASSWORD=<actual raw password>
+## First setup
+
+```powershell
+Copy-Item backend\.env.example backend\.env
+python backend\scripts\run_migrations.py --seed
+python backend\scripts\create_admin.py
+python backend\scripts\verify_admin.py
+python backend\scripts\check_database.py
 ```
 
-Only `DATABASE_URL` needs percent-encoding for special characters. `POSTGRES_PASSWORD` should contain the actual password.
-
-## Migrate, Bootstrap, Run
-
-From the repository root:
+Future migrations should normally omit `--seed`:
 
 ```powershell
 python backend\scripts\run_migrations.py
-python backend\scripts\create_admin.py
-python backend\scripts\verify_admin.py
+```
+
+## Run locally
+
+```powershell
 python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 7000
 ```
 
-The admin bootstrap is idempotent. It does not reset an existing password unless `ONIRIA_ADMIN_UPDATE_PASSWORD=true`.
-
 ## Vercel
 
-The Vercel entrypoint is `backend/api/index.py`, configured by `backend/vercel.json`. Deploy the backend as a separate Vercel project with root directory `backend`.
+Deploy a separate Vercel project with root directory `backend`. Vercel discovers `api/index.py` as the FastAPI function entry point.
 
-## Tests
+## Verify
 
 ```powershell
-python -m pytest backend\tests -q
 python -m compileall backend\app backend\scripts
+python -m pytest backend\tests -q
 ```

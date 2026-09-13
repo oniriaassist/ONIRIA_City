@@ -51,8 +51,8 @@ def check_migration_files() -> bool:
     migrations_dir = database_dir() / "migrations"
     missing = [name for name in POSTGRES_MIGRATION_FILES if not (migrations_dir / name).exists()]
     return ok(
-        "Migration files 001-018",
-        not missing and len(POSTGRES_MIGRATION_FILES) == 18,
+        "Migration files 001-019",
+        not missing and len(POSTGRES_MIGRATION_FILES) == 19,
         None if not missing else f"missing {', '.join(missing)}",
     )
 
@@ -104,7 +104,7 @@ async def check_database(settings) -> bool:
         return ok("PostgreSQL connectivity", False, "missing PostgreSQL configuration")
 
     try:
-        connection = await asyncpg.connect(settings.effective_database_url)
+        connection = await asyncpg.connect(settings.asyncpg_database_url, statement_cache_size=0)
     except Exception:
         return ok("PostgreSQL connectivity", False)
 

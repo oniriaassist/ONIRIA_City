@@ -93,11 +93,23 @@ def test_accepts_valid_smtp_configuration():
 
 def test_private_env_files_are_not_git_tracked():
     root = Path(__file__).resolve().parents[2]
-    tracked = subprocess.check_output(["git", "ls-files"], cwd=root, text=True).splitlines()
-    assert ".env" not in tracked
-    assert "backend/.env" not in tracked
-    assert "frontend/.env" not in tracked
-    assert "frontend/.env.local" not in tracked
+    result = subprocess.run(
+        ["git", "ls-files"], cwd=root, text=True, capture_output=True, check=False
+    )
+    if result.returncode == 0:
+        tracked = result.stdout.splitlines()
+        assert ".env" not in tracked
+        assert "backend/.env" not in tracked
+        assert "frontend/.env" not in tracked
+        assert "frontend/.env.local" not in tracked
+        return
+
+    # Source archives do not contain .git metadata; verify the ignore contract instead.
+    gitignore = (root / ".gitignore").read_text(encoding="utf-8")
+    assert ".env" in gitignore
+    assert "backend/.env" in gitignore
+    assert "frontend/.env" in gitignore
+    assert "frontend/.env.local" in gitignore
 
 
 def test_env_examples_contain_placeholders_only():
@@ -114,3 +126,11 @@ def test_env_examples_contain_placeholders_only():
         admin_email = re.search(r"^ONIRIA_ADMIN_EMAIL=(.+)$", text, flags=re.MULTILINE)
         if admin_email:
             assert admin_email.group(1).strip() == ""
+
+
+def test_supabase_asyncpg_url_is_tls_and_pooler_safe():
+    settings = Settings(
+        database_url="postgresql+asyncpg://postgres.ref:pw@aws-0-region.pooler.supabase.com:6543/postgres"
+    )
+    assert settings.asyncpg_database_url.startswith("postgresql://")
+    assert "sslmode=require" in settings.asyncpg_database_url

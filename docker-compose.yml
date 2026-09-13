@@ -34,7 +34,7 @@ services:
       ONIRIA_DATABASE_DIR: /database
     volumes:
       - ./database:/database:ro
-    command: ["python", "scripts/run_migrations.py"]
+    command: ["python", "scripts/run_migrations.py", "--seed"]
     restart: "no"
 
   admin-bootstrap:

@@ -41,7 +41,7 @@ async def main() -> None:
         raise SystemExit("asyncpg is not installed. Run: backend\\.venv\\Scripts\\python.exe -m pip install -r backend\\requirements.txt")
 
     try:
-        connection = await asyncpg.connect(settings.effective_database_url)
+        connection = await asyncpg.connect(settings.asyncpg_database_url, statement_cache_size=0)
     except Exception as exc:
         raise SystemExit(f"Connection: failed ({exc.__class__.__name__})") from exc
 

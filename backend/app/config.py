@@ -3,7 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
-from urllib.parse import quote, unquote, urlparse
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urlparse, urlunparse
 
 from pydantic import EmailStr, TypeAdapter, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -100,6 +100,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,
+        env_ignore_empty=True,
     )
 
     @field_validator("api_prefix")
@@ -286,6 +287,25 @@ class Settings(BaseSettings):
                 "DATABASE_MAX_SIZE must be greater than or equal "
                 "to DATABASE_MIN_SIZE"
             )
+
+        if self.app_env.strip().lower() == "production":
+            if self.app_debug:
+                raise ValueError("APP_DEBUG must be false in production")
+            if not self.effective_database_url:
+                raise ValueError("A PostgreSQL DATABASE_URL is required in production")
+            if not self.session_cookie_secure:
+                raise ValueError("SESSION_COOKIE_SECURE must be true in production")
+            if not self.frontend_url.lower().startswith("https://"):
+                raise ValueError("FRONTEND_URL must use https:// in production")
+            invalid_origins = [
+                origin
+                for origin in self.cors_origin_list
+                if origin == "*" or not origin.lower().startswith("https://")
+            ]
+            if invalid_origins:
+                raise ValueError(
+                    "CORS_ORIGINS must contain only explicit https:// origins in production"
+                )
 
         if (
             self.session_cookie_samesite == "none"
@@ -524,13 +544,31 @@ class Settings(BaseSettings):
         }
 
     @property
+    def asyncpg_database_url(self) -> str | None:
+        """Return a normalized PostgreSQL URL suitable for asyncpg.
+
+        SQLAlchemy-style ``postgresql+asyncpg://`` URLs are accepted by the
+        application configuration but asyncpg itself expects ``postgresql://``.
+        Supabase connections are forced to TLS unless the caller already
+        supplied an explicit sslmode.
+        """
+        database_url = self.effective_database_url
+        if not database_url:
+            return None
+
+        parsed = urlparse(database_url)
+        scheme = "postgresql" if parsed.scheme in {"postgres", "postgresql+asyncpg"} else parsed.scheme
+        query_items = dict(parse_qsl(parsed.query, keep_blank_values=True))
+        if "supabase" in (parsed.hostname or "").lower():
+            query_items.setdefault("sslmode", "require")
+        return urlunparse(parsed._replace(scheme=scheme, query=urlencode(query_items)))
+
+    @property
     def postgres_connection_params(
         self,
     ) -> str | None:
-        """
-        Return a PostgreSQL connection URL accepted by asyncpg.
-        """
-        return self.effective_database_url
+        """Backward-compatible alias for the asyncpg connection URL."""
+        return self.asyncpg_database_url
 
     @property
     def database_configuration_source(self) -> str:

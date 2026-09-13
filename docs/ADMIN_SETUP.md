@@ -1,26 +1,24 @@
 # Admin Setup
 
-Fill PostgreSQL/Supabase settings and admin bootstrap values:
+Create the first administrator from a trusted local machine, not from the browser.
+
+Set in `backend/.env`:
 
 ```text
-DATABASE_URL=<supabase-postgresql-url>
+DATABASE_URL=<SUPABASE_SESSION_POOLER_OR_DIRECT_URL>
 ONIRIA_ADMIN_FULL_NAME=ONIRIA Administrator
-ONIRIA_ADMIN_EMAIL=admin@example.com
-ONIRIA_ADMIN_PASSWORD=CHANGE_ME_STRONG_PASSWORD
-ONIRIA_ADMIN_PASSWORD_CONFIRM=CHANGE_ME_STRONG_PASSWORD
+ONIRIA_ADMIN_EMAIL=<ADMIN EMAIL>
+ONIRIA_ADMIN_PASSWORD=<STRONG PASSWORD>
+ONIRIA_ADMIN_PASSWORD_CONFIRM=<SAME STRONG PASSWORD>
 ONIRIA_ADMIN_UPDATE_PASSWORD=false
 ```
 
-Run:
+For a fresh database:
 
 ```powershell
-python backend\scripts\run_migrations.py
+python backend\scripts\run_migrations.py --seed
 python backend\scripts\create_admin.py
 python backend\scripts\verify_admin.py
 ```
 
-If login says `Invalid staff credentials`, verify:
-
-- `staff_users.is_active = true`
-- The user has the `administrator` role through `staff_user_roles`
-- Frontend and backend point at the same Supabase/PostgreSQL database
+After creation, remove the bootstrap password values from production environments. The runtime login uses the password hash stored in PostgreSQL.

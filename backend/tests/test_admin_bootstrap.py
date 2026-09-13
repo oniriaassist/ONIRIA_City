@@ -96,6 +96,7 @@ async def _run_bootstrap_creates_missing_administrator():
     result = await bootstrap_administrator(
         connection,
         Settings(
+            oniria_admin_full_name="Admin User",
             oniria_admin_email="admin@example.com",
             oniria_admin_password="StrongPass12!",
             oniria_admin_password_confirm="StrongPass12!",
@@ -117,6 +118,7 @@ async def _run_bootstrap_adds_missing_administrator_role_without_password_reset(
     result = await bootstrap_administrator(
         connection,
         Settings(
+            oniria_admin_full_name="Admin User",
             oniria_admin_email="admin@example.com",
             oniria_admin_password="StrongPass12!",
             oniria_admin_password_confirm="StrongPass12!",

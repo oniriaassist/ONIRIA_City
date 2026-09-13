@@ -80,7 +80,7 @@ async def main() -> int:
         return 1
 
     try:
-        connection = await asyncpg.connect(settings.effective_database_url)
+        connection = await asyncpg.connect(settings.asyncpg_database_url, statement_cache_size=0)
     except Exception as exc:
         print(f"PostgreSQL reachable: no ({exc.__class__.__name__})")
         return 1

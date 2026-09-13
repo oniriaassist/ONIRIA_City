@@ -2,7 +2,10 @@ import PublicFloatingActions from "./components/PublicFloatingActions";
 import "./globals.css";
 import "./premium-marketing.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://oniriacity.com";
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Roho | The Art of Living in Zanzibar",
     template: "%s | Roho",

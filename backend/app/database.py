@@ -7,7 +7,6 @@ import re
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
-from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 from app.config import Settings
 
@@ -62,12 +61,11 @@ class Database:
         for attempt in range(1, max_attempts + 1):
             try:
                 self.pool = await asyncpg.create_pool(
-                    dsn=self._normalize_database_url(
-                        settings.effective_database_url
-                    ),
+                    dsn=settings.asyncpg_database_url,
                     min_size=settings.database_min_size,
                     max_size=settings.database_max_size,
                     timeout=15,
+                    statement_cache_size=0,
                     init=self._init_connection,
                 )
                 break
@@ -209,16 +207,6 @@ class Database:
             return int(command_tag.rsplit(" ", 1)[-1])
         except (TypeError, ValueError):
             return 0
-
-    def _normalize_database_url(self, database_url: str) -> str:
-        parsed = urlparse(database_url)
-        scheme = "postgresql" if parsed.scheme == "postgres" else parsed.scheme
-        query_items = dict(parse_qsl(parsed.query, keep_blank_values=True))
-
-        if "supabase" in (parsed.hostname or ""):
-            query_items.setdefault("sslmode", "require")
-
-        return urlunparse(parsed._replace(scheme=scheme, query=urlencode(query_items)))
 
     def _safe_connection_error(
         self,

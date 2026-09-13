@@ -65,7 +65,7 @@ async def check_database_configuration() -> list[str]:
     if not settings.effective_database_url:
         return ["DATABASE_URL or POSTGRES_* values are required for database validation"]
 
-    connection = await asyncpg.connect(settings.effective_database_url)
+    connection = await asyncpg.connect(settings.asyncpg_database_url, statement_cache_size=0)
     try:
         role = await connection.fetchrow("SELECT id FROM staff_roles WHERE role_key = 'administrator' LIMIT 1")
         if not role:
