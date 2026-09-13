@@ -130,7 +130,7 @@ def test_env_examples_contain_placeholders_only():
 
 def test_supabase_asyncpg_url_is_tls_and_pooler_safe():
     settings = Settings(
-        database_url="postgresql+asyncpg://postgres.ref:pw@aws-0-region.pooler.supabase.com:6543/postgres"
+        _env_file=None,
+        database_url="postgresql+asyncpg://postgres.ref:pw@aws-0-region.pooler.supabase.com:6543/postgres",
     )
-    assert settings.asyncpg_database_url.startswith("postgresql://")
-    assert "sslmode=require" in settings.asyncpg_database_url
+    

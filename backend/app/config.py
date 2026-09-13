@@ -316,48 +316,6 @@ class Settings(BaseSettings):
                 "SESSION_COOKIE_SECURE=true"
             )
 
-        if self.database_url and any(
-            [
-                self.postgres_host,
-                self.postgres_database,
-                self.postgres_user,
-            ]
-        ):
-            parsed = urlparse(self.database_url)
-
-            comparisons = {
-                "host": (
-                    parsed.hostname,
-                    self.postgres_host,
-                ),
-                "port": (
-                    parsed.port or 5432,
-                    self.postgres_port,
-                ),
-                "database": (
-                    parsed.path.lstrip("/"),
-                    self.postgres_database,
-                ),
-                "username": (
-                    unquote(parsed.username or ""),
-                    self.postgres_user,
-                ),
-            }
-
-            mismatches = [
-                name
-                for name, (url_value, env_value)
-                in comparisons.items()
-                if env_value is not None
-                and str(url_value) != str(env_value)
-            ]
-
-            if mismatches:
-                raise ValueError(
-                    "DATABASE_URL and POSTGRES_* disagree on: "
-                    + ", ".join(mismatches)
-                )
-
         if self.mail_from:
             email_adapter.validate_python(self.mail_from)
 

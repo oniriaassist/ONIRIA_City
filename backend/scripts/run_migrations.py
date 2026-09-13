@@ -46,6 +46,15 @@ def checksum(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def executable_sql(sql_text: str) -> str:
+    lines = [
+        line
+        for line in sql_text.splitlines()
+        if line.strip() and not line.strip().startswith("--")
+    ]
+    return "\n".join(lines).strip()
+
+
 async def ensure_migration_table(connection) -> None:
     await connection.execute(
         """
@@ -71,7 +80,7 @@ async def apply_migration(connection, path: Path) -> str:
             )
         return "already applied"
 
-    sql_text = path.read_text(encoding="utf-8").strip()
+    sql_text = executable_sql(path.read_text(encoding="utf-8"))
     async with connection.transaction():
         if sql_text:
             await connection.execute(sql_text)
@@ -84,7 +93,7 @@ async def apply_migration(connection, path: Path) -> str:
 
 
 async def apply_seed(connection, path: Path) -> None:
-    sql_text = path.read_text(encoding="utf-8").strip()
+    sql_text = executable_sql(path.read_text(encoding="utf-8"))
     if not sql_text:
         return
     async with connection.transaction():
