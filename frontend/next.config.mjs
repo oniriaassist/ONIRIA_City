@@ -2,15 +2,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const configuredInternalApiBaseUrl = process.env.INTERNAL_API_BASE_URL?.trim();
-if (process.env.NODE_ENV === "production" && !configuredInternalApiBaseUrl) {
-  throw new Error(
-    "INTERNAL_API_BASE_URL is required for production builds (for example https://your-api.vercel.app)."
-  );
-}
-
-const internalApiBaseUrl = (
-  configuredInternalApiBaseUrl || "http://127.0.0.1:7000"
-).replace(/\/$/, "");
+const internalApiBaseUrl = configuredInternalApiBaseUrl?.replace(/\/$/, "");
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
@@ -23,6 +15,10 @@ const nextConfig = {
     root: projectRoot,
   },
   async rewrites() {
+    if (!internalApiBaseUrl) {
+      return [];
+    }
+
     return [
       {
         source: "/api/:path*",

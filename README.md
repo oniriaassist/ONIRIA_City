@@ -76,7 +76,6 @@ Frontend:
 
 ```powershell
 cd frontend
-$env:INTERNAL_API_BASE_URL="http://127.0.0.1:7000"
 npm run lint
 npm run build
 ```
@@ -90,7 +89,7 @@ npm run build
 - Seed loading is explicit (`--seed`) instead of automatic on every migration.
 - Production configuration validation rejects insecure HTTP origins/cookies and missing database configuration.
 - Production readiness endpoint returns HTTP 503 if PostgreSQL/schema is unavailable.
-- Next.js production builds require `INTERNAL_API_BASE_URL` rather than silently using a broken default.
+- Root Vercel Services route `/api/*` directly to the backend service; `INTERNAL_API_BASE_URL` is optional for local or split-project proxy builds.
 - Security headers enabled in Next.js.
 - Private environment files are ignored by Git.
 - GitHub Actions CI validates backend tests and frontend lint/build.
