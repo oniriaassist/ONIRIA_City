@@ -40,7 +40,7 @@ class PasswordResetRepository:
               AND prt.used_at IS NULL
               AND prt.revoked_at IS NULL
               AND prt.expires_at > CURRENT_TIMESTAMP
-              AND su.is_active = 1
+              AND su.is_active = TRUE
             LIMIT 1
             """,
             token_hash,

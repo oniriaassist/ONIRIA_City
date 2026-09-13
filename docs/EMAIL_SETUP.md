@@ -1,35 +1,28 @@
 # Email Setup
 
-Email delivery is optional in local development. If `MAIL_PROVIDER` is blank, delivery is skipped safely and reset tokens are not printed in normal logs.
+Email delivery is optional. Database writes are preserved in PostgreSQL even if mail delivery fails.
 
-## Resend
-
-1. Verify a sender domain or sender address in Resend.
-2. Fill `backend/.env`:
+For Resend:
 
 ```text
 MAIL_PROVIDER=resend
 RESEND_API_KEY=<resend-api-key>
-MAIL_FROM=hello@example.com
+MAIL_FROM=verified-sender@example.com
 MAIL_FROM_NAME=Roho
+SALES_NOTIFICATION_EMAIL=team@example.com
+```
+
+For SMTP:
+
+```text
+MAIL_PROVIDER=smtp
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USERNAME=<smtp-user>
+SMTP_PASSWORD=<smtp-password>
+SMTP_STARTTLS=true
+MAIL_FROM=sales@example.com
 SALES_NOTIFICATION_EMAIL=sales@example.com
-SALES_NOTIFICATION_EMAILS=
-REPLY_TO_EMAIL=
 ```
 
-`SALES_NOTIFICATION_EMAIL` is the backward-compatible single-recipient option. `SALES_NOTIFICATION_EMAILS` accepts comma-separated recipients.
-
-## What Sends
-
-- Staff password reset emails.
-- Sales enquiry notifications after the enquiry is saved.
-
-The enquiry remains saved in MySQL if Resend fails. Provider errors are logged without API keys and are not exposed to public users.
-
-## Test
-
-With MySQL and env configured:
-
-```powershell
-python backend\scripts\validate_configuration.py
-```
+Verify with a public enquiry after migrations and admin bootstrap are complete.

@@ -5,10 +5,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 os.environ["DATABASE_URL"] = ""
 for name in (
-    "MYSQL_HOST",
-    "MYSQL_DATABASE",
-    "MYSQL_USER",
-    "MYSQL_PASSWORD",
+    "POSTGRES_HOST",
+    "POSTGRES_DATABASE",
+    "POSTGRES_USER",
+    "POSTGRES_PASSWORD",
     "MAIL_PROVIDER",
     "RESEND_API_KEY",
     "SMTP_HOST",

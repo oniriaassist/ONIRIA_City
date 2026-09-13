@@ -1,8 +1,9 @@
 -- Development example only. Generate password_hash with backend/scripts/create_admin.py.
 -- Do not commit real staff passwords or hashes for production.
-USE oniria_city;
--- INSERT INTO staff_users (full_name, email, password_hash) VALUES ('Admin User', 'admin@example.com', '<PASSWORD_HASH>');
+-- INSERT INTO staff_users (full_name, email, password_hash, is_active)
+-- VALUES ('Admin User', 'admin@example.com', '<PASSWORD_HASH>', true)
+-- ON CONFLICT (email) DO NOTHING;
 -- INSERT INTO staff_user_roles (staff_user_id, role_id)
 -- SELECT su.id, sr.id FROM staff_users su JOIN staff_roles sr ON sr.role_key = 'administrator'
 -- WHERE su.email = 'admin@example.com'
--- ON DUPLICATE KEY UPDATE staff_user_id = staff_user_id;
+-- ON CONFLICT (staff_user_id, role_id) DO NOTHING;

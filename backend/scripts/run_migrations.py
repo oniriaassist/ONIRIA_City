@@ -4,12 +4,11 @@ import asyncio
 import os
 import sys
 from pathlib import Path
-from typing import Any
 
 try:
-    import aiomysql
+    import asyncpg
 except ModuleNotFoundError:
-    aiomysql = None
+    asyncpg = None
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -19,11 +18,11 @@ PROJECT_ROOT = BACKEND_ROOT.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 sys.path.insert(0, str(BACKEND_ROOT))
 
-from migration_manifest import (
-    MYSQL_MIGRATION_FILES,
-    MYSQL_SEED_FILES,
-)
 from app.config import get_settings
+from migration_manifest import (
+    POSTGRES_MIGRATION_FILES,
+    POSTGRES_SEED_FILES,
+)
 
 
 DATABASE_DIR = Path(
@@ -37,127 +36,62 @@ MIGRATIONS = DATABASE_DIR / "migrations"
 SEEDS = DATABASE_DIR / "seed"
 
 
-def mysql_settings(
-    database: str | None = None,
-) -> dict[str, Any]:
+def database_url() -> str:
     try:
         app_settings = get_settings()
-        connection_params = app_settings.mysql_connection_params
     except Exception as exc:
         raise SystemExit(
             f"Settings validation failed: {exc}"
         ) from exc
 
-    if not connection_params:
+    if not app_settings.effective_database_url:
         raise SystemExit(
-            "DATABASE_URL or MYSQL_HOST, MYSQL_DATABASE, "
-            "MYSQL_USER and MYSQL_PASSWORD are required."
+            "DATABASE_URL or POSTGRES_HOST, POSTGRES_DATABASE, "
+            "POSTGRES_USER and POSTGRES_PASSWORD are required."
         )
 
-    settings: dict[str, Any] = {
-        **connection_params,
-        "charset": "utf8mb4",
-        "autocommit": True,
-        "connect_timeout": 15,
-    }
-
-    if database:
-        settings["db"] = database
-
-    return settings
-
-
-def split_mysql_script(
-    sql_text: str,
-) -> list[str]:
-    statements: list[str] = []
-    delimiter = ";"
-    buffer: list[str] = []
-
-    for raw_line in sql_text.splitlines():
-        line = raw_line.strip()
-
-        if line.upper().startswith("DELIMITER "):
-            pending = "\n".join(buffer).strip()
-
-            if pending:
-                statements.append(pending)
-
-            buffer = []
-            delimiter = line.split(maxsplit=1)[1]
-            continue
-
-        buffer.append(raw_line)
-        current = "\n".join(buffer).strip()
-
-        if current.endswith(delimiter):
-            statement = current[: -len(delimiter)].strip()
-
-            if statement:
-                statements.append(statement)
-
-            buffer = []
-
-    pending = "\n".join(buffer).strip()
-
-    if pending:
-        statements.append(pending)
-
-    return [
-        statement
-        for statement in statements
-        if statement
-        and any(
-            line.strip()
-            and not line.strip().startswith("--")
-            for line in statement.splitlines()
-        )
-    ]
+    return app_settings.effective_database_url
 
 
 async def apply_sql(
-    cursor: Any,
+    connection,
     path: Path,
 ) -> None:
     print(f"Applying {path}")
-
-    sql_text = path.read_text(encoding="utf-8")
-
-    for statement in split_mysql_script(sql_text):
-        await cursor.execute(statement)
+    sql_text = path.read_text(encoding="utf-8").strip()
+    if sql_text:
+        await connection.execute(sql_text)
 
 
 async def main() -> None:
-    if aiomysql is None:
+    if asyncpg is None:
         raise SystemExit(
-            "aiomysql is not installed. Run: "
+            "asyncpg is not installed. Run: "
             r"backend\.venv\Scripts\python.exe -m pip install "
             r"-r backend\requirements.txt"
         )
 
     try:
-        connection = await aiomysql.connect(
-            **mysql_settings()
-        )
+        connection = await asyncpg.connect(database_url())
     except Exception as exc:
         raise SystemExit(
-            f"Could not connect to MySQL: {exc}"
+            f"Could not connect to PostgreSQL: {exc}"
         ) from exc
 
     try:
-        async with connection.cursor() as cursor:
-            for file_name in MYSQL_MIGRATION_FILES:
+        async with connection.transaction():
+            for file_name in POSTGRES_MIGRATION_FILES:
                 await apply_sql(
-                    cursor,
+                    connection,
                     MIGRATIONS / file_name,
                 )
 
-            for seed_name in MYSQL_SEED_FILES:
+            for seed_name in POSTGRES_SEED_FILES:
                 seed_path = SEEDS / seed_name
 
                 if seed_path.exists():
                     await apply_sql(
-                        cursor,
+                        connection,
                         seed_path,
                     )
 
@@ -167,13 +101,13 @@ async def main() -> None:
         ) from exc
 
     finally:
-        connection.close()
+        await connection.close()
 
-    print("Migrations and safe seed data applied.")
+    print("PostgreSQL migrations and safe seed data applied.")
 
 
 def cli() -> None:
-    for file_name in MYSQL_MIGRATION_FILES:
+    for file_name in POSTGRES_MIGRATION_FILES:
         path = MIGRATIONS / file_name
 
         if not path.exists():
@@ -181,7 +115,7 @@ def cli() -> None:
                 f"Missing migration file: {path}"
             )
 
-    for seed_name in MYSQL_SEED_FILES:
+    for seed_name in POSTGRES_SEED_FILES:
         path = SEEDS / seed_name
 
         if not path.exists():
@@ -194,4 +128,3 @@ def cli() -> None:
 
 if __name__ == "__main__":
     cli()
-    

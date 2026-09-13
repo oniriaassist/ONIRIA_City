@@ -1,20 +1,20 @@
 # Roho
 
-Full-stack Roho website with a Next.js frontend, FastAPI backend, MySQL 8.4 database, public enquiry flows, brochure delivery, WhatsApp hooks, staff authentication, and a private admin dashboard.
+Full-stack Roho website with a Next.js frontend, FastAPI backend, Supabase/PostgreSQL database, public enquiry flows, brochure delivery, WhatsApp hooks, staff authentication, and a private admin dashboard.
 
 ## Project Structure
 
 ```text
 ONIRIA_City/
   frontend/              Next.js public website and admin dashboard UI
-  backend/               FastAPI API, services, repositories, schemas, assets
-  database/              MySQL migrations, seed data, scripts, docs
+  backend/               FastAPI API, Vercel backend entrypoint, services, repositories, schemas, assets
+  database/              PostgreSQL migrations and seed data for Supabase/local Postgres
   docs/                  Setup and deployment documentation
-  docker-compose.yml     Local/production Docker Compose stack
+  docker-compose.yml     Local PostgreSQL + backend + frontend stack
   .env.example           Root Docker Compose environment template
 ```
 
-## Environment Setup
+## Local Setup
 
 Copy the example files and fill secrets locally:
 
@@ -26,22 +26,29 @@ Copy-Item frontend\.env.example frontend\.env.local
 
 Never commit `.env`, `backend/.env`, `frontend/.env.local`, passwords, API keys, tokens, or app passwords.
 
-For Docker Compose, the browser should use `/api` and Next.js proxies to the backend service:
+For local backend development, set `backend/.env` with either a Supabase connection string:
 
 ```text
-NEXT_PUBLIC_API_BASE_URL=/api
-INTERNAL_API_BASE_URL=http://backend:7000
-MYSQL_HOST=mysql
+DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres?sslmode=require
 ```
 
-For local development without Docker, the browser can call FastAPI directly:
+or local Docker PostgreSQL values:
+
+```text
+POSTGRES_HOST=127.0.0.1
+POSTGRES_PORT=5433
+POSTGRES_DATABASE=oniria_city
+POSTGRES_USER=oniria_user
+POSTGRES_PASSWORD=<strong-password>
+```
+
+For local frontend development:
 
 ```text
 NEXT_PUBLIC_API_BASE_URL=http://localhost:7000/api
-MYSQL_HOST=127.0.0.1
 ```
 
-## Local Development
+## Run Locally Without Docker
 
 Backend:
 
@@ -53,6 +60,7 @@ pip install -r requirements.txt
 cd ..
 python backend\scripts\run_migrations.py
 python backend\scripts\create_admin.py
+python backend\scripts\verify_admin.py
 python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 7000
 ```
 
@@ -67,7 +75,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Docker Start
+## Run Locally With Docker
 
 Configure `.env` and `backend/.env`, then run:
 
@@ -78,27 +86,55 @@ docker compose up -d
 
 Services:
 
-- `mysql`: MySQL 8.4 database, host port `3307`
+- `postgres`: PostgreSQL 16 database, host port `5433`
 - `migrate`: applies migrations listed in `backend/scripts/migration_manifest.py`
 - `admin-bootstrap`: creates or verifies the configured first admin
 - `backend`: FastAPI on port `7000`
 - `frontend`: Next.js on port `3000`
 
-Startup order is MySQL healthcheck, migrations, admin bootstrap, backend healthcheck, then frontend.
+## Supabase
 
-## Database And Migrations
-
-Active migrations live in `database/migrations/` and must match `backend/scripts/migration_manifest.py`. Do not bulk-run random SQL files. Safe seed data is loaded after migrations.
-
-Manual migration command:
+1. Create a Supabase project.
+2. Copy the pooled PostgreSQL connection string from Supabase Database settings.
+3. Put it in `backend/.env` locally and Vercel backend env as `DATABASE_URL`.
+4. Run:
 
 ```powershell
 python backend\scripts\run_migrations.py
+python backend\scripts\create_admin.py
+```
+
+## Vercel Deployment
+
+Deploy as two Vercel projects:
+
+1. Backend project:
+   - Root directory: `backend`
+   - Framework preset: Other
+   - Build uses `backend/vercel.json`
+   - Required env: `DATABASE_URL`, `CORS_ORIGINS`, `FRONTEND_URL`, admin bootstrap values, mail/WhatsApp values as needed
+
+2. Frontend project:
+   - Root directory: `frontend`
+   - Required env:
+
+```text
+NEXT_PUBLIC_API_BASE_URL=https://<your-backend-vercel-domain>/api
+INTERNAL_API_BASE_URL=https://<your-backend-vercel-domain>
+```
+
+Set backend CORS for the frontend domain:
+
+```text
+CORS_ORIGINS=https://<your-frontend-vercel-domain>
+FRONTEND_URL=https://<your-frontend-vercel-domain>
+SESSION_COOKIE_SECURE=true
+SESSION_COOKIE_SAMESITE=none
 ```
 
 ## Admin Bootstrap
 
-Set these in `backend/.env`:
+Set these in `backend/.env` locally and in the backend Vercel environment:
 
 ```text
 ONIRIA_ADMIN_FULL_NAME=ONIRIA Administrator
@@ -113,37 +149,6 @@ Then run:
 ```powershell
 python backend\scripts\create_admin.py
 python backend\scripts\verify_admin.py
-```
-
-## Email, WhatsApp, And Brochure
-
-Email is environment-driven. If `MAIL_PROVIDER` is blank, delivery is skipped safely. For SMTP:
-
-```text
-MAIL_PROVIDER=smtp
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USERNAME=your-smtp-user
-SMTP_PASSWORD=YOUR_GMAIL_APP_PASSWORD
-SMTP_STARTTLS=true
-MAIL_FROM=sales@example.com
-SALES_NOTIFICATION_EMAIL=sales@example.com
-```
-
-WhatsApp credentials are optional for startup and should be set only in env files:
-
-```text
-WHATSAPP_ACCESS_TOKEN=
-WHATSAPP_PHONE_NUMBER_ID=
-WHATSAPP_VERIFY_TOKEN=
-WHATSAPP_APP_SECRET=
-```
-
-The brochure file is required at:
-
-```text
-backend/app/assets/ONIRIA_City_Brochure.pdf
-BROCHURE_PDF_FILE=app/assets/ONIRIA_City_Brochure.pdf
 ```
 
 ## Verification
@@ -164,11 +169,11 @@ python -m compileall backend\app backend\scripts
 python -m pytest backend\tests -q
 ```
 
-Docker Compose:
+Database/setup:
 
 ```powershell
-docker compose config
-docker compose build
+python backend\scripts\check_database.py
+python backend\scripts\verify_end_to_end_setup.py
 ```
 
 Health checks:
@@ -177,7 +182,3 @@ Health checks:
 curl http://localhost:7000/api/health
 curl http://localhost:7000/api/ready
 ```
-
-## Production Deployment
-
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for server requirements, environment variables, Docker commands, HTTPS/reverse proxy notes, backup commands, logs, upgrades, and rollback.

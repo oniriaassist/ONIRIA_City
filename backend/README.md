@@ -2,7 +2,7 @@
 
 FastAPI backend for public content, enquiries, newsletter, AI, WhatsApp, staff authentication, and admin lead management.
 
-The only supported database is MySQL 8.4. Do not use PostgreSQL, SQLite, SQLAlchemy, Alembic, or Supabase for this backend.
+The supported database is PostgreSQL. Supabase works through its PostgreSQL connection string in `DATABASE_URL`.
 
 ## Local Setup
 
@@ -14,23 +14,23 @@ pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-Fill `backend/.env`. Use either:
+Use either:
 
 ```text
-DATABASE_URL=mysql://root:<percent-encoded-password-if-needed>@127.0.0.1:3306/oniria_city
+DATABASE_URL=postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres?sslmode=require
 ```
 
-or raw `MYSQL_*` fields:
+or raw local PostgreSQL fields:
 
 ```text
-MYSQL_HOST=127.0.0.1
-MYSQL_PORT=3306
-MYSQL_DATABASE=oniria_city
-MYSQL_USER=root
-MYSQL_PASSWORD=<actual raw password>
+POSTGRES_HOST=127.0.0.1
+POSTGRES_PORT=5433
+POSTGRES_DATABASE=oniria_city
+POSTGRES_USER=oniria_user
+POSTGRES_PASSWORD=<actual raw password>
 ```
 
-Only `DATABASE_URL` needs percent-encoding for special characters. `MYSQL_PASSWORD` should contain the actual password.
+Only `DATABASE_URL` needs percent-encoding for special characters. `POSTGRES_PASSWORD` should contain the actual password.
 
 ## Migrate, Bootstrap, Run
 
@@ -45,39 +45,9 @@ python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 7000
 
 The admin bootstrap is idempotent. It does not reset an existing password unless `ONIRIA_ADMIN_UPDATE_PASSWORD=true`.
 
-## Email
+## Vercel
 
-If `MAIL_PROVIDER` is blank, email delivery is skipped safely. To send through Resend, configure:
-
-```text
-MAIL_PROVIDER=resend
-RESEND_API_KEY=<resend-api-key>
-MAIL_FROM=verified-sender@example.com
-MAIL_FROM_NAME=Roho
-SALES_NOTIFICATION_EMAIL=team@example.com
-```
-
-Use `SALES_NOTIFICATION_EMAILS` for comma-separated multiple recipients. Public enquiry writes are preserved even if Resend is unavailable.
-
-## Cookies
-
-Local:
-
-```text
-SESSION_COOKIE_SECURE=false
-SESSION_COOKIE_SAMESITE=lax
-SESSION_COOKIE_DOMAIN=
-```
-
-Cross-site HTTPS production:
-
-```text
-SESSION_COOKIE_SECURE=true
-SESSION_COOKIE_SAMESITE=none
-SESSION_COOKIE_DOMAIN=
-```
-
-`SameSite=None` is rejected unless `Secure=true`.
+The Vercel entrypoint is `backend/api/index.py`, configured by `backend/vercel.json`. Deploy the backend as a separate Vercel project with root directory `backend`.
 
 ## Tests
 

@@ -47,11 +47,11 @@ class KnowledgeRepository:
                     FROM knowledge_chunks
                     WHERE status = 'approved'
                       AND channel = 'public'
-                      AND active = 1
-                      AND MATCH(content) AGAINST (%s IN NATURAL LANGUAGE MODE)
+                      AND active = TRUE
+                      AND content ILIKE %s
                     LIMIT %s
                     """,
-                    question,
+                    f"%{question}%",
                     limit,
                 )
                 return [self._normalize_db_chunk(row) for row in rows]

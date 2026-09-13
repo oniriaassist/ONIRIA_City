@@ -1,19 +1,17 @@
 services:
-  mysql:
-    image: mysql:8.4
-    container_name: oniria-city-mysql
+  postgres:
+    image: postgres:16
+    container_name: oniria-city-postgres
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-oniria_city}
-      MYSQL_USER: ${MYSQL_USER:-oniria_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE:-oniria_city}
+      POSTGRES_USER: ${POSTGRES_USER:-oniria_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "3307:3306"
+      - "5433:5432"
     volumes:
-      - oniria_mysql_data:/var/lib/mysql
-      - ./database/mysql-init:/docker-entrypoint-initdb.d:ro
+      - oniria_postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} --silent"]
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -25,14 +23,14 @@ services:
       dockerfile: Dockerfile
     container_name: oniria-city-migrate
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-oniria_city}
-      MYSQL_USER: ${MYSQL_USER:-oniria_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE:-oniria_city}
+      POSTGRES_USER: ${POSTGRES_USER:-oniria_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       ONIRIA_DATABASE_DIR: /database
     volumes:
       - ./database:/database:ro
@@ -50,11 +48,11 @@ services:
       migrate:
         condition: service_completed_successfully
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-oniria_city}
-      MYSQL_USER: ${MYSQL_USER:-oniria_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE:-oniria_city}
+      POSTGRES_USER: ${POSTGRES_USER:-oniria_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       ONIRIA_ADMIN_UPDATE_PASSWORD: ${ONIRIA_ADMIN_UPDATE_PASSWORD:-false}
     command: ["python", "scripts/create_admin.py"]
     restart: "no"
@@ -67,11 +65,11 @@ services:
     env_file:
       - ./backend/.env
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-oniria_city}
-      MYSQL_USER: ${MYSQL_USER:-oniria_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE:-oniria_city}
+      POSTGRES_USER: ${POSTGRES_USER:-oniria_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000}
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
     ports:
@@ -103,4 +101,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  oniria_mysql_data:
+  oniria_postgres_data:

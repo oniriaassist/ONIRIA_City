@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from typing import Any
 
 
@@ -32,17 +33,17 @@ class AdminRepository:
                 """
                 SELECT
                     COUNT(*) AS total_leads,
-                    COALESCE(SUM(COALESCE(lead_status, follow_up_status) IN ('New', 'new')), 0) AS new_leads,
-                    COALESCE(SUM(lead_status = 'Contacted'), 0) AS contacted_leads,
-                    COALESCE(SUM(lead_status = 'Qualified'), 0) AS qualified_leads,
-                    COALESCE(SUM(COALESCE(lead_score, score, 0) >= 70 OR follow_up_status = 'priority_follow_up'), 0) AS priority_leads,
-                    COALESCE(SUM(assigned_salesperson_id IS NULL), 0) AS unassigned_leads,
-                    COALESCE(SUM(DATE(next_follow_up_at) = CURRENT_DATE), 0) AS follow_ups_due_today,
-                    COALESCE(SUM(created_at >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')), 0) AS leads_this_month,
-                    COALESCE(SUM(
-                        created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01')
-                        AND created_at < DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
-                    ), 0) AS leads_last_month
+                    COUNT(*) FILTER (WHERE COALESCE(lead_status, follow_up_status) IN ('New', 'new')) AS new_leads,
+                    COUNT(*) FILTER (WHERE lead_status = 'Contacted') AS contacted_leads,
+                    COUNT(*) FILTER (WHERE lead_status = 'Qualified') AS qualified_leads,
+                    COUNT(*) FILTER (WHERE COALESCE(lead_score, score, 0) >= 70 OR follow_up_status = 'priority_follow_up') AS priority_leads,
+                    COUNT(*) FILTER (WHERE assigned_salesperson_id IS NULL) AS unassigned_leads,
+                    COUNT(*) FILTER (WHERE next_follow_up_at::date = CURRENT_DATE) AS follow_ups_due_today,
+                    COUNT(*) FILTER (WHERE created_at >= date_trunc('month', CURRENT_DATE)) AS leads_this_month,
+                    COUNT(*) FILTER (
+                        WHERE created_at >= date_trunc('month', CURRENT_DATE - INTERVAL '1 month')
+                        AND created_at < date_trunc('month', CURRENT_DATE)
+                    ) AS leads_last_month
                 FROM leads
                 """
             ),
@@ -50,14 +51,14 @@ class AdminRepository:
                 """
                 SELECT
                     COUNT(*) AS total_enquiries,
-                    COALESCE(SUM(enquiry_type = 'brochure'), 0) AS brochure_requests,
-                    COALESCE(SUM(enquiry_type = 'consultation'), 0) AS consultation_requests,
-                    COALESCE(SUM(enquiry_type = 'site_visit'), 0) AS site_visit_requests,
-                    COALESCE(SUM(created_at >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')), 0) AS enquiries_this_month,
-                    COALESCE(SUM(
-                        created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 1 MONTH, '%Y-%m-01')
-                        AND created_at < DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
-                    ), 0) AS enquiries_last_month
+                    COUNT(*) FILTER (WHERE enquiry_type = 'brochure') AS brochure_requests,
+                    COUNT(*) FILTER (WHERE enquiry_type = 'consultation') AS consultation_requests,
+                    COUNT(*) FILTER (WHERE enquiry_type = 'site_visit') AS site_visit_requests,
+                    COUNT(*) FILTER (WHERE created_at >= date_trunc('month', CURRENT_DATE)) AS enquiries_this_month,
+                    COUNT(*) FILTER (
+                        WHERE created_at >= date_trunc('month', CURRENT_DATE - INTERVAL '1 month')
+                        AND created_at < date_trunc('month', CURRENT_DATE)
+                    ) AS enquiries_last_month
                 FROM enquiries
                 """
             ),
@@ -76,7 +77,7 @@ class AdminRepository:
                 """
                 SELECT DATE(created_at) AS activity_date, COUNT(*) AS count
                 FROM leads
-                WHERE created_at >= CURRENT_DATE - INTERVAL 29 DAY
+                WHERE created_at >= CURRENT_DATE - INTERVAL '29 days'
                 GROUP BY DATE(created_at)
                 ORDER BY activity_date
                 """
@@ -85,26 +86,26 @@ class AdminRepository:
                 """
                 SELECT DATE(created_at) AS activity_date, COUNT(*) AS count
                 FROM enquiries
-                WHERE created_at >= CURRENT_DATE - INTERVAL 29 DAY
+                WHERE created_at >= CURRENT_DATE - INTERVAL '29 days'
                 GROUP BY DATE(created_at)
                 ORDER BY activity_date
                 """
             ),
             self.pool.fetch(
                 """
-                SELECT DATE_FORMAT(created_at, '%Y-%m') AS activity_month, COUNT(*) AS count
+                SELECT to_char(created_at, 'YYYY-MM') AS activity_month, COUNT(*) AS count
                 FROM leads
-                WHERE created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 11 MONTH, '%Y-%m-01')
-                GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+                WHERE created_at >= date_trunc('month', CURRENT_DATE - INTERVAL '11 months')
+                GROUP BY to_char(created_at, 'YYYY-MM')
                 ORDER BY activity_month
                 """
             ),
             self.pool.fetch(
                 """
-                SELECT DATE_FORMAT(created_at, '%Y-%m') AS activity_month, COUNT(*) AS count
+                SELECT to_char(created_at, 'YYYY-MM') AS activity_month, COUNT(*) AS count
                 FROM enquiries
-                WHERE created_at >= DATE_FORMAT(CURRENT_DATE - INTERVAL 11 MONTH, '%Y-%m-01')
-                GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+                WHERE created_at >= date_trunc('month', CURRENT_DATE - INTERVAL '11 months')
+                GROUP BY to_char(created_at, 'YYYY-MM')
                 ORDER BY activity_month
                 """
             ),
@@ -303,7 +304,7 @@ class AdminRepository:
 
     async def assign(self, lead_id: int, staff_id: int, actor_staff_id: int) -> None:
         before = await self.pool.fetchrow("SELECT assigned_salesperson_id FROM leads WHERE id = %s", lead_id)
-        await self.pool.execute("UPDATE leads SET assigned_salesperson_id = %s, lead_status = IF(lead_status = 'New', 'Contacted', lead_status) WHERE id = %s", staff_id, lead_id)
+        await self.pool.execute("UPDATE leads SET assigned_salesperson_id = %s, lead_status = CASE WHEN lead_status = 'New' THEN 'Contacted' ELSE lead_status END WHERE id = %s", staff_id, lead_id)
         await self.pool.execute("INSERT INTO lead_assignments (lead_id, assigned_to_staff_id, assigned_by_staff_id) VALUES (%s, %s, %s)", lead_id, staff_id, actor_staff_id)
         await self.add_activity(lead_id, "LEAD_ASSIGNED", f"Lead assigned to staff #{staff_id}", actor_staff_id)
         await self.audit(actor_staff_id, "lead.assign", "lead", lead_id, before, {"assigned_salesperson_id": staff_id})
@@ -327,7 +328,7 @@ class AdminRepository:
 
     async def add_activity(self, lead_id: int, activity_type: str, summary: str, actor_staff_id: int | None = None) -> None:
         await self.pool.execute(
-            "INSERT INTO lead_activities (lead_id, activity_type, summary, created_by_staff_id, campaign) VALUES (%s, %s, %s, %s, JSON_OBJECT())",
+            "INSERT INTO lead_activities (lead_id, activity_type, summary, created_by_staff_id, campaign) VALUES (%s, %s, %s, %s, '{}'::jsonb)",
             lead_id,
             activity_type,
             summary,
@@ -341,8 +342,8 @@ class AdminRepository:
             action,
             entity_type,
             str(entity_id),
-            None if before is None else __import__("json").dumps(before, default=str),
-            None if after is None else __import__("json").dumps(after, default=str),
+            None if before is None else json.loads(json.dumps(before, default=str)),
+            None if after is None else json.loads(json.dumps(after, default=str)),
         )
 
     async def list_by_enquiry_type(self, enquiry_type: str | None = None) -> list[dict[str, Any]]:

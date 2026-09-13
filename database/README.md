@@ -1,13 +1,13 @@
 # Roho Database
 
-MySQL 8.x migration files live in `database/migrations` and should be applied in filename order.
+PostgreSQL migration files live in `database/migrations` and are applied by `backend/scripts/run_migrations.py`.
 
-Local setup:
+Supabase setup:
 
-1. Create the database with `database/scripts/create_database.sql`.
-2. Create local users from `database/scripts/create_local_user.sql.example` after replacing placeholders locally.
-3. Apply migrations in order.
-4. Load seed files from `database/seed`.
-5. Verify with `database/scripts/verify_database.sql`.
+1. Create a Supabase project.
+2. Set `DATABASE_URL` to the Supabase pooled PostgreSQL connection string.
+3. Run `python backend\scripts\run_migrations.py`.
+4. Run `python backend\scripts\create_admin.py`.
+5. Verify with `python backend\scripts\check_database.py`.
 
 Never commit real passwords or production credentials.

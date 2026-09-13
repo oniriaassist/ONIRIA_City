@@ -3,7 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
-from urllib.parse import unquote, urlparse
+from urllib.parse import quote, unquote, urlparse
 
 from pydantic import EmailStr, TypeAdapter, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -12,10 +12,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 BACKEND_ENV_FILE = BACKEND_ROOT / ".env"
 
-MYSQL_SCHEMES = {
-    "mysql",
-    "mysql+pymysql",
-    "mysql+aiomysql",
+POSTGRES_SCHEMES = {
+    "postgres",
+    "postgresql",
+    "postgresql+asyncpg",
 }
 
 email_adapter = TypeAdapter(EmailStr)
@@ -35,17 +35,15 @@ class Settings(BaseSettings):
     )
     frontend_url: str = "http://localhost:3000"
 
-    # MySQL
+    # PostgreSQL / Supabase
     database_url: str | None = None
-    mysql_host: str | None = None
-    mysql_port: int = 3306
-    mysql_database: str | None = None
-    mysql_user: str | None = None
-    mysql_password: str | None = None
+    postgres_host: str | None = None
+    postgres_port: int = 5432
+    postgres_database: str | None = None
+    postgres_user: str | None = None
+    postgres_password: str | None = None
 
     # Database pool
-    mysql_pool_size: int = 10
-    mysql_max_overflow: int = 20
     database_min_size: int = 1
     database_max_size: int = 5
 
@@ -138,10 +136,10 @@ class Settings(BaseSettings):
         return value
 
     @field_validator(
-        "mysql_host",
-        "mysql_database",
-        "mysql_user",
-        "mysql_password",
+        "postgres_host",
+        "postgres_database",
+        "postgres_user",
+        "postgres_password",
         "mail_provider",
         "resend_api_key",
         "smtp_host",
@@ -190,10 +188,10 @@ class Settings(BaseSettings):
 
         parsed = urlparse(value)
 
-        if parsed.scheme not in MYSQL_SCHEMES:
+        if parsed.scheme not in POSTGRES_SCHEMES:
             raise ValueError(
-                "DATABASE_URL must use mysql://, "
-                "mysql+pymysql://, or mysql+aiomysql://"
+                "DATABASE_URL must use postgresql://, "
+                "postgres://, or postgresql+asyncpg://"
             )
 
         if not parsed.hostname:
@@ -227,7 +225,6 @@ class Settings(BaseSettings):
     @field_validator(
         "database_min_size",
         "database_max_size",
-        "mysql_pool_size",
     )
     @classmethod
     def validate_positive_pool_sizes(
@@ -241,15 +238,15 @@ class Settings(BaseSettings):
 
         return value
 
-    @field_validator("mysql_port")
+    @field_validator("postgres_port")
     @classmethod
-    def validate_mysql_port(
+    def validate_postgres_port(
         cls,
         value: int,
     ) -> int:
         if value < 1 or value > 65535:
             raise ValueError(
-                "MYSQL_PORT must be between 1 and 65535"
+                "POSTGRES_PORT must be between 1 and 65535"
             )
 
         return value
@@ -301,9 +298,9 @@ class Settings(BaseSettings):
 
         if self.database_url and any(
             [
-                self.mysql_host,
-                self.mysql_database,
-                self.mysql_user,
+                self.postgres_host,
+                self.postgres_database,
+                self.postgres_user,
             ]
         ):
             parsed = urlparse(self.database_url)
@@ -311,19 +308,19 @@ class Settings(BaseSettings):
             comparisons = {
                 "host": (
                     parsed.hostname,
-                    self.mysql_host,
+                    self.postgres_host,
                 ),
                 "port": (
-                    parsed.port or 3306,
-                    self.mysql_port,
+                    parsed.port or 5432,
+                    self.postgres_port,
                 ),
                 "database": (
                     parsed.path.lstrip("/"),
-                    self.mysql_database,
+                    self.postgres_database,
                 ),
                 "username": (
                     unquote(parsed.username or ""),
-                    self.mysql_user,
+                    self.postgres_user,
                 ),
             }
 
@@ -337,7 +334,7 @@ class Settings(BaseSettings):
 
             if mismatches:
                 raise ValueError(
-                    "DATABASE_URL and MYSQL_* disagree on: "
+                    "DATABASE_URL and POSTGRES_* disagree on: "
                     + ", ".join(mismatches)
                 )
 
@@ -472,36 +469,36 @@ class Settings(BaseSettings):
         if self.database_url:
             return self.database_url
 
-        if self.has_mysql_connection_settings:
+        if self.has_postgres_connection_settings:
             return (
-                f"mysql://{self.mysql_user}:"
-                f"{self.mysql_password}@"
-                f"{self.mysql_host}:"
-                f"{self.mysql_port}/"
-                f"{self.mysql_database}"
+                f"postgresql://{quote(str(self.postgres_user))}:"
+                f"{quote(str(self.postgres_password))}@"
+                f"{self.postgres_host}:"
+                f"{self.postgres_port}/"
+                f"{self.postgres_database}"
             )
 
         return None
 
     @property
-    def has_mysql_connection_settings(self) -> bool:
+    def has_postgres_connection_settings(self) -> bool:
         return bool(
             all(
                 [
-                    self.mysql_host,
-                    self.mysql_database,
-                    self.mysql_user,
-                    self.mysql_password,
+                    self.postgres_host,
+                    self.postgres_database,
+                    self.postgres_user,
+                    self.postgres_password,
                 ]
             )
         )
 
     @property
-    def mysql_log_summary(
+    def database_log_summary(
         self,
     ) -> dict[str, str | int | None]:
         """
-        Return non-sensitive MySQL details for logs.
+        Return non-sensitive PostgreSQL details for logs.
 
         The password is intentionally excluded.
         """
@@ -509,75 +506,39 @@ class Settings(BaseSettings):
             parsed = urlparse(self.database_url)
 
             return {
-                "mysql_host": parsed.hostname,
-                "mysql_port": parsed.port or 3306,
-                "mysql_database": (
+                "postgres_host": parsed.hostname,
+                "postgres_port": parsed.port or 5432,
+                "postgres_database": (
                     parsed.path.lstrip("/") or None
                 ),
-                "mysql_user": (
+                "postgres_user": (
                     unquote(parsed.username or "") or None
                 ),
             }
 
         return {
-            "mysql_host": self.mysql_host,
-            "mysql_port": self.mysql_port,
-            "mysql_database": self.mysql_database,
-            "mysql_user": self.mysql_user,
+            "postgres_host": self.postgres_host,
+            "postgres_port": self.postgres_port,
+            "postgres_database": self.postgres_database,
+            "postgres_user": self.postgres_user,
         }
 
     @property
-    def mysql_connection_params(
+    def postgres_connection_params(
         self,
-    ) -> dict[str, str | int] | None:
+    ) -> str | None:
         """
-        Return connection arguments accepted by aiomysql.
-
-        SSL is intentionally not configured here.
+        Return a PostgreSQL connection URL accepted by asyncpg.
         """
-        if self.has_mysql_connection_settings:
-            return {
-                "host": str(self.mysql_host),
-                "port": self.mysql_port,
-                "user": str(self.mysql_user),
-                "password": str(self.mysql_password),
-                "db": str(self.mysql_database),
-            }
-
-        if self.database_url:
-            parsed = urlparse(self.database_url)
-
-            if not parsed.hostname:
-                raise ValueError(
-                    "DATABASE_URL must include a hostname"
-                )
-
-            if not parsed.path.strip("/"):
-                raise ValueError(
-                    "DATABASE_URL must include a database name"
-                )
-
-            return {
-                "host": parsed.hostname,
-                "port": parsed.port or 3306,
-                "user": unquote(
-                    parsed.username or ""
-                ),
-                "password": unquote(
-                    parsed.password or ""
-                ),
-                "db": parsed.path.lstrip("/"),
-            }
-
-        return None
+        return self.effective_database_url
 
     @property
-    def mysql_configuration_source(self) -> str:
+    def database_configuration_source(self) -> str:
         if self.database_url:
             return "DATABASE_URL"
 
-        if self.has_mysql_connection_settings:
-            return "MYSQL_*"
+        if self.has_postgres_connection_settings:
+            return "POSTGRES_*"
 
         return "not_configured"
 

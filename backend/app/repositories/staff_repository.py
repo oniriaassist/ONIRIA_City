@@ -40,7 +40,7 @@ class StaffRepository:
             "INSERT INTO staff_login_attempts (email, ip_address, succeeded, failure_reason) VALUES (%s, %s, %s, %s)",
             email.lower(),
             ip_address,
-            1 if succeeded else 0,
+            bool(succeeded),
             reason,
         )
 
@@ -50,8 +50,8 @@ class StaffRepository:
             SELECT COUNT(*)
             FROM staff_login_attempts
             WHERE email = %s
-              AND succeeded = 0
-              AND created_at > (CURRENT_TIMESTAMP - INTERVAL 15 MINUTE)
+              AND succeeded = FALSE
+              AND created_at > (CURRENT_TIMESTAMP - INTERVAL '15 minutes')
             """,
             email.lower(),
         )
@@ -137,7 +137,7 @@ class StaffRepository:
                 """
                 INSERT INTO staff_user_roles (staff_user_id, role_id)
                 SELECT %s, id FROM staff_roles WHERE role_key = %s
-                ON DUPLICATE KEY UPDATE staff_user_id = staff_user_id
+                ON CONFLICT (staff_user_id, role_id) DO NOTHING
                 """,
                 staff_id,
                 role,
@@ -147,7 +147,7 @@ class StaffRepository:
         if "full_name" in values:
             await self.pool.execute("UPDATE staff_users SET full_name = %s WHERE id = %s", values["full_name"], staff_id)
         if "is_active" in values:
-            await self.pool.execute("UPDATE staff_users SET is_active = %s WHERE id = %s", 1 if values["is_active"] else 0, staff_id)
+            await self.pool.execute("UPDATE staff_users SET is_active = %s WHERE id = %s", bool(values["is_active"]), staff_id)
         if "roles" in values:
             await self.set_roles(staff_id, values["roles"])
         return await self.get_staff_by_id(staff_id)

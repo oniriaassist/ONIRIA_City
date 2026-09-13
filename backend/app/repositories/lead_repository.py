@@ -8,12 +8,6 @@ from typing import Any
 from app.schemas.enquiry_schemas import CampaignAttribution, EnquiryCreate, LeadActivity, LeadDetail, LeadSummary
 from app.utils.reference_number import make_reference_number
 
-try:
-    import aiomysql
-except ModuleNotFoundError:
-    aiomysql = None
-
-
 class InMemoryLeadStore:
     def __init__(self) -> None:
         self.leads: dict[int, dict[str, Any]] = {}
@@ -40,7 +34,7 @@ class LeadRepository:
 
     async def next_reference_sequence(self) -> int:
         if self.pool:
-            return await self.pool.insert_and_get_id("INSERT INTO enquiry_reference_sequence () VALUES ()")
+            return await self.pool.insert_and_get_id("INSERT INTO enquiry_reference_sequence DEFAULT VALUES")
         self.store.reference_sequence += 1
         return self.store.reference_sequence
 
@@ -261,7 +255,7 @@ class LeadRepository:
                 utm_content, utm_term, landing_page, referral_url, score, lead_score,
                 follow_up_status, lead_status, property_interests, collection_interests
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0, 0, 'new', 'New', JSON_ARRAY(), JSON_ARRAY())
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0, 0, 'new', 'New', '[]'::jsonb, '[]'::jsonb)
             """,
             customer_id,
             payload.name,
@@ -295,41 +289,37 @@ class LeadRepository:
         campaign: CampaignAttribution,
         notification_status: str,
     ) -> dict[str, Any]:
-        if aiomysql is None:
-            raise RuntimeError("aiomysql is required for MySQL enquiry records")
+        async with self.pool.transaction() as transaction:
+            sequence = await transaction.insert_and_get_id(
+                "INSERT INTO enquiry_reference_sequence DEFAULT VALUES"
+            )
+            reference_number = make_reference_number(sequence)
+            lead = await self._find_or_create_lead_db_tx(transaction, payload)
+            enquiry = await self._save_enquiry_activity_db_tx(
+                transaction=transaction,
+                lead=lead,
+                payload=payload,
+                reference_number=reference_number,
+                score=score,
+                follow_up_status=follow_up_status,
+                campaign=campaign,
+                notification_status=notification_status,
+            )
+            return {"lead": lead, "enquiry": enquiry, "reference_number": reference_number}
 
-        async with self.pool.transaction() as connection:
-            async with connection.cursor(aiomysql.DictCursor) as cursor:
-                await cursor.execute("INSERT INTO enquiry_reference_sequence () VALUES ()")
-                reference_number = make_reference_number(int(cursor.lastrowid))
-                lead = await self._find_or_create_lead_db_tx(cursor, payload)
-                enquiry = await self._save_enquiry_activity_db_tx(
-                    cursor=cursor,
-                    lead=lead,
-                    payload=payload,
-                    reference_number=reference_number,
-                    score=score,
-                    follow_up_status=follow_up_status,
-                    campaign=campaign,
-                    notification_status=notification_status,
-                )
-                return {"lead": lead, "enquiry": enquiry, "reference_number": reference_number}
-
-    async def _find_or_create_lead_db_tx(self, cursor: Any, payload: EnquiryCreate) -> dict[str, Any]:
+    async def _find_or_create_lead_db_tx(self, transaction: Any, payload: EnquiryCreate) -> dict[str, Any]:
         email = str(payload.email).lower() if payload.email else None
         phone = payload.phone
-        customer_id = await self._find_or_create_customer_db_tx(cursor, payload)
+        customer_id = await self._find_or_create_customer_db_tx(transaction, payload)
         existing = None
         if email:
-            await cursor.execute("SELECT * FROM leads WHERE email = %s LIMIT 1", (email,))
-            existing = await cursor.fetchone()
+            existing = await transaction.fetchrow("SELECT * FROM leads WHERE email = %s LIMIT 1", email)
         if not existing and phone:
-            await cursor.execute("SELECT * FROM leads WHERE phone = %s LIMIT 1", (phone,))
-            existing = await cursor.fetchone()
+            existing = await transaction.fetchrow("SELECT * FROM leads WHERE phone = %s LIMIT 1", phone)
         if existing:
             return self._normalize_db_lead(existing)
 
-        await cursor.execute(
+        lead_id = await transaction.insert_and_get_id(
             """
             INSERT INTO leads (
                 customer_id, name, email, phone, anonymous_session_id, property_interest,
@@ -338,46 +328,40 @@ class LeadRepository:
                 utm_content, utm_term, landing_page, referral_url, score, lead_score,
                 follow_up_status, lead_status, property_interests, collection_interests
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0, 0, 'new', 'New', JSON_ARRAY(), JSON_ARRAY())
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 0, 0, 'new', 'New', '[]'::jsonb, '[]'::jsonb)
             """,
-            (
-                customer_id,
-                payload.name,
-                email,
-                phone,
-                payload.anonymous_session_id,
-                payload.property_slug or payload.collection_slug,
-                payload.bedroom_preference,
-                payload.budget,
-                payload.buying_purpose,
-                payload.purchase_timeline.value if payload.purchase_timeline else None,
-                payload.campaign.utm_source,
-                payload.campaign.utm_campaign,
-                payload.campaign.utm_source,
-                payload.campaign.utm_medium,
-                payload.campaign.utm_campaign,
-                payload.campaign.utm_content,
-                payload.campaign.utm_term,
-                payload.page_path or payload.campaign.landing_page,
-                payload.referral_url or payload.campaign.referrer,
-            ),
+            customer_id,
+            payload.name,
+            email,
+            phone,
+            payload.anonymous_session_id,
+            payload.property_slug or payload.collection_slug,
+            payload.bedroom_preference,
+            payload.budget,
+            payload.buying_purpose,
+            payload.purchase_timeline.value if payload.purchase_timeline else None,
+            payload.campaign.utm_source,
+            payload.campaign.utm_campaign,
+            payload.campaign.utm_source,
+            payload.campaign.utm_medium,
+            payload.campaign.utm_campaign,
+            payload.campaign.utm_content,
+            payload.campaign.utm_term,
+            payload.page_path or payload.campaign.landing_page,
+            payload.referral_url or payload.campaign.referrer,
         )
-        lead_id = int(cursor.lastrowid)
-        await cursor.execute("SELECT * FROM leads WHERE id = %s", (lead_id,))
-        return self._normalize_db_lead(await cursor.fetchone())
+        return self._normalize_db_lead(await transaction.fetchrow("SELECT * FROM leads WHERE id = %s", lead_id))
 
-    async def _find_or_create_customer_db_tx(self, cursor: Any, payload: EnquiryCreate) -> int | None:
+    async def _find_or_create_customer_db_tx(self, transaction: Any, payload: EnquiryCreate) -> int | None:
         email = str(payload.email).lower() if payload.email else None
         phone = payload.phone
         existing = None
         if email:
-            await cursor.execute("SELECT id FROM customers WHERE email = %s LIMIT 1", (email,))
-            existing = await cursor.fetchone()
+            existing = await transaction.fetchrow("SELECT id FROM customers WHERE email = %s LIMIT 1", email)
         if not existing and phone:
-            await cursor.execute("SELECT id FROM customers WHERE phone = %s LIMIT 1", (phone,))
-            existing = await cursor.fetchone()
+            existing = await transaction.fetchrow("SELECT id FROM customers WHERE phone = %s LIMIT 1", phone)
         if existing:
-            await cursor.execute(
+            await transaction.execute(
                 """
                 UPDATE customers
                 SET full_name = %s,
@@ -385,23 +369,21 @@ class LeadRepository:
                     country = COALESCE(%s, country),
                     preferred_language = COALESCE(%s, preferred_language),
                     preferred_contact_method = COALESCE(%s, preferred_contact_method),
-                    marketing_consent = GREATEST(marketing_consent, %s),
+                    marketing_consent = marketing_consent OR %s,
                     privacy_consent = %s
                 WHERE id = %s
                 """,
-                (
-                    payload.name,
-                    phone,
-                    payload.country,
-                    payload.preferred_language,
-                    payload.preferred_contact_method,
-                    1 if payload.marketing_consent else 0,
-                    1 if payload.consent else 0,
-                    existing["id"],
-                ),
+                payload.name,
+                phone,
+                payload.country,
+                payload.preferred_language,
+                payload.preferred_contact_method,
+                bool(payload.marketing_consent),
+                bool(payload.consent),
+                existing["id"],
             )
             return int(existing["id"])
-        await cursor.execute(
+        return await transaction.insert_and_get_id(
             """
             INSERT INTO customers (
                 full_name, email, phone, country, preferred_language,
@@ -409,23 +391,20 @@ class LeadRepository:
             )
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """,
-            (
-                payload.name,
-                email,
-                phone,
-                payload.country,
-                payload.preferred_language,
-                payload.preferred_contact_method,
-                1 if payload.marketing_consent else 0,
-                1 if payload.consent else 0,
-            ),
+            payload.name,
+            email,
+            phone,
+            payload.country,
+            payload.preferred_language,
+            payload.preferred_contact_method,
+            bool(payload.marketing_consent),
+            bool(payload.consent),
         )
-        return int(cursor.lastrowid)
 
     async def _save_enquiry_activity_db_tx(
         self,
         *,
-        cursor: Any,
+        transaction: Any,
         lead: dict[str, Any],
         payload: EnquiryCreate,
         reference_number: str,
@@ -441,7 +420,7 @@ class LeadRepository:
         if payload.collection_slug and payload.collection_slug not in collection_interests:
             collection_interests.append(payload.collection_slug)
 
-        await cursor.execute(
+        await transaction.execute(
             """
             UPDATE leads
             SET score = GREATEST(score, %s),
@@ -473,8 +452,8 @@ class LeadRepository:
                 score,
                 follow_up_status,
                 reference_number,
-                json.dumps(property_interests),
-                json.dumps(collection_interests),
+                property_interests,
+                collection_interests,
                 payload.property_slug or payload.collection_slug,
                 payload.bedroom_preference,
                 payload.budget,
@@ -492,7 +471,7 @@ class LeadRepository:
                 lead["id"],
             ),
         )
-        await cursor.execute(
+        enquiry_id = await transaction.insert_and_get_id(
             """
             INSERT INTO enquiries (
                 reference_number, lead_id, enquiry_type, message, preferred_contact_time, payload, score, follow_up_status, notification_status
@@ -505,26 +484,25 @@ class LeadRepository:
                 payload.enquiry_type.value,
                 payload.message,
                 payload.preferred_contact_time,
-                payload.model_dump_json(),
+                payload.model_dump(mode="json"),
                 score,
                 follow_up_status,
                 notification_status,
             ),
         )
-        enquiry_id = int(cursor.lastrowid)
         if payload.enquiry_type.value == "brochure":
-            await cursor.execute("INSERT INTO brochure_requests (lead_id, enquiry_id) VALUES (%s, %s)", (lead["id"], enquiry_id))
+            await transaction.execute("INSERT INTO brochure_requests (lead_id, enquiry_id) VALUES (%s, %s)", lead["id"], enquiry_id)
         elif payload.enquiry_type.value == "consultation":
-            await cursor.execute(
+            await transaction.execute(
                 "INSERT INTO consultations (lead_id, enquiry_id, preferred_date) VALUES (%s, %s, %s)",
-                (lead["id"], enquiry_id, getattr(payload, "preferred_date", None)),
+                lead["id"], enquiry_id, getattr(payload, "preferred_date", None),
             )
         elif payload.enquiry_type.value == "site_visit":
-            await cursor.execute(
+            await transaction.execute(
                 "INSERT INTO site_visits (lead_id, enquiry_id, preferred_date, number_of_guests) VALUES (%s, %s, %s, %s)",
-                (lead["id"], enquiry_id, getattr(payload, "preferred_date", None), getattr(payload, "number_of_guests", None)),
+                lead["id"], enquiry_id, getattr(payload, "preferred_date", None), getattr(payload, "number_of_guests", None),
             )
-        await cursor.execute(
+        await transaction.execute(
             """
             INSERT INTO lead_activities (lead_id, reference_number, activity_type, summary, campaign)
             VALUES (%s, %s, %s, %s, %s)
@@ -534,7 +512,7 @@ class LeadRepository:
                 reference_number,
                 payload.enquiry_type.value,
                 self._activity_summary(payload),
-                campaign.model_dump_json(),
+                campaign.model_dump(mode="json"),
             ),
         )
         return {
@@ -593,8 +571,8 @@ class LeadRepository:
             score,
             follow_up_status,
             reference_number,
-            json.dumps(property_interests),
-            json.dumps(collection_interests),
+            property_interests,
+            collection_interests,
             payload.property_slug or payload.collection_slug,
             payload.bedroom_preference,
             payload.budget,
@@ -623,7 +601,7 @@ class LeadRepository:
             payload.enquiry_type.value,
             payload.message,
             payload.preferred_contact_time,
-            payload.model_dump_json(),
+            payload.model_dump(mode="json"),
             score,
             follow_up_status,
             notification_status,
@@ -655,7 +633,7 @@ class LeadRepository:
             reference_number,
             payload.enquiry_type.value,
             activity_summary,
-            campaign.model_dump_json(),
+            campaign.model_dump(mode="json"),
         )
         return {
             "reference_number": reference_number,
@@ -683,7 +661,7 @@ class LeadRepository:
                     country = COALESCE(%s, country),
                     preferred_language = COALESCE(%s, preferred_language),
                     preferred_contact_method = COALESCE(%s, preferred_contact_method),
-                    marketing_consent = GREATEST(marketing_consent, %s),
+                    marketing_consent = marketing_consent OR %s,
                     privacy_consent = %s
                 WHERE id = %s
                 """,
@@ -692,8 +670,8 @@ class LeadRepository:
                 payload.country,
                 payload.preferred_language,
                 payload.preferred_contact_method,
-                1 if payload.marketing_consent else 0,
-                1 if payload.consent else 0,
+                bool(payload.marketing_consent),
+                bool(payload.consent),
                 existing["id"],
             )
             return int(existing["id"])
@@ -712,8 +690,8 @@ class LeadRepository:
                 payload.country,
                 payload.preferred_language,
                 payload.preferred_contact_method,
-                1 if payload.marketing_consent else 0,
-                1 if payload.consent else 0,
+                bool(payload.marketing_consent),
+                bool(payload.consent),
             )
         except Exception:
             return None

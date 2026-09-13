@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-import aiomysql
+import asyncpg
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = BACKEND_DIR.parent
@@ -19,7 +19,7 @@ for path in (BACKEND_DIR, SCRIPTS_DIR):
         sys.path.insert(0, str(path))
 
 from app.config import get_settings
-from migration_manifest import MYSQL_MIGRATION_FILES
+from migration_manifest import POSTGRES_MIGRATION_FILES
 
 
 REQUIRED_TABLES = (
@@ -49,10 +49,10 @@ def database_dir() -> Path:
 
 def check_migration_files() -> bool:
     migrations_dir = database_dir() / "migrations"
-    missing = [name for name in MYSQL_MIGRATION_FILES if not (migrations_dir / name).exists()]
+    missing = [name for name in POSTGRES_MIGRATION_FILES if not (migrations_dir / name).exists()]
     return ok(
-        "Migration files 001-016",
-        not missing and len(MYSQL_MIGRATION_FILES) == 16,
+        "Migration files 001-018",
+        not missing and len(POSTGRES_MIGRATION_FILES) == 18,
         None if not missing else f"missing {', '.join(missing)}",
     )
 
@@ -84,34 +84,33 @@ def check_backend_health(backend_url: str | None) -> bool:
     return ok("Backend health", healthy)
 
 
-async def table_exists(connection, database_name: str, table: str) -> bool:
-    async with connection.cursor() as cursor:
-        await cursor.execute(
+async def table_exists(connection, table: str) -> bool:
+    return bool(
+        await connection.fetchval(
             """
-            SELECT COUNT(*)
-            FROM information_schema.tables
-            WHERE table_schema = %s AND table_name = %s
+            SELECT EXISTS (
+              SELECT 1
+              FROM information_schema.tables
+              WHERE table_schema = 'public' AND table_name = $1
+            )
             """,
-            (database_name, table),
+            table,
         )
-        row = await cursor.fetchone()
-    return bool(row and int(row[0]) == 1)
+    )
 
 
 async def check_database(settings) -> bool:
-    params = settings.mysql_connection_params
-    if not params:
-        return ok("MySQL connectivity", False, "missing MySQL configuration")
+    if not settings.effective_database_url:
+        return ok("PostgreSQL connectivity", False, "missing PostgreSQL configuration")
 
     try:
-        connection = await aiomysql.connect(**params)
+        connection = await asyncpg.connect(settings.effective_database_url)
     except Exception:
-        return ok("MySQL connectivity", False)
+        return ok("PostgreSQL connectivity", False)
 
     try:
-        database_name = str(params["db"])
-        checks: list[bool] = [ok("MySQL connectivity", True)]
-        table_results = {table: await table_exists(connection, database_name, table) for table in REQUIRED_TABLES}
+        checks: list[bool] = [ok("PostgreSQL connectivity", True)]
+        table_results = {table: await table_exists(connection, table) for table in REQUIRED_TABLES}
         missing_tables = [table for table, exists in table_results.items() if not exists]
         checks.append(ok("Required tables", not missing_tables, None if not missing_tables else f"missing {', '.join(missing_tables)}"))
         checks.append(ok("Newsletter table", table_results.get("newsletter_subscriptions", False)))
@@ -121,29 +120,26 @@ async def check_database(settings) -> bool:
             checks.append(ok("Active administrator", False, "ONIRIA_ADMIN_EMAIL missing"))
             checks.append(ok("Administrator role", False, "ONIRIA_ADMIN_EMAIL missing"))
         else:
-            async with connection.cursor() as cursor:
-                await cursor.execute(
-                    """
-                    SELECT su.is_active,
-                           EXISTS (
-                               SELECT 1
-                               FROM staff_user_roles sur
-                               JOIN staff_roles sr ON sr.id = sur.role_id
-                               WHERE sur.staff_user_id = su.id AND sr.role_key = 'administrator'
-                           ) AS has_administrator_role
-                    FROM staff_users su
-                    WHERE LOWER(su.email) = LOWER(%s)
-                    LIMIT 1
-                    """,
-                    (admin_email,),
-                )
-                row = await cursor.fetchone()
-            checks.append(ok("Active administrator", bool(row and row[0])))
-            checks.append(ok("Administrator role", bool(row and row[1])))
+            row = await connection.fetchrow(
+                """
+                SELECT su.is_active,
+                       EXISTS (
+                           SELECT 1
+                           FROM staff_user_roles sur
+                           JOIN staff_roles sr ON sr.id = sur.role_id
+                           WHERE sur.staff_user_id = su.id AND sr.role_key = 'administrator'
+                       ) AS has_administrator_role
+                FROM staff_users su
+                WHERE LOWER(su.email) = LOWER($1)
+                LIMIT 1
+                """,
+                admin_email,
+            )
+            checks.append(ok("Active administrator", bool(row and row["is_active"])))
+            checks.append(ok("Administrator role", bool(row and row["has_administrator_role"])))
         return all(checks)
     finally:
-        connection.close()
-        await connection.ensure_closed()
+        await connection.close()
 
 
 async def main() -> int:
@@ -154,7 +150,7 @@ async def main() -> int:
     try:
         settings = get_settings()
     except Exception:
-        print("Settings: no (configuration validation failed; check required Railway variables)")
+        print("Settings: no (configuration validation failed; check required Vercel variables)")
         return 1
 
     checks = [

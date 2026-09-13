@@ -5,14 +5,14 @@ import sys
 from pathlib import Path
 
 try:
-    import aiomysql
+    import asyncpg
 except ModuleNotFoundError:
-    aiomysql = None
+    asyncpg = None
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.config import MYSQL_SCHEMES, get_settings
-from scripts.migration_manifest import MYSQL_MIGRATION_FILES, MYSQL_SEED_FILES
+from app.config import POSTGRES_SCHEMES, get_settings
+from scripts.migration_manifest import POSTGRES_MIGRATION_FILES, POSTGRES_SEED_FILES
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -23,19 +23,18 @@ def check_static_configuration() -> list[str]:
         settings = get_settings()
     except Exception as exc:
         return [f"settings validation failed: {exc}"]
+
     if settings.database_url:
         scheme = settings.database_url.split(":", 1)[0]
-        if scheme not in MYSQL_SCHEMES:
-            errors.append("effective database scheme is not MySQL")
-    elif settings.has_mysql_connection_settings:
-        pass
-    else:
+        if scheme not in POSTGRES_SCHEMES:
+            errors.append("effective database scheme is not PostgreSQL")
+    elif not settings.has_postgres_connection_settings:
         errors.append("database is not configured")
 
-    for file_name in MYSQL_MIGRATION_FILES:
+    for file_name in POSTGRES_MIGRATION_FILES:
         if not (ROOT / "database" / "migrations" / file_name).exists():
             errors.append(f"missing migration: {file_name}")
-    for file_name in MYSQL_SEED_FILES:
+    for file_name in POSTGRES_SEED_FILES:
         if not (ROOT / "database" / "seed" / file_name).exists():
             errors.append(f"missing seed: {file_name}")
 
@@ -61,48 +60,43 @@ async def check_database_configuration() -> list[str]:
         settings = get_settings()
     except Exception:
         return []
-    if aiomysql is None:
-        return ["aiomysql is not installed"]
-    if not all([settings.mysql_host, settings.mysql_database, settings.mysql_user, settings.mysql_password]):
-        return ["MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER and MYSQL_PASSWORD are required for database validation"]
+    if asyncpg is None:
+        return ["asyncpg is not installed"]
+    if not settings.effective_database_url:
+        return ["DATABASE_URL or POSTGRES_* values are required for database validation"]
 
-    connection = await aiomysql.connect(
-        host=settings.mysql_host,
-        port=settings.mysql_port,
-        user=settings.mysql_user,
-        password=settings.mysql_password,
-        db=settings.mysql_database,
-    )
+    connection = await asyncpg.connect(settings.effective_database_url)
     try:
-        async with connection.cursor() as cursor:
-            await cursor.execute("SELECT 1")
-            await cursor.execute("SELECT id FROM staff_roles WHERE role_key = 'administrator' LIMIT 1")
-            role = await cursor.fetchone()
-            if not role:
-                errors.append("administrator role is missing")
-            if settings.oniria_admin_email:
-                await cursor.execute("SELECT id, is_active FROM staff_users WHERE email = %s LIMIT 1", (settings.oniria_admin_email.lower(),))
-                staff = await cursor.fetchone()
-                if not staff:
-                    errors.append("configured admin does not exist")
-                elif not bool(staff[1]):
-                    errors.append("configured admin is inactive")
-                elif role:
-                    await cursor.execute(
-                        """
+        role = await connection.fetchrow("SELECT id FROM staff_roles WHERE role_key = 'administrator' LIMIT 1")
+        if not role:
+            errors.append("administrator role is missing")
+        if settings.oniria_admin_email:
+            staff = await connection.fetchrow(
+                "SELECT id, is_active FROM staff_users WHERE email = $1 LIMIT 1",
+                settings.oniria_admin_email.lower(),
+            )
+            if not staff:
+                errors.append("configured admin does not exist")
+            elif not bool(staff["is_active"]):
+                errors.append("configured admin is inactive")
+            elif role:
+                has_role = await connection.fetchval(
+                    """
+                    SELECT EXISTS (
                         SELECT 1
                         FROM staff_user_roles
-                        WHERE staff_user_id = %s AND role_id = %s
-                        LIMIT 1
-                        """,
-                        (staff[0], role[0]),
+                        WHERE staff_user_id = $1 AND role_id = $2
                     )
-                    if not await cursor.fetchone():
-                        errors.append("configured admin is missing administrator role")
-            else:
-                errors.append("ONIRIA_ADMIN_EMAIL is not configured")
+                    """,
+                    staff["id"],
+                    role["id"],
+                )
+                if not has_role:
+                    errors.append("configured admin is missing administrator role")
+        else:
+            errors.append("ONIRIA_ADMIN_EMAIL is not configured")
     finally:
-        connection.close()
+        await connection.close()
     return errors
 
 

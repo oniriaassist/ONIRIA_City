@@ -135,7 +135,7 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
 async def healthcheck():
     database_connected = await db.healthcheck()
     database_status = "connected" if database_connected else "not_configured"
-    if (settings.database_url or settings.has_mysql_connection_settings) and not database_connected:
+    if settings.effective_database_url and not database_connected:
         database_status = "unavailable"
     return {
         "success": True,

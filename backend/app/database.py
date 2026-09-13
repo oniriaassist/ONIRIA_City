@@ -1,20 +1,25 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
+import re
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 from app.config import Settings
 
 logger = logging.getLogger(__name__)
 
 try:
-    import aiomysql
+    import asyncpg
 except ModuleNotFoundError:
-    aiomysql = None
+    asyncpg = None
+
+
+_PLACEHOLDER_RE = re.compile(r"%s")
 
 
 class Database:
@@ -27,39 +32,27 @@ class Database:
 
     async def connect(self, settings: Settings) -> None:
         if self.pool is not None:
-            logger.info("MySQL connection pool is already established")
+            logger.info("PostgreSQL connection pool is already established")
             return
 
-        if not settings.database_url and not settings.has_mysql_connection_settings:
+        if not settings.effective_database_url:
             logger.warning(
-                "MySQL is not configured; using seeded public content data"
+                "PostgreSQL is not configured; using seeded public content data"
             )
             return
 
-        if aiomysql is None:
+        if asyncpg is None:
             raise RuntimeError(
-                "aiomysql is required when MySQL is configured. "
+                "asyncpg is required when PostgreSQL is configured. "
                 "Install backend requirements first."
             )
 
-        connection_params = (
-            self._parse_mysql_url(settings.database_url)
-            if settings.database_url
-            else settings.mysql_connection_params
-        )
-
-        if not connection_params:
-            logger.warning(
-                "MySQL settings are incomplete; using seeded public content data"
-            )
-            return
-
         logger.info(
-            "MySQL configuration loaded",
+            "PostgreSQL configuration loaded",
             extra={
-                **settings.mysql_log_summary,
+                **settings.database_log_summary,
                 "env_file": str(settings.resolved_env_file),
-                "configuration_source": settings.mysql_configuration_source,
+                "configuration_source": settings.database_configuration_source,
             },
         )
 
@@ -68,16 +61,14 @@ class Database:
 
         for attempt in range(1, max_attempts + 1):
             try:
-                self.pool = await aiomysql.create_pool(
-                    **connection_params,
-                    minsize=settings.database_min_size,
-                    maxsize=max(
-                        settings.database_max_size,
-                        settings.mysql_pool_size,
+                self.pool = await asyncpg.create_pool(
+                    dsn=self._normalize_database_url(
+                        settings.effective_database_url
                     ),
-                    autocommit=True,
-                    charset="utf8mb4",
-                    connect_timeout=15,
+                    min_size=settings.database_min_size,
+                    max_size=settings.database_max_size,
+                    timeout=15,
+                    init=self._init_connection,
                 )
                 break
 
@@ -85,7 +76,7 @@ class Database:
                 last_error = exc
 
                 logger.warning(
-                    "MySQL connection attempt %s/%s failed: %s",
+                    "PostgreSQL connection attempt %s/%s failed: %s",
                     attempt,
                     max_attempts,
                     self._safe_connection_error(exc),
@@ -97,15 +88,15 @@ class Database:
         if self.pool is None:
             detail = self._safe_connection_error(last_error)
             raise RuntimeError(
-                f"Could not connect to MySQL: {detail}"
+                f"Could not connect to PostgreSQL: {detail}"
             ) from last_error
 
         logger.info(
-            "MySQL connection pool established",
+            "PostgreSQL connection pool established",
             extra={
-                **settings.mysql_log_summary,
+                **settings.database_log_summary,
                 "env_file": str(settings.resolved_env_file),
-                "configuration_source": settings.mysql_configuration_source,
+                "configuration_source": settings.database_configuration_source,
             },
         )
 
@@ -113,11 +104,10 @@ class Database:
         if self.pool is None:
             return
 
-        self.pool.close()
-        await self.pool.wait_closed()
+        await self.pool.close()
         self.pool = None
 
-        logger.info("MySQL connection pool closed")
+        logger.info("PostgreSQL connection pool closed")
 
     async def healthcheck(self) -> bool:
         if self.pool is None:
@@ -127,7 +117,7 @@ class Database:
             result = await self.fetchval("SELECT 1")
             return result == 1
         except Exception:
-            logger.exception("MySQL health check failed")
+            logger.exception("PostgreSQL health check failed")
             return False
 
     async def fetch(
@@ -136,12 +126,8 @@ class Database:
         *params: Any,
     ) -> list[dict[str, Any]]:
         pool = self._require_pool()
-
-        async with pool.acquire() as connection:
-            async with connection.cursor(aiomysql.DictCursor) as cursor:
-                await self._execute_cursor(cursor, query, params)
-                rows = await cursor.fetchall()
-                return list(rows)
+        rows = await pool.fetch(self._convert_query(query), *params)
+        return [dict(row) for row in rows]
 
     async def fetchrow(
         self,
@@ -149,11 +135,8 @@ class Database:
         *params: Any,
     ) -> dict[str, Any] | None:
         pool = self._require_pool()
-
-        async with pool.acquire() as connection:
-            async with connection.cursor(aiomysql.DictCursor) as cursor:
-                await self._execute_cursor(cursor, query, params)
-                return await cursor.fetchone()
+        row = await pool.fetchrow(self._convert_query(query), *params)
+        return dict(row) if row else None
 
     async def fetchval(
         self,
@@ -161,24 +144,18 @@ class Database:
         *params: Any,
     ) -> Any:
         pool = self._require_pool()
-
-        async with pool.acquire() as connection:
-            async with connection.cursor() as cursor:
-                await self._execute_cursor(cursor, query, params)
-                row = await cursor.fetchone()
-                return row[0] if row else None
+        return await pool.fetchval(self._convert_query(query), *params)
 
     async def insert_and_get_id(
         self,
         query: str,
         *params: Any,
     ) -> int:
-        pool = self._require_pool()
-
-        async with pool.acquire() as connection:
-            async with connection.cursor() as cursor:
-                await self._execute_cursor(cursor, query, params)
-                return int(cursor.lastrowid)
+        query = query.strip().rstrip(";")
+        if " returning " not in query.lower():
+            query = f"{query} RETURNING id"
+        value = await self.fetchval(query, *params)
+        return int(value)
 
     async def execute(
         self,
@@ -186,25 +163,16 @@ class Database:
         *params: Any,
     ) -> int:
         pool = self._require_pool()
-
-        async with pool.acquire() as connection:
-            async with connection.cursor() as cursor:
-                return int(await self._execute_cursor(cursor, query, params))
+        result = await pool.execute(self._convert_query(query), *params)
+        return self._rows_affected(result)
 
     @asynccontextmanager
-    async def transaction(self) -> AsyncIterator[Any]:
+    async def transaction(self) -> AsyncIterator["PostgresTransaction"]:
         pool = self._require_pool()
 
         async with pool.acquire() as connection:
-            await connection.begin()
-
-            try:
-                yield connection
-            except Exception:
-                await connection.rollback()
-                raise
-            else:
-                await connection.commit()
+            async with connection.transaction():
+                yield PostgresTransaction(connection, self._convert_query)
 
     def _require_pool(self) -> Any:
         if self.pool is None:
@@ -212,53 +180,45 @@ class Database:
 
         return self.pool
 
-    async def _execute_cursor(
-        self,
-        cursor: Any,
-        query: str,
-        params: tuple[Any, ...],
-    ) -> int:
-        """Execute SQL without passing an empty parameter tuple.
+    async def _init_connection(self, connection: Any) -> None:
+        await connection.set_type_codec(
+            "json",
+            encoder=json.dumps,
+            decoder=json.loads,
+            schema="pg_catalog",
+        )
+        await connection.set_type_codec(
+            "jsonb",
+            encoder=json.dumps,
+            decoder=json.loads,
+            schema="pg_catalog",
+        )
 
-        PyMySQL applies Python percent interpolation whenever a params argument
-        is supplied. Calling execute(query, None) therefore breaks valid MySQL
-        DATE_FORMAT patterns such as ``%Y-%m``.
-        """
-        if params:
-            return int(await cursor.execute(query, params))
-        return int(await cursor.execute(query))
+    def _convert_query(self, query: str) -> str:
+        index = 0
 
-    def _query_params(self, params: tuple[Any, ...]) -> tuple[Any, ...] | None:
-        return params or None
+        def replace(_: re.Match[str]) -> str:
+            nonlocal index
+            index += 1
+            return f"${index}"
 
-    def _parse_mysql_url(
-        self,
-        database_url: str,
-    ) -> dict[str, Any]:
+        return _PLACEHOLDER_RE.sub(replace, query)
+
+    def _rows_affected(self, command_tag: str) -> int:
+        try:
+            return int(command_tag.rsplit(" ", 1)[-1])
+        except (TypeError, ValueError):
+            return 0
+
+    def _normalize_database_url(self, database_url: str) -> str:
         parsed = urlparse(database_url)
+        scheme = "postgresql" if parsed.scheme == "postgres" else parsed.scheme
+        query_items = dict(parse_qsl(parsed.query, keep_blank_values=True))
 
-        if parsed.scheme not in {
-            "mysql",
-            "mysql+pymysql",
-            "mysql+aiomysql",
-        }:
-            raise ValueError(
-                "DATABASE_URL must use mysql://, mysql+pymysql://, "
-                "or mysql+aiomysql://"
-            )
+        if "supabase" in (parsed.hostname or ""):
+            query_items.setdefault("sslmode", "require")
 
-        if not parsed.hostname or not parsed.path.strip("/"):
-            raise ValueError(
-                "DATABASE_URL must include a hostname and database name"
-            )
-
-        return {
-            "host": parsed.hostname,
-            "port": parsed.port or 3306,
-            "user": unquote(parsed.username or ""),
-            "password": unquote(parsed.password or ""),
-            "db": parsed.path.lstrip("/"),
-        }
+        return urlunparse(parsed._replace(scheme=scheme, query=urlencode(query_items)))
 
     def _safe_connection_error(
         self,
@@ -270,29 +230,80 @@ class Database:
         message = str(exc)
         lowered = message.lower()
 
-        if "access denied" in lowered:
+        if "password authentication failed" in lowered:
             return (
-                "access denied for the configured MySQL user; "
-                "check MYSQL_USER and MYSQL_PASSWORD"
+                "authentication failed for the configured PostgreSQL user; "
+                "check DATABASE_URL or POSTGRES_PASSWORD"
             )
 
         if (
-            "can't connect" in lowered
+            "connection refused" in lowered
             or "connect call failed" in lowered
-            or "connection refused" in lowered
+            or "name or service not known" in lowered
         ):
             return (
-                "could not reach MySQL; check MYSQL_HOST, MYSQL_PORT "
-                "and whether the MySQL server is running"
+                "could not reach PostgreSQL; check host, port and whether "
+                "the database is accepting connections"
             )
 
-        if "unknown database" in lowered:
-            return "the configured MySQL database does not exist"
+        if "does not exist" in lowered:
+            return "the configured PostgreSQL database or role does not exist"
 
         if "timed out" in lowered:
-            return "the MySQL connection timed out"
+            return "the PostgreSQL connection timed out"
 
         return f"{exc.__class__.__name__}: {message}"
+
+
+class PostgresTransaction:
+    def __init__(self, connection: Any, convert_query: Any) -> None:
+        self.connection = connection
+        self._convert_query = convert_query
+
+    async def fetch(
+        self,
+        query: str,
+        *params: Any,
+    ) -> list[dict[str, Any]]:
+        rows = await self.connection.fetch(self._convert_query(query), *params)
+        return [dict(row) for row in rows]
+
+    async def fetchrow(
+        self,
+        query: str,
+        *params: Any,
+    ) -> dict[str, Any] | None:
+        row = await self.connection.fetchrow(self._convert_query(query), *params)
+        return dict(row) if row else None
+
+    async def fetchval(
+        self,
+        query: str,
+        *params: Any,
+    ) -> Any:
+        return await self.connection.fetchval(self._convert_query(query), *params)
+
+    async def execute(
+        self,
+        query: str,
+        *params: Any,
+    ) -> int:
+        result = await self.connection.execute(self._convert_query(query), *params)
+        try:
+            return int(result.rsplit(" ", 1)[-1])
+        except (TypeError, ValueError):
+            return 0
+
+    async def insert_and_get_id(
+        self,
+        query: str,
+        *params: Any,
+    ) -> int:
+        query = query.strip().rstrip(";")
+        if " returning " not in query.lower():
+            query = f"{query} RETURNING id"
+        value = await self.fetchval(query, *params)
+        return int(value)
 
 
 db = Database()

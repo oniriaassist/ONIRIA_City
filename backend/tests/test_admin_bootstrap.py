@@ -48,9 +48,43 @@ class FakeConnection:
         self.staff = staff
         self.has_role = has_role
         self.queries = []
+        self.next_staff_id = 11
 
     def cursor(self):
         return FakeCursor(self)
+
+    async def fetchrow(self, query, *params):
+        self.queries.append((query, params))
+        if "FROM staff_roles" in query:
+            return {"id": 7}
+        if "EXISTS" in query:
+            if self.staff:
+                return {
+                    "id": self.staff[0],
+                    "is_active": self.staff[1],
+                    "has_administrator_role": self.has_role,
+                }
+            return None
+        if "FROM staff_users" in query:
+            if not self.staff:
+                return None
+            return {"id": self.staff[0], "is_active": self.staff[1]}
+        return None
+
+    async def fetchval(self, query, *params):
+        self.queries.append((query, params))
+        if "INSERT INTO staff_users" in query:
+            self.staff = (self.next_staff_id, True)
+            return self.next_staff_id
+        if "SELECT EXISTS" in query:
+            return self.has_role
+        return None
+
+    async def execute(self, query, *params):
+        self.queries.append((query, params))
+        if "INSERT INTO staff_user_roles" in query:
+            self.has_role = True
+        return "INSERT 0 1"
 
 
 def test_bootstrap_creates_missing_administrator():

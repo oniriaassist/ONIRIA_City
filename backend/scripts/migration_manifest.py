@@ -1,4 +1,4 @@
-MYSQL_MIGRATION_FILES = (
+POSTGRES_MIGRATION_FILES = (
     "001_database_setup.sql",
     "002_staff_security.sql",
     "003_property_catalogue.sql",
@@ -19,7 +19,7 @@ MYSQL_MIGRATION_FILES = (
     "018_brochure_delivery.sql",
 )
 
-MYSQL_SEED_FILES = (
+POSTGRES_SEED_FILES = (
     "staff_roles.sql",
     "property_seed.sql",
     "masterplan_seed.sql",

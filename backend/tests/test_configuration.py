@@ -39,20 +39,20 @@ def test_samesite_none_requires_secure_cookie():
         Settings(session_cookie_secure=False, session_cookie_samesite="none")
 
 
-def test_rejects_non_mysql_database_url():
+def test_rejects_non_postgres_database_url():
     with pytest.raises(ValueError):
-        Settings(database_url="postgresql://user:pass@localhost/db")
+        Settings(database_url="mysql://user:pass@localhost/db")
 
 
-def test_rejects_database_url_and_mysql_field_disagreement():
+def test_rejects_database_url_and_postgres_field_disagreement():
     with pytest.raises(ValueError, match="disagree"):
         Settings(
-            database_url="mysql://root:pw@127.0.0.1:3306/oniria_city",
-            mysql_host="localhost",
-            mysql_port=3306,
-            mysql_database="oniria_city",
-            mysql_user="root",
-            mysql_password="pw",
+            database_url="postgresql://root:pw@127.0.0.1:5432/oniria_city",
+            postgres_host="localhost",
+            postgres_port=5432,
+            postgres_database="oniria_city",
+            postgres_user="root",
+            postgres_password="pw",
         )
 
 
@@ -107,7 +107,7 @@ def test_env_examples_contain_placeholders_only():
         text = (root / relative_path).read_text(encoding="utf-8")
         for value in forbidden:
             assert value not in text
-        for key in ["RESEND_API_KEY", "SMTP_PASSWORD", "MYSQL_PASSWORD", "MYSQL_ROOT_PASSWORD", "WHATSAPP_APP_SECRET", "ONIRIA_ADMIN_PASSWORD"]:
+        for key in ["RESEND_API_KEY", "SMTP_PASSWORD", "POSTGRES_PASSWORD", "WHATSAPP_APP_SECRET", "ONIRIA_ADMIN_PASSWORD"]:
             match = re.search(rf"^{key}=(.+)$", text, flags=re.MULTILINE)
             if match:
                 assert match.group(1).strip() in {"", "<resend-api-key>", "<strong-password>"}

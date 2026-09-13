@@ -89,10 +89,11 @@ class BrochureDeliveryRepository:
         await self.database.execute(
             """
             UPDATE brochure_requests br
-            JOIN enquiries e ON e.id = br.enquiry_id
-            SET br.delivery_status = %s,
-                br.delivered_at = CASE WHEN %s = 'sent' THEN CURRENT_TIMESTAMP ELSE NULL END
-            WHERE e.reference_number = %s
+            SET delivery_status = %s,
+                delivered_at = CASE WHEN %s = 'sent' THEN CURRENT_TIMESTAMP ELSE NULL END
+            FROM enquiries e
+            WHERE e.id = br.enquiry_id
+              AND e.reference_number = %s
             """,
             status,
             status,
@@ -105,9 +106,10 @@ class BrochureDeliveryRepository:
         await self.database.execute(
             """
             UPDATE brochure_requests br
-            JOIN enquiries e ON e.id = br.enquiry_id
-            SET br.delivery_method = %s
-            WHERE e.reference_number = %s
+            SET delivery_method = %s
+            FROM enquiries e
+            WHERE e.id = br.enquiry_id
+              AND e.reference_number = %s
             """,
             method,
             reference_number,

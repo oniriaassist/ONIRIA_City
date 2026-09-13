@@ -10,11 +10,11 @@ def run_python(code: str, cwd: Path, env: dict[str, str] | None = None) -> subpr
     merged_env = os.environ.copy()
     for key in [
         "DATABASE_URL",
-        "MYSQL_HOST",
-        "MYSQL_PORT",
-        "MYSQL_DATABASE",
-        "MYSQL_USER",
-        "MYSQL_PASSWORD",
+        "POSTGRES_HOST",
+        "POSTGRES_PORT",
+        "POSTGRES_DATABASE",
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
         "MAIL_PROVIDER",
         "RESEND_API_KEY",
         "SMTP_HOST",
@@ -44,11 +44,11 @@ def write_env(path: Path, *, host: str = "192.0.2.10", password: str = "super-se
         "\n".join(
             [
                 "DATABASE_URL=",
-                f"MYSQL_HOST={host}",
-                "MYSQL_PORT=3306",
-                "MYSQL_DATABASE=oniria_city_test",
-                "MYSQL_USER=env_user",
-                f"MYSQL_PASSWORD={password}",
+                f"POSTGRES_HOST={host}",
+                "POSTGRES_PORT=5432",
+                "POSTGRES_DATABASE=oniria_city_test",
+                "POSTGRES_USER=env_user",
+                f"POSTGRES_PASSWORD={password}",
                 "SESSION_COOKIE_SECURE=false",
                 "SESSION_COOKIE_SAMESITE=lax",
             ]
@@ -71,7 +71,7 @@ def test_backend_env_loads_from_repository_root():
     original = write_env(BACKEND_ENV_FILE)
     try:
         result = run_python(
-            "import sys; sys.path.insert(0, 'backend'); from app.config import get_settings; s=get_settings(); print(s.mysql_host, s.mysql_user)",
+            "import sys; sys.path.insert(0, 'backend'); from app.config import get_settings; s=get_settings(); print(s.postgres_host, s.postgres_user)",
             cwd=root,
         )
         assert result.returncode == 0
@@ -85,7 +85,7 @@ def test_backend_env_loads_from_backend_directory():
     original = write_env(BACKEND_ENV_FILE, host="192.0.2.11")
     try:
         result = run_python(
-            "from app.config import get_settings; s=get_settings(); print(s.mysql_host, s.mysql_database)",
+            "from app.config import get_settings; s=get_settings(); print(s.postgres_host, s.postgres_database)",
             cwd=root / "backend",
         )
         assert result.returncode == 0
@@ -99,9 +99,9 @@ def test_operating_system_env_overrides_backend_env():
     original = write_env(BACKEND_ENV_FILE)
     try:
         result = run_python(
-            "import sys; sys.path.insert(0, 'backend'); from app.config import get_settings; s=get_settings(); print(s.mysql_host)",
+            "import sys; sys.path.insert(0, 'backend'); from app.config import get_settings; s=get_settings(); print(s.postgres_host)",
             cwd=root,
-            env={"MYSQL_HOST": "198.51.100.7"},
+            env={"POSTGRES_HOST": "198.51.100.7"},
         )
         assert result.returncode == 0
         assert result.stdout.strip() == "198.51.100.7"

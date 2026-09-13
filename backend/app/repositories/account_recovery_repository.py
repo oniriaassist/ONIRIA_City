@@ -74,7 +74,7 @@ class AccountRecoveryRepository:
         rows = await self.pool.fetch(
             f"""
             SELECT su.id, su.full_name, su.email, su.is_active, su.last_login_at,
-                   GROUP_CONCAT(sr.role_key ORDER BY sr.role_key SEPARATOR ', ') AS roles
+                   STRING_AGG(sr.role_key, ', ' ORDER BY sr.role_key) AS roles
             FROM staff_users su
             LEFT JOIN staff_user_roles sur ON sur.staff_user_id = su.id
             LEFT JOIN staff_roles sr ON sr.id = sur.role_id
@@ -126,8 +126,8 @@ class AccountRecoveryRepository:
             actor_staff_id,
             action,
             str(request_id),
-            None if before is None else json.dumps(before, default=str),
-            None if after is None else json.dumps(after, default=str),
+            None if before is None else json.loads(json.dumps(before, default=str)),
+            None if after is None else json.loads(json.dumps(after, default=str)),
             ip,
             user_agent[:300] if user_agent else None,
         )

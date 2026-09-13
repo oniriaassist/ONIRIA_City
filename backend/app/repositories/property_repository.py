@@ -241,12 +241,20 @@ class PropertyRepository:
             SELECT type, title, slug, excerpt
             FROM public_search_index
             WHERE status = 'published'
-              AND MATCH(title, excerpt, content) AGAINST (%s IN NATURAL LANGUAGE MODE)
-            ORDER BY MATCH(title, excerpt, content) AGAINST (%s IN NATURAL LANGUAGE MODE) DESC
+              AND (
+                title ILIKE %s
+                OR excerpt ILIKE %s
+                OR content ILIKE %s
+              )
+            ORDER BY
+              CASE WHEN title ILIKE %s THEN 0 ELSE 1 END,
+              title
             LIMIT %s
             """,
-            query,
-            query,
+            f"%{query}%",
+            f"%{query}%",
+            f"%{query}%",
+            f"%{query}%",
             limit,
         )
         return [SearchResult(**dict(row)) for row in rows]

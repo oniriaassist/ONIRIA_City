@@ -3,13 +3,12 @@ from __future__ import annotations
 import asyncio
 import sys
 from pathlib import Path
-from typing import Any
 
 try:
-    import aiomysql
+    import asyncpg
 except ModuleNotFoundError:
     raise SystemExit(
-        "aiomysql is not installed. Run: "
+        "asyncpg is not installed. Run: "
         r"backend\.venv\Scripts\python.exe -m pip install "
         r"-r backend\requirements.txt"
     )
@@ -24,19 +23,18 @@ from app.services.admin_bootstrap_service import (
 )
 
 
-def connection_settings() -> tuple[dict[str, Any], Any]:
+def connection_url():
     try:
         settings = get_settings()
-        connection_params = settings.mysql_connection_params
     except Exception as exc:
         raise SystemExit(
             f"Settings validation failed: {exc}"
         ) from exc
 
-    if not connection_params:
+    if not settings.effective_database_url:
         raise SystemExit(
-            "Required values are missing: DATABASE_URL or MYSQL_HOST, "
-            "MYSQL_DATABASE, MYSQL_USER and MYSQL_PASSWORD"
+            "Required values are missing: DATABASE_URL or POSTGRES_HOST, "
+            "POSTGRES_DATABASE, POSTGRES_USER and POSTGRES_PASSWORD"
         )
 
     if not settings.oniria_admin_email:
@@ -44,24 +42,17 @@ def connection_settings() -> tuple[dict[str, Any], Any]:
             "Required values are missing: ONIRIA_ADMIN_EMAIL"
         )
 
-    params: dict[str, Any] = {
-        **connection_params,
-        "autocommit": True,
-        "charset": "utf8mb4",
-        "connect_timeout": 15,
-    }
-
-    return params, settings
+    return settings.effective_database_url, settings
 
 
 async def main() -> None:
-    params, settings = connection_settings()
+    database_url, settings = connection_url()
 
     try:
-        connection = await aiomysql.connect(**params)
+        connection = await asyncpg.connect(database_url)
     except Exception as exc:
         raise SystemExit(
-            f"Could not connect to MySQL: {exc}"
+            f"Could not connect to PostgreSQL: {exc}"
         ) from exc
 
     try:
@@ -70,7 +61,7 @@ async def main() -> None:
             str(settings.oniria_admin_email),
         )
     finally:
-        connection.close()
+        await connection.close()
 
     print(f"Administrator email: {result.email}")
     print(f"Active: {'yes' if result.active else 'no'}")
@@ -88,5 +79,3 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-    

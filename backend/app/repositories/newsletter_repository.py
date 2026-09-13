@@ -18,7 +18,7 @@ class NewsletterRepository:
                 await self.pool.execute(
                     """
                     UPDATE newsletter_subscriptions
-                    SET status = 'active', consent = 1, source_page = %s, anonymous_session_id = %s,
+                    SET status = 'active', consent = TRUE, source_page = %s, anonymous_session_id = %s,
                         utm_source = %s, utm_medium = %s, utm_campaign = %s, utm_content = %s,
                         subscribed_at = CURRENT_TIMESTAMP, unsubscribed_at = NULL
                     WHERE email = %s
@@ -39,7 +39,7 @@ class NewsletterRepository:
             INSERT INTO newsletter_subscriptions
               (email, status, source_page, anonymous_session_id, utm_source, utm_medium,
                utm_campaign, utm_content, consent, subscribed_at)
-            VALUES (%s, 'active', %s, %s, %s, %s, %s, %s, 1, CURRENT_TIMESTAMP)
+            VALUES (%s, 'active', %s, %s, %s, %s, %s, %s, TRUE, CURRENT_TIMESTAMP)
             """,
             email,
             values.get("source_page"),
