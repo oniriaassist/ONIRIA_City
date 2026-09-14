@@ -447,29 +447,27 @@ class LeadRepository:
                 last_activity_at = CURRENT_TIMESTAMP
             WHERE id = %s
             """,
-            (
-                score,
-                score,
-                follow_up_status,
-                reference_number,
-                property_interests,
-                collection_interests,
-                payload.property_slug or payload.collection_slug,
-                payload.bedroom_preference,
-                payload.budget,
-                payload.buying_purpose,
-                payload.purchase_timeline.value if payload.purchase_timeline else None,
-                campaign.utm_source,
-                campaign.utm_campaign,
-                campaign.utm_source,
-                campaign.utm_medium,
-                campaign.utm_campaign,
-                campaign.utm_content,
-                campaign.utm_term,
-                payload.page_path or campaign.landing_page,
-                payload.referral_url or campaign.referrer,
-                lead["id"],
-            ),
+            score,
+            score,
+            follow_up_status,
+            reference_number,
+            property_interests,
+            collection_interests,
+            payload.property_slug or payload.collection_slug,
+            payload.bedroom_preference,
+            payload.budget,
+            payload.buying_purpose,
+            payload.purchase_timeline.value if payload.purchase_timeline else None,
+            campaign.utm_source,
+            campaign.utm_campaign,
+            campaign.utm_source,
+            campaign.utm_medium,
+            campaign.utm_campaign,
+            campaign.utm_content,
+            campaign.utm_term,
+            payload.page_path or campaign.landing_page,
+            payload.referral_url or campaign.referrer,
+            lead["id"],
         )
         enquiry_id = await transaction.insert_and_get_id(
             """
@@ -478,17 +476,15 @@ class LeadRepository:
             )
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """,
-            (
-                reference_number,
-                lead["id"],
-                payload.enquiry_type.value,
-                payload.message,
-                payload.preferred_contact_time,
-                payload.model_dump(mode="json"),
-                score,
-                follow_up_status,
-                notification_status,
-            ),
+            reference_number,
+            lead["id"],
+            payload.enquiry_type.value,
+            payload.message,
+            payload.preferred_contact_time,
+            payload.model_dump(mode="json"),
+            score,
+            follow_up_status,
+            notification_status,
         )
         if payload.enquiry_type.value == "brochure":
             await transaction.execute("INSERT INTO brochure_requests (lead_id, enquiry_id) VALUES (%s, %s)", lead["id"], enquiry_id)
@@ -507,13 +503,11 @@ class LeadRepository:
             INSERT INTO lead_activities (lead_id, reference_number, activity_type, summary, campaign)
             VALUES (%s, %s, %s, %s, %s)
             """,
-            (
-                lead["id"],
-                reference_number,
-                payload.enquiry_type.value,
-                self._activity_summary(payload),
-                campaign.model_dump(mode="json"),
-            ),
+            lead["id"],
+            reference_number,
+            payload.enquiry_type.value,
+            self._activity_summary(payload),
+            campaign.model_dump(mode="json"),
         )
         return {
             "reference_number": reference_number,

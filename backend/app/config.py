@@ -288,6 +288,28 @@ class Settings(BaseSettings):
                 "to DATABASE_MIN_SIZE"
             )
 
+        if self.database_url and self.has_postgres_connection_settings:
+            parsed = urlparse(self.database_url)
+            url_settings = (
+                (parsed.hostname or "").lower(),
+                parsed.port or 5432,
+                parsed.path.lstrip("/"),
+                unquote(parsed.username or ""),
+                unquote(parsed.password or ""),
+            )
+            field_settings = (
+                (self.postgres_host or "").lower(),
+                self.postgres_port,
+                self.postgres_database or "",
+                self.postgres_user or "",
+                self.postgres_password or "",
+            )
+            if url_settings != field_settings:
+                raise ValueError(
+                    "DATABASE_URL and POSTGRES_* settings disagree; "
+                    "configure only one method or make them identical"
+                )
+
         if self.app_env.strip().lower() == "production":
             if self.app_debug:
                 raise ValueError("APP_DEBUG must be false in production")
