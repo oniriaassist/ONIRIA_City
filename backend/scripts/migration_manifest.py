@@ -18,6 +18,7 @@ POSTGRES_MIGRATION_FILES = (
     "017_admin_lead_summary_deduplicate.sql",
     "018_brochure_delivery.sql",
     "019_supabase_api_hardening.sql",
+    "020_enquiry_pipeline_compatibility.sql",
 )
 
 POSTGRES_SEED_FILES = (

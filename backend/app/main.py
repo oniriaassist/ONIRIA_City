@@ -158,9 +158,42 @@ async def readiness():
         "customers",
         "leads",
         "enquiries",
+        "lead_activities",
+        "enquiry_reference_sequence",
         "newsletter_subscriptions",
     ]
+    required_columns = {
+        "customers": {
+            "id", "full_name", "email", "phone", "country",
+            "preferred_language", "preferred_contact_method",
+            "marketing_consent", "privacy_consent",
+        },
+        "leads": {
+            "id", "reference_number", "customer_id", "anonymous_session_id",
+            "name", "email", "phone", "property_interest",
+            "property_interests", "collection_interests", "bedroom_preference",
+            "budget_range", "buying_purpose", "purchase_timeframe", "score",
+            "lead_score", "follow_up_status", "lead_status", "source_platform",
+            "campaign_name", "utm_source", "utm_medium", "utm_campaign",
+            "utm_content", "utm_term", "landing_page", "referral_url",
+            "last_activity_at",
+        },
+        "enquiries": {
+            "id", "reference_number", "lead_id", "enquiry_type", "message",
+            "preferred_contact_time", "payload", "score", "follow_up_status",
+            "notification_status",
+        },
+        "lead_activities": {
+            "id", "lead_id", "reference_number", "activity_type", "summary",
+            "campaign", "created_at",
+        },
+        "enquiry_reference_sequence": {"id"},
+    }
+
     table_status: dict[str, bool] = {}
+    column_status: dict[str, bool] = {}
+    migration_020_applied = False
+
     if database_connected:
         for table in required_tables:
             try:
@@ -168,13 +201,46 @@ async def readiness():
                 table_status[table] = True
             except Exception:
                 table_status[table] = False
+
+        for table, expected_columns in required_columns.items():
+            try:
+                rows = await db.fetch(
+                    """
+                    SELECT column_name
+                    FROM information_schema.columns
+                    WHERE table_schema = 'public' AND table_name = %s
+                    """,
+                    table,
+                )
+                actual_columns = {row["column_name"] for row in rows}
+                column_status[table] = expected_columns.issubset(actual_columns)
+            except Exception:
+                column_status[table] = False
+
+        try:
+            migration_020_applied = bool(
+                await db.fetchval(
+                    "SELECT EXISTS (SELECT 1 FROM schema_migrations WHERE filename = %s)",
+                    "020_enquiry_pipeline_compatibility.sql",
+                )
+            )
+        except Exception:
+            migration_020_applied = False
+
     data = {
         "service": settings.app_name,
         "environment": settings.app_env,
         "database": "connected" if database_connected else "unavailable",
         "tables": table_status,
+        "enquiry_schema": column_status,
+        "migration_020_applied": migration_020_applied,
     }
-    production_ready = database_connected and all(table_status.values())
+    production_ready = (
+        database_connected
+        and all(table_status.values())
+        and all(column_status.values())
+        and migration_020_applied
+    )
     if settings.app_env.strip().lower() == "production" and not production_ready:
         return JSONResponse(
             status_code=503,
@@ -182,7 +248,7 @@ async def readiness():
                 "success": False,
                 "error": {
                     "code": "service_not_ready",
-                    "message": "Database or required schema is unavailable",
+                    "message": "Database schema is incomplete or migrations are not current",
                 },
                 "data": data,
             },

@@ -428,8 +428,8 @@ class LeadRepository:
                 follow_up_status = %s,
                 lead_status = CASE WHEN lead_status = 'New' THEN 'New' ELSE lead_status END,
                 reference_number = COALESCE(reference_number, %s),
-                property_interests = %s,
-                collection_interests = %s,
+                property_interests = CAST(%s AS text)::jsonb,
+                collection_interests = CAST(%s AS text)::jsonb,
                 property_interest = COALESCE(%s, property_interest),
                 bedroom_preference = COALESCE(%s, bedroom_preference),
                 budget_range = COALESCE(%s, budget_range),
@@ -451,8 +451,8 @@ class LeadRepository:
             score,
             follow_up_status,
             reference_number,
-            property_interests,
-            collection_interests,
+            json.dumps(property_interests, ensure_ascii=False),
+            json.dumps(collection_interests, ensure_ascii=False),
             payload.property_slug or payload.collection_slug,
             payload.bedroom_preference,
             payload.budget,
@@ -474,14 +474,14 @@ class LeadRepository:
             INSERT INTO enquiries (
                 reference_number, lead_id, enquiry_type, message, preferred_contact_time, payload, score, follow_up_status, notification_status
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, CAST(%s AS text)::jsonb, %s, %s, %s)
             """,
             reference_number,
             lead["id"],
             payload.enquiry_type.value,
             payload.message,
             payload.preferred_contact_time,
-            payload.model_dump(mode="json"),
+            json.dumps(payload.model_dump(mode="json"), ensure_ascii=False),
             score,
             follow_up_status,
             notification_status,
@@ -501,13 +501,13 @@ class LeadRepository:
         await transaction.execute(
             """
             INSERT INTO lead_activities (lead_id, reference_number, activity_type, summary, campaign)
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, CAST(%s AS text)::jsonb)
             """,
             lead["id"],
             reference_number,
             payload.enquiry_type.value,
             self._activity_summary(payload),
-            campaign.model_dump(mode="json"),
+            json.dumps(campaign.model_dump(mode="json"), ensure_ascii=False),
         )
         return {
             "reference_number": reference_number,
@@ -542,8 +542,8 @@ class LeadRepository:
                 follow_up_status = %s,
                 lead_status = CASE WHEN lead_status = 'New' THEN 'New' ELSE lead_status END,
                 reference_number = COALESCE(reference_number, %s),
-                property_interests = %s,
-                collection_interests = %s,
+                property_interests = CAST(%s AS text)::jsonb,
+                collection_interests = CAST(%s AS text)::jsonb,
                 property_interest = COALESCE(%s, property_interest),
                 bedroom_preference = COALESCE(%s, bedroom_preference),
                 budget_range = COALESCE(%s, budget_range),
@@ -565,8 +565,8 @@ class LeadRepository:
             score,
             follow_up_status,
             reference_number,
-            property_interests,
-            collection_interests,
+            json.dumps(property_interests, ensure_ascii=False),
+            json.dumps(collection_interests, ensure_ascii=False),
             payload.property_slug or payload.collection_slug,
             payload.bedroom_preference,
             payload.budget,
@@ -588,14 +588,14 @@ class LeadRepository:
             INSERT INTO enquiries (
                 reference_number, lead_id, enquiry_type, message, preferred_contact_time, payload, score, follow_up_status, notification_status
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, CAST(%s AS text)::jsonb, %s, %s, %s)
             """,
             reference_number,
             lead["id"],
             payload.enquiry_type.value,
             payload.message,
             payload.preferred_contact_time,
-            payload.model_dump(mode="json"),
+            json.dumps(payload.model_dump(mode="json"), ensure_ascii=False),
             score,
             follow_up_status,
             notification_status,
@@ -621,13 +621,13 @@ class LeadRepository:
         await self.pool.execute(
             """
             INSERT INTO lead_activities (lead_id, reference_number, activity_type, summary, campaign)
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, CAST(%s AS text)::jsonb)
             """,
             lead["id"],
             reference_number,
             payload.enquiry_type.value,
             activity_summary,
-            campaign.model_dump(mode="json"),
+            json.dumps(campaign.model_dump(mode="json"), ensure_ascii=False),
         )
         return {
             "reference_number": reference_number,

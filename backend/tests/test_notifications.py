@@ -86,3 +86,33 @@ async def _run_email_failure_does_not_rollback_test():
     assert store.enquiries[0]["reference_number"] == result.reference_number
     assert store.enquiries[0]["notification_status"] == "failed"
     assert store.activities[0]["lead_id"] == result.lead_id
+
+class StatusUpdateFailingRepository(LeadRepository):
+    async def update_notification_status(self, reference_number: str, notification_status: str) -> None:
+        raise RuntimeError("secondary status update unavailable")
+
+
+def test_enquiry_response_survives_notification_status_update_failure():
+    asyncio.run(_run_status_update_failure_test())
+
+
+async def _run_status_update_failure_test():
+    service = LeadService(
+        repository=StatusUpdateFailingRepository(),
+        campaign_service=CampaignService(),
+        notification_service=NotificationService(email_service=FakeEmailService()),
+    )
+    payload = EnquiryCreate(
+        enquiry_type="general",
+        name="Salma Ali",
+        email="salma@example.com",
+        phone="+255712345681",
+        message="Please contact me.",
+        consent=True,
+    )
+
+    result = await service.process_enquiry(payload)
+
+    assert result.reference_number.startswith("ON-")
+    assert result.lead_id == 1
+    assert store.enquiries[0]["reference_number"] == result.reference_number

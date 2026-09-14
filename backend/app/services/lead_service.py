@@ -1,7 +1,12 @@
+import logging
+
 from app.repositories.lead_repository import LeadRepository
 from app.schemas.enquiry_schemas import EnquiryCreate, EnquiryResponse, LeadDetail, LeadSummary
 from app.services.campaign_service import CampaignService
 from app.services.notification_service import NotificationService
+
+
+logger = logging.getLogger(__name__)
 
 
 class LeadService:
@@ -35,7 +40,15 @@ class LeadService:
                 lead_id=lead["id"],
                 score=score,
             )
-            await self.repository.update_notification_status(reference_number, notification_status)
+            try:
+                await self.repository.update_notification_status(reference_number, notification_status)
+            except Exception:
+                # The enquiry has already been committed. A secondary notification-status
+                # update must never turn a successfully stored customer enquiry into a 500.
+                logger.exception(
+                    "notification status update failed after enquiry persistence",
+                    extra={"reference_number": reference_number, "lead_id": lead["id"]},
+                )
         return EnquiryResponse(
             reference_number=reference_number,
             lead_id=lead["id"],

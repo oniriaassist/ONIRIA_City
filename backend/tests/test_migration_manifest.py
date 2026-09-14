@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.migration_manifest import POSTGRES_MIGRATION_FILES, POSTGRES_SEED_FILES
 
 
-def test_active_postgres_manifest_has_all_19_migrations_and_seeds():
+def test_active_postgres_manifest_has_all_20_migrations_and_seeds():
     root = Path(__file__).resolve().parents[2]
     assert POSTGRES_MIGRATION_FILES == (
         "001_database_setup.sql",
@@ -27,6 +27,7 @@ def test_active_postgres_manifest_has_all_19_migrations_and_seeds():
         "017_admin_lead_summary_deduplicate.sql",
         "018_brochure_delivery.sql",
         "019_supabase_api_hardening.sql",
+        "020_enquiry_pipeline_compatibility.sql",
     )
     assert POSTGRES_SEED_FILES == ("staff_roles.sql", "property_seed.sql", "masterplan_seed.sql")
     for file_name in POSTGRES_MIGRATION_FILES:
