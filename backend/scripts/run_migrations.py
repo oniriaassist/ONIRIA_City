@@ -6,6 +6,7 @@ import hashlib
 import os
 import sys
 from pathlib import Path
+from urllib.parse import parse_qsl, quote, urlencode, urlparse, urlunparse
 
 try:
     import asyncpg
@@ -19,7 +20,6 @@ PROJECT_ROOT = BACKEND_ROOT.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 sys.path.insert(0, str(BACKEND_ROOT))
 
-from app.config import get_settings
 from migration_manifest import POSTGRES_MIGRATION_FILES, POSTGRES_SEED_FILES
 
 DATABASE_DIR = Path(
@@ -27,19 +27,138 @@ DATABASE_DIR = Path(
 ).resolve()
 MIGRATIONS = DATABASE_DIR / "migrations"
 SEEDS = DATABASE_DIR / "seed"
+ENV_FILES = (PROJECT_ROOT / ".env", BACKEND_ROOT / ".env")
+POSTGRES_SCHEMES = {"postgres", "postgresql", "postgresql+asyncpg"}
+DATABASE_URL_PLACEHOLDERS = {
+    "YOUR_PRODUCTION_SUPABASE_DATABASE_URL",
+    "<SUPABASE_DATABASE_URL>",
+    "<SUPABASE_SESSION_POOLER_OR_DIRECT_URL>",
+    "<DATABASE_URL>",
+}
+
+
+def is_database_url_placeholder(value: str) -> bool:
+    return value in DATABASE_URL_PLACEHOLDERS or value.startswith("YOUR_")
+
+
+def parse_env_file(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+
+    values: dict[str, str] = {}
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if "#" in value and not value.startswith(("'", '"')):
+            value = value.split("#", 1)[0].strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        if key:
+            values[key] = value
+    return values
+
+
+def env_value_with_source(key: str) -> tuple[str | None, str | None]:
+    value = os.getenv(key)
+    if value is not None and value.strip():
+        value = value.strip()
+        if key != "DATABASE_URL" or not is_database_url_placeholder(value):
+            return value, "current shell environment"
+
+    for env_file in reversed(ENV_FILES):
+        file_value = parse_env_file(env_file).get(key)
+        if file_value and file_value.strip():
+            file_value = file_value.strip()
+            if key != "DATABASE_URL" or not is_database_url_placeholder(file_value):
+                return file_value, str(env_file)
+
+    return None, None
+
+
+def env_value(key: str) -> str | None:
+    value, _source = env_value_with_source(key)
+    return value
+
+
+def redact_database_url(value: str) -> str:
+    parsed = urlparse(value)
+    if not parsed.scheme or not parsed.netloc:
+        return "<not a URL>"
+
+    username = parsed.username or ""
+    hostname = parsed.hostname or ""
+    port = f":{parsed.port}" if parsed.port else ""
+    path = parsed.path or ""
+    return f"{parsed.scheme}://{username}:***@{hostname}{port}{path}"
+
+
+def normalize_database_url(value: str) -> str:
+    if is_database_url_placeholder(value):
+        raise SystemExit(
+            "DATABASE_URL is still a placeholder. Replace it with the real "
+            "Supabase PostgreSQL connection string from Supabase Dashboard "
+            "> Project Settings > Database > Connection string."
+        )
+
+    if r"\@" in value:
+        raise SystemExit(
+            "DATABASE_URL contains \\@. Backslash does not escape @ in a "
+            "PostgreSQL URL. If your password contains @, replace it with "
+            "%40. Example: password Oniria_2026.@ becomes Oniria_2026.%40"
+        )
+
+    parsed = urlparse(value)
+    if parsed.scheme not in POSTGRES_SCHEMES:
+        raise SystemExit(
+            "DATABASE_URL must be a PostgreSQL URL, for example "
+            "postgresql://postgres.<project-ref>:<password>@"
+            "aws-0-<region>.pooler.supabase.com:6543/postgres"
+        )
+    if not parsed.hostname or not parsed.path.strip("/"):
+        raise SystemExit("DATABASE_URL must include a host and database name.")
+
+    scheme = (
+        "postgresql"
+        if parsed.scheme in {"postgres", "postgresql+asyncpg"}
+        else parsed.scheme
+    )
+    query_items = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    if "supabase" in (parsed.hostname or "").lower():
+        query_items.setdefault("sslmode", "require")
+    return urlunparse(parsed._replace(scheme=scheme, query=urlencode(query_items)))
 
 
 def database_url() -> str:
-    try:
-        settings = get_settings()
-    except Exception as exc:
-        raise SystemExit(f"Settings validation failed: {exc}") from exc
-    if not settings.asyncpg_database_url:
-        raise SystemExit(
-            "DATABASE_URL or POSTGRES_HOST, POSTGRES_DATABASE, "
-            "POSTGRES_USER and POSTGRES_PASSWORD are required."
+    configured_database_url, _source = env_value_with_source("DATABASE_URL")
+    if configured_database_url:
+        return normalize_database_url(configured_database_url)
+
+    postgres_host = env_value("POSTGRES_HOST")
+    postgres_database = env_value("POSTGRES_DATABASE")
+    postgres_user = env_value("POSTGRES_USER")
+    postgres_password = env_value("POSTGRES_PASSWORD")
+    postgres_port = env_value("POSTGRES_PORT") or "5432"
+
+    if all([postgres_host, postgres_database, postgres_user, postgres_password]):
+        return normalize_database_url(
+            "postgresql://"
+            f"{quote(postgres_user)}:{quote(postgres_password)}@"
+            f"{postgres_host}:{postgres_port}/{postgres_database}"
         )
-    return settings.asyncpg_database_url
+
+    env_locations = ", ".join(str(path) for path in ENV_FILES)
+    raise SystemExit(
+        "PostgreSQL database configuration is missing.\n"
+        "Add your Supabase connection string to backend/.env as DATABASE_URL, "
+        "or set POSTGRES_HOST, POSTGRES_DATABASE, POSTGRES_USER, "
+        "and POSTGRES_PASSWORD.\n"
+        f"Checked: {env_locations}"
+    )
 
 
 def checksum(path: Path) -> str:
@@ -145,7 +264,21 @@ def cli() -> None:
         action="store_true",
         help="also apply the idempotent reference/catalogue seed files",
     )
+    parser.add_argument(
+        "--show-database-source",
+        action="store_true",
+        help="show where DATABASE_URL is being read from without printing the password",
+    )
     args = parser.parse_args()
+
+    if args.show_database_source:
+        value, source = env_value_with_source("DATABASE_URL")
+        if not value:
+            print("DATABASE_URL is not set.")
+        else:
+            print(f"DATABASE_URL source: {source}")
+            print(f"DATABASE_URL value: {redact_database_url(value)}")
+        return
 
     for file_name in POSTGRES_MIGRATION_FILES:
         path = MIGRATIONS / file_name

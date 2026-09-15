@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -17,8 +18,18 @@ POSTGRES_SCHEMES = {
     "postgresql",
     "postgresql+asyncpg",
 }
+DATABASE_URL_PLACEHOLDERS = {
+    "YOUR_PRODUCTION_SUPABASE_DATABASE_URL",
+    "<SUPABASE_DATABASE_URL>",
+    "<SUPABASE_SESSION_POOLER_OR_DIRECT_URL>",
+    "<DATABASE_URL>",
+}
 
 email_adapter = TypeAdapter(EmailStr)
+
+
+def is_database_url_placeholder(value: str) -> bool:
+    return value in DATABASE_URL_PLACEHOLDERS or value.startswith("YOUR_")
 
 
 class Settings(BaseSettings):
@@ -131,7 +142,7 @@ class Settings(BaseSettings):
 
         value = value.strip()
 
-        if not value or value.startswith("#"):
+        if not value or value.startswith("#") or is_database_url_placeholder(value):
             return None
 
         return value
@@ -287,28 +298,6 @@ class Settings(BaseSettings):
                 "DATABASE_MAX_SIZE must be greater than or equal "
                 "to DATABASE_MIN_SIZE"
             )
-
-        if self.database_url and self.has_postgres_connection_settings:
-            parsed = urlparse(self.database_url)
-            url_settings = (
-                (parsed.hostname or "").lower(),
-                parsed.port or 5432,
-                parsed.path.lstrip("/"),
-                unquote(parsed.username or ""),
-                unquote(parsed.password or ""),
-            )
-            field_settings = (
-                (self.postgres_host or "").lower(),
-                self.postgres_port,
-                self.postgres_database or "",
-                self.postgres_user or "",
-                self.postgres_password or "",
-            )
-            if url_settings != field_settings:
-                raise ValueError(
-                    "DATABASE_URL and POSTGRES_* settings disagree; "
-                    "configure only one method or make them identical"
-                )
 
         if self.app_env.strip().lower() == "production":
             if self.app_debug:
@@ -572,4 +561,12 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
+    env_database_url = os.environ.get("DATABASE_URL")
+    if env_database_url and is_database_url_placeholder(env_database_url.strip()):
+        original_value = os.environ.pop("DATABASE_URL")
+        try:
+            return Settings()
+        finally:
+            os.environ["DATABASE_URL"] = original_value
+
     return Settings()

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import sys
 from pathlib import Path
 
@@ -17,6 +18,9 @@ from app.config import get_settings
 
 
 async def main() -> None:
+    os.environ["APP_ENV"] = "local"
+    get_settings.cache_clear()
+
     try:
         settings = get_settings()
     except Exception as exc:

@@ -33,11 +33,14 @@ The asyncpg connection is normalized automatically, Supabase TLS is required aut
 
 ```powershell
 Copy-Item backend\.env.example backend\.env
+notepad backend\.env
 python backend\scripts\run_migrations.py --seed
 python backend\scripts\create_admin.py
 python backend\scripts\verify_admin.py
 python backend\scripts\check_database.py
 ```
+
+Before running migrations, set `DATABASE_URL` in `backend\.env` to your Supabase Transaction Pooler or direct PostgreSQL URL.
 
 Future migrations should normally omit `--seed`:
 
@@ -53,7 +56,7 @@ python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 7000
 
 ## Vercel
 
-Deploy a separate Vercel project with root directory `backend`. Vercel discovers `api/index.py` as the FastAPI function entry point.
+The root repository `vercel.json` deploys this backend as the `backend` service and routes `/api/*` to it. Keep `backend/vercel.json` so Vercel's Python runtime can use `api/index.py` as the FastAPI entry point.
 
 ## Verify
 

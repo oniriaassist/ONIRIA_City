@@ -17,7 +17,7 @@ Browser
                  -> Supabase PostgreSQL (Transaction Pooler)
 ```
 
-Deploy the frontend and backend as two Vercel projects from the same repository. See `docs/PRODUCTION_DEPLOYMENT.md` for the exact order and environment variables.
+Deploy the frontend and backend as Vercel services from the same repository. See `docs/PRODUCTION_DEPLOYMENT.md` for the exact order and environment variables.
 
 ## Local Backend
 
@@ -28,6 +28,12 @@ python -m venv .venv
 python -m pip install -r requirements-dev.txt
 cd ..
 Copy-Item backend\.env.example backend\.env
+```
+
+Edit `backend\.env` and set your Supabase/PostgreSQL URL before running migrations:
+
+```text
+DATABASE_URL=postgresql://postgres.<project-ref>:<password>@<region>.pooler.supabase.com:6543/postgres
 ```
 
 For a fresh database:
