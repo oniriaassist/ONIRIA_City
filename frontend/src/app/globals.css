@@ -13344,3 +13344,65 @@ main :is(h1, h2, h3, h4, h5, h6),
   font-variation-settings: "wdth" 62.5;
   font-weight: 300 !important;
 }
+
+/* =========================================================
+   ADMIN INTERACTIVE TEXT CONTRAST — FINAL SAFEGUARD
+   Keeps global public-page text colours from overriding
+   labels on filled staff-workspace controls.
+========================================================= */
+.adminShell .adminFilters button:not(.adminSecondaryButton),
+.adminShell .adminActions button,
+.adminShell .adminTable button {
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid #95694d;
+  border-radius: 999px;
+  background-color: #95694d;
+  color: #ffffff !important;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.adminShell .adminFilters button:not(.adminSecondaryButton):hover,
+.adminShell .adminActions button:hover,
+.adminShell .adminTable button:hover {
+  border-color: #7f573f;
+  background-color: #7f573f;
+  color: #ffffff !important;
+}
+
+.adminShell .adminFilters button:disabled,
+.adminShell .adminActions button:disabled,
+.adminShell .adminTable button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.adminSuccess {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(29, 107, 66, 0.22);
+  border-radius: 14px;
+  background: #e7f3ea;
+  color: #1d6b42 !important;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adminStaffCreateForm label {
+  min-width: 0;
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  .adminStaffCreateForm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .adminStaffCreateForm button[type="submit"] {
+    width: fit-content;
+  }
+}

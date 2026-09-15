@@ -107,6 +107,8 @@ export const adminApi = {
   staff: () => request("/admin/staff"),
   createStaff: (payload) =>
     request("/admin/staff", { method: "POST", body: JSON.stringify(payload) }),
+  updateStaff: (id, payload) =>
+    request(`/admin/staff/${id}`, { method: "PATCH", body: JSON.stringify(payload) }),
   disableStaff: (id) => request(`/admin/staff/${id}/disable`, { method: "POST" }),
   recoveryRequests: () => request("/admin/account-recovery-requests"),
   recoveryRequestDetail: (id) => request(`/admin/account-recovery-requests/${id}`),

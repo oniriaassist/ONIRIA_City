@@ -29,7 +29,7 @@ const navGroups = [
   ]],
   ["Administration", [
     ["Account Recovery", "/admin/account-recovery", ["administrator"], "AR"],
-    ["Staff", "/admin/staff", null, "ST"],
+    ["Staff", "/admin/staff", ["administrator"], "ST"],
   ]],
 ];
 
