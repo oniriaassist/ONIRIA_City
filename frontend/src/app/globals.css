@@ -13406,3 +13406,48 @@ main :is(h1, h2, h3, h4, h5, h6),
     width: fit-content;
   }
 }
+
+/* =========================================================
+   ADMIN TABLE ACTION LINKS — FINAL VISIBILITY SAFEGUARD
+   Global public link colours are declared later than the
+   original admin table styles. Keep table actions such as
+   "View" readable on their filled terracotta background.
+========================================================= */
+.adminShell .adminTable a,
+.adminShell .adminTable a:visited {
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid #95694d;
+  border-radius: 999px;
+  background-color: #95694d;
+  color: #ffffff !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.adminShell .adminTable a *,
+.adminShell .adminTable a:visited * {
+  color: inherit !important;
+}
+
+.adminShell .adminTable a:hover {
+  border-color: #7f573f;
+  background-color: #7f573f;
+  color: #ffffff !important;
+}
+
+.adminShell .adminTable a:focus-visible {
+  outline: 3px solid rgba(149, 105, 77, 0.28);
+  outline-offset: 3px;
+  color: #ffffff !important;
+}
