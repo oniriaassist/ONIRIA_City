@@ -13276,6 +13276,11 @@ body:has(.adminShell) .oniriaWhatsappFabV2 {
   vertical-align: middle;
 }
 
+.adminBrand .rohoBrandLogo {
+  width: 150px;
+  height: 61px;
+}
+
 .edenHeaderBrand .rohoBrandLogo {
   background-color: #ffffff !important;
   color: #ffffff !important;
