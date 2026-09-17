@@ -19,7 +19,6 @@ const navGroups = [
   ]],
   ["Content and Communication", [
     ["Brochures", "/admin/brochure-requests", null, "BR"],
-    ["AI Conversations", "/admin/conversations", null, "AI"],
     ["WhatsApp", "/admin/whatsapp", null, "WA"],
     ["Campaigns", "/admin/campaigns", null, "CA"],
   ]],

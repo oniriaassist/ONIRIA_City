@@ -10,7 +10,6 @@ const pageDescriptions = {
   "Brochure Requests": "Track buyers who requested project and property brochures.",
   "Consultations": "Manage consultation requests from prospective clients.",
   "Site Visits": "Review requested property tours and visit scheduling activity.",
-  "AI Conversations": "Monitor ROHO assistant conversations and sales signals.",
   "WhatsApp Conversations": "View WhatsApp interactions connected to Roho.",
   "Campaign Sources": "Review marketing campaign performance and source quality.",
   "Follow-ups": "Stay on top of staff follow-up commitments.",
