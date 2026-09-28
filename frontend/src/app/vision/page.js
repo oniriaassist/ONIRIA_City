@@ -204,8 +204,7 @@ export default function VisionPage() {
               />
             </div>
             <div className="visionV5PartnerCopy">
-              <span>DEVELOPER · ZANZIBAR</span>
-              <h3>Part of the ONIRIA Investments collection.</h3>
+              <h3>ONIRIA Investments </h3>
               <p>
                 ONIRIA creates distinctive Zanzibar destinations around place, culture and the
                 way people want to live and experience the island. Its portfolio spans heritage
@@ -234,7 +233,6 @@ export default function VisionPage() {
               />
             </div>
             <div className="visionV5PartnerCopy">
-              <span>PARTNERSHIP · GROUP ECOSYSTEM</span>
               <h3>Vigor / Turky Group of Companies</h3>
               <p>
                 Connected to a diversified business ecosystem with experience across healthcare,
