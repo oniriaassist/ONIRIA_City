@@ -70,7 +70,7 @@ export default function Header() {
           {leftNavigation.map(renderDesktopLink)}
         </div>
 
-        <Link href="/" className="edenHeaderBrand" aria-label="ROHO home">
+        <Link href="/" className="edenHeaderBrand" aria-label="MALǓA home">
           <BrandLogo />
         </Link>
 
@@ -80,7 +80,7 @@ export default function Header() {
       </nav>
 
       <div className="edenHeaderMobile">
-        <Link href="/" className="edenHeaderBrand" aria-label="ROHO home" onClick={closeMenu}>
+        <Link href="/" className="edenHeaderBrand" aria-label="MALǓA home" onClick={closeMenu}>
           <BrandLogo />
         </Link>
 

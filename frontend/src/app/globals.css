@@ -13101,7 +13101,7 @@ footer,
   background-color: initial;
 }
 
-/* Compact footer sizing while keeping the existing dark Roho treatment. */
+/* Compact footer sizing while keeping the existing dark MALǓA treatment. */
 .oniriaMinimalFooter,
 .vAvenuePage > .oniriaMinimalFooter,
 footer.oniriaMinimalFooter {
@@ -13140,7 +13140,7 @@ footer.oniriaMinimalFooter {
   font-size: clamp(34px, 3vw, 48px) !important;
 }
 
-.oniriaMinimalFooterBrand .rohoBrandLogo {
+.oniriaMinimalFooterBrand .maluaBrandLogo {
   font-size: inherit !important;
   filter: drop-shadow(0 0 0 #ffffff) drop-shadow(0 0 0 #ffffff);
 }
@@ -13260,28 +13260,28 @@ body:has(.adminShell) .oniriaWhatsappFabV2 {
 }
 
 /* =========================================================
-   ROHO WORDMARK
-   Uses the supplied ROHO artwork as an alpha mask so the
+   MALǓA WORDMARK
+   Uses the supplied MALǓA artwork as an alpha mask so the
    exact wordmark shape can inherit the existing foreground
    colour in the header, footer and staff workspace.
 ========================================================= */
-.rohoBrandLogo {
+.maluaBrandLogo {
   display: inline-block;
   width: 2.45em;
   height: 1em;
   flex: 0 0 auto;
   background-color: currentColor;
-  -webkit-mask: url("/brand/roho-logo.png") center / contain no-repeat;
-  mask: url("/brand/roho-logo.png") center / contain no-repeat;
+  -webkit-mask: url("/brand/malua-logo.png") center / contain no-repeat;
+  mask: url("/brand/malua-logo.png") center / contain no-repeat;
   vertical-align: middle;
 }
 
-.adminBrand .rohoBrandLogo {
+.adminBrand .maluaBrandLogo {
   width: 150px;
   height: 61px;
 }
 
-.edenHeaderBrand .rohoBrandLogo {
+.edenHeaderBrand .maluaBrandLogo {
   background-color: #ffffff !important;
   color: #ffffff !important;
 }
@@ -13316,7 +13316,7 @@ body:has(.adminShell) .oniriaWhatsappFabV2 {
   text-transform: uppercase;
 }
 
-.adminLoginBrandRow .rohoBrandLogo {
+.adminLoginBrandRow .maluaBrandLogo {
   font-size: 14px;
 }
 
@@ -13459,4 +13459,6332 @@ main :is(h1, h2, h3, h4, h5, h6),
   outline: 3px solid rgba(149, 105, 77, 0.28);
   outline-offset: 3px;
   color: #ffffff !important;
+}
+
+
+/* =========================================================
+   MALǓA PREMIUM REAL-ESTATE REFINEMENT
+   Layout-only enhancement: preserves the established font and colour system.
+========================================================= */
+
+/* Homepage hero uses the supplied branded arrival artwork. */
+.homePage .heroSlider.edenInspiredHero .heroDarkOverlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 15, 14, 0.18) 0%,
+    rgba(4, 15, 14, 0.34) 44%,
+    rgba(4, 15, 14, 0.58) 100%
+  ) !important;
+}
+
+.homePage .heroSlider.edenInspiredHero .heroMainContent {
+  transform: translateY(-6%);
+}
+
+.homePage .heroSlider.edenInspiredHero .heroSignature.hero-subtitle {
+  letter-spacing: 0.06em !important;
+}
+
+/* Editorial welcome composition: copy + image story, retaining all original copy. */
+.homePage .maluaIntroductionSection {
+  padding-right: clamp(24px, 5vw, 72px) !important;
+  padding-left: clamp(24px, 5vw, 72px) !important;
+}
+
+.homePage .maluaIntroductionLayout {
+  width: min(1480px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+  align-items: center;
+  gap: clamp(64px, 8vw, 132px);
+}
+
+.homePage .maluaIntroductionCopy.introductionInner {
+  width: 100%;
+  max-width: 680px;
+  margin: 0;
+  text-align: left;
+}
+
+.homePage .maluaIntroductionCopy .sectionLabel,
+.homePage .maluaIntroductionCopy h2,
+.homePage .maluaIntroductionCopy .introductionCopy,
+.homePage .maluaIntroductionCopy .introductionText {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: left !important;
+}
+
+.homePage .maluaIntroductionCopy h2 {
+  max-width: 650px !important;
+  margin-bottom: 38px !important;
+  font-size: clamp(44px, 4.25vw, 68px) !important;
+  line-height: 1.02 !important;
+}
+
+.homePage .maluaIntroductionCopy .introductionText {
+  font-size: clamp(18px, 1.35vw, 22px) !important;
+  line-height: 1.58 !important;
+}
+
+.homePage .maluaIntroductionVisual {
+  position: relative;
+  min-height: clamp(620px, 58vw, 860px);
+}
+
+.homePage .maluaIntroductionImage {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.18);
+  box-shadow: 0 28px 60px rgba(72, 49, 36, 0.12);
+}
+
+.homePage .maluaIntroductionImage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.homePage .maluaIntroductionImagePrimary {
+  top: 0;
+  right: 0;
+  width: 78%;
+  height: 82%;
+}
+
+.homePage .maluaIntroductionImageSecondary {
+  bottom: 0;
+  left: 0;
+  width: 46%;
+  height: 44%;
+}
+
+.homePage .collectionImage {
+  overflow: hidden;
+}
+
+.homePage .collectionImage::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: inherit;
+  background-position: inherit;
+  background-size: cover;
+  content: "";
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.homePage .collectionCard:hover .collectionImage::before {
+  transform: scale(1.035);
+}
+
+.homePage .collectionOverlay,
+.homePage .collectionContent,
+.homePage .collectionFullLink {
+  z-index: 1;
+}
+
+/* Contact page — editorial, premium and conversion-focused, inspired by the reference structure. */
+.contactPageSection {
+  padding-top: clamp(100px, 9vw, 142px) !important;
+  padding-bottom: clamp(110px, 10vw, 160px) !important;
+}
+
+.contactPageIntroduction {
+  width: min(1440px, 100%) !important;
+  margin-bottom: clamp(66px, 7vw, 104px) !important;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr) !important;
+  align-items: start !important;
+  gap: clamp(56px, 8vw, 130px) !important;
+}
+
+.contactPageIntroduction h2 {
+  max-width: 760px !important;
+}
+
+.contactPageIntroduction > p {
+  max-width: 560px;
+  padding-top: 30px;
+}
+
+.contactPageGrid {
+  width: min(1440px, 100%) !important;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(0, 1.18fr) !important;
+  gap: clamp(52px, 7vw, 112px) !important;
+  align-items: stretch;
+}
+
+.contactInformationPanel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInformation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #d8d1c6;
+}
+
+.contactInformation article {
+  min-height: 188px;
+  padding: 30px 24px 30px 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contactInformation article:nth-child(odd) {
+  border-right: 1px solid #d8d1c6;
+  padding-right: 30px;
+}
+
+.contactInformation article:nth-child(even) {
+  padding-left: 30px;
+}
+
+.contactInformation h3 {
+  margin-top: 18px;
+}
+
+.contactEditorialImage {
+  min-height: 370px;
+  margin-top: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.18);
+}
+
+.contactEditorialImage img {
+  width: 100%;
+  height: 100%;
+  min-height: 370px;
+  display: block;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.contactEditorialImage:hover img {
+  transform: scale(1.025);
+}
+
+.contactForm {
+  position: relative;
+  padding: clamp(42px, 5vw, 68px) !important;
+  border-top: 3px solid #95694d;
+  box-shadow: 0 28px 60px rgba(72, 49, 36, 0.08);
+}
+
+.contactFormHeading {
+  margin-bottom: 48px !important;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #d8d1c6;
+}
+
+.contactFormHeading h2 {
+  margin-top: 0;
+}
+
+.contactForm .formField input,
+.contactForm .formField select,
+.contactForm .formField textarea,
+.contactForm .internationalPhoneInput.PhoneInput {
+  transition: border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.contactForm .formField input:focus,
+.contactForm .formField select:focus,
+.contactForm .formField textarea:focus,
+.contactForm .internationalPhoneInput.PhoneInput:focus-within {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(149, 105, 77, 0.08);
+}
+
+/* MALǓA wordmark proportions from the supplied logo artwork. */
+.maluaBrandLogo {
+  width: 3.2em;
+  height: 1em;
+}
+
+.adminBrand .maluaBrandLogo {
+  width: 165px;
+  height: 48px;
+}
+
+@media (max-width: 1100px) {
+  .homePage .maluaIntroductionLayout {
+    grid-template-columns: 1fr;
+    gap: 58px;
+  }
+
+  .homePage .maluaIntroductionCopy.introductionInner {
+    max-width: 860px;
+  }
+
+  .homePage .maluaIntroductionVisual {
+    width: min(880px, 100%);
+    min-height: 720px;
+    margin: 0 auto;
+  }
+
+  .contactPageGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contactInformationPanel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .homePage .maluaIntroductionSection {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+
+  .homePage .maluaIntroductionCopy h2 {
+    font-size: clamp(35px, 10vw, 43px) !important;
+  }
+
+  .homePage .maluaIntroductionCopy .introductionText {
+    font-size: 18px !important;
+  }
+
+  .homePage .maluaIntroductionVisual {
+    min-height: 540px;
+  }
+
+  .homePage .maluaIntroductionImagePrimary {
+    width: 88%;
+    height: 78%;
+  }
+
+  .homePage .maluaIntroductionImageSecondary {
+    width: 54%;
+    height: 42%;
+  }
+
+  .contactPageIntroduction > p {
+    padding-top: 0;
+  }
+
+  .contactInformation {
+    grid-template-columns: 1fr;
+  }
+
+  .contactInformation article,
+  .contactInformation article:nth-child(odd),
+  .contactInformation article:nth-child(even) {
+    min-height: auto;
+    padding: 27px 0;
+    border-right: 0;
+  }
+
+  .contactEditorialImage,
+  .contactEditorialImage img {
+    min-height: 300px;
+  }
+
+  .contactForm {
+    padding: 38px 22px !important;
+  }
+}
+
+/* =========================================================
+   MALǓA COMPACT SALES EXPERIENCE — SEPT 2026 REFINEMENT
+   Removes oversized whitespace, keeps the established palette,
+   and gives the Contact page a single ONA-inspired sales canvas.
+========================================================= */
+
+/* Exact supplied wordmark wherever MALǓA is a hero/CTA display word. */
+.maluaHeroBrandWord {
+  display: block;
+  margin-top: 8px;
+  line-height: 0;
+}
+
+.maluaHeroBrandLogo {
+  width: clamp(190px, 22vw, 330px) !important;
+  height: clamp(60px, 7vw, 104px) !important;
+  background-color: #ffffff !important;
+}
+
+.finalSalesBrandHeading {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.finalSalesBrandLogo {
+  width: clamp(150px, 15vw, 220px) !important;
+  height: clamp(48px, 4.8vw, 70px) !important;
+  background-color: #ffffff !important;
+}
+
+.finalSalesBrandHeading > span {
+  color: inherit !important;
+  font: inherit !important;
+  line-height: inherit !important;
+}
+
+/* Home welcome: centered label/title, compact copy + image story. */
+.homePage .maluaIntroductionSection {
+  padding: clamp(72px, 7vw, 104px) clamp(24px, 5vw, 72px) clamp(74px, 7vw, 108px) !important;
+}
+
+.homePage .maluaIntroductionHeading {
+  width: min(1040px, 100%);
+  margin: 0 auto clamp(42px, 5vw, 66px);
+  text-align: center;
+}
+
+.homePage .maluaIntroductionHeading .sectionLabel {
+  margin: 0 auto 20px !important;
+  text-align: center !important;
+}
+
+.homePage .maluaIntroductionHeading h2 {
+  max-width: 940px !important;
+  margin: 0 auto !important;
+  color: #95694d !important;
+  font-size: clamp(42px, 4.5vw, 68px) !important;
+  line-height: 1.02 !important;
+  text-align: center !important;
+  text-wrap: balance;
+}
+
+.homePage .maluaIntroductionLayout {
+  width: min(1320px, 100%) !important;
+  margin: 0 auto !important;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr) !important;
+  gap: clamp(46px, 6vw, 86px) !important;
+  align-items: center !important;
+}
+
+.homePage .maluaIntroductionCopy.introductionInner {
+  width: 100% !important;
+  max-width: 680px !important;
+  margin: 0 !important;
+}
+
+.homePage .maluaIntroductionCopy .introductionCopy,
+.homePage .maluaIntroductionCopy .introductionText {
+  text-align: left !important;
+}
+
+.homePage .maluaIntroductionCopy .introductionText {
+  margin-bottom: 24px !important;
+  font-size: clamp(18px, 1.25vw, 21px) !important;
+  line-height: 1.55 !important;
+}
+
+.homePage .maluaIntroductionCopy .introductionLink {
+  margin-top: 18px !important;
+}
+
+.homePage .maluaIntroductionVisual {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: clamp(340px, 35vw, 470px) !important;
+  margin: 0 !important;
+}
+
+.homePage .maluaIntroductionImagePrimary {
+  top: 0 !important;
+  right: 0 !important;
+  width: 72% !important;
+  height: 82% !important;
+}
+
+.homePage .maluaIntroductionImageSecondary {
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 42% !important;
+  height: 48% !important;
+}
+
+/* Remove stacked vertical padding between welcome, collections and location. */
+.homePage .collectionsSection {
+  padding-top: clamp(68px, 6vw, 92px) !important;
+  padding-bottom: clamp(68px, 6vw, 92px) !important;
+}
+
+.homePage .collectionsHeading {
+  margin-bottom: clamp(42px, 4vw, 56px) !important;
+}
+
+.homePage .collectionImage {
+  min-height: clamp(420px, 34vw, 535px) !important;
+}
+
+.homePage .collectionDescription {
+  padding-top: 18px !important;
+}
+
+.homePage .masterplanSection {
+  padding-top: clamp(58px, 5vw, 76px) !important;
+}
+
+.homePage .oniriaLocationSection {
+  padding-top: 0 !important;
+  padding-bottom: clamp(76px, 7vw, 104px) !important;
+}
+
+.homePage .oniriaLocationIntro {
+  margin-bottom: clamp(38px, 4vw, 52px) !important;
+}
+
+/* Contact: premium private-sales experience. */
+.maluaContactPage {
+  background: #e9ddcb;
+}
+
+.maluaContactExperience {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: clamp(126px, 10vw, 154px) clamp(24px, 4vw, 64px) clamp(64px, 6vw, 92px) !important;
+  display: flex;
+  align-items: center;
+  background-position: center 44%;
+  background-size: cover;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.maluaContactOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(31, 24, 20, 0.89) 0%, rgba(31, 24, 20, 0.76) 45%, rgba(31, 24, 20, 0.57) 66%, rgba(31, 24, 20, 0.66) 100%),
+    linear-gradient(180deg, rgba(21, 17, 14, 0.15), rgba(21, 17, 14, 0.58));
+}
+
+.maluaContactExperienceInner {
+  width: min(1680px, 100%);
+  margin: 0 auto;
+}
+
+.maluaContactSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(590px, 1.1fr);
+  gap: clamp(42px, 5.5vw, 96px);
+  align-items: center;
+}
+
+.maluaContactStory {
+  min-width: 0;
+  max-width: 720px;
+  padding: clamp(10px, 2vw, 28px) 0;
+}
+
+.maluaContactEyebrow {
+  margin: 0 0 26px;
+  color: #ead8c3 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.27em !important;
+  text-transform: uppercase !important;
+}
+
+.maluaContactStoryTitle {
+  max-width: 720px;
+  margin: 0;
+  color: #ffffff !important;
+  font-size: clamp(52px, 5.35vw, 86px) !important;
+  line-height: 0.91 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.maluaContactStoryTitle > span:first-child {
+  display: block;
+  color: #ffffff !important;
+}
+
+.maluaContactStoryBrandLine {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.55vw, 24px);
+  flex-wrap: wrap;
+}
+
+.maluaContactStoryBrand {
+  width: clamp(205px, 20vw, 315px) !important;
+  height: clamp(64px, 6.3vw, 96px) !important;
+  background-color: #ead8c3 !important;
+}
+
+.maluaContactStoryBrandLine em {
+  color: #ead8c3 !important;
+  font: inherit !important;
+  font-style: italic !important;
+  line-height: inherit !important;
+}
+
+.maluaContactStoryDescription {
+  max-width: 620px;
+  margin: 31px 0 0;
+  color: rgba(255, 255, 255, 0.84) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: clamp(16px, 1.15vw, 19px) !important;
+  line-height: 1.65 !important;
+}
+
+.maluaContactAvailability {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.maluaContactAvailability span {
+  padding: 9px 13px 8px;
+  border: 1px solid rgba(234, 216, 195, 0.28);
+  border-radius: 999px;
+  background: rgba(44, 34, 28, 0.24);
+  color: rgba(255, 255, 255, 0.74) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.maluaContactFacts {
+  margin-top: clamp(34px, 3.5vw, 50px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.maluaContactFacts article {
+  min-width: 0;
+  min-height: 112px;
+  padding: 20px 21px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background: rgba(38, 29, 24, 0.36);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.maluaContactFacts article:hover {
+  transform: translateY(-2px);
+  border-color: rgba(234, 216, 195, 0.38);
+  background: rgba(38, 29, 24, 0.48);
+}
+
+.maluaContactFacts small {
+  display: block;
+  color: #ead8c3 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+.maluaContactFacts strong,
+.maluaContactFacts a {
+  color: #ffffff !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.maluaContactFacts a:hover {
+  color: #ead8c3 !important;
+}
+
+.maluaContactPage .maluaContactForm {
+  min-width: 0;
+  margin: 0 !important;
+  padding: clamp(34px, 3.4vw, 54px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 32px;
+  background: rgba(39, 30, 25, 0.94) !important;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.maluaContactPage .maluaContactFormHeading {
+  margin: 0 0 28px !important;
+  padding: 0 0 25px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  text-align: left;
+}
+
+.maluaContactPage .maluaContactFormHeading .sectionLabel {
+  margin: 0 0 12px !important;
+  color: #ead8c3 !important;
+}
+
+.maluaContactPage .maluaContactFormHeading h2 {
+  max-width: 620px;
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-size: clamp(34px, 3vw, 49px) !important;
+  line-height: 0.99 !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.maluaContactPage .maluaContactFormHeading > p:last-child {
+  max-width: 590px;
+  margin: 15px 0 0 !important;
+  color: rgba(255, 255, 255, 0.64) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.maluaContactPage .maluaContactForm .formGrid {
+  gap: 20px 18px;
+}
+
+.maluaContactPage .maluaContactForm .formField label {
+  margin-bottom: 9px;
+  color: rgba(255, 255, 255, 0.77) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.maluaContactPage .maluaContactForm .formField input,
+.maluaContactPage .maluaContactForm .formField select,
+.maluaContactPage .maluaContactForm .formField textarea,
+.maluaContactPage .maluaContactForm .internationalPhoneInput.PhoneInput {
+  min-height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.17) !important;
+  border-radius: 14px !important;
+  background: rgba(23, 18, 15, 0.61) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.maluaContactPage .maluaContactForm .formField input,
+.maluaContactPage .maluaContactForm .formField select,
+.maluaContactPage .maluaContactForm .formField textarea {
+  padding: 16px 18px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 15px !important;
+}
+
+.maluaContactPage .maluaContactForm .formField textarea {
+  min-height: 128px !important;
+  resize: vertical;
+}
+
+.maluaContactPage .maluaContactForm .formField input::placeholder,
+.maluaContactPage .maluaContactForm .formField textarea::placeholder,
+.maluaContactPage .maluaContactForm .PhoneInputInput::placeholder {
+  color: rgba(255, 255, 255, 0.39) !important;
+}
+
+.maluaContactPage .maluaContactForm .formField select option {
+  background: #2b211c;
+  color: #ffffff;
+}
+
+.maluaContactPage .maluaContactForm .formField input:focus,
+.maluaContactPage .maluaContactForm .formField select:focus,
+.maluaContactPage .maluaContactForm .formField textarea:focus,
+.maluaContactPage .maluaContactForm .internationalPhoneInput.PhoneInput:focus-within {
+  border-color: #ead8c3 !important;
+  box-shadow: 0 0 0 3px rgba(234, 216, 195, 0.09) !important;
+}
+
+.maluaContactPage .maluaContactForm .PhoneInputInput,
+.maluaContactPage .maluaContactForm .PhoneInputCountrySelect,
+.maluaContactPage .maluaContactForm .PhoneInputCountryIcon {
+  color: #ffffff !important;
+}
+
+.maluaContactPage .maluaContactForm .PhoneInputCountrySelectArrow {
+  border-color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.maluaContactPage .maluaContactForm .formSubmitButton {
+  min-width: 205px;
+  min-height: 58px;
+  margin-top: 27px;
+  padding: 0 27px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  border: 1px solid #ead8c3 !important;
+  border-radius: 999px !important;
+  background: #ead8c3 !important;
+  color: #332720 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.maluaContactPage .maluaContactForm .formSubmitButton span {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.maluaContactPage .maluaContactForm .formSubmitButton:hover:not(:disabled) {
+  background: #f4e8d9 !important;
+  color: #332720 !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.maluaContactPage .maluaContactForm .formSubmitButton:hover:not(:disabled) span {
+  transform: translateX(3px);
+}
+
+.maluaContactPage .maluaContactForm .formSubmitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.maluaContactPage .maluaContactForm .formStatus {
+  margin-top: 22px;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.maluaContactPage .maluaContactForm .formInlineError {
+  color: #f3c8bd !important;
+}
+
+.maluaContactPrivacyNote {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.42) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0.02em !important;
+}
+
+@media (max-width: 1180px) {
+  .homePage .maluaIntroductionLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.82fr) !important;
+    gap: 44px !important;
+  }
+
+  .maluaContactSplit {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .maluaContactStory {
+    max-width: 900px;
+  }
+
+  .maluaContactPage .maluaContactForm {
+    width: min(900px, 100%);
+  }
+}
+
+@media (max-width: 850px) {
+  .homePage .maluaIntroductionLayout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .homePage .maluaIntroductionCopy.introductionInner {
+    max-width: 820px !important;
+    margin: 0 auto !important;
+  }
+
+  .homePage .maluaIntroductionVisual {
+    width: min(700px, 100%) !important;
+    height: clamp(300px, 62vw, 440px) !important;
+    margin: 6px auto 0 !important;
+  }
+
+  .homePage .collectionImage {
+    min-height: 500px !important;
+  }
+
+  .maluaContactExperience {
+    min-height: auto;
+  }
+
+  .maluaContactFacts {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 640px) {
+  .homePage .maluaIntroductionSection {
+    padding: 64px 22px 70px !important;
+  }
+
+  .homePage .maluaIntroductionHeading {
+    margin-bottom: 34px;
+  }
+
+  .homePage .maluaIntroductionHeading h2 {
+    font-size: clamp(34px, 9.5vw, 43px) !important;
+  }
+
+  .homePage .maluaIntroductionCopy .introductionText {
+    font-size: 17px !important;
+  }
+
+  .homePage .maluaIntroductionVisual {
+    height: 300px !important;
+  }
+
+  .homePage .maluaIntroductionImagePrimary {
+    width: 78% !important;
+    height: 80% !important;
+  }
+
+  .homePage .maluaIntroductionImageSecondary {
+    width: 45% !important;
+    height: 44% !important;
+  }
+
+  .homePage .collectionsSection {
+    padding-top: 60px !important;
+    padding-bottom: 62px !important;
+  }
+
+  .homePage .collectionImage {
+    min-height: 430px !important;
+  }
+
+  .homePage .masterplanSection {
+    padding-top: 50px !important;
+  }
+
+  .maluaContactExperience {
+    padding: 110px 18px 54px !important;
+    background-position: 53% center;
+  }
+
+  .maluaContactStoryTitle {
+    font-size: clamp(43px, 12.5vw, 60px) !important;
+  }
+
+  .maluaContactStoryBrand {
+    width: 182px !important;
+    height: 57px !important;
+  }
+
+  .maluaContactStoryDescription {
+    margin-top: 25px;
+  }
+
+  .maluaContactAvailability {
+    margin-top: 22px;
+  }
+
+  .maluaContactFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .maluaContactFacts article {
+    min-height: 94px;
+    padding: 17px 18px;
+  }
+
+  .maluaContactPage .maluaContactForm {
+    padding: 29px 20px !important;
+    border-radius: 23px;
+  }
+
+  .maluaContactPage .maluaContactFormHeading h2 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+  }
+
+  .maluaContactPage .maluaContactForm .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .maluaContactPage .maluaContactForm .formFieldFull {
+    grid-column: auto;
+  }
+
+  .maluaContactPage .maluaContactForm .formSubmitButton {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   MALǓA VISION PAGE — COMPACT PREMIUM REAL ESTATE STORY
+   Tight editorial pacing inspired by premium developer sites.
+========================================================= */
+
+.visionPageV5 {
+  background: var(--oniria-bg);
+  color: var(--oniria-text);
+}
+
+.visionPageV5 .visionV5SectionLabel,
+.visionV5Eyebrow {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.visionV5Hero {
+  position: relative;
+  min-height: min(760px, 86svh);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  background: #2f211b;
+}
+
+.visionV5HeroImage,
+.visionV5HeroOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.visionV5HeroImage {
+  background-image: url('/media/oniria/residence-aerial-masterplan.png');
+  background-position: center 46%;
+  background-size: cover;
+  transform: scale(1.01);
+}
+
+.visionV5HeroOverlay {
+  background:
+    linear-gradient(180deg, rgba(25, 18, 14, 0.14) 0%, rgba(25, 18, 14, 0.28) 48%, rgba(25, 18, 14, 0.78) 100%),
+    linear-gradient(90deg, rgba(25, 18, 14, 0.48) 0%, rgba(25, 18, 14, 0.08) 58%, rgba(25, 18, 14, 0.14) 100%);
+}
+
+.visionV5HeroInner {
+  position: relative;
+  z-index: 2;
+  width: min(1220px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 155px 0 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.visionV5HeroCopy {
+  max-width: 760px;
+  padding-bottom: 46px;
+}
+
+.visionV5Eyebrow {
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.visionV5Hero h1 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(58px, 7vw, 104px);
+  line-height: 0.84;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.visionV5Hero h1 span,
+.visionV5Hero h1 em {
+  display: block;
+}
+
+.visionV5Hero h1 em {
+  margin-left: 0.45em;
+  color: #f1dfcd;
+  font-weight: 300;
+}
+
+.visionV5HeroLead {
+  max-width: 570px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.55;
+}
+
+.visionV5HeroActions {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+}
+
+.visionV5PrimaryButton {
+  min-height: 48px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #f1ddc9;
+  color: #39261d;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color 180ms ease;
+}
+
+.visionV5PrimaryButton:hover,
+.visionV5PrimaryButton:focus-visible {
+  background: #fff;
+}
+
+.visionV5InlineLink {
+  width: fit-content;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(109, 75, 55, 0.46);
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--oniria-text);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.visionV5InlineLinkLight {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+.visionV5HeroFacts {
+  min-height: 78px;
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.visionV5HeroFacts > div {
+  padding: 18px 26px 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.visionV5HeroFacts > div:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.visionV5HeroFacts span {
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.visionV5HeroFacts strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.visionV5Purpose {
+  width: min(1220px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(48px, 4.5vw, 66px) 0 clamp(34px, 3.2vw, 46px) !important;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(38px, 5vw, 76px);
+  align-items: start;
+  background: transparent !important;
+}
+
+.visionV5PurposeIntro h2,
+.visionV5SectionIntro h2,
+.visionV5LivingContent > h2,
+.visionV5PartnersIntro h2 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.visionV5PurposeIntro h2 {
+  max-width: 620px;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 0.97;
+}
+
+.visionV5PurposeBody > p {
+  max-width: 650px;
+  margin: 18px 0 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.visionV5Signature {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(149, 105, 77, 0.28);
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.visionV5SignatureLogo {
+  width: 160px;
+  height: 52px;
+  background-position: left center !important;
+}
+
+.visionV5Signature p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 31px);
+  line-height: 1.17;
+  letter-spacing: -0.025em;
+}
+
+.visionV5Principles {
+  padding: clamp(38px, 4vw, 54px) 48px clamp(42px, 4.5vw, 62px) !important;
+  background: #f6f2e9 !important;
+}
+
+.visionV5SectionIntro {
+  width: min(1220px, 100%);
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 46px;
+  align-items: end;
+}
+
+.visionV5SectionIntro h2 {
+  max-width: 680px;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 0.98;
+}
+
+.visionV5SectionIntro > p {
+  max-width: 560px;
+  margin: 0 0 4px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.visionV5PrincipleGrid {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.visionV5PrincipleCard {
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.2);
+  background: var(--oniria-bg);
+}
+
+.visionV5PrincipleImage {
+  height: 170px;
+  background-size: cover;
+}
+
+.visionV5PrincipleCopy {
+  padding: 20px 22px 22px;
+}
+
+.visionV5PrincipleCopy h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1.03;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.visionV5PrincipleCopy p {
+  margin: 11px 0 0;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.66;
+}
+
+.visionV5PrinciplesAction {
+  width: min(1220px, 100%);
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.visionV5Living {
+  width: min(1320px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: clamp(46px, 5vw, 68px) 0 clamp(52px, 5.5vw, 76px) !important;
+  display: grid;
+  grid-template-columns: minmax(340px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(40px, 5vw, 68px);
+  align-items: center;
+  background: transparent !important;
+}
+
+.visionV5LivingMedia {
+  height: min(420px, 46vw);
+  max-height: 420px;
+  min-height: 300px;
+  background-image: url('/media/malua/villa-pool.webp');
+  background-position: center 52%;
+  background-size: cover;
+  box-shadow: 0 26px 58px rgba(58, 36, 28, 0.1);
+}
+
+.visionV5LivingContent > h2 {
+  max-width: 690px;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 0.98;
+}
+
+.visionV5LivingLead {
+  max-width: 650px;
+  margin: 16px 0 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.visionV5LivingGrid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(149, 105, 77, 0.26);
+  border-left: 1px solid rgba(149, 105, 77, 0.26);
+}
+
+.visionV5LivingGrid article {
+  min-height: 132px;
+  padding: 18px 20px 18px;
+  border-right: 1px solid rgba(149, 105, 77, 0.26);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.26);
+}
+
+.visionV5LivingGrid article > span {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.visionV5LivingGrid h3 {
+  margin: 10px 0 7px;
+  font-family: var(--font-display);
+  font-size: 23px;
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.visionV5LivingGrid p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.62;
+}
+
+.visionV5Partners {
+  padding: clamp(52px, 5vw, 72px) 48px !important;
+  border-top: 1px solid rgba(149, 105, 77, 0.2);
+  background: #f6f2e9 !important;
+  color: var(--oniria-text);
+}
+
+.visionV5PartnersIntro {
+  width: min(920px, 100%);
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.visionV5PartnersIntro .visionV5SectionLabel {
+  color: var(--oniria-text);
+}
+
+.visionV5PartnersIntro h2 {
+  color: var(--oniria-text);
+  font-size: clamp(41px, 5vw, 69px);
+  line-height: 0.98;
+}
+
+.visionV5PartnersIntro > p:last-child {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--oniria-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.visionV5PartnerGrid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.visionV5PartnerCard {
+  min-height: 430px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(149, 105, 77, 0.035);
+  border: 1px solid rgba(149, 105, 77, 0.14);
+  color: var(--oniria-text);
+}
+
+.visionV5PartnerLogoFrame {
+  height: 132px;
+  padding: 8px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.22);
+}
+
+.visionV5PartnerLogoFrame img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.visionV5OniriaLogo {
+  max-width: 300px !important;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+}
+
+.visionV5VigorLogo {
+  max-height: 116px !important;
+}
+
+.visionV5PartnerCopy {
+  padding: 22px 6px 4px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.visionV5PartnerCopy > span {
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.visionV5PartnerCopy h3 {
+  margin: 15px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.02;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.visionV5PartnerCopy p {
+  margin: 14px 0 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+.visionV5PartnerNote {
+  color: rgba(67, 44, 33, 0.7);
+  font-style: italic;
+}
+
+.visionV5PartnerCopy .visionV5InlineLink {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+@media (max-width: 1000px) {
+  .visionV5HeroInner {
+    width: calc(100% - 64px);
+  }
+
+  .visionV5Purpose {
+    width: calc(100% - 64px);
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .visionV5PurposeBody > p {
+    margin-top: 0;
+  }
+
+  .visionV5SectionIntro {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .visionV5PrincipleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .visionV5PrincipleCard {
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+  }
+
+  .visionV5PrincipleImage {
+    height: 100%;
+    min-height: 170px;
+  }
+
+  .visionV5Living {
+    width: calc(100% - 64px);
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 44px;
+  }
+}
+
+@media (max-width: 760px) {
+  .visionV5Hero {
+    min-height: 760px;
+  }
+
+  .visionV5HeroInner {
+    width: calc(100% - 40px);
+    padding-top: 125px;
+    padding-bottom: 22px;
+  }
+
+  .visionV5HeroCopy {
+    padding-bottom: 30px;
+  }
+
+  .visionV5Hero h1 {
+    font-size: clamp(54px, 16vw, 76px);
+  }
+
+  .visionV5Hero h1 em {
+    margin-left: 0.2em;
+  }
+
+  .visionV5HeroFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .visionV5HeroFacts > div,
+  .visionV5HeroFacts > div:first-child {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-left: 0;
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    align-items: center;
+  }
+
+  .visionV5HeroFacts > div:first-child {
+    border-top: 0;
+  }
+
+  .visionV5Purpose {
+    width: calc(100% - 40px);
+    padding: 42px 0 30px !important;
+  }
+
+  .visionV5PurposeIntro h2,
+  .visionV5SectionIntro h2,
+  .visionV5LivingContent > h2,
+  .visionV5PartnersIntro h2 {
+    font-size: 40px;
+  }
+
+  .visionV5Signature {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .visionV5Principles {
+    padding: 32px 20px 40px !important;
+  }
+
+  .visionV5PrincipleCard {
+    display: block;
+  }
+
+  .visionV5PrincipleImage {
+    height: 155px;
+    min-height: 0;
+  }
+
+  .visionV5PrinciplesAction {
+    justify-content: flex-start;
+  }
+
+  .visionV5Living {
+    width: calc(100% - 40px);
+    padding: 40px 0 48px !important;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .visionV5LivingMedia {
+    height: 300px;
+    min-height: 0;
+  }
+
+  .visionV5LivingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .visionV5LivingGrid article {
+    min-height: auto;
+  }
+
+  .visionV5Partners {
+    padding: 44px 20px !important;
+  }
+
+  .visionV5PartnerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .visionV5PartnerCard {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .visionV5HeroActions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .visionV5PartnerLogoFrame {
+    height: 118px;
+    padding: 6px 10px 12px;
+  }
+
+  .visionV5PartnerCopy {
+    padding-top: 24px;
+  }
+}
+
+/* =========================================================
+   MALǓA CONTENT WORDMARK SCALE — V6
+   Keep editorial wordmarks visually consistent with the
+   restrained header/footer logo scale. Header/footer remain
+   unchanged; only in-page display instances are reduced.
+========================================================= */
+.maluaHeroBrandLogo {
+  width: clamp(118px, 10.5vw, 155px) !important;
+  height: clamp(37px, 3.3vw, 48px) !important;
+}
+
+.maluaHeroBrandWord {
+  margin-top: 6px !important;
+}
+
+.finalSalesBrandLogo {
+  width: clamp(118px, 10.5vw, 150px) !important;
+  height: clamp(37px, 3.3vw, 47px) !important;
+}
+
+.finalSalesBrandHeading {
+  gap: 9px !important;
+}
+
+.maluaContactStoryBrand {
+  width: clamp(128px, 11vw, 160px) !important;
+  height: clamp(40px, 3.5vw, 50px) !important;
+}
+
+.maluaContactStoryBrandLine {
+  gap: clamp(9px, 1vw, 14px) !important;
+}
+
+.visionV5Signature {
+  grid-template-columns: 142px 1fr !important;
+  gap: 20px !important;
+}
+
+.visionV5SignatureLogo {
+  width: 136px !important;
+  height: 43px !important;
+}
+
+@media (max-width: 600px) {
+  .maluaHeroBrandLogo {
+    width: 116px !important;
+    height: 36px !important;
+  }
+
+  .finalSalesBrandLogo {
+    width: 116px !important;
+    height: 36px !important;
+  }
+
+  .maluaContactStoryBrand {
+    width: 124px !important;
+    height: 39px !important;
+  }
+
+  .visionV5Signature {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .visionV5SignatureLogo {
+    width: 124px !important;
+    height: 39px !important;
+  }
+}
+
+/* =========================================================
+   MALǓA LIFESTYLE — V8
+   Compact, image-led and conversion-focused. Scoped to the
+   Lifestyle page so other editorial pages remain untouched.
+========================================================= */
+.maluaLifestylePage {
+  background: var(--oniria-bg);
+  color: var(--oniria-text);
+}
+
+.maluaLifestylePage .publicPageHero {
+  min-height: min(760px, 86svh);
+  background-position: center 58%;
+}
+
+.maluaLifestylePage .publicPageHeroOverlay {
+  background:
+    linear-gradient(to bottom, rgba(18, 12, 9, 0.14), rgba(18, 12, 9, 0.62)),
+    linear-gradient(90deg, rgba(18, 12, 9, 0.18), transparent 50%, rgba(18, 12, 9, 0.06));
+}
+
+.maluaLifestylePage .publicPageHeroContent h1 {
+  max-width: 760px;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.maluaLifestylePage .publicPageHeroContent > p {
+  margin-bottom: 18px;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+}
+
+.maluaLifestylePage .publicPageHeroContent > span {
+  max-width: 540px;
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.maluaLifestyleIntro {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(58px, 6vw, 82px) 0 clamp(52px, 5.5vw, 74px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: clamp(54px, 7vw, 104px);
+  align-items: end;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.maluaLifestyleIntro .sectionLabel,
+.maluaLifestyleExperiencesIntro .sectionLabel,
+.maluaLifestyleRhythmCopy .sectionLabel {
+  margin: 0 0 14px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.maluaLifestyleIntroHeading h2,
+.maluaLifestyleExperiencesIntro h2,
+.maluaLifestyleRhythmCopy h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.maluaLifestyleIntroHeading h2 {
+  max-width: 700px;
+  font-size: clamp(44px, 5.3vw, 72px);
+  line-height: 0.98;
+}
+
+.maluaLifestyleIntroCopy > p {
+  max-width: 520px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+.maluaLifestyleIntroActions {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 26px;
+  align-items: center;
+}
+
+.maluaLifestylePrimaryLink {
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--oniria-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.maluaLifestylePrimaryLink:hover {
+  background: var(--oniria-text);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.maluaLifestyleTextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.44);
+  padding-bottom: 4px;
+}
+
+.maluaLifestyleExperiences {
+  padding: clamp(52px, 5vw, 72px) 48px clamp(58px, 6vw, 84px);
+}
+
+.maluaLifestyleExperiencesIntro {
+  width: min(1180px, 100%);
+  margin: 0 auto 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.75fr);
+  gap: 36px 70px;
+  align-items: end;
+}
+
+.maluaLifestyleExperiencesIntro .sectionLabel {
+  grid-column: 1 / -1;
+  margin-bottom: -18px;
+}
+
+.maluaLifestyleExperiencesIntro h2 {
+  max-width: 640px;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 0.98;
+}
+
+.maluaLifestyleExperiencesIntro > p:last-child {
+  max-width: 500px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.maluaLifestyleExperienceGrid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.maluaLifestyleExperienceCard {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  background: #4a3024;
+  color: #fff;
+}
+
+.maluaLifestyleExperienceImage {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.01);
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.maluaLifestyleExperienceCard::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(to top, rgba(25, 16, 12, 0.78) 0%, rgba(25, 16, 12, 0.2) 58%, rgba(25, 16, 12, 0.05) 100%);
+}
+
+.maluaLifestyleExperienceCard:hover .maluaLifestyleExperienceImage {
+  transform: scale(1.045);
+}
+
+.maluaLifestyleExperienceCopy {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  padding: 34px;
+}
+
+.maluaLifestyleExperienceCopy > p {
+  margin: 0 0 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.maluaLifestyleExperienceCopy h3 {
+  max-width: 470px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(31px, 3.2vw, 46px);
+  font-weight: 400;
+  line-height: 0.99;
+  letter-spacing: -0.035em;
+}
+
+.maluaLifestyleExperienceCopy > span {
+  display: block;
+  max-width: 470px;
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.maluaLifestyleExperienceSocial .maluaLifestyleExperienceImage {
+  background-position: center 48%;
+}
+
+.maluaLifestyleExperienceOcean .maluaLifestyleExperienceImage {
+  background-position: center 48%;
+}
+
+.maluaLifestyleRhythm {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(54px, 6vw, 82px) 0 clamp(66px, 7vw, 96px);
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(360px, 1fr) minmax(180px, 0.54fr);
+  gap: clamp(22px, 3vw, 42px);
+  align-items: center;
+  border-top: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.maluaLifestyleRhythmImage {
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 22px 54px rgba(58, 36, 28, 0.09);
+}
+
+.maluaLifestyleRhythmImagePrimary {
+  height: 390px;
+  background-image: url('/media/malua/arrival.webp');
+}
+
+.maluaLifestyleRhythmImageSecondary {
+  height: 300px;
+  background-image: url('/media/malua/shoreline.webp');
+}
+
+.maluaLifestyleRhythmCopy {
+  padding: 12px 8px;
+}
+
+.maluaLifestyleRhythmCopy h2 {
+  max-width: 620px;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.98;
+}
+
+.maluaLifestyleRhythmCopy > p:not(.sectionLabel) {
+  max-width: 600px;
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.maluaLifestyleRhythmCopy .maluaLifestyleTextLink {
+  margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+  .maluaLifestyleIntro,
+  .maluaLifestyleExperiencesIntro {
+    grid-template-columns: 1fr;
+  }
+
+  .maluaLifestyleIntro {
+    gap: 28px;
+  }
+
+  .maluaLifestyleExperiencesIntro .sectionLabel {
+    grid-column: auto;
+    margin-bottom: -10px;
+  }
+
+  .maluaLifestyleExperienceCard {
+    min-height: 460px;
+  }
+
+  .maluaLifestyleRhythm {
+    grid-template-columns: 0.74fr 1.26fr;
+  }
+
+  .maluaLifestyleRhythmImageSecondary {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .maluaLifestylePage .publicPageHero {
+    min-height: 680px;
+  }
+
+  .maluaLifestylePage .publicPageHeroContent h1 {
+    font-size: clamp(50px, 15vw, 72px);
+  }
+
+  .maluaLifestyleIntro,
+  .maluaLifestyleRhythm {
+    width: calc(100% - 40px);
+  }
+
+  .maluaLifestyleIntro {
+    padding: 44px 0 42px;
+  }
+
+  .maluaLifestyleIntroHeading h2,
+  .maluaLifestyleExperiencesIntro h2,
+  .maluaLifestyleRhythmCopy h2 {
+    font-size: 40px;
+  }
+
+  .maluaLifestyleExperiences {
+    padding: 42px 20px 48px;
+  }
+
+  .maluaLifestyleExperiencesIntro {
+    margin-bottom: 24px;
+  }
+
+  .maluaLifestyleExperienceGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .maluaLifestyleExperienceCard {
+    min-height: 390px;
+  }
+
+  .maluaLifestyleExperienceCopy {
+    padding: 26px;
+  }
+
+  .maluaLifestyleExperienceCopy h3 {
+    font-size: 34px;
+  }
+
+  .maluaLifestyleRhythm {
+    padding: 42px 0 54px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .maluaLifestyleRhythmImagePrimary {
+    height: 300px;
+  }
+
+  .maluaLifestyleRhythmCopy {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .maluaLifestylePage .publicPageHero {
+    min-height: 620px;
+  }
+
+  .maluaLifestylePage .publicPageHeroContent {
+    width: calc(100% - 40px);
+  }
+
+  .maluaLifestyleIntroActions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .maluaLifestylePrimaryLink {
+    width: 100%;
+  }
+
+  .maluaLifestyleExperienceCard {
+    min-height: 360px;
+  }
+}
+
+
+/* =========================================================
+   MALǓA VISION — V9 CLEAN ENDING + PARTNER LOGO INTEGRATION
+   Vision ends directly after development/partnership.
+   ONIRIA artwork remains transparent on the project palette.
+========================================================= */
+.visionPageV5 .visionV5Partners {
+  padding-bottom: clamp(48px, 5vw, 68px) !important;
+}
+
+.visionPageV5 .visionV5OniriaLogoFrame {
+  background: transparent !important;
+}
+
+.visionPageV5 .visionV5OniriaLogo {
+  background: transparent !important;
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================
+   MALǓA VISION + LIFESTYLE — V10 CONTRAST & SALES POLISH
+   Scope: explicit hero contrast, stronger Lifestyle actions,
+   white image-card typography, no Lifestyle FinalSalesCTA.
+========================================================= */
+
+/* Vision hero: keep the complete first line and brochure link white. */
+.visionPageV5 .visionV5Hero h1 > span {
+  color: #fff !important;
+}
+
+.visionPageV5 .visionV5Hero .visionV5InlineLinkLight,
+.visionPageV5 .visionV5Hero .visionV5InlineLinkLight span {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.visionPageV5 .visionV5Hero .visionV5InlineLinkLight:hover,
+.visionPageV5 .visionV5Hero .visionV5InlineLinkLight:focus-visible {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Lifestyle: make the primary property action unmistakably clickable. */
+.maluaLifestylePage .maluaLifestylePrimaryLink {
+  min-height: 50px;
+  padding: 0 24px;
+  border: 1px solid var(--oniria-text) !important;
+  background: var(--oniria-text) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(74, 48, 36, 0.12);
+}
+
+.maluaLifestylePage .maluaLifestylePrimaryLink,
+.maluaLifestylePage .maluaLifestylePrimaryLink span {
+  color: #fff !important;
+}
+
+.maluaLifestylePage .maluaLifestylePrimaryLink:hover,
+.maluaLifestylePage .maluaLifestylePrimaryLink:focus-visible {
+  background: #2f211b !important;
+  border-color: #2f211b !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(47, 33, 27, 0.18);
+}
+
+.maluaLifestylePage .maluaLifestylePrimaryLink:focus-visible {
+  outline: 2px solid rgba(149, 105, 77, 0.38);
+  outline-offset: 4px;
+}
+
+/* Keep every image-led lifestyle card readable over photography. */
+.maluaLifestylePage .maluaLifestyleExperienceCopy,
+.maluaLifestylePage .maluaLifestyleExperienceCopy > p,
+.maluaLifestylePage .maluaLifestyleExperienceCopy h3,
+.maluaLifestylePage .maluaLifestyleExperienceCopy > span {
+  color: #fff !important;
+}
+
+.maluaLifestylePage .maluaLifestyleExperienceCopy > span {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Slightly stronger overlay on the three darker sales-story cards. */
+.maluaLifestylePage .maluaLifestyleExperienceWellness::after,
+.maluaLifestylePage .maluaLifestyleExperienceSocial::after,
+.maluaLifestylePage .maluaLifestyleExperienceOcean::after {
+  background: linear-gradient(
+    to top,
+    rgba(23, 15, 11, 0.86) 0%,
+    rgba(23, 15, 11, 0.32) 58%,
+    rgba(23, 15, 11, 0.08) 100%
+  );
+}
+
+/* Refine pacing now that the large photographic sales CTA is removed. */
+.maluaLifestylePage .maluaLifestyleRhythm {
+  padding-bottom: clamp(52px, 5.5vw, 74px);
+}
+
+.maluaLifestylePage .maluaLifestyleRhythmCopy .maluaLifestyleTextLink {
+  color: var(--oniria-text) !important;
+}
+
+.maluaLifestylePage .maluaLifestyleRhythmCopy .maluaLifestyleTextLink:hover,
+.maluaLifestylePage .maluaLifestyleRhythmCopy .maluaLifestyleTextLink:focus-visible {
+  border-color: var(--oniria-text);
+}
+
+@media (max-width: 760px) {
+  .maluaLifestylePage .maluaLifestyleRhythm {
+    padding-bottom: 46px;
+  }
+}
+
+/* MALUA residences premium collection */
+.residencesPremiumPage {
+  background: var(--oniria-background, #f2eadb);
+  color: var(--oniria-text, #95694d);
+}
+
+.residencesPremiumHero {
+  position: relative;
+  min-height: min(780px, 88svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.residencesPremiumHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 15, 12, 0.82) 0%, rgba(20, 15, 12, 0.56) 44%, rgba(20, 15, 12, 0.16) 76%),
+    linear-gradient(0deg, rgba(20, 15, 12, 0.58) 0%, rgba(20, 15, 12, 0.04) 48%);
+  z-index: -1;
+}
+
+.residencesPremiumHeroInner {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 170px 0 150px;
+}
+
+.residencesPremiumEyebrow {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumHero h1 {
+  max-width: 840px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(52px, 7vw, 98px);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+}
+
+.residencesPremiumHero h1 em {
+  display: block;
+  color: #ead8c7;
+  font-weight: 400;
+}
+
+.residencesPremiumHeroCopy {
+  max-width: 680px;
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.residencesPremiumHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.residencesPremiumPrimaryButton,
+.residencesPremiumGhostButton {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.residencesPremiumPrimaryButton {
+  background: #f2dfcc;
+  color: #38281f;
+}
+
+.residencesPremiumPrimaryButton:hover,
+.residencesPremiumPrimaryButton:focus-visible {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.residencesPremiumGhostButton {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.residencesPremiumGhostButton:hover,
+.residencesPremiumGhostButton:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+.residencesPremiumFacts {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(1180px, calc(100% - 96px));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(7px);
+}
+
+.residencesPremiumFacts > div {
+  min-height: 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.residencesPremiumFacts > div:first-child {
+  padding-left: 0;
+}
+
+.residencesPremiumFacts > div:last-child {
+  border-right: 0;
+}
+
+.residencesPremiumFacts small {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumFacts strong {
+  color: #fff;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.residencesPremiumIntro {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.72fr);
+  gap: 92px;
+  align-items: center;
+  padding: 96px 0 74px;
+}
+
+.residencesPremiumIntroCopy h2,
+.residencesPremiumCollectionHeading h2,
+.residencesPremiumEnquiry h2 {
+  margin: 12px 0 0;
+  color: var(--oniria-text, #95694d);
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.residencesPremiumIntroCopy h2 {
+  max-width: 660px;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.02;
+}
+
+.residencesPremiumIntroCopy > p:not(.sectionLabel) {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: rgba(80, 57, 44, 0.78);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.residencesPremiumTextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid currentColor;
+  color: var(--oniria-text, #95694d);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumIntroImage {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.residencesPremiumIntroImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(31, 22, 17, 0.56) 0%, rgba(31, 22, 17, 0) 52%);
+}
+
+.residencesPremiumIntroImageCaption {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #fff;
+}
+
+.residencesPremiumIntroImageCaption span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.residencesPremiumIntroImageCaption strong {
+  max-width: 380px;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.22;
+}
+
+.residencesPremiumPrinciples {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(149, 105, 77, 0.24);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.24);
+}
+
+.residencesPremiumPrinciples article {
+  padding: 38px 34px 40px 0;
+  border-right: 1px solid rgba(149, 105, 77, 0.22);
+}
+
+.residencesPremiumPrinciples article + article {
+  padding-left: 34px;
+}
+
+.residencesPremiumPrinciples article:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.residencesPremiumPrinciples article > p {
+  margin: 0;
+  color: rgba(149, 105, 77, 0.74);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.residencesPremiumPrinciples h3 {
+  margin: 13px 0 12px;
+  color: var(--oniria-text, #95694d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.residencesPremiumPrinciples article > span {
+  display: block;
+  color: rgba(80, 57, 44, 0.72);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.residencesPremiumCollection {
+  width: min(1240px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 82px 0 84px;
+}
+
+.residencesPremiumCollectionHeading {
+  width: min(1180px, 100%);
+  margin: 0 auto 44px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.62fr;
+  gap: 72px;
+  align-items: end;
+}
+
+.residencesPremiumCollectionHeading h2 {
+  max-width: 760px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.03;
+}
+
+.residencesPremiumCollectionHeading > p {
+  margin: 0 0 5px;
+  color: rgba(80, 57, 44, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.residencesPremiumGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.residencesPremiumCard {
+  min-width: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(149, 105, 77, 0.14);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.residencesPremiumCardFeatured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(360px, 0.78fr);
+}
+
+.residencesPremiumCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(74, 49, 34, 0.1);
+}
+
+.residencesPremiumCardImageLink,
+.residencesPremiumCardImage {
+  display: block;
+  height: 100%;
+  min-height: 390px;
+}
+
+.residencesPremiumCardFeatured .residencesPremiumCardImage,
+.residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+  min-height: 520px;
+}
+
+.residencesPremiumCardImage {
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.residencesPremiumCardImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-position: inherit;
+  background-size: inherit;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.residencesPremiumCard:hover .residencesPremiumCardImage::before {
+  transform: scale(1.035);
+}
+
+.residencesPremiumCardImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(23, 17, 13, 0.52) 0%, rgba(23, 17, 13, 0) 54%);
+}
+
+.residencesPremiumFeaturedBadge,
+.residencesPremiumCardView {
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumFeaturedBadge {
+  top: 22px;
+  left: 22px;
+  padding: 9px 12px;
+  background: rgba(35, 27, 22, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  backdrop-filter: blur(5px);
+}
+
+.residencesPremiumCardView {
+  right: 24px;
+  bottom: 22px;
+}
+
+.residencesPremiumCardContent {
+  padding: 32px 34px 30px;
+}
+
+.residencesPremiumCardFeatured .residencesPremiumCardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+
+.residencesPremiumCardEyebrow {
+  margin: 0;
+  color: rgba(149, 105, 77, 0.74);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.residencesPremiumCardContent h3 {
+  margin: 12px 0 0;
+  color: var(--oniria-text, #95694d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(28px, 3.1vw, 42px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.residencesPremiumCardFeatured .residencesPremiumCardContent h3 {
+  font-size: clamp(38px, 4vw, 54px);
+}
+
+.residencesPremiumSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 22px;
+  border-top: 1px solid rgba(149, 105, 77, 0.2);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.residencesPremiumSpecs span {
+  padding: 11px 16px 11px 0;
+  margin-right: 16px;
+  color: rgba(80, 57, 44, 0.82);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.residencesPremiumSpecs span + span {
+  position: relative;
+}
+
+.residencesPremiumSpecs span + span::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(149, 105, 77, 0.62);
+  transform: translateY(-50%);
+}
+
+.residencesPremiumCardDescription {
+  margin: 22px 0 0;
+  color: rgba(80, 57, 44, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.residencesPremiumCardFooter {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.residencesPremiumCardFooter > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.residencesPremiumCardFooter small {
+  color: rgba(80, 57, 44, 0.56);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumCardFooter strong {
+  color: var(--oniria-text, #95694d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.residencesPremiumCardFooter a {
+  color: var(--oniria-text, #95694d);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumEnquiry {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto 82px;
+  display: grid;
+  grid-template-columns: 0.9fr 0.78fr auto;
+  gap: 56px;
+  align-items: center;
+  padding: 46px 0;
+  border-top: 1px solid rgba(149, 105, 77, 0.3);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.3);
+}
+
+.residencesPremiumEnquiry h2 {
+  font-size: clamp(32px, 3.2vw, 46px);
+  line-height: 1.04;
+}
+
+.residencesPremiumEnquiry > p {
+  margin: 0;
+  color: rgba(80, 57, 44, 0.72);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.residencesPremiumEnquiryActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.residencesPremiumEnquiryActions a:first-child {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--oniria-text, #95694d);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.residencesPremiumEnquiryActions a:last-child {
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  color: var(--oniria-text, #95694d);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .residencesPremiumHeroInner,
+  .residencesPremiumFacts,
+  .residencesPremiumIntro,
+  .residencesPremiumPrinciples,
+  .residencesPremiumEnquiry {
+    width: min(100% - 48px, 1180px);
+  }
+
+  .residencesPremiumHeroInner {
+    padding-top: 150px;
+  }
+
+  .residencesPremiumFacts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .residencesPremiumFacts > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .residencesPremiumFacts > div:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .residencesPremiumIntro {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 46px;
+    padding-top: 76px;
+  }
+
+  .residencesPremiumIntroImage {
+    min-height: 440px;
+  }
+
+  .residencesPremiumPrinciples h3 {
+    font-size: 23px;
+  }
+
+  .residencesPremiumCollection {
+    width: min(100% - 48px, 1240px);
+  }
+
+  .residencesPremiumCollectionHeading {
+    grid-template-columns: 1fr 0.7fr;
+    gap: 40px;
+  }
+
+  .residencesPremiumCardFeatured {
+    grid-template-columns: 1fr 0.9fr;
+  }
+
+  .residencesPremiumCardFeatured .residencesPremiumCardContent {
+    padding: 36px;
+  }
+
+  .residencesPremiumEnquiry {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 50px;
+  }
+
+  .residencesPremiumEnquiryActions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .residencesPremiumHero {
+    min-height: 760px;
+    background-position: 56% center;
+  }
+
+  .residencesPremiumHeroInner,
+  .residencesPremiumFacts,
+  .residencesPremiumIntro,
+  .residencesPremiumPrinciples,
+  .residencesPremiumEnquiry {
+    width: calc(100% - 32px);
+  }
+
+  .residencesPremiumHeroInner {
+    align-self: flex-start;
+    padding: 132px 0 270px;
+  }
+
+  .residencesPremiumHero h1 {
+    font-size: clamp(48px, 15vw, 70px);
+  }
+
+  .residencesPremiumHeroCopy {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.62;
+  }
+
+  .residencesPremiumHeroActions {
+    align-items: stretch;
+    flex-direction: column;
+    margin-top: 28px;
+  }
+
+  .residencesPremiumPrimaryButton,
+  .residencesPremiumGhostButton {
+    width: 100%;
+  }
+
+  .residencesPremiumFacts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .residencesPremiumFacts > div,
+  .residencesPremiumFacts > div:first-child {
+    min-height: 84px;
+    padding: 0 14px;
+  }
+
+  .residencesPremiumFacts strong {
+    font-size: 16px;
+  }
+
+  .residencesPremiumIntro {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 62px 0 52px;
+  }
+
+  .residencesPremiumIntroCopy h2 {
+    font-size: clamp(38px, 12vw, 52px);
+  }
+
+  .residencesPremiumIntroCopy > p:not(.sectionLabel) {
+    margin-top: 18px;
+    font-size: 15px;
+  }
+
+  .residencesPremiumIntroImage {
+    min-height: 380px;
+  }
+
+  .residencesPremiumPrinciples {
+    grid-template-columns: 1fr;
+  }
+
+  .residencesPremiumPrinciples article,
+  .residencesPremiumPrinciples article + article,
+  .residencesPremiumPrinciples article:last-child {
+    padding: 26px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+  }
+
+  .residencesPremiumPrinciples article:last-child {
+    border-bottom: 0;
+  }
+
+  .residencesPremiumCollection {
+    width: calc(100% - 32px);
+    padding: 62px 0;
+  }
+
+  .residencesPremiumCollectionHeading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .residencesPremiumCollectionHeading h2 {
+    font-size: clamp(37px, 11.5vw, 50px);
+  }
+
+  .residencesPremiumGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .residencesPremiumCardFeatured {
+    grid-column: auto;
+    display: block;
+  }
+
+  .residencesPremiumCardImageLink,
+  .residencesPremiumCardImage,
+  .residencesPremiumCardFeatured .residencesPremiumCardImage,
+  .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+    min-height: 340px;
+  }
+
+  .residencesPremiumCardContent,
+  .residencesPremiumCardFeatured .residencesPremiumCardContent {
+    padding: 25px 22px 24px;
+  }
+
+  .residencesPremiumCardContent h3,
+  .residencesPremiumCardFeatured .residencesPremiumCardContent h3 {
+    font-size: clamp(31px, 9vw, 42px);
+  }
+
+  .residencesPremiumCardFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .residencesPremiumEnquiry {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 58px;
+    padding: 34px 0;
+  }
+
+  .residencesPremiumEnquiryActions {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   MALǓA MASTERPLAN — V12
+   Image-led connected-destination presentation. Scoped to
+   the Masterplan page to preserve all existing site styles.
+========================================================= */
+.maluaMasterplanPage {
+  background: var(--oniria-bg);
+  color: var(--oniria-text);
+}
+
+.maluaMasterplanHero {
+  position: relative;
+  min-height: min(790px, 90svh);
+  overflow: hidden;
+  background-position: center 48%;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.maluaMasterplanHero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: inherit;
+  background-position: center 48%;
+  background-size: cover;
+  content: "";
+  transform: scale(1.015);
+  transition: transform 8s ease;
+}
+
+.maluaMasterplanHero:hover::before {
+  transform: scale(1.045);
+}
+
+.maluaMasterplanHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(25, 16, 12, 0.8) 0%, rgba(25, 16, 12, 0.48) 43%, rgba(25, 16, 12, 0.12) 74%),
+    linear-gradient(0deg, rgba(25, 16, 12, 0.72) 0%, rgba(25, 16, 12, 0.08) 55%);
+}
+
+.maluaMasterplanHeroInner {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 170px 0 154px;
+}
+
+.maluaMasterplanEyebrow {
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.maluaMasterplanHero h1 {
+  max-width: 870px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(58px, 7.2vw, 102px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.maluaMasterplanHero h1 em {
+  display: block;
+  margin-top: 0.08em;
+  color: #fff;
+  font-weight: 300;
+}
+
+.maluaMasterplanHeroCopy {
+  max-width: 570px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.68;
+}
+
+.maluaMasterplanHeroButton {
+  min-height: 50px;
+  margin-top: 30px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.maluaMasterplanHeroButton:hover,
+.maluaMasterplanHeroButton:focus-visible {
+  background: #fff;
+  color: var(--oniria-text);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.maluaMasterplanHeroFacts {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(30, 20, 15, 0.34);
+  backdrop-filter: blur(12px);
+}
+
+.maluaMasterplanHeroFacts > div {
+  min-height: 86px;
+  padding: 18px 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.maluaMasterplanHeroFacts > div:first-child {
+  border-left: 0;
+}
+
+.maluaMasterplanHeroFacts small {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.maluaMasterplanHeroFacts strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.maluaMasterplanIntro {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(58px, 6vw, 82px) 0 clamp(52px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  gap: clamp(56px, 7vw, 110px);
+  align-items: end;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.maluaMasterplanIntro .sectionLabel,
+.maluaMasterplanZonesHeading .sectionLabel,
+.maluaMasterplanConnection .sectionLabel {
+  margin: 0 0 14px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.maluaMasterplanIntro h2,
+.maluaMasterplanZonesHeading h2,
+.maluaMasterplanConnection h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.maluaMasterplanIntro h2 {
+  max-width: 720px;
+  font-size: clamp(44px, 5.2vw, 72px);
+  line-height: 0.97;
+}
+
+.maluaMasterplanIntroCopy p {
+  max-width: 520px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.78;
+}
+
+.maluaMasterplanIntroCopy p + p {
+  margin-top: 14px;
+}
+
+.maluaMasterplanOverview {
+  padding: 0 48px clamp(58px, 6vw, 82px);
+}
+
+.maluaMasterplanOverviewImage {
+  position: relative;
+  width: min(1320px, 100%);
+  height: clamp(500px, 57vw, 690px);
+  margin: 0 auto;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 30px 70px rgba(58, 36, 28, 0.1);
+}
+
+.maluaMasterplanOverviewImage::before {
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  transform: scale(1.005);
+  transition: transform 900ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.maluaMasterplanOverviewImage:hover::before {
+  transform: scale(1.025);
+}
+
+.maluaMasterplanOverviewOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(24, 16, 12, 0.76), rgba(24, 16, 12, 0.04) 56%),
+    linear-gradient(90deg, rgba(24, 16, 12, 0.34), transparent 48%);
+}
+
+.maluaMasterplanOverviewCaption {
+  position: absolute;
+  left: clamp(28px, 5vw, 66px);
+  bottom: clamp(28px, 5vw, 62px);
+  z-index: 3;
+  max-width: 620px;
+  color: #fff;
+}
+
+.maluaMasterplanOverviewCaption p {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.maluaMasterplanOverviewCaption h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.6vw, 66px);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.maluaMasterplanOverviewCaption span {
+  display: block;
+  max-width: 540px;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+.maluaMasterplanMapTag {
+  position: absolute;
+  z-index: 4;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(37, 25, 19, 0.62);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(9px);
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.maluaMasterplanMapTagVillas {
+  top: 18%;
+  left: 16%;
+}
+
+.maluaMasterplanMapTagResidences {
+  top: 26%;
+  right: 18%;
+}
+
+.maluaMasterplanMapTagAvenue {
+  top: 47%;
+  right: 10%;
+}
+
+.maluaMasterplanMapTagLandscape {
+  top: 38%;
+  left: 44%;
+}
+
+.maluaMasterplanZones {
+  padding: clamp(56px, 6vw, 84px) 48px clamp(62px, 6.5vw, 92px);
+  background: var(--oniria-cream-panel);
+}
+
+.maluaMasterplanZonesHeading {
+  width: min(1180px, 100%);
+  margin: 0 auto 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+  gap: 40px 72px;
+  align-items: end;
+}
+
+.maluaMasterplanZonesHeading h2 {
+  max-width: 690px;
+  font-size: clamp(42px, 4.8vw, 66px);
+  line-height: 0.98;
+}
+
+.maluaMasterplanZonesHeading > p {
+  max-width: 470px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.72;
+}
+
+.maluaMasterplanZoneGrid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.maluaMasterplanZoneCard {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--oniria-bg);
+  box-shadow: 0 18px 44px rgba(58, 36, 28, 0.07);
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+
+.maluaMasterplanZoneCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 54px rgba(58, 36, 28, 0.11);
+}
+
+.maluaMasterplanZoneImageLink,
+.maluaMasterplanZoneImage {
+  display: block;
+}
+
+.maluaMasterplanZoneImage {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.maluaMasterplanZoneImage::before {
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  transform: scale(1.01);
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.maluaMasterplanZoneCard:hover .maluaMasterplanZoneImage::before {
+  transform: scale(1.05);
+}
+
+.maluaMasterplanZoneImageOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(28, 18, 13, 0.48), rgba(28, 18, 13, 0.02) 55%);
+}
+
+.maluaMasterplanZoneExplore {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.maluaMasterplanZoneContent {
+  padding: 28px 30px 32px;
+}
+
+.maluaMasterplanZoneContent > p {
+  margin: 0 0 11px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.maluaMasterplanZoneContent h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.2vw, 46px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.maluaMasterplanZoneContent > strong {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.maluaMasterplanZoneContent > span {
+  display: block;
+  max-width: 500px;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.maluaMasterplanZoneContent > a {
+  margin-top: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.42);
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: gap 220ms ease, border-color 220ms ease;
+}
+
+.maluaMasterplanZoneContent > a:hover,
+.maluaMasterplanZoneContent > a:focus-visible {
+  gap: 16px;
+  border-color: var(--oniria-text);
+  outline: none;
+}
+
+.maluaMasterplanZoneResidences .maluaMasterplanZoneImage {
+  background-position: center 54%;
+}
+
+.maluaMasterplanZoneAvenue .maluaMasterplanZoneImage {
+  background-position: center 48%;
+}
+
+.maluaMasterplanConnection {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: clamp(62px, 7vw, 94px) 0 clamp(64px, 7vw, 98px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+  gap: clamp(46px, 7vw, 96px);
+  align-items: center;
+}
+
+.maluaMasterplanConnectionImage {
+  height: 470px;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 26px 58px rgba(58, 36, 28, 0.08);
+}
+
+.maluaMasterplanConnectionCopy h2 {
+  max-width: 620px;
+  font-size: clamp(40px, 4.5vw, 62px);
+  line-height: 0.98;
+}
+
+.maluaMasterplanConnectionCopy > p:not(.sectionLabel) {
+  max-width: 540px;
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.maluaMasterplanTextLink {
+  margin-top: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(149, 105, 77, 0.44);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.maluaMasterplanTextLink:hover,
+.maluaMasterplanTextLink:focus-visible {
+  border-color: var(--oniria-text);
+  outline: none;
+}
+
+@media (max-width: 1040px) {
+  .maluaMasterplanHeroInner {
+    width: min(100% - 64px, 960px);
+  }
+
+  .maluaMasterplanIntro,
+  .maluaMasterplanZonesHeading,
+  .maluaMasterplanConnection {
+    grid-template-columns: 1fr;
+  }
+
+  .maluaMasterplanIntro {
+    gap: 28px;
+  }
+
+  .maluaMasterplanZonesHeading {
+    gap: 24px;
+  }
+
+  .maluaMasterplanZoneImage {
+    height: 310px;
+  }
+
+  .maluaMasterplanConnection {
+    gap: 34px;
+  }
+
+  .maluaMasterplanConnectionImage {
+    height: 400px;
+  }
+}
+
+@media (max-width: 780px) {
+  .maluaMasterplanHero {
+    min-height: 700px;
+  }
+
+  .maluaMasterplanHeroInner {
+    width: calc(100% - 40px);
+    padding: 145px 0 205px;
+  }
+
+  .maluaMasterplanHero h1 {
+    font-size: clamp(54px, 15vw, 78px);
+  }
+
+  .maluaMasterplanHeroFacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .maluaMasterplanHeroFacts > div {
+    min-height: 68px;
+    padding: 12px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .maluaMasterplanHeroFacts > div:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .maluaMasterplanHeroFacts > div:nth-child(-n + 2) {
+    border-top: 0;
+  }
+
+  .maluaMasterplanHeroFacts strong {
+    font-size: 15px;
+  }
+
+  .maluaMasterplanIntro,
+  .maluaMasterplanConnection {
+    width: calc(100% - 40px);
+  }
+
+  .maluaMasterplanIntro {
+    padding: 44px 0 40px;
+  }
+
+  .maluaMasterplanIntro h2,
+  .maluaMasterplanZonesHeading h2,
+  .maluaMasterplanConnection h2 {
+    font-size: 40px;
+  }
+
+  .maluaMasterplanOverview {
+    padding: 0 20px 48px;
+  }
+
+  .maluaMasterplanOverviewImage {
+    height: 520px;
+  }
+
+  .maluaMasterplanMapTag {
+    min-height: 32px;
+    padding: 0 12px;
+    font-size: 8px;
+  }
+
+  .maluaMasterplanMapTagVillas {
+    top: 14%;
+    left: 8%;
+  }
+
+  .maluaMasterplanMapTagResidences {
+    top: 23%;
+    right: 8%;
+  }
+
+  .maluaMasterplanMapTagAvenue {
+    top: 43%;
+    right: 6%;
+  }
+
+  .maluaMasterplanMapTagLandscape {
+    top: 34%;
+    left: 36%;
+  }
+
+  .maluaMasterplanZones {
+    padding: 44px 20px 50px;
+  }
+
+  .maluaMasterplanZonesHeading {
+    margin-bottom: 24px;
+  }
+
+  .maluaMasterplanZoneGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .maluaMasterplanZoneImage {
+    height: 330px;
+  }
+
+  .maluaMasterplanZoneContent {
+    padding: 24px 24px 28px;
+  }
+
+  .maluaMasterplanConnection {
+    padding: 48px 0 56px;
+  }
+
+  .maluaMasterplanConnectionImage {
+    height: 330px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maluaMasterplanHero {
+    min-height: 650px;
+  }
+
+  .maluaMasterplanHeroInner {
+    padding-bottom: 190px;
+  }
+
+  .maluaMasterplanHeroButton {
+    width: 100%;
+  }
+
+  .maluaMasterplanHeroFacts > div {
+    padding: 10px 14px;
+  }
+
+  .maluaMasterplanHeroFacts small {
+    font-size: 7px;
+  }
+
+  .maluaMasterplanHeroFacts strong {
+    font-size: 14px;
+  }
+
+  .maluaMasterplanOverviewImage {
+    height: 470px;
+  }
+
+  .maluaMasterplanMapTag {
+    display: none;
+  }
+
+  .maluaMasterplanOverviewCaption {
+    right: 24px;
+    left: 24px;
+    bottom: 28px;
+  }
+
+  .maluaMasterplanOverviewCaption h3 {
+    font-size: 38px;
+  }
+
+  .maluaMasterplanZoneImage {
+    height: 290px;
+  }
+
+  .maluaMasterplanZoneContent h3 {
+    font-size: 36px;
+  }
+
+  .maluaMasterplanConnectionImage {
+    height: 300px;
+  }
+}
+
+/* =========================================================
+   MALǓA RESIDENCES — V13 refinement
+   Focused hero action, tighter property imagery and stronger
+   image-overlay contrast. Scoped to Residences only.
+========================================================= */
+.residencesPremiumPage .residencesPremiumHeroInner {
+  padding-top: 190px;
+}
+
+.residencesPremiumPage .residencesPremiumHeroActions {
+  margin-top: 32px;
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton {
+  min-width: 190px;
+  border-color: rgba(255, 255, 255, 0.92);
+  background: rgba(18, 14, 11, 0.28);
+  color: #fff !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(8px);
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton:hover,
+.residencesPremiumPage .residencesPremiumGhostButton:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #5f4636 !important;
+  transform: translateY(-2px);
+}
+
+.residencesPremiumPage .residencesPremiumIntro {
+  padding-top: 82px;
+  padding-bottom: 62px;
+}
+
+.residencesPremiumPage .residencesPremiumIntroImage {
+  min-height: 410px;
+}
+
+.residencesPremiumPage .residencesPremiumIntroImage::before {
+  background: linear-gradient(0deg, rgba(24, 17, 13, 0.72) 0%, rgba(24, 17, 13, 0.16) 54%, rgba(24, 17, 13, 0.02) 100%);
+}
+
+.residencesPremiumPage .residencesPremiumIntroImageCaption,
+.residencesPremiumPage .residencesPremiumIntroImageCaption span,
+.residencesPremiumPage .residencesPremiumIntroImageCaption strong {
+  color: #fff !important;
+}
+
+.residencesPremiumPage .residencesPremiumIntroImageCaption span {
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.34);
+}
+
+.residencesPremiumPage .residencesPremiumIntroImageCaption strong {
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.32);
+}
+
+.residencesPremiumPage .residencesPremiumCollection {
+  padding-top: 74px;
+}
+
+.residencesPremiumPage .residencesPremiumGrid {
+  gap: 20px;
+}
+
+.residencesPremiumPage .residencesPremiumCard {
+  border-color: rgba(149, 105, 77, 0.18);
+  box-shadow: 0 12px 34px rgba(74, 49, 34, 0.045);
+}
+
+.residencesPremiumPage .residencesPremiumCardImageLink,
+.residencesPremiumPage .residencesPremiumCardImage {
+  min-height: 315px;
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+  min-height: 405px;
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured {
+  grid-template-columns: minmax(0, 1.08fr) minmax(350px, 0.92fr);
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardContent {
+  padding: 42px 46px;
+}
+
+.residencesPremiumPage .residencesPremiumCardContent {
+  padding: 28px 30px 27px;
+}
+
+.residencesPremiumPage .residencesPremiumCardImageOverlay {
+  background: linear-gradient(0deg, rgba(23, 17, 13, 0.6) 0%, rgba(23, 17, 13, 0.08) 52%, rgba(23, 17, 13, 0.02) 100%);
+}
+
+.residencesPremiumPage .residencesPremiumFeaturedBadge {
+  background: rgba(35, 27, 22, 0.48);
+}
+
+@media (max-width: 1024px) {
+  .residencesPremiumPage .residencesPremiumHeroInner {
+    padding-top: 162px;
+  }
+
+  .residencesPremiumPage .residencesPremiumIntroImage {
+    min-height: 360px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardImageLink,
+  .residencesPremiumPage .residencesPremiumCardImage {
+    min-height: 290px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+    min-height: 365px;
+  }
+}
+
+@media (max-width: 760px) {
+  .residencesPremiumPage .residencesPremiumHeroInner {
+    padding: 144px 0 270px;
+  }
+
+  .residencesPremiumPage .residencesPremiumGhostButton {
+    width: 100%;
+    background: rgba(18, 14, 11, 0.34);
+  }
+
+  .residencesPremiumPage .residencesPremiumIntroImage {
+    min-height: 310px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardImageLink,
+  .residencesPremiumPage .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+    min-height: 275px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardContent,
+  .residencesPremiumPage .residencesPremiumCardContent {
+    padding: 24px 21px 23px;
+  }
+}
+
+/* =========================================================
+   MALǓA V14 — cross-page cleanup + residences refinement
+   Removes redundant hero eyebrows/overview CTA presentation
+   and tightens residence imagery while preserving behavior.
+========================================================= */
+
+/* Vision: compact the principles ending now that the repeated masterplan CTA is removed. */
+.visionPageV5 .visionV5Principles {
+  padding-bottom: clamp(38px, 4vw, 54px) !important;
+}
+
+/* Masterplan: cleaner hero without an extra CTA and tighter handoff into the big picture. */
+.maluaMasterplanPage .maluaMasterplanHero {
+  min-height: min(690px, 80svh);
+}
+
+.maluaMasterplanPage .maluaMasterplanHeroInner {
+  padding-top: 148px;
+  padding-bottom: 142px;
+}
+
+.maluaMasterplanPage .maluaMasterplanHeroCopy {
+  margin-top: 24px;
+}
+
+.maluaMasterplanPage .maluaMasterplanIntro {
+  padding-top: clamp(48px, 5vw, 66px);
+  padding-bottom: clamp(42px, 4.5vw, 60px);
+}
+
+.maluaMasterplanPage .maluaMasterplanZones {
+  padding-top: clamp(46px, 5vw, 68px);
+}
+
+/* Residences: stronger conversion action and more compact, product-led imagery. */
+.residencesPremiumPage .residencesPremiumHero {
+  min-height: min(670px, 80svh);
+  background-position: center 47%;
+}
+
+.residencesPremiumPage .residencesPremiumHeroInner {
+  padding: 145px 0 128px;
+}
+
+.residencesPremiumPage .residencesPremiumHero h1 {
+  max-width: 760px;
+  font-size: clamp(50px, 6.4vw, 88px);
+}
+
+.residencesPremiumPage .residencesPremiumHeroCopy {
+  max-width: 625px;
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.residencesPremiumPage .residencesPremiumHeroActions {
+  margin-top: 28px;
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton {
+  min-width: 205px;
+  min-height: 50px;
+  border: 1px solid #fff;
+  background: rgba(24, 17, 13, 0.58);
+  color: #fff !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton span {
+  color: #fff !important;
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton:hover,
+.residencesPremiumPage .residencesPremiumGhostButton:focus-visible {
+  background: #fff;
+  color: #5f4636 !important;
+  outline: none;
+}
+
+.residencesPremiumPage .residencesPremiumGhostButton:hover span,
+.residencesPremiumPage .residencesPremiumGhostButton:focus-visible span {
+  color: #5f4636 !important;
+}
+
+.residencesPremiumPage .residencesPremiumFacts > div {
+  min-height: 78px;
+}
+
+.residencesPremiumPage .residencesPremiumIntro {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.64fr);
+  gap: clamp(46px, 6vw, 74px);
+  padding-top: 66px;
+  padding-bottom: 50px;
+}
+
+.residencesPremiumPage .residencesPremiumIntroImage {
+  min-height: 330px;
+  max-height: 350px;
+}
+
+.residencesPremiumPage .residencesPremiumPrinciples article {
+  padding-top: 30px;
+  padding-bottom: 32px;
+}
+
+.residencesPremiumPage .residencesPremiumCollection {
+  padding-top: 58px;
+  padding-bottom: 66px;
+}
+
+.residencesPremiumPage .residencesPremiumCollectionHeading {
+  margin-bottom: 30px;
+}
+
+.residencesPremiumPage .residencesPremiumCardImageLink,
+.residencesPremiumPage .residencesPremiumCardImage {
+  min-height: 255px;
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+  min-height: 330px;
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured {
+  grid-template-columns: minmax(0, 1.02fr) minmax(350px, 0.98fr);
+}
+
+.residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardContent {
+  padding: 34px 38px;
+}
+
+.residencesPremiumPage .residencesPremiumCardContent {
+  padding: 24px 26px 24px;
+}
+
+.residencesPremiumPage .residencesPremiumCardDescription {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.residencesPremiumPage .residencesPremiumCardFooter {
+  margin-top: 22px;
+  padding-top: 18px;
+}
+
+.residencesPremiumPage .residencesPremiumEnquiry {
+  margin-bottom: 62px;
+  padding: 38px 0;
+}
+
+@media (max-width: 1024px) {
+  .maluaMasterplanPage .maluaMasterplanHeroInner {
+    padding-top: 140px;
+    padding-bottom: 156px;
+  }
+
+  .residencesPremiumPage .residencesPremiumHero {
+    min-height: 650px;
+  }
+
+  .residencesPremiumPage .residencesPremiumHeroInner {
+    padding: 138px 0 138px;
+  }
+
+  .residencesPremiumPage .residencesPremiumIntroImage {
+    min-height: 300px;
+    max-height: 320px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardImageLink,
+  .residencesPremiumPage .residencesPremiumCardImage {
+    min-height: 240px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+    min-height: 310px;
+  }
+}
+
+@media (max-width: 780px) {
+  .maluaMasterplanPage .maluaMasterplanHero {
+    min-height: 620px;
+  }
+
+  .maluaMasterplanPage .maluaMasterplanHeroInner {
+    padding: 130px 0 188px;
+  }
+}
+
+@media (max-width: 760px) {
+  .residencesPremiumPage .residencesPremiumHero {
+    min-height: 640px;
+  }
+
+  .residencesPremiumPage .residencesPremiumHeroInner {
+    padding: 120px 0 225px;
+  }
+
+  .residencesPremiumPage .residencesPremiumHero h1 {
+    font-size: clamp(44px, 13vw, 62px);
+  }
+
+  .residencesPremiumPage .residencesPremiumGhostButton {
+    width: 100%;
+    background: rgba(24, 17, 13, 0.66);
+  }
+
+  .residencesPremiumPage .residencesPremiumIntro {
+    padding-top: 50px;
+    padding-bottom: 42px;
+  }
+
+  .residencesPremiumPage .residencesPremiumIntroImage {
+    min-height: 250px;
+    max-height: 270px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCardImageLink,
+  .residencesPremiumPage .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImage,
+  .residencesPremiumPage .residencesPremiumCardFeatured .residencesPremiumCardImageLink {
+    min-height: 225px;
+  }
+
+  .residencesPremiumPage .residencesPremiumCollection {
+    padding-top: 48px;
+    padding-bottom: 54px;
+  }
+}
+
+/* MALǓA Villas premium collection — V15 */
+.villasPremiumPage {
+  background: var(--oniria-background, #f4efe5);
+  color: var(--oniria-text, #6f4e3d);
+}
+
+.villasPremiumHero {
+  position: relative;
+  min-height: min(700px, 82svh);
+  display: flex;
+  align-items: flex-end;
+  background-position: center 48%;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.villasPremiumHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(28, 21, 17, 0.76) 0%, rgba(28, 21, 17, 0.46) 44%, rgba(28, 21, 17, 0.10) 76%),
+    linear-gradient(0deg, rgba(25, 18, 14, 0.72) 0%, rgba(25, 18, 14, 0.04) 48%);
+}
+
+.villasPremiumHeroInner {
+  position: relative;
+  z-index: 2;
+  width: min(760px, calc(100% - 12vw));
+  margin: 0 6vw 148px;
+  color: #fff;
+}
+
+.villasPremiumHeroInner h1 {
+  max-width: 720px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(3.5rem, 7vw, 6.8rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.villasPremiumHeroInner h1 em {
+  display: block;
+  color: #f1dfcc;
+  font-weight: 400;
+}
+
+.villasPremiumHeroInner > p {
+  max-width: 640px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.villasPremiumHeroAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 14px 21px;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 999px;
+  background: rgba(39, 28, 22, 0.46);
+  backdrop-filter: blur(10px);
+  color: #fff !important;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.villasPremiumHeroAction:hover,
+.villasPremiumHeroAction:focus-visible {
+  background: #fff;
+  color: #51382b !important;
+  transform: translateY(-2px);
+}
+
+.villasPremiumFacts {
+  position: absolute;
+  z-index: 3;
+  right: 6vw;
+  bottom: 34px;
+  left: 6vw;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(31, 23, 18, 0.34);
+  backdrop-filter: blur(12px);
+}
+
+.villasPremiumFacts > div {
+  min-width: 0;
+  padding: 18px 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.villasPremiumFacts > div:last-child {
+  border-right: 0;
+}
+
+.villasPremiumFacts small,
+.villasPremiumFacts strong {
+  display: block;
+  color: #fff;
+}
+
+.villasPremiumFacts small {
+  margin-bottom: 6px;
+  font-size: 0.63rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.villasPremiumFacts strong {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(0.95rem, 1.25vw, 1.13rem);
+  font-weight: 400;
+}
+
+.villasPremiumIntro {
+  width: min(1180px, calc(100% - 12vw));
+  margin: 0 auto;
+  padding: 78px 0 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  gap: clamp(44px, 6vw, 86px);
+  align-items: center;
+}
+
+.villasPremiumIntroCopy h2,
+.villasPremiumCollectionHeading h2,
+.villasPremiumEnquiry h2 {
+  margin: 10px 0 0;
+  color: var(--oniria-text, #6f4e3d);
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.villasPremiumIntroCopy h2 {
+  max-width: 620px;
+  font-size: clamp(2.35rem, 4.6vw, 4.5rem);
+  line-height: 0.98;
+}
+
+.villasPremiumIntroCopy > p:last-child {
+  max-width: 650px;
+  margin: 22px 0 0;
+  color: rgba(82, 59, 47, 0.82);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.villasPremiumIntroImage {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 24px 62px rgba(66, 46, 33, 0.12);
+}
+
+.villasPremiumIntroImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(35, 24, 18, 0.66) 0%, rgba(35, 24, 18, 0.02) 58%);
+}
+
+.villasPremiumIntroCaption {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  bottom: 26px;
+  left: 28px;
+  color: #fff;
+}
+
+.villasPremiumIntroCaption span,
+.villasPremiumIntroCaption strong {
+  display: block;
+  color: #fff;
+}
+
+.villasPremiumIntroCaption span {
+  margin-bottom: 7px;
+  font-size: 0.67rem;
+  letter-spacing: 0.17em;
+}
+
+.villasPremiumIntroCaption strong {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.25rem, 2.15vw, 2rem);
+  font-weight: 400;
+}
+
+.villasPremiumPrinciples {
+  width: min(1180px, calc(100% - 12vw));
+  margin: 0 auto;
+  padding: 16px 0 62px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(125, 88, 65, 0.2);
+}
+
+.villasPremiumPrinciples article {
+  padding: 30px 34px 10px 0;
+  border-right: 1px solid rgba(125, 88, 65, 0.18);
+}
+
+.villasPremiumPrinciples article + article {
+  padding-left: 34px;
+}
+
+.villasPremiumPrinciples article:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.villasPremiumPrinciples article > p {
+  margin: 0 0 12px;
+  color: var(--oniria-accent, #9a6c50);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.villasPremiumPrinciples h3 {
+  margin: 0;
+  color: var(--oniria-text, #6f4e3d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.villasPremiumPrinciples article > span {
+  display: block;
+  margin-top: 13px;
+  color: rgba(82, 59, 47, 0.76);
+  font-size: 0.93rem;
+  line-height: 1.62;
+}
+
+.villasPremiumCollection {
+  padding: 68px 6vw 74px;
+  background: #ede4d5;
+}
+
+.villasPremiumCollectionHeading {
+  width: min(1180px, 100%);
+  margin: 0 auto 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 52px;
+  align-items: end;
+}
+
+.villasPremiumCollectionHeading h2 {
+  max-width: 720px;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  line-height: 0.98;
+}
+
+.villasPremiumCollectionHeading > p {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(82, 59, 47, 0.76);
+  line-height: 1.7;
+}
+
+.villasPremiumGrid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.villasPremiumCard {
+  overflow: hidden;
+  background: rgba(255, 252, 246, 0.86);
+  border: 1px solid rgba(126, 87, 63, 0.14);
+  box-shadow: 0 18px 44px rgba(73, 51, 36, 0.07);
+}
+
+.villasPremiumCardFeatured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(380px, 0.8fr);
+}
+
+.villasPremiumCardImageLink {
+  display: block;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.villasPremiumCardImage {
+  position: relative;
+  min-height: 290px;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  transition: transform 320ms ease;
+}
+
+.villasPremiumCardFeatured .villasPremiumCardImage {
+  min-height: 380px;
+}
+
+.villasPremiumCardImageLink:hover .villasPremiumCardImage {
+  transform: scale(1.012);
+}
+
+.villasPremiumCardImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(28, 19, 14, 0.58) 0%, rgba(28, 19, 14, 0.02) 52%);
+}
+
+.villasPremiumFeaturedBadge,
+.villasPremiumCardView {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+}
+
+.villasPremiumFeaturedBadge {
+  top: 18px;
+  left: 18px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: rgba(40, 29, 22, 0.38);
+  backdrop-filter: blur(8px);
+  font-size: 0.61rem;
+  letter-spacing: 0.15em;
+}
+
+.villasPremiumCardView {
+  right: 20px;
+  bottom: 18px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.villasPremiumCardContent {
+  padding: 25px 27px 24px;
+}
+
+.villasPremiumCardFeatured .villasPremiumCardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 34px 38px;
+}
+
+.villasPremiumCardEyebrow {
+  margin: 0 0 10px;
+  color: var(--oniria-accent, #9a6c50);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.villasPremiumCardContent h3 {
+  margin: 0;
+  color: var(--oniria-text, #6f4e3d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.65rem, 2.5vw, 2.55rem);
+  font-weight: 400;
+  line-height: 1.04;
+}
+
+.villasPremiumSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 19px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(126, 87, 63, 0.17);
+  border-bottom: 1px solid rgba(126, 87, 63, 0.17);
+}
+
+.villasPremiumSpecs span {
+  padding: 0 15px;
+  border-right: 1px solid rgba(126, 87, 63, 0.2);
+  color: rgba(82, 59, 47, 0.82);
+  font-size: 0.83rem;
+}
+
+.villasPremiumSpecs span:first-child {
+  padding-left: 0;
+}
+
+.villasPremiumSpecs span:last-child {
+  border-right: 0;
+}
+
+.villasPremiumCardDescription {
+  margin: 18px 0 0;
+  color: rgba(82, 59, 47, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.64;
+}
+
+.villasPremiumCardFooter {
+  margin-top: 22px;
+  padding-top: 17px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  border-top: 1px solid rgba(126, 87, 63, 0.13);
+}
+
+.villasPremiumCardFooter small,
+.villasPremiumCardFooter strong {
+  display: block;
+}
+
+.villasPremiumCardFooter small {
+  margin-bottom: 4px;
+  color: rgba(82, 59, 47, 0.58);
+  font-size: 0.61rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.villasPremiumCardFooter strong {
+  color: var(--oniria-text, #6f4e3d);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.villasPremiumCardFooter > a {
+  flex: 0 0 auto;
+  color: var(--oniria-text, #6f4e3d);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.villasPremiumEnquiry {
+  width: min(1180px, calc(100% - 12vw));
+  margin: 0 auto;
+  padding: 58px 0 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.86fr) auto;
+  gap: 44px;
+  align-items: center;
+}
+
+.villasPremiumEnquiry h2 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1;
+}
+
+.villasPremiumEnquiry > p {
+  margin: 0;
+  color: rgba(82, 59, 47, 0.75);
+  line-height: 1.65;
+}
+
+.villasPremiumEnquiryActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.villasPremiumEnquiryActions a {
+  color: var(--oniria-text, #6f4e3d);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.villasPremiumEnquiryActions a:first-child {
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(126, 87, 63, 0.38);
+}
+
+@media (max-width: 980px) {
+  .villasPremiumHero {
+    min-height: 660px;
+  }
+
+  .villasPremiumHeroInner {
+    margin-bottom: 170px;
+  }
+
+  .villasPremiumFacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .villasPremiumFacts > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .villasPremiumFacts > div:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .villasPremiumIntro {
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    gap: 34px;
+  }
+
+  .villasPremiumIntroImage {
+    min-height: 330px;
+  }
+
+  .villasPremiumPrinciples {
+    grid-template-columns: 1fr;
+    padding-bottom: 50px;
+  }
+
+  .villasPremiumPrinciples article,
+  .villasPremiumPrinciples article + article,
+  .villasPremiumPrinciples article:last-child {
+    padding: 24px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(125, 88, 65, 0.16);
+  }
+
+  .villasPremiumPrinciples article:last-child {
+    border-bottom: 0;
+  }
+
+  .villasPremiumCollectionHeading,
+  .villasPremiumEnquiry {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .villasPremiumGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .villasPremiumCardFeatured {
+    grid-column: auto;
+    display: block;
+  }
+
+  .villasPremiumCardFeatured .villasPremiumCardImage {
+    min-height: 340px;
+  }
+
+  .villasPremiumCardFeatured .villasPremiumCardContent {
+    padding: 27px;
+  }
+
+  .villasPremiumEnquiryActions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .villasPremiumHero {
+    min-height: 610px;
+    background-position: 58% center;
+  }
+
+  .villasPremiumHeroInner {
+    width: calc(100% - 40px);
+    margin: 0 20px 190px;
+  }
+
+  .villasPremiumHeroInner h1 {
+    font-size: clamp(3.1rem, 15vw, 4.65rem);
+  }
+
+  .villasPremiumHeroInner > p {
+    margin-top: 20px;
+    font-size: 0.94rem;
+  }
+
+  .villasPremiumHeroAction {
+    margin-top: 22px;
+    padding: 12px 17px;
+    font-size: 0.68rem;
+  }
+
+  .villasPremiumFacts {
+    right: 20px;
+    bottom: 22px;
+    left: 20px;
+  }
+
+  .villasPremiumFacts > div {
+    padding: 12px 13px;
+  }
+
+  .villasPremiumFacts small {
+    font-size: 0.54rem;
+  }
+
+  .villasPremiumFacts strong {
+    font-size: 0.86rem;
+  }
+
+  .villasPremiumIntro,
+  .villasPremiumPrinciples,
+  .villasPremiumEnquiry {
+    width: calc(100% - 40px);
+  }
+
+  .villasPremiumIntro {
+    padding: 48px 0 30px;
+    gap: 26px;
+  }
+
+  .villasPremiumIntroImage {
+    min-height: 275px;
+  }
+
+  .villasPremiumIntroCaption {
+    right: 20px;
+    bottom: 18px;
+    left: 20px;
+  }
+
+  .villasPremiumPrinciples {
+    padding: 8px 0 38px;
+  }
+
+  .villasPremiumPrinciples article,
+  .villasPremiumPrinciples article + article {
+    padding: 20px 0;
+  }
+
+  .villasPremiumCollection {
+    padding: 48px 20px 52px;
+  }
+
+  .villasPremiumCollectionHeading {
+    margin-bottom: 26px;
+  }
+
+  .villasPremiumCardImage,
+  .villasPremiumCardFeatured .villasPremiumCardImage {
+    min-height: 250px;
+  }
+
+  .villasPremiumCardContent,
+  .villasPremiumCardFeatured .villasPremiumCardContent {
+    padding: 22px 20px;
+  }
+
+  .villasPremiumSpecs span {
+    padding: 0 9px;
+    font-size: 0.75rem;
+  }
+
+  .villasPremiumCardFooter {
+    align-items: center;
+  }
+
+  .villasPremiumEnquiry {
+    padding: 44px 0 50px;
+  }
+}
+
+/* =========================================================
+   V16 — V Avenue Retail Space premium commercial detail page
+   Scoped to .retailSpacePage so other property detail pages stay unchanged.
+   ========================================================= */
+
+.retailSpacePage {
+  background: var(--oniria-cream, #f3ecdf);
+  color: var(--oniria-text, #8f6047);
+}
+
+.retailSpaceHero {
+  position: relative;
+  min-height: min(720px, 88svh);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.retailSpaceHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(21, 17, 14, 0.82) 0%, rgba(21, 17, 14, 0.60) 44%, rgba(21, 17, 14, 0.24) 76%, rgba(21, 17, 14, 0.10) 100%),
+    linear-gradient(0deg, rgba(15, 12, 10, 0.62) 0%, rgba(15, 12, 10, 0.04) 55%);
+}
+
+.retailSpaceHeroInner {
+  position: relative;
+  z-index: 2;
+  width: min(1540px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 160px 0 48px;
+}
+
+.retailSpaceHeroCopy {
+  width: min(760px, 66%);
+  color: #fff;
+}
+
+.retailSpaceEyebrow,
+.retailSpaceHeroCopy h1,
+.retailSpaceHeroLead,
+.retailSpaceHeroDescription,
+.retailSpaceHeroActions a,
+.retailSpaceHeroFacts span,
+.retailSpaceHeroFacts strong {
+  color: #fff !important;
+}
+
+.retailSpaceEyebrow {
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.retailSpaceHeroCopy h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(54px, 6.6vw, 104px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.retailSpaceHeroLead {
+  margin: 24px 0 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(24px, 2.2vw, 36px);
+  font-style: italic;
+  line-height: 1.14;
+}
+
+.retailSpaceHeroDescription {
+  max-width: 690px;
+  margin: 20px 0 0;
+  font-size: 17px;
+  line-height: 1.68;
+  opacity: 0.92;
+}
+
+.retailSpaceHeroActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.retailSpacePrimaryAction,
+.retailSpaceSecondaryAction,
+.retailSpaceInquiryVisit {
+  text-decoration: none;
+}
+
+.retailSpacePrimaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(9px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.retailSpacePrimaryAction:hover,
+.retailSpacePrimaryAction:focus-visible {
+  background: #fff;
+  color: #3f2c23 !important;
+  border-color: #fff;
+}
+
+.retailSpaceSecondaryAction {
+  padding: 12px 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.retailSpaceHeroFacts {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 54px;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.retailSpaceHeroFacts > div {
+  min-height: 82px;
+  padding: 18px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.retailSpaceHeroFacts > div:last-child {
+  border-right: 0;
+}
+
+.retailSpaceHeroFacts span,
+.retailSpaceContextFacts span {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.retailSpaceHeroFacts strong {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.retailSpaceIntro {
+  display: grid;
+  grid-template-columns: 0.88fr 1.12fr;
+  gap: clamp(44px, 7vw, 110px);
+  align-items: center;
+  width: min(1460px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 86px 0 72px;
+}
+
+.retailSpaceIntroCopy h2,
+.retailSpaceSectionHeading h2,
+.retailSpaceContextCopy h2,
+.retailSpacePlanHeading h2,
+.retailSpaceInquiry h2 {
+  margin: 12px 0 18px;
+  color: var(--oniria-text, #8f6047);
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.retailSpaceIntroCopy h2 {
+  font-size: clamp(40px, 4.6vw, 68px);
+}
+
+.retailSpaceIntroCopy > p:last-child,
+.retailSpaceSectionHeading > p:last-child,
+.retailSpaceContextCopy > p,
+.retailSpacePlanHeading > p,
+.retailSpaceInquiry > div:first-child > p:last-child {
+  color: rgba(89, 63, 49, 0.83);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.retailSpaceIntroImage {
+  position: relative;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.retailSpaceImageShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(18, 14, 12, 0.62), rgba(18, 14, 12, 0.02) 62%);
+}
+
+.retailSpaceImageCaption {
+  position: absolute;
+  z-index: 2;
+  left: 28px;
+  right: 28px;
+  bottom: 26px;
+  color: #fff;
+}
+
+.retailSpaceImageCaption span,
+.retailSpaceVisualPair article > div:last-child span {
+  display: block;
+  margin-bottom: 7px;
+  color: #fff !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.retailSpaceImageCaption strong {
+  display: block;
+  color: #fff !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.retailSpaceAdvantages {
+  padding: 72px max(48px, calc((100vw - 1460px) / 2));
+  background: #eadfce;
+}
+
+.retailSpaceSectionHeading {
+  display: grid;
+  grid-template-columns: 0.7fr 1.1fr 1fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 36px;
+}
+
+.retailSpaceSectionHeading h2 {
+  margin-top: 0;
+  font-size: clamp(36px, 3.4vw, 54px);
+}
+
+.retailSpaceAdvantageGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(113, 78, 57, 0.26);
+  border-bottom: 1px solid rgba(113, 78, 57, 0.26);
+}
+
+.retailSpaceAdvantageGrid article {
+  min-height: 250px;
+  padding: 30px 26px 28px;
+  border-right: 1px solid rgba(113, 78, 57, 0.22);
+}
+
+.retailSpaceAdvantageGrid article:last-child {
+  border-right: 0;
+}
+
+.retailSpaceAdvantageGrid article > span {
+  display: block;
+  margin-bottom: 34px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--oniria-text, #8f6047);
+}
+
+.retailSpaceAdvantageGrid h3 {
+  margin: 0 0 12px;
+  color: var(--oniria-text, #8f6047);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.retailSpaceAdvantageGrid p {
+  margin: 0;
+  color: rgba(89, 63, 49, 0.78);
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.retailSpaceContext {
+  display: grid;
+  grid-template-columns: 1.16fr 0.84fr;
+  min-height: 500px;
+  background: #2d241f;
+}
+
+.retailSpaceContextImage {
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+.retailSpaceContextCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px clamp(44px, 6vw, 88px);
+}
+
+.retailSpaceContextCopy .sectionLabel,
+.retailSpaceContextCopy h2,
+.retailSpaceContextCopy > p,
+.retailSpaceContextFacts span,
+.retailSpaceContextFacts strong {
+  color: #fff !important;
+}
+
+.retailSpaceContextCopy h2 {
+  font-size: clamp(38px, 4vw, 62px);
+}
+
+.retailSpaceContextCopy > p {
+  max-width: 630px;
+  opacity: 0.86;
+}
+
+.retailSpaceContextFacts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.retailSpaceContextFacts strong {
+  display: block;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.retailSpacePlan {
+  width: min(1460px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 76px 0 68px;
+}
+
+.retailSpacePlanHeading {
+  display: grid;
+  grid-template-columns: 0.65fr 0.95fr 1.1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.retailSpacePlanHeading h2 {
+  margin-top: 0;
+  font-size: clamp(38px, 4vw, 60px);
+}
+
+.retailSpaceUseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 36px;
+  background: rgba(129, 88, 61, 0.22);
+  border: 1px solid rgba(129, 88, 61, 0.22);
+}
+
+.retailSpaceUseGrid div {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  padding: 18px 22px;
+  background: var(--oniria-cream, #f3ecdf);
+  color: var(--oniria-text, #8f6047);
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+}
+
+.retailSpaceDetailsLink {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 28px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid currentColor;
+  color: var(--oniria-text, #8f6047);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.retailSpaceVisualPair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #2d241f;
+}
+
+.retailSpaceVisualPair article {
+  position: relative;
+  min-height: 360px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.retailSpaceVisualPair article > div:last-child {
+  position: absolute;
+  z-index: 2;
+  left: 32px;
+  right: 32px;
+  bottom: 30px;
+}
+
+.retailSpaceVisualPair h3 {
+  max-width: 520px;
+  margin: 0;
+  color: #fff !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.retailSpaceInquiry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 54px;
+  align-items: end;
+  width: min(1460px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 68px 0 72px;
+}
+
+.retailSpaceInquiry h2 {
+  font-size: clamp(40px, 4.4vw, 66px);
+}
+
+.retailSpaceInquiry > div:first-child > p:last-child {
+  max-width: 760px;
+}
+
+.retailSpaceInquiryActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 6px;
+}
+
+.retailSpacePrimaryActionDark {
+  background: var(--oniria-text, #8f6047);
+  border-color: var(--oniria-text, #8f6047);
+  color: #fff !important;
+  backdrop-filter: none;
+}
+
+.retailSpacePrimaryActionDark:hover,
+.retailSpacePrimaryActionDark:focus-visible {
+  background: #68442f;
+  border-color: #68442f;
+  color: #fff !important;
+}
+
+.retailSpaceInquiryVisit {
+  color: var(--oniria-text, #8f6047);
+  padding: 12px 0 9px;
+  border-bottom: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1100px) {
+  .retailSpaceHeroInner,
+  .retailSpaceIntro,
+  .retailSpacePlan,
+  .retailSpaceInquiry {
+    width: min(100% - 56px, 1460px);
+  }
+
+  .retailSpaceHeroFacts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .retailSpaceHeroFacts > div:nth-child(3) {
+    border-right: 0;
+  }
+
+  .retailSpaceHeroFacts > div:nth-child(n + 4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .retailSpaceSectionHeading,
+  .retailSpacePlanHeading {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .retailSpaceSectionHeading > p:last-child,
+  .retailSpacePlanHeading > p:last-child {
+    grid-column: 2;
+  }
+
+  .retailSpaceAdvantageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .retailSpaceAdvantageGrid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .retailSpaceAdvantageGrid article:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(113, 78, 57, 0.22);
+  }
+
+  .retailSpaceContext {
+    grid-template-columns: 1fr;
+  }
+
+  .retailSpaceContextImage {
+    min-height: 420px;
+  }
+
+  .retailSpaceInquiry {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .retailSpaceHero {
+    min-height: 700px;
+  }
+
+  .retailSpaceHeroInner,
+  .retailSpaceIntro,
+  .retailSpacePlan,
+  .retailSpaceInquiry {
+    width: calc(100% - 36px);
+  }
+
+  .retailSpaceHeroInner {
+    padding: 128px 0 26px;
+  }
+
+  .retailSpaceHeroCopy {
+    width: 100%;
+  }
+
+  .retailSpaceHeroCopy h1 {
+    font-size: clamp(48px, 14vw, 70px);
+  }
+
+  .retailSpaceHeroLead {
+    font-size: 24px;
+  }
+
+  .retailSpaceHeroDescription {
+    font-size: 15px;
+  }
+
+  .retailSpaceHeroActions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .retailSpacePrimaryAction {
+    width: 100%;
+  }
+
+  .retailSpaceSecondaryAction {
+    width: max-content;
+  }
+
+  .retailSpaceHeroFacts {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 34px;
+  }
+
+  .retailSpaceHeroFacts > div,
+  .retailSpaceHeroFacts > div:nth-child(3) {
+    min-height: 70px;
+    padding: 13px 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .retailSpaceHeroFacts > div:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .retailSpaceHeroFacts > div:nth-child(even) {
+    border-right: 0;
+  }
+
+  .retailSpaceHeroFacts > div:first-child,
+  .retailSpaceHeroFacts > div:nth-child(2) {
+    border-top: 0;
+  }
+
+  .retailSpaceHeroFacts strong {
+    font-size: 15px;
+  }
+
+  .retailSpaceIntro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 54px 0 50px;
+  }
+
+  .retailSpaceIntroCopy h2 {
+    font-size: 42px;
+  }
+
+  .retailSpaceIntroImage {
+    min-height: 300px;
+  }
+
+  .retailSpaceAdvantages {
+    padding: 50px 18px;
+  }
+
+  .retailSpaceSectionHeading,
+  .retailSpacePlanHeading {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .retailSpaceSectionHeading > p:last-child,
+  .retailSpacePlanHeading > p:last-child {
+    grid-column: auto;
+  }
+
+  .retailSpaceSectionHeading h2,
+  .retailSpacePlanHeading h2,
+  .retailSpaceInquiry h2 {
+    font-size: 40px;
+  }
+
+  .retailSpaceAdvantageGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .retailSpaceAdvantageGrid article,
+  .retailSpaceAdvantageGrid article:nth-child(2) {
+    min-height: auto;
+    padding: 26px 8px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(113, 78, 57, 0.22);
+  }
+
+  .retailSpaceAdvantageGrid article:last-child {
+    border-bottom: 0;
+  }
+
+  .retailSpaceAdvantageGrid article > span {
+    margin-bottom: 16px;
+  }
+
+  .retailSpaceContextImage {
+    min-height: 300px;
+  }
+
+  .retailSpaceContextCopy {
+    padding: 48px 18px;
+  }
+
+  .retailSpaceContextCopy h2 {
+    font-size: 42px;
+  }
+
+  .retailSpaceContextFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .retailSpacePlan {
+    padding: 52px 0;
+  }
+
+  .retailSpaceUseGrid {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 26px;
+  }
+
+  .retailSpaceUseGrid div {
+    min-height: 64px;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .retailSpaceVisualPair {
+    grid-template-columns: 1fr;
+  }
+
+  .retailSpaceVisualPair article {
+    min-height: 290px;
+  }
+
+  .retailSpaceInquiry {
+    padding: 52px 0 58px;
+  }
+
+  .retailSpaceInquiryActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .retailSpaceInquiryVisit {
+    width: max-content;
+  }
+}
+
+/* =========================================================
+   MALǓA V17 — RESIDENCE CTA + V AVENUE PREMIUM DESTINATION
+   Scoped additions only; preserves existing routes/components.
+========================================================= */
+
+/* Residence hero: make the single Register interest action unmistakably clickable. */
+.residencesPremiumHero .residencesPremiumHeroRegister,
+.residencesPremiumHero .residencesPremiumHeroRegister:visited {
+  position: relative;
+  min-width: 190px;
+  min-height: 54px;
+  padding: 0 28px;
+  border: 1px solid #ffffff !important;
+  background: rgba(39, 28, 22, 0.72) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  text-decoration: none !important;
+}
+
+.residencesPremiumHero .residencesPremiumHeroRegister::before {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.residencesPremiumHero .residencesPremiumHeroRegister:hover,
+.residencesPremiumHero .residencesPremiumHeroRegister:focus-visible {
+  border-color: #ffffff !important;
+  background: #ffffff !important;
+  color: #4a3327 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+  transform: translateY(-2px);
+}
+
+.residencesPremiumHero .residencesPremiumHeroRegister span {
+  color: inherit !important;
+  transition: transform 180ms ease;
+}
+
+.residencesPremiumHero .residencesPremiumHeroRegister:hover span,
+.residencesPremiumHero .residencesPremiumHeroRegister:focus-visible span {
+  transform: translateX(4px);
+}
+
+/* V Avenue premium page */
+.vAvenuePremiumPage {
+  background: var(--oniria-bg, #f2eadb);
+  color: var(--oniria-text, #95694d);
+}
+
+.vAvenuePremiumHero {
+  position: relative;
+  min-height: min(760px, 86svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  background-position: center 52%;
+  background-size: cover;
+}
+
+.vAvenuePremiumHero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: inherit;
+  background-position: center 52%;
+  background-size: cover;
+  content: "";
+  transform: scale(1.01);
+  transition: transform 7s ease;
+}
+
+.vAvenuePremiumHero:hover::before {
+  transform: scale(1.04);
+}
+
+.vAvenuePremiumHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(26, 18, 14, 0.82) 0%, rgba(26, 18, 14, 0.54) 43%, rgba(26, 18, 14, 0.16) 78%),
+    linear-gradient(0deg, rgba(26, 18, 14, 0.62) 0%, rgba(26, 18, 14, 0.06) 54%);
+}
+
+.vAvenuePremiumHeroInner {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 150px 0 136px;
+  color: #ffffff;
+}
+
+.vAvenuePremiumHeroLabel {
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.vAvenuePremiumHero h1 {
+  max-width: 780px;
+  margin: 0;
+  color: #ffffff !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(52px, 6.5vw, 92px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.vAvenuePremiumHero h1 em {
+  display: block;
+  color: #ead8c7 !important;
+  font-weight: 400;
+}
+
+.vAvenuePremiumHeroCopy {
+  max-width: 660px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.vAvenuePremiumHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.vAvenuePremiumPrimaryAction,
+.vAvenuePremiumSecondaryAction {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 25px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  color: #ffffff !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.vAvenuePremiumPrimaryAction {
+  background: #95694d;
+  border-color: #95694d;
+}
+
+.vAvenuePremiumSecondaryAction {
+  background: rgba(24, 17, 13, 0.34);
+  backdrop-filter: blur(6px);
+}
+
+.vAvenuePremiumPrimaryAction:hover,
+.vAvenuePremiumPrimaryAction:focus-visible,
+.vAvenuePremiumSecondaryAction:hover,
+.vAvenuePremiumSecondaryAction:focus-visible {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #4a3327 !important;
+  transform: translateY(-2px);
+}
+
+.vAvenuePremiumHeroFacts {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(1180px, calc(100% - 96px));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(7px);
+}
+
+.vAvenuePremiumHeroFacts span {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+}
+
+.vAvenuePremiumHeroFacts span:last-child {
+  border-right: 0;
+}
+
+.vAvenuePremiumIntro {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 88px 0 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 0.72fr);
+  gap: 82px;
+  align-items: center;
+}
+
+.vAvenuePremiumIntroCopy h2,
+.vAvenuePremiumPurposeHeading h2,
+.vAvenuePremiumOpportunitiesHeading h2,
+.vAvenuePremiumEnquiry h2 {
+  margin: 12px 0 0;
+  color: var(--oniria-text, #95694d) !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.vAvenuePremiumIntroCopy h2 {
+  max-width: 700px;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 1.02;
+}
+
+.vAvenuePremiumIntroCopy > p:not(.sectionLabel) {
+  max-width: 660px;
+  margin: 24px 0 0;
+  color: rgba(80, 57, 44, 0.77) !important;
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.vAvenuePremiumIntroVisual {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.vAvenuePremiumIntroVisual::before,
+.vAvenuePremiumVisualLarge::before,
+.vAvenuePremiumVisualSmall::before,
+.vAvenuePremiumCardImage::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(26, 18, 14, 0.62) 0%, rgba(26, 18, 14, 0.04) 56%);
+  content: "";
+}
+
+.vAvenuePremiumIntroCaption,
+.vAvenuePremiumVisualLarge > div,
+.vAvenuePremiumVisualSmall > div {
+  position: absolute;
+  z-index: 1;
+  left: 26px;
+  right: 26px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #ffffff;
+}
+
+.vAvenuePremiumIntroCaption span,
+.vAvenuePremiumVisualLarge span,
+.vAvenuePremiumVisualSmall span {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.vAvenuePremiumIntroCaption strong,
+.vAvenuePremiumVisualLarge strong,
+.vAvenuePremiumVisualSmall strong {
+  color: #ffffff !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.vAvenuePremiumPurpose {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 58px 0 64px;
+  border-top: 1px solid rgba(149, 105, 77, 0.22);
+}
+
+.vAvenuePremiumPurposeHeading {
+  display: grid;
+  grid-template-columns: 0.52fr 1.1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.vAvenuePremiumPurposeHeading h2 {
+  font-size: clamp(38px, 4.6vw, 60px);
+  line-height: 1.02;
+}
+
+.vAvenuePremiumPurposeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(149, 105, 77, 0.22);
+  border-bottom: 1px solid rgba(149, 105, 77, 0.22);
+}
+
+.vAvenuePremiumPurposeGrid article {
+  padding: 30px 30px 32px 0;
+  border-right: 1px solid rgba(149, 105, 77, 0.2);
+}
+
+.vAvenuePremiumPurposeGrid article + article {
+  padding-left: 30px;
+}
+
+.vAvenuePremiumPurposeGrid article:last-child {
+  border-right: 0;
+}
+
+.vAvenuePremiumPurposeGrid article > p {
+  margin: 0;
+  color: rgba(149, 105, 77, 0.76) !important;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+.vAvenuePremiumPurposeGrid h3 {
+  margin: 12px 0 10px;
+  color: var(--oniria-text, #95694d) !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.vAvenuePremiumPurposeGrid article > span {
+  color: rgba(80, 57, 44, 0.72) !important;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.vAvenuePremiumVisualStory {
+  width: min(1240px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 8px 0 72px;
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 16px;
+}
+
+.vAvenuePremiumVisualLarge,
+.vAvenuePremiumVisualSmall {
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.vAvenuePremiumVisualLarge {
+  min-height: 470px;
+}
+
+.vAvenuePremiumVisualStack {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.vAvenuePremiumVisualSmall {
+  min-height: 227px;
+}
+
+.vAvenuePremiumOpportunities {
+  width: min(1240px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 70px 0 78px;
+}
+
+.vAvenuePremiumOpportunitiesHeading {
+  width: min(1180px, 100%);
+  margin: 0 auto 38px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.62fr;
+  gap: 70px;
+  align-items: end;
+}
+
+.vAvenuePremiumOpportunitiesHeading h2 {
+  max-width: 760px;
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.03;
+}
+
+.vAvenuePremiumOpportunitiesHeading > p {
+  margin: 0;
+  color: rgba(80, 57, 44, 0.72) !important;
+  font-size: 15px;
+  line-height: 1.68;
+}
+
+.vAvenuePremiumGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.vAvenuePremiumCard {
+  overflow: hidden;
+  border: 1px solid rgba(149, 105, 77, 0.15);
+  background: rgba(255, 255, 255, 0.28);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.vAvenuePremiumCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(74, 49, 34, 0.1);
+}
+
+.vAvenuePremiumCard > a {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  min-height: 340px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.vAvenuePremiumCardImage {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.vAvenuePremiumCardImage::after {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vAvenuePremiumCard:hover .vAvenuePremiumCardImage::after {
+  transform: scale(1.035);
+}
+
+.vAvenuePremiumCardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgba(24, 17, 13, 0.58) 0%, rgba(24, 17, 13, 0) 55%);
+}
+
+.vAvenuePremiumCardAction {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  color: #ffffff !important;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vAvenuePremiumCardBody {
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vAvenuePremiumCardBody > p {
+  margin: 0;
+  color: rgba(149, 105, 77, 0.78) !important;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.vAvenuePremiumCardBody h3 {
+  margin: 12px 0 14px;
+  color: var(--oniria-text, #95694d) !important;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(28px, 2.7vw, 38px);
+  font-weight: 400;
+  line-height: 1.07;
+  letter-spacing: -0.03em;
+}
+
+.vAvenuePremiumCardBody > span {
+  color: rgba(80, 57, 44, 0.72) !important;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.vAvenuePremiumCardBody > strong {
+  width: fit-content;
+  margin-top: 26px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  color: var(--oniria-text, #95694d) !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vAvenuePremiumEnquiry {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+  padding: 52px 0 60px;
+  display: grid;
+  grid-template-columns: 0.95fr 0.75fr auto;
+  gap: 48px;
+  align-items: center;
+  border-top: 1px solid rgba(149, 105, 77, 0.24);
+}
+
+.vAvenuePremiumEnquiry h2 {
+  font-size: clamp(32px, 3.7vw, 48px);
+  line-height: 1.04;
+}
+
+.vAvenuePremiumEnquiry > p {
+  margin: 0;
+  color: rgba(80, 57, 44, 0.72) !important;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.vAvenuePremiumEnquiryActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.vAvenuePremiumEnquiryActions a {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid var(--oniria-text, #95694d);
+  color: var(--oniria-text, #95694d) !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+}
+
+.vAvenuePremiumEnquiryActions a:first-child {
+  background: var(--oniria-text, #95694d);
+  color: #ffffff !important;
+}
+
+.vAvenuePremiumEnquiryActions a:hover,
+.vAvenuePremiumEnquiryActions a:focus-visible {
+  background: #7f573f;
+  border-color: #7f573f;
+  color: #ffffff !important;
+}
+
+@media (max-width: 1040px) {
+  .vAvenuePremiumHeroInner,
+  .vAvenuePremiumHeroFacts,
+  .vAvenuePremiumIntro,
+  .vAvenuePremiumPurpose,
+  .vAvenuePremiumEnquiry {
+    width: min(100% - 64px, 960px);
+  }
+
+  .vAvenuePremiumIntro {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .vAvenuePremiumIntroVisual {
+    min-height: 340px;
+  }
+
+  .vAvenuePremiumPurposeHeading,
+  .vAvenuePremiumOpportunitiesHeading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .vAvenuePremiumVisualStory {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenuePremiumVisualStack {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+  }
+
+  .vAvenuePremiumGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenuePremiumCard > a {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .vAvenuePremiumEnquiry {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vAvenuePremiumEnquiryActions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 720px) {
+  .residencesPremiumHero .residencesPremiumHeroRegister {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .vAvenuePremiumHero {
+    min-height: 690px;
+  }
+
+  .vAvenuePremiumHeroInner,
+  .vAvenuePremiumHeroFacts,
+  .vAvenuePremiumIntro,
+  .vAvenuePremiumPurpose,
+  .vAvenuePremiumEnquiry {
+    width: calc(100% - 44px);
+  }
+
+  .vAvenuePremiumHeroInner {
+    padding: 126px 0 156px;
+  }
+
+  .vAvenuePremiumHero h1 {
+    font-size: clamp(42px, 12vw, 60px);
+  }
+
+  .vAvenuePremiumHeroCopy {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .vAvenuePremiumHeroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vAvenuePremiumPrimaryAction,
+  .vAvenuePremiumSecondaryAction {
+    width: 100%;
+  }
+
+  .vAvenuePremiumHeroFacts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vAvenuePremiumHeroFacts span {
+    min-height: 52px;
+    font-size: 15px;
+  }
+
+  .vAvenuePremiumHeroFacts span:nth-child(2) {
+    border-right: 0;
+  }
+
+  .vAvenuePremiumHeroFacts span:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .vAvenuePremiumIntro {
+    padding: 60px 0 44px;
+  }
+
+  .vAvenuePremiumIntroCopy h2,
+  .vAvenuePremiumOpportunitiesHeading h2 {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+
+  .vAvenuePremiumIntroVisual {
+    min-height: 280px;
+  }
+
+  .vAvenuePremiumPurpose {
+    padding: 42px 0 44px;
+  }
+
+  .vAvenuePremiumPurposeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenuePremiumPurposeGrid article,
+  .vAvenuePremiumPurposeGrid article + article {
+    padding: 22px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(149, 105, 77, 0.2);
+  }
+
+  .vAvenuePremiumPurposeGrid article:last-child {
+    border-bottom: 0;
+  }
+
+  .vAvenuePremiumVisualStory,
+  .vAvenuePremiumOpportunities {
+    width: calc(100% - 32px);
+  }
+
+  .vAvenuePremiumVisualLarge {
+    min-height: 330px;
+  }
+
+  .vAvenuePremiumVisualStack {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenuePremiumVisualSmall {
+    min-height: 240px;
+  }
+
+  .vAvenuePremiumOpportunities {
+    padding: 52px 0 58px;
+  }
+
+  .vAvenuePremiumCard > a {
+    grid-template-columns: 1fr;
+  }
+
+  .vAvenuePremiumCardImage {
+    min-height: 260px;
+  }
+
+  .vAvenuePremiumCardBody {
+    padding: 26px 24px 28px;
+  }
+
+  .vAvenuePremiumEnquiry {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 44px 0 50px;
+  }
+
+  .vAvenuePremiumEnquiryActions {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vAvenuePremiumEnquiryActions a {
+    width: 100%;
+  }
 }

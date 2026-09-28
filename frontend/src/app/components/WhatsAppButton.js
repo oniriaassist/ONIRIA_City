@@ -2,7 +2,7 @@ import { buildWhatsAppLink } from "../data/contactDetails";
 
 export default function WhatsAppButton() {
   const whatsappLink = buildWhatsAppLink(
-    "Hello Roho, I would like to receive more information."
+    "Hello MALǓA, I would like to receive more information."
   );
 
   return (
@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       className="oniriaWhatsappFabV2"
-      aria-label="Chat with Roho on WhatsApp"
+      aria-label="Chat with MALǓA on WhatsApp"
       title="Chat with us on WhatsApp"
     >
       <svg

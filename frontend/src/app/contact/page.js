@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import Header from "../components/Header";
+import BrandLogo from "../components/BrandLogo";
 import InternationalPhoneInput from "../components/InternationalPhoneInput";
-import PublicPageHero from "../components/PublicPageHero";
 import Footer from "../components/Footer";
 import { buildWhatsAppLink, contactDetails } from "../data/contactDetails";
 import {
@@ -77,10 +77,15 @@ export default function ContactPage() {
         },
         isCommercial ? "/commercial-enquiries" : "/enquiries"
       );
+
       setStatus({
         type: "success",
-        message: formatSubmissionSuccess(result, "Thank you. Your message has been received."),
+        message: formatSubmissionSuccess(
+          result,
+          "Thank you. Your message has been received."
+        ),
       });
+
       setFormData({
         fullName: "",
         email: "",
@@ -99,178 +104,203 @@ export default function ContactPage() {
   }
 
   return (
-    <main>
+    <main className="contactPage maluaContactPage">
       <Header />
 
-      <PublicPageHero
-        title={["BEGIN YOUR", "ROHO STORY"]}
-        description="A private conversation about ownership, visits and opportunities."
-        image="/media/oniria/residence-aerial-masterplan.png"
-      />
+      <section
+        className="maluaContactExperience"
+        id="page-content"
+        style={{
+          backgroundImage: 'url("/media/malua/interior-staircase.webp")',
+        }}
+      >
+        <div className="maluaContactOverlay" />
 
-      <section className="contactPageSection" id="page-content">
-        <div className="contactPageIntroduction">
-          <div>
-            <p className="sectionLabel">CONTACT OUR TEAM</p>
+        <div className="maluaContactExperienceInner">
+          <div className="maluaContactSplit">
+            <div className="maluaContactStory">
+              <p className="maluaContactEyebrow">PRIVATE SALES ENQUIRIES</p>
 
-            <h2>We are here to help you explore Roho</h2>
-          </div>
+              <h1
+                className="maluaContactStoryTitle"
+                aria-label="BEGIN YOUR MALǓA STORY"
+              >
+                <span>BEGIN YOUR</span>
+                <span className="maluaContactStoryBrandLine" aria-hidden="true">
+                  <BrandLogo className="maluaContactStoryBrand" />
+                  <em>STORY</em>
+                </span>
+              </h1>
 
-          <p>
-            Contact us for verified information about property collections,
-            availability, site visits, investment opportunities and commercial
-            spaces.
-          </p>
-        </div>
-
-        <div className="contactPageGrid">
-          <div className="contactInformation">
-            <article>
-              <span>01</span>
-              <h3>Visit</h3>
-              <p>
-                Fumba
-                <br />
-                Zanzibar, Tanzania
+              <p className="maluaContactStoryDescription">
+                A private conversation about ownership, visits and opportunities.
+                Tell us what you are looking for and our team will guide you through
+                the MALǓA collection.
               </p>
-            </article>
 
-            <article>
-              <span>02</span>
-              <h3>Email</h3>
-              <a href={`mailto:${contactDetails.email}`}>
-                {contactDetails.email}
-              </a>
-            </article>
-
-            <article>
-              <span>03</span>
-              <h3>Telephone</h3>
-              <a href={contactDetails.phoneHref}>
-                {contactDetails.phoneDisplay}
-              </a>
-            </article>
-
-            <article>
-              <span>04</span>
-              <h3>WhatsApp</h3>
-              <a
-                href={buildWhatsAppLink("Hello Roho, I would like to speak with your sales team.")}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Start a WhatsApp conversation
-              </a>
-            </article>
-          </div>
-
-          <form className="contactForm" id="contact-form" onSubmit={handleSubmit}>
-            <div className="contactFormHeading">
-              <p className="sectionLabel">SEND A MESSAGE</p>
-              <h2>How can we help?</h2>
-            </div>
-
-            <div className="formGrid">
-              <div className="formField">
-                <label htmlFor="fullName">Full name *</label>
-
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Enter your full name"
-                />
+              <div className="maluaContactAvailability" aria-label="Sales support">
+                <span>Property information</span>
+                <span>Private site visits</span>
+                <span>Investment enquiries</span>
               </div>
 
-              <div className="formField">
-                <label htmlFor="email">Email address *</label>
+              <div className="maluaContactFacts">
+                <article>
+                  <small>Visit</small>
+                  <strong>Fumba · Zanzibar, Tanzania</strong>
+                </article>
 
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email address"
-                />
-              </div>
+                <article>
+                  <small>Email</small>
+                  <a href={`mailto:${contactDetails.email}`}>
+                    {contactDetails.email}
+                  </a>
+                </article>
 
-              <div className="formField">
-                <label htmlFor="phone">Phone number</label>
+                <article>
+                  <small>Telephone</small>
+                  <a href={contactDetails.phoneHref}>
+                    {contactDetails.phoneDisplay}
+                  </a>
+                </article>
 
-                <InternationalPhoneInput
-                  id="phone"
-                  value={formData.phone}
-                  onChange={(phone) => {
-                    setFormData((current) => ({
-                      ...current,
-                      phone,
-                    }));
-                    if (!phone || isValidPhoneNumber(phone)) {
-                      setPhoneError("");
-                    }
-                  }}
-                  error={phoneError}
-                />
-              </div>
-
-              <div className="formField">
-                <label htmlFor="subject">Subject</label>
-
-                <select
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                >
-                  <option value="">Select a subject</option>
-                  <option value="general">General question</option>
-                  <option value="property">Property information</option>
-                  <option value="investment">Investment</option>
-                  <option value="commercial">Commercial opportunity</option>
-                  <option value="site-visit">Site visit</option>
-                </select>
-              </div>
-
-              <div className="formField formFieldFull">
-                <label htmlFor="message">Message *</label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="7"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us how we can help you"
-                />
+                <article>
+                  <small>WhatsApp</small>
+                  <a
+                    href={buildWhatsAppLink(
+                      "Hello MALǓA, I would like to speak with your sales team."
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Start a private conversation →
+                  </a>
+                </article>
               </div>
             </div>
 
-            {status.message && (
-              <div
-                className={`formStatus ${
-                  status.type === "success"
-                    ? "formStatusSuccess"
-                    : "formStatusError"
-                }`}
-              >
-                {status.message}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              className="formSubmitButton"
-              disabled={isSubmitting}
+            <form
+              className="contactForm maluaContactForm"
+              id="contact-form"
+              onSubmit={handleSubmit}
             >
-              {isSubmitting ? "Sending..." : "Send message"}
-            </button>
-          </form>
+              <div className="contactFormHeading maluaContactFormHeading">
+                <p className="sectionLabel">PRIVATE ENQUIRY</p>
+                <h2>Tell us what you&apos;re looking for.</h2>
+                <p>
+                  Share a few details and the MALǓA team will respond with the
+                  relevant property, visit or investment information.
+                </p>
+              </div>
+
+              <div className="formGrid">
+                <div className="formField">
+                  <label htmlFor="fullName">Full name *</label>
+
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    autoComplete="name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div className="formField">
+                  <label htmlFor="email">Email address *</label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="name@example.com"
+                  />
+                </div>
+
+                <div className="formField">
+                  <label htmlFor="phone">Phone / WhatsApp</label>
+
+                  <InternationalPhoneInput
+                    id="phone"
+                    value={formData.phone}
+                    onChange={(phone) => {
+                      setFormData((current) => ({
+                        ...current,
+                        phone,
+                      }));
+                      if (!phone || isValidPhoneNumber(phone)) {
+                        setPhoneError("");
+                      }
+                    }}
+                    error={phoneError}
+                  />
+                </div>
+
+                <div className="formField">
+                  <label htmlFor="subject">I would like to</label>
+
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select an enquiry</option>
+                    <option value="general">Make a general enquiry</option>
+                    <option value="property">Explore property information</option>
+                    <option value="investment">Discuss investment</option>
+                    <option value="commercial">Explore a commercial opportunity</option>
+                    <option value="site-visit">Arrange a site visit</option>
+                  </select>
+                </div>
+
+                <div className="formField formFieldFull">
+                  <label htmlFor="message">Message *</label>
+
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us what you would like to know."
+                  />
+                </div>
+              </div>
+
+              {status.message && (
+                <div
+                  className={`formStatus ${
+                    status.type === "success"
+                      ? "formStatusSuccess"
+                      : "formStatusError"
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="formSubmitButton"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Submit enquiry"}
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <p className="maluaContactPrivacyNote">
+                Your details are used only to respond to this enquiry.
+              </p>
+            </form>
+          </div>
         </div>
       </section>
-
 
       <Footer />
     </main>

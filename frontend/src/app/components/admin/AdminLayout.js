@@ -110,7 +110,7 @@ export default function AdminLayout({ title, children }) {
       {sidebarOpen && <button className="adminSidebarBackdrop" type="button" aria-label="Close navigation" onClick={() => setSidebarOpen(false)} />}
       <aside className={`adminSidebar ${sidebarOpen ? "isOpen" : ""}`}>
         <div className="adminBrandBlock">
-          <Link href="/admin" className="adminBrand" aria-label="ROHO dashboard" prefetch={false} onClick={() => setSidebarOpen(false)}>
+          <Link href="/admin" className="adminBrand" aria-label="MALǓA dashboard" prefetch={false} onClick={() => setSidebarOpen(false)}>
             <BrandLogo />
           </Link>
           <span>Private Staff Area</span>

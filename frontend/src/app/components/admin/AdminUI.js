@@ -21,7 +21,7 @@ export function AdminLoadingScreen({
   return (
     <main className="adminSessionScreen">
       <section className="adminSessionCard" aria-live="polite">
-        <div className="adminSessionMark"><BrandLogo label="ROHO" /></div>
+        <div className="adminSessionMark"><BrandLogo label="MALǓA" /></div>
         <p>Staff Portal</p>
         <div className="adminSpinner" aria-hidden="true" />
         <h1>{timedOut ? "Connection is taking longer than expected" : title}</h1>

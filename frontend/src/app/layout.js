@@ -7,15 +7,15 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://oniriacity.com";
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Roho | The Art of Living in Zanzibar",
-    template: "%s | Roho",
+    default: "MALǓA | The Art of Living in Zanzibar",
+    template: "%s | MALǓA",
   },
   description:
-    "Discover Roho in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
-  applicationName: "Roho",
+    "Discover MALǓA in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+  applicationName: "MALǓA",
   category: "Real Estate",
   keywords: [
-    "Roho",
+    "MALǓA",
     "Zanzibar real estate",
     "Fumba property",
     "Zanzibar villas",
@@ -27,9 +27,9 @@ export const metadata = {
     follow: true,
   },
   icons: {
-    icon: "/oniria-favicon.svg",
-    shortcut: "/oniria-favicon.svg",
-    apple: "/oniria-favicon.svg",
+    icon: "/malua-favicon.png",
+    shortcut: "/malua-favicon.png",
+    apple: "/malua-favicon.png",
   },
 };
 

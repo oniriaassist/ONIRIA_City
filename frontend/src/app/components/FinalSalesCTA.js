@@ -1,13 +1,14 @@
 import Link from "next/link";
+import BrandLogo from "./BrandLogo";
 import { buildWhatsAppLink } from "../data/contactDetails";
 
 export default function FinalSalesCTA() {
   const whatsappHref = buildWhatsAppLink(
-    "Hello Roho, I would like to discuss villas, residences or V Avenue opportunities."
+    "Hello MALǓA, I would like to discuss villas, residences or V Avenue opportunities."
   );
 
   return (
-    <section className="finalSalesSection" aria-label="Start your Roho journey">
+    <section className="finalSalesSection" aria-label="Start your MALǓA journey">
       <div
         className="finalSalesBackground"
         style={{
@@ -18,7 +19,10 @@ export default function FinalSalesCTA() {
 
         <div className="finalSalesContent">
           <p className="finalSalesLabel">BEGIN YOUR</p>
-          <h2>ROHO story</h2>
+          <h2 className="finalSalesBrandHeading" aria-label="MALǓA story">
+            <BrandLogo className="finalSalesBrandLogo" />
+            <span>story</span>
+          </h2>
 
           <p className="finalSalesDescription">
             Choose your next step and our team will help you explore the

@@ -1,7 +1,7 @@
 export const propertyDetails = {
   villas: {
     "garden-villa": {
-      collection: "ROHO VILLAS",
+      collection: "MALǓA VILLAS",
       title: "Three-Bedroom Garden Villa",
       location: "Fumba, Zanzibar",
       eyebrow: "GARDEN VILLA",
@@ -98,7 +98,7 @@ export const propertyDetails = {
     },
 
     "courtyard-villa": {
-      collection: "ROHO VILLAS",
+      collection: "MALǓA VILLAS",
       title: "Courtyard Villa",
       location: "Fumba, Zanzibar",
       eyebrow: "COURTYARD VILLA",
@@ -492,7 +492,7 @@ export const propertyDetails = {
     apartment: {
       collection: "V AVENUE RESIDENCES",
       title: "V Avenue Two-Bedroom Apartment",
-      location: "V Avenue, Roho",
+      location: "V Avenue, MALǓA",
       eyebrow: "V AVENUE APARTMENT",
       heroImage:
         "/media/oniria/v-avenue-commercial.png",
@@ -591,7 +591,7 @@ export const propertyDetails = {
   "retail-space": {
     collection: "V AVENUE COMMERCIAL",
     title: "V Avenue Retail Space",
-    location: "V Avenue, Roho",
+    location: "V Avenue, MALǓA",
     eyebrow: "RETAIL OPPORTUNITY",
 
     heroImage:
@@ -601,7 +601,7 @@ export const propertyDetails = {
       "A flexible retail opportunity within a growing community",
 
     description:
-      "The V Avenue Retail Space is designed for businesses seeking visibility, resident demand and a position within Roho’s planned commercial and lifestyle centre.",
+      "The V Avenue Retail Space is designed for businesses seeking visibility, resident demand and a position within MALǓA’s planned commercial and lifestyle centre.",
 
     facts: [
       {
@@ -699,7 +699,7 @@ export const propertyDetails = {
   "restaurant-space": {
     collection: "V AVENUE DINING",
     title: "Restaurant and Café Space",
-    location: "V Avenue, Roho",
+    location: "V Avenue, MALǓA",
     eyebrow: "DINING OPPORTUNITY",
 
     heroImage:
@@ -807,14 +807,14 @@ export const propertyDetails = {
   "office-space": {
     collection: "V AVENUE OFFICES",
     title: "Professional Office Space",
-    location: "V Avenue, Roho",
+    location: "V Avenue, MALǓA",
     eyebrow: "OFFICE OPPORTUNITY",
 
     heroImage:
       "/media/oniria/v-avenue-commercial.png",
 
     overviewTitle:
-      "A modern business address within Roho",
+      "A modern business address within MALǓA",
 
     description:
       "The Professional Office Space is intended for companies and service providers seeking a modern working environment within a connected residential and commercial destination.",

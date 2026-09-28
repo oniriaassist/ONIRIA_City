@@ -150,7 +150,7 @@ export default function PropertyDetailPage({ property, collectionSlug: collectio
           <h2>{salesHeading}</h2>
           <p>
             Receive current information, discuss your requirements or arrange a
-            private introduction to Roho in Fumba.
+            private introduction to MALǓA in Fumba.
           </p>
         </div>
 

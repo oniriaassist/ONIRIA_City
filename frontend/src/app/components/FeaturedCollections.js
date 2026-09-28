@@ -5,7 +5,7 @@ const collections = [
     description:
       "Elegant private villas designed for comfort, privacy and modern island living.",
     image:
-      "/media/oniria/villa-pool-rear.png",
+      "/media/malua/villa-pool.webp",
     link: "/villas#available-collection",
   },
   {
@@ -14,7 +14,7 @@ const collections = [
     description:
       "Contemporary homes combining thoughtful design, natural light and community.",
     image:
-      "/media/oniria/residence-roundabout.png",
+      "/media/malua/interior-staircase.webp",
     link: "/residences#available-collection",
   },
   {
@@ -32,12 +32,12 @@ export default function FeaturedCollections() {
   return (
     <section className="collectionsSection">
       <div className="collectionsHeading">
-        <p className="sectionLabel">DISCOVER ROHO</p>
+        <p className="sectionLabel">DISCOVER MALǓA</p>
 
         <h2>Featured Collections</h2>
 
         <p>
-          Explore the different spaces that come together to create the ROHO
+          Explore the different spaces that come together to create the MALǓA
            experience.
         </p>
       </div>
