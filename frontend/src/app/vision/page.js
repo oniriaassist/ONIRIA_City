@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "../components/Header";
 import BrandLogo from "../components/BrandLogo";
 import Footer from "../components/Footer";
+import oniriaInvestmentsLogo from "../../assets/partners/oniria-investments.png";
+import vigorGroupLogo from "../../assets/partners/vigor-group.png";
 
 export const metadata = {
   title: "Vision | MALǓA — A World of Your Own",
@@ -195,11 +197,12 @@ export default function VisionPage() {
           <article className="visionV5PartnerCard visionV5OniriaCard">
             <div className="visionV5PartnerLogoFrame visionV5OniriaLogoFrame">
               <Image
-                src="/brand/partners/oniria-investments.png"
+                src={oniriaInvestmentsLogo}
                 alt="ONIRIA Investments"
                 width={751}
                 height={262}
                 className="visionV5OniriaLogo"
+                unoptimized
                 priority={false}
               />
             </div>
@@ -224,11 +227,12 @@ export default function VisionPage() {
           <article className="visionV5PartnerCard visionV5VigorCard">
             <div className="visionV5PartnerLogoFrame visionV5VigorLogoFrame">
               <Image
-                src="/brand/partners/vigor-group.png"
+                src={vigorGroupLogo}
                 alt="Vigor — A Turky's Group of Companies"
                 width={790}
                 height={754}
                 className="visionV5VigorLogo"
+                unoptimized
                 priority={false}
               />
             </div>
