@@ -10,8 +10,8 @@ export default function HeroSection() {
         <div
           className="heroSlide heroSlideActive"
           style={{
-            backgroundImage: 'url("/media/malua/arrival.webp")',
-            backgroundPosition: "center 56%",
+            backgroundImage: 'url("/media/malua/malua-homepage-premium.webp")',
+            backgroundPosition: "center 50%",
           }}
         />
       </div>

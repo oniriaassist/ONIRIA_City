@@ -6,13 +6,15 @@ export default function IntroductionSection() {
         <h2>A NEW ZANZIBAR WAY OF LIFE</h2>
       </div>
 
-      <div className="maluaIntroductionLayout">
-        <div className="introductionInner maluaIntroductionCopy">
+      <div className="maluaIntroStoryCard">
+        <div className="maluaIntroStoryCopy">
+          <p className="maluaIntroStoryKicker">A WORLD OF YOUR OWN</p>
+
           <div className="introductionCopy">
             <p className="introductionText">
-              MALǓA is a carefully designed residential and lifestyle
-              destination in Fumba, Zanzibar. It brings together beautiful
-              architecture, natural surroundings, wellness, comfort and community.
+              MALǓA is a carefully designed residential and lifestyle destination
+              in Fumba, Zanzibar. It brings together beautiful architecture,
+              natural surroundings, wellness, comfort and community.
             </p>
 
             <p className="introductionText">
@@ -27,12 +29,20 @@ export default function IntroductionSection() {
           </a>
         </div>
 
-        <div className="maluaIntroductionVisual" aria-label="MALǓA Zanzibar lifestyle">
-          <div className="maluaIntroductionImage maluaIntroductionImagePrimary">
-            <img src="/media/malua/villa-pool.webp" alt="MALǓA villa with private pool and tropical landscaping" />
+        <div className="maluaIntroStoryVisual" aria-label="MALǓA Zanzibar lifestyle">
+          <div className="maluaIntroStoryImage maluaIntroStoryImageMain">
+            <img
+              src="/media/malua/villa-pool.webp"
+              alt="MALǓA villa with private pool and tropical landscaping"
+            />
           </div>
-          <div className="maluaIntroductionImage maluaIntroductionImageSecondary">
-            <img src="/media/malua/shoreline.webp" alt="Zanzibar shoreline and clear turquoise water" />
+
+          <div className="maluaIntroStoryImage maluaIntroStoryImageDetail">
+            <img
+              src="/media/malua/shoreline.webp"
+              alt="Zanzibar shoreline and clear turquoise water"
+            />
+            <span>Fumba · Zanzibar</span>
           </div>
         </div>
       </div>

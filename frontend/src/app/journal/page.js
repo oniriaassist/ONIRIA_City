@@ -4,20 +4,19 @@ import FinalSalesCTA from "../components/FinalSalesCTA";
 import Footer from "../components/Footer";
 
 export const metadata = {
-  title: "Journal",
+  title: "MALǓA Journal",
   description:
-    "Read stories about Roho, architecture, lifestyle and Zanzibar.",
+    "Stories about MALǓA, architecture, lifestyle, investment and island living in Zanzibar.",
 };
 
 const articles = [
   {
-    category: "ROHO",
+    category: "MALǓA",
     date: "Coming soon",
     title: "Introducing a New Way of Living in Fumba",
     description:
       "Discover the vision behind a connected residential and lifestyle destination shaped by Zanzibar.",
-    image:
-      "/media/oniria/villa-front-entry.png",
+    image: "/media/oniria/villa-front-entry.png",
     slug: "introducing-oniria-city",
   },
   {
@@ -25,9 +24,8 @@ const articles = [
     date: "Coming soon",
     title: "Designing Contemporary Homes for a Tropical Climate",
     description:
-      "Explore how light, airflow, shade and natural materials influence ROHO’s architectural direction.",
-    image:
-      "/media/oniria/villa-gated-entry.png",
+      "Explore how light, airflow, shade and natural materials shape MALǓA’s architectural direction.",
+    image: "/media/oniria/villa-gated-entry.png",
     slug: "tropical-architecture",
   },
   {
@@ -36,18 +34,16 @@ const articles = [
     title: "Why Zanzibar Continues to Inspire the World",
     description:
       "Ocean experiences, culture, nature and warm hospitality make Zanzibar a distinctive place to live.",
-    image:
-      "/media/oniria/residence-parking-garden.png",
+    image: "/media/malua/malua-interior.webp",
     slug: "zanzibar-lifestyle",
   },
   {
     category: "INVESTMENT",
     date: "Coming soon",
-    title: "Understanding the ROHO Property Collections",
+    title: "Understanding the MALǓA Property Collections",
     description:
-      "Learn about the villas, residences, apartments and commercial opportunities planned for the community.",
-    image:
-      "/media/oniria/residence-roundabout.png",
+      "Explore the villas, residences and V Avenue opportunities planned within one connected destination.",
+    image: "/media/oniria/residence-roundabout.png",
     slug: "property-collections",
   },
   {
@@ -55,9 +51,8 @@ const articles = [
     date: "Coming soon",
     title: "Building a Walkable and Connected Community",
     description:
-      "See how homes, public spaces, nature and everyday services can work together within one destination.",
-    image:
-      "/media/oniria/residence-aerial-masterplan.png",
+      "See how homes, public spaces, landscape and everyday services are designed to work together.",
+    image: "/media/oniria/residence-aerial-masterplan.png",
     slug: "connected-community",
   },
   {
@@ -65,61 +60,62 @@ const articles = [
     date: "Coming soon",
     title: "Creating Space for Health, Nature and Belonging",
     description:
-      "ROHO’s lifestyle vision includes wellness, landscaped spaces and opportunities for social connection.",
-    image:
-      "/media/oniria/v-avenue-commercial.png",
+      "MALǓA’s lifestyle vision brings wellness, landscaped spaces and social connection into everyday life.",
+    image: "/media/malua/malua-shoreline.webp",
     slug: "wellness-and-belonging",
   },
 ];
 
 export default function JournalPage() {
   return (
-    <main>
+    <main className="journalPage journalPagePremium">
       <Header />
 
       <PublicPageHero
-        eyebrow="THE ROHO JOURNAL"
-        title="Stories from Roho"
-        description="Architecture, lifestyle, investment and stories inspired by Zanzibar."
-        image="/media/oniria/villa-pool-rear.png"
+        eyebrow="THE MALǓA JOURNAL"
+        title="Stories from MALǓA"
+        description="Architecture, lifestyle, place and ideas inspired by a new way of living in Zanzibar."
+        image="/media/malua/malua-homepage-premium.webp"
       />
 
-      <section className="journalIntroduction" id="page-content">
-        <p className="sectionLabel">NEWS & STORIES</p>
-
-        <h2>Ideas shaping the ROHO experience</h2>
+      <section className="journalIntroduction journalPremiumIntroduction" id="page-content">
+        <div>
+          <p className="sectionLabel">JOURNAL · ZANZIBAR</p>
+          <h2>Ideas shaping the MALǓA experience</h2>
+        </div>
 
         <p>
-          Follow the development journey and explore stories about design,
-          community, island living and investment in Zanzibar.
+          Follow the development journey and explore thoughtful stories about
+          architecture, community, island living, landscape and long-term value.
         </p>
       </section>
 
-      <section className="journalGrid">
-        {articles.map((article) => (
-          <article className="journalCard" key={article.slug}>
-            <a href={`/journal/${article.slug}`} className="journalImageLink">
+      <section className="journalGrid journalPremiumGrid" aria-label="MALǓA journal stories">
+        {articles.map((article, index) => (
+          <article
+            className={`journalCard journalPremiumCard ${index === 0 ? "journalPremiumCardFeatured" : ""}`}
+            key={article.slug}
+          >
+            <a href={`/journal/${article.slug}`} className="journalImageLink" aria-label={`Read ${article.title}`}>
               <div
-                className="journalImage"
+                className="journalImage journalPremiumImage"
                 style={{ backgroundImage: `url("${article.image}")` }}
               >
                 <div className="journalImageOverlay" />
-                <span>Read story →</span>
               </div>
             </a>
 
-            <div className="journalCardContent">
+            <div className="journalCardContent journalPremiumContent">
               <div className="journalMeta">
                 <span>{article.category}</span>
                 <span>{article.date}</span>
               </div>
 
               <h2>{article.title}</h2>
-
               <p>{article.description}</p>
 
-              <a href={`/journal/${article.slug}`} className="textLink">
-                Read article →
+              <a href={`/journal/${article.slug}`} className="journalPremiumLink">
+                Read article <span aria-hidden="true">→</span>
               </a>
             </div>
           </article>

@@ -1,8 +1,8 @@
 import PremiumInquiryPage from "../components/PremiumInquiryPage";
 
 export const metadata = {
-  title: "Request the Roho Brochure",
-  description: "Request the latest approved Roho project and property information.",
+  title: "Request the MALǓA Brochure",
+  description: "Request the latest approved MALǓA project and property information.",
 };
 
 export default function RequestBrochurePage() {

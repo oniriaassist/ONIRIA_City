@@ -4,8 +4,7 @@ const collections = [
     category: "PRIVATE LIVING",
     description:
       "Elegant private villas designed for comfort, privacy and modern island living.",
-    image:
-      "/media/malua/villa-pool.webp",
+    image: "/media/oniria/villa-front-entry.png",
     link: "/villas#available-collection",
   },
   {
@@ -13,8 +12,7 @@ const collections = [
     category: "MODERN RESIDENCES",
     description:
       "Contemporary homes combining thoughtful design, natural light and community.",
-    image:
-      "/media/malua/interior-staircase.webp",
+    image: "/media/malua/interior-staircase.webp",
     link: "/residences#available-collection",
   },
   {
@@ -22,55 +20,50 @@ const collections = [
     category: "LIFESTYLE & BUSINESS",
     description:
       "A vibrant destination for shops, restaurants, services and everyday experiences.",
-    image:
-      "/media/oniria/v-avenue-commercial.png",
+    image: "/media/oniria/v-avenue-commercial.png",
     link: "/v-avenue#v-avenue-opportunities",
   },
 ];
 
 export default function FeaturedCollections() {
   return (
-    <section className="collectionsSection">
+    <section className="collectionsSection maluaCollectionsSection">
       <div className="collectionsHeading">
         <p className="sectionLabel">DISCOVER MALǓA</p>
-
         <h2>Featured Collections</h2>
-
         <p>
           Explore the different spaces that come together to create the MALǓA
-           experience.
+          experience.
         </p>
       </div>
 
-      <div className="collectionsGrid">
+      <div className="collectionsGrid maluaCollectionsGrid">
         {collections.map((collection) => (
-          <article className="collectionCard" key={collection.title}>
-            <div
-              className="collectionImage"
-              style={{
-                backgroundImage: `url("${collection.image}")`,
-              }}
+          <article className="collectionCard maluaCollectionCard" key={collection.title}>
+            <a
+              href={collection.link}
+              className="maluaCollectionImageLink"
+              aria-label={`Explore ${collection.title}`}
             >
-              <div className="collectionOverlay"></div>
-
-              <div className="collectionContent">
-                <p>{collection.category}</p>
-
-                <h3>{collection.title}</h3>
-
-                <span>Explore →</span>
+              <div
+                className="collectionImage maluaCollectionImage"
+                style={{ backgroundImage: `url("${collection.image}")` }}
+              >
+                <div className="collectionOverlay" />
+                <span className="maluaCollectionImageAction">Explore →</span>
               </div>
+            </a>
 
-              <a
-                href={collection.link}
-                className="collectionFullLink"
-                aria-label={`Explore ${collection.title}`}
-              ></a>
+            <div className="maluaCollectionBody">
+              <p className="maluaCollectionCategory">{collection.category}</p>
+              <div className="maluaCollectionTitleRow">
+                <h3>{collection.title}</h3>
+                <a href={collection.link} aria-label={`Explore ${collection.title}`}>
+                  ↗
+                </a>
+              </div>
+              <p className="collectionDescription">{collection.description}</p>
             </div>
-
-            <p className="collectionDescription">
-              {collection.description}
-            </p>
           </article>
         ))}
       </div>

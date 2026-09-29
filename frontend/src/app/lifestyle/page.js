@@ -52,7 +52,7 @@ export default function LifestylePage() {
       <PublicPageHero
         title={["LIFE COMES", "TOGETHER"]}
         description="A considered island lifestyle where nature, wellbeing, dining and community come together around home."
-        image="/media/malua/villa-pool.webp"
+        image="/media/malua/malua-living-premium.webp"
       />
 
       <section className="maluaLifestyleIntro" id="page-content">

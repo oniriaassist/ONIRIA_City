@@ -73,7 +73,7 @@ export default function VillasPage() {
       <section
         className="villasPremiumHero"
         style={{
-          backgroundImage: 'url("/media/oniria/villa-pool-rear.png")',
+          backgroundImage: 'url("/media/malua/malua-bedroom-premium.webp")',
         }}
       >
         <div className="villasPremiumHeroOverlay" />
@@ -157,8 +157,8 @@ export default function VillasPage() {
             <h2>Choose the villa that fits the way you want to live.</h2>
           </div>
           <p>
-            Explore three private villa types, compare their proportions and
-            open each property page for full details and enquiry options.
+            Explore three private villa types and compare their proportions,
+            specifications and individual character.
           </p>
         </div>
 
@@ -170,28 +170,14 @@ export default function VillasPage() {
               }`}
               key={villa.title}
             >
-              <a
-                href={villa.link}
-                className="villasPremiumCardImageLink"
-                aria-label={`View ${villa.title}`}
-              >
+              <div className="villasPremiumCardImageLink">
                 <div
                   className="villasPremiumCardImage"
                   style={{ backgroundImage: `url("${villa.image}")` }}
                 >
                   <div className="villasPremiumCardImageOverlay" />
-
-                  {villa.featured && (
-                    <span className="villasPremiumFeaturedBadge">
-                      FEATURED VILLA
-                    </span>
-                  )}
-
-                  <span className="villasPremiumCardView">
-                    View villa <span aria-hidden="true">→</span>
-                  </span>
                 </div>
-              </a>
+              </div>
 
               <div className="villasPremiumCardContent">
                 <p className="villasPremiumCardEyebrow">{villa.eyebrow}</p>
@@ -210,15 +196,6 @@ export default function VillasPage() {
                   {villa.description}
                 </p>
 
-                <div className="villasPremiumCardFooter">
-                  <div>
-                    <small>Availability</small>
-                    <strong>Register interest</strong>
-                  </div>
-                  <a href={villa.link}>
-                    Explore <span aria-hidden="true">→</span>
-                  </a>
-                </div>
               </div>
             </article>
           ))}

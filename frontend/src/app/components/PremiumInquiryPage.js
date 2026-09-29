@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { buildWhatsAppLink } from "../data/contactDetails";
+import BrandLogo from "./BrandLogo";
 import {
   formatSubmissionSuccess,
   getAnonymousSessionId,
@@ -43,76 +43,55 @@ const COUNTRY_OPTIONS = [
 
 const CONFIG = {
   brochure: {
-    title: ["DISCOVER", "MALǓA"],
+    eyebrow: "PRIVATE PROJECT INTRODUCTION",
+    title: "Discover MALǓA",
     description:
-      "The vision, collections and lifestyle—curated for you.",
+      "Receive the latest approved project information and a curated introduction to the MALǓA vision, collections and lifestyle.",
     image: "/media/oniria/residence-aerial-masterplan.png",
-    sectionLabel: "YOUR PRIVATE PROJECT INTRODUCTION",
+    formLabel: "REQUEST BROCHURE",
     formTitle: "Request the MALǓA brochure",
     formDescription:
-      "Choose what interests you most. We will send the latest approved information and help you understand the next step.",
-    requestLabel: "A PRIVATE BROCHURE REQUEST",
-    requestTitle: "Let us curate your introduction to MALǓA.",
-    requestDescription:
-      "Share your interests and our sales team will prepare the most relevant approved project information for you.",
+      "Share your contact details and choose how you would like to receive the brochure.",
     submitLabel: "Send my brochure request",
     successMessage:
       "Thank you. Your brochure request has been received and the MALǓA team will contact you with the available project information.",
     inquiryType: "brochure",
     endpoint: "/brochure-requests",
-    highlights: [
-      ["01", "The vision", "Understand the idea, location and lifestyle behind MALǓA."],
-      ["02", "The collections", "Explore villas, contemporary residences and opportunities within V Avenue."],
-      ["03", "Your next step", "Move from project discovery to availability, consultation or a private site visit."],
-    ],
+    support: ["The MALǓA vision", "Villas, residences & V Avenue", "A clear next step"],
   },
   interest: {
-    title: ["FIND YOUR", "PLACE"],
+    eyebrow: "PERSONALISED PROPERTY ENQUIRY",
+    title: "Find your place",
     description:
-      "A private path to the right MALǓA opportunity.",
+      "Tell us how you want to live or invest and our team will guide you towards the most relevant MALǓA opportunity.",
     image: "/media/oniria/villa-pool-rear.png",
-    sectionLabel: "A PERSONALISED PROPERTY CONVERSATION",
+    formLabel: "REGISTER INTEREST",
     formTitle: "Tell us what matters to you",
     formDescription:
-      "Your preferences help our team guide you towards the most relevant villa, residence or V Avenue opportunity.",
-    requestLabel: "YOUR PRIVATE PROPERTY REQUEST",
-    requestTitle: "Let us understand the way you want to live or invest.",
-    requestDescription:
-      "Tell us your priorities and our team will guide you towards the most suitable MALǓA collection and next step.",
+      "A few preferences help us prepare a more relevant property conversation from the start.",
     submitLabel: "Begin my MALǓA journey",
     successMessage:
       "Thank you. Your interest has been registered and a member of the MALǓA team will contact you using the details provided.",
     inquiryType: "property-information",
     endpoint: "/enquiries",
-    highlights: [
-      ["01", "Live privately", "Explore generous villas created for space, privacy and tropical living."],
-      ["02", "Live connected", "Consider contemporary residences close to community life and everyday convenience."],
-      ["03", "Build a presence", "Discover residential, retail, dining and professional opportunities within V Avenue."],
-    ],
+    support: ["Private villas", "Contemporary residences", "V Avenue opportunities"],
   },
   "site-visit": {
-    title: ["EXPERIENCE", "MALǓA"],
+    eyebrow: "PRIVATE SITE EXPERIENCE",
+    title: "Experience MALǓA",
     description:
-      "See the setting, explore the collections and meet our team.",
+      "Visit Fumba, explore the setting and shape a private introduction around the collections that matter most to you.",
     image: "/media/oniria/villa-gated-entry.png",
-    sectionLabel: "YOUR PRIVATE SITE VISIT",
+    formLabel: "ARRANGE SITE VISIT",
     formTitle: "Plan your visit with our team",
     formDescription:
-      "Choose a preferred date and tell us what you would like to explore. We will contact you to confirm the appointment and practical details.",
-    requestLabel: "A PERSONALISED SITE EXPERIENCE",
-    requestTitle: "Let us prepare a visit around your interests.",
-    requestDescription:
-      "Share your preferred date and priorities so our team can arrange a focused introduction to MALǓA in Fumba.",
+      "Choose a preferred date and tell us what you would like to explore. We will confirm the appointment directly.",
     submitLabel: "Request my site visit",
     successMessage:
       "Thank you. Your site-visit request has been received. The MALǓA team will contact you to confirm the date and visit arrangements.",
     inquiryType: "site-visit",
     endpoint: "/site-visits",
-    highlights: [
-      ["01", "A guided introduction", "Meet the team and receive a clear introduction to the MALǓA vision and location."],
-      ["02", "A focused experience", "Shape the visit around villas, residences, V Avenue or commercial interests."],
-      ["03", "A clear next step", "Discuss approved information, availability and the most suitable follow-up."],
-    ],
+    support: ["Guided project introduction", "Focused collection viewing", "Private follow-up"],
   },
 };
 
@@ -204,6 +183,7 @@ export default function PremiumInquiryPage({ mode }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     if (!formData.fullName.trim() || !formData.email.trim() || !formData.phone.trim() || !formData.consent) {
       setStatus({
         type: "error",
@@ -219,6 +199,7 @@ export default function PremiumInquiryPage({ mode }) {
     }
 
     setIsSubmitting(true);
+
     try {
       const fullPhone = `${formData.dialCode}${formData.phone.trim().replace(/^0+/, "")}`;
       const result = await submitEnquiry(
@@ -248,9 +229,10 @@ export default function PremiumInquiryPage({ mode }) {
 
       setStatus({
         type: "success",
-        message: mode === "brochure"
-          ? result.message
-          : formatSubmissionSuccess(result, config.successMessage),
+        message:
+          mode === "brochure"
+            ? result.message
+            : formatSubmissionSuccess(result, config.successMessage),
         reference: result.reference_number,
       });
       setFormData(EMPTY_FORM);
@@ -262,256 +244,269 @@ export default function PremiumInquiryPage({ mode }) {
   }
 
   return (
-    <main className={`premiumInquiryPage premiumInquiryPage--${mode}`}>
+    <main className={`premiumInquiryPage premiumInquiryPage--${mode} premiumRequestPage`}>
       <Header />
 
-      <section className="premiumInquiryHero" style={{ backgroundImage: `url('${config.image}')` }}>
-        <div className="premiumInquiryHeroOverlay" />
-        <div className="premiumInquiryHeroContent">
-          <h1 className="hero-title">{config.title.map((line) => <span key={line}>{line}</span>)}</h1>
-          <p className="hero-subtitle">{config.description}</p>
-          <a className="hero-cta" href="#request-form">Continue to your request ↓</a>
-        </div>
-      </section>
+      <section
+        className="premiumRequestExperience"
+        id="request-form"
+        style={{ backgroundImage: `url('${config.image}')` }}
+      >
+        <div className="premiumRequestOverlay" />
 
-      <section className="premiumInquiryIntro">
-        <div className="premiumInquiryIntroHeading">
-          <p className="sectionLabel">{config.sectionLabel}</p>
-          <h2>{config.formTitle}</h2>
-        </div>
-        <p className="premiumInquiryIntroCopy">{config.formDescription}</p>
-      </section>
+        <div className="premiumRequestInner">
+          <div className="premiumRequestSplit">
+            <div className="premiumRequestStory">
+              <p className="premiumRequestEyebrow">{config.eyebrow}</p>
 
-      <section className="premiumInquiryHighlights" aria-label={`${config.title.join(" ")} benefits`}>
-        {config.highlights.map(([number, title, text]) => (
-          <article key={number}>
-            <div className="premiumHighlightNumber" aria-hidden="true">{number}</div>
-            <div className="premiumHighlightContent">
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <h1 className="premiumRequestTitle">{config.title}</h1>
+
+              <p className="premiumRequestDescription">{config.description}</p>
+
+              <div className="premiumRequestBrandLine">
+                <BrandLogo className="premiumRequestBrand" />
+                <span>Fumba · Zanzibar</span>
+              </div>
+
+              <div className="premiumRequestSupport" aria-label="Request support">
+                {config.support.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+
             </div>
-          </article>
-        ))}
-      </section>
 
-      <section className="premiumInquiryFormSection" id="request-form">
-        <div className="premiumInquiryFormAside">
-          <p className="sectionLabel">{config.requestLabel}</p>
-          <h2>{config.requestTitle}</h2>
-          <p>{config.requestDescription}</p>
-          <p className="premiumInquiryPrivacyNote">
-            Your information is sent securely to the MALǓA sales team and is used only to respond to this request.
-          </p>
-          <div className="premiumInquiryContactNote">
-            <span>Prefer a direct conversation?</span>
-            <a href={buildWhatsAppLink("Hello MALǓA, I would like to discuss my request with your sales team.")} target="_blank" rel="noopener noreferrer">
-              Continue on WhatsApp →
-            </a>
-          </div>
-        </div>
+            <form className="premiumInquiryForm premiumRequestForm" onSubmit={handleSubmit}>
+              <div className="premiumRequestFormHeading">
+                <p className="sectionLabel">{config.formLabel}</p>
+                <h2>{config.formTitle}</h2>
+                <p>{config.formDescription}</p>
+              </div>
 
-        <form className="premiumInquiryForm" onSubmit={handleSubmit}>
-          <div className="premiumFormSection">
-            <p>01 · YOUR DETAILS</p>
-            <div className="premiumFormGrid">
-              <label>
-                <span>Full name *</span>
-                <input name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter your full name" required />
-              </label>
-              <label>
-                <span>Email address *</span>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email address" required />
-              </label>
-              <label>
-                <span>Country *</span>
-                <select name="countryCode" value={formData.countryCode} onChange={handleCountryChange} required>
-                  {COUNTRY_OPTIONS.map((country) => (
-                    <option value={country.code} key={country.code}>{country.name}</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Phone number *</span>
-                <span className="premiumPhoneField">
-                  <select aria-label="Country calling code" value={formData.dialCode} onChange={handleDialCodeChange}>
-                    {COUNTRY_OPTIONS.map((country) => (
-                      <option value={country.dial} key={`${country.code}-${country.dial}`}>{country.dial}</option>
-                    ))}
-                  </select>
+              <div className="premiumRequestFields">
+                <label>
+                  <span>Full name *</span>
                   <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={(event) => {
-                      setFormData((current) => ({ ...current, phone: cleanPhone(event.target.value) }));
-                      clearStatus();
-                    }}
-                    placeholder="Phone number"
-                    inputMode="tel"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                    autoComplete="name"
                     required
                   />
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <div className="premiumFormSection">
-            <p>02 · {mode === "brochure" ? "YOUR BROCHURE" : mode === "site-visit" ? "YOUR VISIT" : "YOUR PREFERENCE"}</p>
-            <div className="premiumFormGrid">
-              {mode !== "brochure" && (
-                <label>
-                  <span>Collection of interest</span>
-                  <select name="propertyCollection" value={formData.propertyCollection} onChange={handleChange}>
-                    <option value="">Select a collection</option>
-                    <option value="villas">Villas</option>
-                    <option value="residences">Residences</option>
-                    <option value="v-avenue">V Avenue</option>
-                    <option value="commercial">Commercial spaces</option>
-                  </select>
                 </label>
-              )}
 
-              {mode === "brochure" && (
-                <fieldset className="premiumDeliveryField premiumFormFull">
-                  <legend>Send the brochure by</legend>
-                  <div className="premiumDeliveryOptions">
-                    <label className={formData.brochureDelivery === "email" ? "isSelected" : ""}>
-                      <input
-                        type="radio"
-                        name="brochureDelivery"
-                        value="email"
-                        checked={formData.brochureDelivery === "email"}
-                        onChange={handleChange}
-                      />
-                      <span className="premiumDeliveryIcon" aria-hidden="true">@</span>
-                      <span>
-                        <strong>Email</strong>
-                        <small>Receive the approved brochure in your inbox.</small>
-                      </span>
-                    </label>
-                    <label className={formData.brochureDelivery === "whatsapp" ? "isSelected" : ""}>
-                      <input
-                        type="radio"
-                        name="brochureDelivery"
-                        value="whatsapp"
-                        checked={formData.brochureDelivery === "whatsapp"}
-                        onChange={handleChange}
-                      />
-                      <span className="premiumDeliveryIcon" aria-hidden="true">WA</span>
-                      <span>
-                        <strong>WhatsApp</strong>
-                        <small>Receive the brochure through a direct conversation.</small>
-                      </span>
-                    </label>
-                  </div>
-                </fieldset>
-              )}
-
-              {mode === "interest" && (
-                <>
-                  <label>
-                    <span>Preferred bedrooms</span>
-                    <select name="bedrooms" value={formData.bedrooms} onChange={handleChange}>
-                      <option value="">Any</option>
-                      <option value="1">1 bedroom</option>
-                      <option value="2">2 bedrooms</option>
-                      <option value="3">3 bedrooms</option>
-                      <option value="4">4 bedrooms</option>
-                      <option value="5-plus">5+ bedrooms</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>Buying purpose</span>
-                    <select name="buyingPurpose" value={formData.buyingPurpose} onChange={handleChange}>
-                      <option value="">Select a purpose</option>
-                      <option value="primary-home">Primary home</option>
-                      <option value="holiday-home">Holiday home</option>
-                      <option value="investment">Investment property</option>
-                      <option value="business">Business or commercial use</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>Purchase timeline</span>
-                    <select name="purchaseTimeline" value={formData.purchaseTimeline} onChange={handleChange}>
-                      <option value="">Select a timeline</option>
-                      <option value="immediately">Immediately</option>
-                      <option value="1-3_months">Within 1–3 months</option>
-                      <option value="3-6_months">Within 3–6 months</option>
-                      <option value="6+_months">More than 6 months</option>
-                      <option value="exploring">I am exploring</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>Budget preference</span>
-                    <select name="budget" value={formData.budget} onChange={handleChange}>
-                      <option value="">Prefer not to say</option>
-                      <option value="entry">Entry collection</option>
-                      <option value="premium">Premium collection</option>
-                      <option value="signature">Signature collection</option>
-                      <option value="commercial">Commercial opportunity</option>
-                    </select>
-                  </label>
-                </>
-              )}
-
-              {mode === "site-visit" && (
-                <>
-                  <label>
-                    <span>Preferred visit date *</span>
-                    <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} required />
-                  </label>
-                  <label>
-                    <span>Number of guests</span>
-                    <select name="numberOfGuests" value={formData.numberOfGuests} onChange={handleChange}>
-                      {[1, 2, 3, 4, 5, 6].map((count) => <option value={count} key={count}>{count}</option>)}
-                    </select>
-                  </label>
-                  <label>
-                    <span>Preferred contact method</span>
-                    <select name="preferredContact" value={formData.preferredContact} onChange={handleChange}>
-                      <option value="">Select method</option>
-                      <option value="email">Email</option>
-                      <option value="whatsapp">WhatsApp</option>
-                    </select>
-                  </label>
-                </>
-              )}
-
-              {mode !== "brochure" && (
-                <label className="premiumFormFull">
-                  <span>{mode === "site-visit" ? "What would you like to explore?" : "Tell us more about your ideal property"}</span>
-                  <textarea
-                    name="message"
-                    rows="5"
-                    value={formData.message}
+                <label>
+                  <span>Email address *</span>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleChange}
-                    placeholder={
-                      mode === "site-visit"
-                        ? "Tell us which collections you would like to focus on during your visit"
-                        : "Share your priorities, questions or preferred way of living"
-                    }
+                    placeholder="name@example.com"
+                    autoComplete="email"
+                    required
                   />
                 </label>
+
+                <label>
+                  <span>Country *</span>
+                  <select name="countryCode" value={formData.countryCode} onChange={handleCountryChange} required>
+                    {COUNTRY_OPTIONS.map((country) => (
+                      <option value={country.code} key={country.code}>{country.name}</option>
+                    ))}
+                  </select>
+                </label>
+
+                <label>
+                  <span>Phone / WhatsApp *</span>
+                  <span className="premiumPhoneField premiumRequestPhoneField">
+                    <select aria-label="Country calling code" value={formData.dialCode} onChange={handleDialCodeChange}>
+                      {COUNTRY_OPTIONS.map((country) => (
+                        <option value={country.dial} key={`${country.code}-${country.dial}`}>{country.dial}</option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(event) => {
+                        setFormData((current) => ({ ...current, phone: cleanPhone(event.target.value) }));
+                        clearStatus();
+                      }}
+                      placeholder="Phone number"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      required
+                    />
+                  </span>
+                </label>
+
+                {mode === "brochure" && (
+                  <fieldset className="premiumRequestDelivery premiumRequestFull">
+                    <legend>Send the brochure by</legend>
+                    <div className="premiumRequestChoiceGrid">
+                      <label className={formData.brochureDelivery === "email" ? "isSelected" : ""}>
+                        <input
+                          type="radio"
+                          name="brochureDelivery"
+                          value="email"
+                          checked={formData.brochureDelivery === "email"}
+                          onChange={handleChange}
+                        />
+                        <span><strong>Email</strong><small>Receive it in your inbox</small></span>
+                      </label>
+                      <label className={formData.brochureDelivery === "whatsapp" ? "isSelected" : ""}>
+                        <input
+                          type="radio"
+                          name="brochureDelivery"
+                          value="whatsapp"
+                          checked={formData.brochureDelivery === "whatsapp"}
+                          onChange={handleChange}
+                        />
+                        <span><strong>WhatsApp</strong><small>Receive it in a direct chat</small></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                )}
+
+                {mode !== "brochure" && (
+                  <label>
+                    <span>Collection of interest</span>
+                    <select name="propertyCollection" value={formData.propertyCollection} onChange={handleChange}>
+                      <option value="">Select a collection</option>
+                      <option value="villas">Villas</option>
+                      <option value="residences">Residences</option>
+                      <option value="v-avenue">V Avenue</option>
+                      <option value="commercial">Commercial spaces</option>
+                    </select>
+                  </label>
+                )}
+
+                {mode === "interest" && (
+                  <>
+                    <label>
+                      <span>Preferred bedrooms</span>
+                      <select name="bedrooms" value={formData.bedrooms} onChange={handleChange}>
+                        <option value="">Any</option>
+                        <option value="1">1 bedroom</option>
+                        <option value="2">2 bedrooms</option>
+                        <option value="3">3 bedrooms</option>
+                        <option value="4">4 bedrooms</option>
+                        <option value="5-plus">5+ bedrooms</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Buying purpose</span>
+                      <select name="buyingPurpose" value={formData.buyingPurpose} onChange={handleChange}>
+                        <option value="">Select a purpose</option>
+                        <option value="primary-home">Primary home</option>
+                        <option value="holiday-home">Holiday home</option>
+                        <option value="investment">Investment property</option>
+                        <option value="business">Business or commercial use</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Purchase timeline</span>
+                      <select name="purchaseTimeline" value={formData.purchaseTimeline} onChange={handleChange}>
+                        <option value="">Select a timeline</option>
+                        <option value="immediately">Immediately</option>
+                        <option value="1-3_months">Within 1–3 months</option>
+                        <option value="3-6_months">Within 3–6 months</option>
+                        <option value="6+_months">More than 6 months</option>
+                        <option value="exploring">I am exploring</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Budget preference</span>
+                      <select name="budget" value={formData.budget} onChange={handleChange}>
+                        <option value="">Prefer not to say</option>
+                        <option value="entry">Entry collection</option>
+                        <option value="premium">Premium collection</option>
+                        <option value="signature">Signature collection</option>
+                        <option value="commercial">Commercial opportunity</option>
+                      </select>
+                    </label>
+                  </>
+                )}
+
+                {mode === "site-visit" && (
+                  <>
+                    <label>
+                      <span>Preferred visit date *</span>
+                      <input
+                        type="date"
+                        name="preferredDate"
+                        value={formData.preferredDate}
+                        onChange={handleChange}
+                        required
+                      />
+                    </label>
+
+                    <label>
+                      <span>Number of guests</span>
+                      <select name="numberOfGuests" value={formData.numberOfGuests} onChange={handleChange}>
+                        {[1, 2, 3, 4, 5, 6].map((count) => (
+                          <option value={count} key={count}>{count}</option>
+                        ))}
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Preferred contact method</span>
+                      <select name="preferredContact" value={formData.preferredContact} onChange={handleChange}>
+                        <option value="">Select method</option>
+                        <option value="email">Email</option>
+                        <option value="whatsapp">WhatsApp</option>
+                      </select>
+                    </label>
+                  </>
+                )}
+
+                {mode !== "brochure" && (
+                  <label className="premiumRequestFull">
+                    <span>{mode === "site-visit" ? "What would you like to explore?" : "Tell us more about your ideal property"}</span>
+                    <textarea
+                      name="message"
+                      rows="4"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder={
+                        mode === "site-visit"
+                          ? "Tell us which collections you would like to focus on during your visit"
+                          : "Share your priorities, questions or preferred way of living"
+                      }
+                    />
+                  </label>
+                )}
+              </div>
+
+              <label className="premiumConsent premiumRequestConsent">
+                <input type="checkbox" name="consent" checked={formData.consent} onChange={handleChange} required />
+                <span>I agree that the MALǓA team may contact me regarding this request. *</span>
+              </label>
+
+              {status.message && (
+                <div className={`premiumFormStatus ${status.type === "success" ? "isSuccess" : "isError"}`}>
+                  <p>{status.message}</p>
+                  {status.reference && <strong>Reference: {status.reference}</strong>}
+                </div>
               )}
-            </div>
+
+              <button type="submit" className="premiumInquirySubmit premiumRequestSubmit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : config.submitLabel}
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <p className="premiumRequestPrivacy">
+                Your information is sent securely to the MALǓA sales team and is used only to respond to this request.
+              </p>
+            </form>
           </div>
-
-          <label className="premiumConsent">
-            <input type="checkbox" name="consent" checked={formData.consent} onChange={handleChange} required />
-            <span>I agree that the MALǓA team may contact me regarding this request. *</span>
-          </label>
-
-          {status.message && (
-            <div className={`premiumFormStatus ${status.type === "success" ? "isSuccess" : "isError"}`}>
-              <p>{status.message}</p>
-              {status.reference && <strong>Reference: {status.reference}</strong>}
-            </div>
-          )}
-
-          <button type="submit" className="premiumInquirySubmit" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : config.submitLabel}
-          </button>
-        </form>
+        </div>
       </section>
 
       <Footer />

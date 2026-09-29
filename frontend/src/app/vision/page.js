@@ -15,14 +15,14 @@ const principles = [
     title: "Designed around people",
     description:
       "Walkable neighbourhoods, welcoming shared spaces and homes for different stages of life create a calm setting where privacy and connection can coexist.",
-    image: "/media/oniria/v-avenue-commercial.png",
+    image: "/media/oniria/residence-roundabout.png",
     imagePosition: "center 52%",
   },
   {
     title: "Inspired by Zanzibar",
     description:
       "Tropical landscape, natural materials and an indoor-outdoor rhythm draw directly from the island’s climate, coastline and relaxed way of life.",
-    image: "/media/malua/shoreline.webp",
+    image: "/media/malua/malua-water.webp",
     imagePosition: "center 46%",
   },
   {
@@ -139,7 +139,7 @@ export default function VisionPage() {
 
         <div className="visionV5PrincipleGrid">
           {principles.map((principle) => (
-            <article className="visionV5PrincipleCard" key={principle.title}>
+            <article className="visionV5PrincipleCard visionV5PrincipleCardFull" key={principle.title}>
               <div
                 className="visionV5PrincipleImage"
                 style={{

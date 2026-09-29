@@ -13,36 +13,28 @@ const opportunities = [
     category: "CONNECTED LIVING",
     description:
       "A contemporary home positioned close to dining, retail, everyday services and the social energy of V Avenue.",
-    image: "/media/oniria/residence-parking-garden.png",
-    href: "/v-avenue/apartment",
-    action: "View apartment",
+    image: "/media/oniria/v-avenue-apartment.png",
   },
   {
     title: "V Avenue Retail Space",
     category: "RETAIL OPPORTUNITY",
     description:
       "A flexible commercial address designed for visibility and convenient access within MALǓA’s mixed-use centre.",
-    image: "/media/oniria/v-avenue-commercial.png",
-    href: "/commercial/retail-space",
-    action: "Explore retail",
+    image: "/media/oniria/v-avenue-retail-space.png",
   },
   {
     title: "Restaurant and Café Space",
     category: "DINING OPPORTUNITY",
     description:
       "A hospitality setting designed for cafés, restaurants and selected dining concepts within a day-to-evening destination.",
-    image: "/media/oniria/residence-roundabout.png",
-    href: "/commercial/restaurant-space",
-    action: "Explore dining",
+    image: "/media/oniria/v-avenue-dining-space.png",
   },
   {
     title: "Professional Office Space",
     category: "BUSINESS OPPORTUNITY",
     description:
       "A modern workplace for companies and professional service providers within a connected residential and lifestyle community.",
-    image: "/media/oniria/residence-aerial-masterplan.png",
-    href: "/commercial/office-space",
-    action: "Explore offices",
+    image: "/media/oniria/v-avenue-office-space.png",
   },
 ];
 
@@ -125,12 +117,12 @@ export default function VAvenuePage() {
           role="img"
           aria-label="V Avenue mixed-use commercial destination at MALǓA"
           style={{
-            backgroundImage: 'url("/media/oniria/v-avenue-commercial.png")',
+            backgroundImage: 'url("/media/malua/malua-kitchen-premium.webp")',
           }}
         >
           <div className="vAvenuePremiumIntroCaption">
-            <span>MIXED-USE DESTINATION</span>
-            <strong>Designed for day-to-evening life.</strong>
+            <span>DINING · SOCIAL LIFE</span>
+            <strong>Designed for everyday gathering.</strong>
           </div>
         </div>
       </section>
@@ -152,38 +144,6 @@ export default function VAvenuePage() {
         </div>
       </section>
 
-      <section className="vAvenuePremiumVisualStory" aria-label="V Avenue visual story">
-        <div
-          className="vAvenuePremiumVisualLarge"
-          style={{ backgroundImage: 'url("/media/oniria/v-avenue-commercial.png")' }}
-        >
-          <div>
-            <span>RETAIL · DINING · BUSINESS</span>
-            <strong>A visible address within MALǓA.</strong>
-          </div>
-        </div>
-        <div className="vAvenuePremiumVisualStack">
-          <div
-            className="vAvenuePremiumVisualSmall"
-            style={{ backgroundImage: 'url("/media/oniria/residence-roundabout.png")' }}
-          >
-            <div>
-              <span>PUBLIC REALM</span>
-              <strong>Places to arrive, meet and linger.</strong>
-            </div>
-          </div>
-          <div
-            className="vAvenuePremiumVisualSmall"
-            style={{ backgroundImage: 'url("/media/oniria/residence-parking-garden.png")' }}
-          >
-            <div>
-              <span>CONNECTED LIVING</span>
-              <strong>Homes close to everyday convenience.</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="vAvenuePremiumOpportunities" id="v-avenue-opportunities">
         <div className="vAvenuePremiumOpportunitiesHeading">
           <div>
@@ -199,26 +159,20 @@ export default function VAvenuePage() {
 
         <div className="vAvenuePremiumGrid">
           {opportunities.map((item) => (
-            <article className="vAvenuePremiumCard" key={item.href}>
-              <a href={item.href} aria-label={`${item.action}: ${item.title}`}>
+            <article className="vAvenuePremiumCard" key={item.title}>
+              <div className="vAvenuePremiumCardContent">
                 <div
                   className="vAvenuePremiumCardImage"
                   style={{ backgroundImage: `url("${item.image}")` }}
                 >
                   <div className="vAvenuePremiumCardOverlay" />
-                  <span className="vAvenuePremiumCardAction">
-                    {item.action} <span aria-hidden="true">→</span>
-                  </span>
                 </div>
                 <div className="vAvenuePremiumCardBody">
                   <p>{item.category}</p>
                   <h3>{item.title}</h3>
                   <span>{item.description}</span>
-                  <strong>
-                    Explore opportunity <span aria-hidden="true">→</span>
-                  </strong>
                 </div>
-              </a>
+              </div>
             </article>
           ))}
         </div>
