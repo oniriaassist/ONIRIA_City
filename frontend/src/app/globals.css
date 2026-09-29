@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wdth,wght@62.5,200;62.5,300;62.5,400;62.5,500;62.5,600;62.5,700&display=swap");
+@import url("https://db.onlinewebfonts.com/c/9366bd460113d8bf675fd2bdfe1ce764?family=The+Seasons");
 @import "tailwindcss";
 @import "react-phone-number-input/style.css";
 
@@ -37,6 +38,7 @@ textarea {
 :root {
   --font-sans: Arial, Helvetica, sans-serif;
   --font-logo: "Noto Serif Display", Georgia, "Times New Roman", serif;
+  --font-brand: "The Seasons", "Noto Serif Display", Georgia, "Times New Roman", serif;
   --font-display: var(--font-logo);
   --oniria-bg: #e9ddcb;
   --oniria-text: #95694d;
@@ -21074,4 +21076,35 @@ main :is(h1, h2, h3, h4, h5, h6),
   .finalSalesSectionPremium .finalSalesPremiumHeading > span {
     font-size: 36px !important;
   }
+}
+
+/* =========================================================
+   MALǓA BRAND TYPEFACE — THE SEASONS
+   The existing wordmark width/height rules are intentionally
+   preserved; only the rendered typeface is changed.
+========================================================= */
+.maluaBrandLogo.maluaBrandLogo {
+  background: transparent !important;
+  background-color: transparent !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+.edenHeaderBrand .maluaBrandLogo {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.maluaBrandLogoText {
+  fill: currentColor;
+  font-family: var(--font-brand) !important;
+  font-size: 86px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* The removed welcome heading must not leave an empty band above the story card. */
+.homePage .maluaIntroductionSection {
+  padding-top: 0 !important;
 }

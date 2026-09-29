@@ -1,11 +1,6 @@
 export default function IntroductionSection() {
   return (
     <section id="introduction" className="introductionSection maluaIntroductionSection">
-      <div className="maluaIntroductionHeading">
-        <p className="sectionLabel">WELCOME HOME</p>
-        <h2>A NEW ZANZIBAR WAY OF LIFE</h2>
-      </div>
-
       <div className="maluaIntroStoryCard">
         <div className="maluaIntroStoryCopy">
           <p className="maluaIntroStoryKicker">A WORLD OF YOUR OWN</p>
