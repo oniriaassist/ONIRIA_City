@@ -18,6 +18,8 @@ export default function Footer() {
               height={262}
               className="oniriaMinimalFooterDeveloperLogoImage"
               sizes="(max-width: 600px) 190px, 250px"
+              unoptimized
+              priority={false}
             />
           </div>
 

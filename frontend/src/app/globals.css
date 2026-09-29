@@ -21117,9 +21117,12 @@ main :is(h1, h2, h3, h4, h5, h6),
 ========================================================= */
 .oniriaMinimalFooterDeveloperLogo {
   width: min(250px, 100%);
+  padding: 13px 16px 11px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  background: #f2e8d8;
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .oniriaMinimalFooterDeveloperLogoImage {
@@ -21127,8 +21130,9 @@ main :is(h1, h2, h3, h4, h5, h6),
   width: 100% !important;
   height: auto !important;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.96;
+  filter: none !important;
+  opacity: 1;
+  mix-blend-mode: normal !important;
 }
 
 .oniriaMinimalFooterContact .oniriaMinimalFooterContactLinks {
