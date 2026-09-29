@@ -21116,13 +21116,14 @@ main :is(h1, h2, h3, h4, h5, h6),
    ONIRIA Investments artwork while preserving footer layout.
 ========================================================= */
 .oniriaMinimalFooterDeveloperLogo {
-  width: min(250px, 100%);
+  width: min(210px, 100%);
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background: transparent;
   border: 0;
+  transform: translateY(-8px);
 }
 
 .oniriaMinimalFooterDeveloperLogoImage {
@@ -21141,13 +21142,13 @@ main :is(h1, h2, h3, h4, h5, h6),
 
 @media (max-width: 980px) {
   .oniriaMinimalFooterDeveloperLogo {
-    width: min(230px, 100%);
+    width: min(195px, 100%);
   }
 }
 
 @media (max-width: 600px) {
   .oniriaMinimalFooterDeveloperLogo {
-    width: min(190px, 100%);
+    width: min(165px, 100%);
   }
 
   .oniriaMinimalFooterContact .oniriaMinimalFooterContactLinks {
