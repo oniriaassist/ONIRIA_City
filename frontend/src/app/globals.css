@@ -14472,7 +14472,7 @@ main :is(h1, h2, h3, h4, h5, h6),
 }
 
 .visionV5HeroImage {
-  background-image: url('/media/oniria/vision-hero-villa-pool-v2.png');
+  background-image: url('/media/oniria/vision-hero-villa-pool-final-v3.png');
   background-position: center 48%;
   background-size: cover;
   transform: scale(1.01);
@@ -19828,8 +19828,8 @@ main :is(h1, h2, h3, h4, h5, h6),
 
 /* Vision hero gets a dedicated arrival image so the masterplan aerial appears only where it explains planning. */
 .visionPageV5 .visionV5HeroImage {
-  background-image: url('/media/malua/malua-arrival.webp') !important;
-  background-position: center 52% !important;
+  background-image: url('/media/oniria/vision-hero-villa-pool-final-v3.png') !important;
+  background-position: center 46% !important;
 }
 
 .visionPageV5 .visionV5LivingMedia {
