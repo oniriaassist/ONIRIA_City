@@ -7,11 +7,24 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://oniriacity.com";
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MALǓA | The Art of Living in Zanzibar",
+    default: "MALǓA | A world of your own",
     template: "%s | MALǓA",
   },
   description:
     "Discover MALǓA in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+  openGraph: {
+    title: "MALǓA | A world of your own",
+    description:
+      "Discover MALǓA in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+    type: "website",
+    siteName: "MALǓA",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MALǓA | A world of your own",
+    description:
+      "Discover MALǓA in Fumba, Zanzibar: private villas, modern residences, V Avenue, lifestyle amenities and opportunities to live, visit or invest.",
+  },
   applicationName: "MALǓA",
   category: "Real Estate",
   keywords: [

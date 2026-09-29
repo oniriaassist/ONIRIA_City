@@ -1,15 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
 import { socialLinks } from "../data/socialLinks";
 import { contactDetails } from "../data/contactDetails";
 import BrandLogo from "./BrandLogo";
+import oniriaInvestmentsLogo from "../../assets/partners/oniria-investments.png";
 
 export default function Footer() {
   return (
     <footer className="oniriaMinimalFooter">
       <div className="oniriaMinimalFooterInner">
         <section className="oniriaMinimalFooterContact" aria-label="Company contact details">
-          <p className="oniriaMinimalFooterCompany">VIGOR GROUP OF COMPANIES</p>
-          <p>{contactDetails.location.toUpperCase()}</p>
+          <div className="oniriaMinimalFooterDeveloperLogo">
+            <Image
+              src={oniriaInvestmentsLogo}
+              alt="ONIRIA Investments"
+              width={751}
+              height={262}
+              className="oniriaMinimalFooterDeveloperLogoImage"
+              sizes="(max-width: 600px) 190px, 250px"
+            />
+          </div>
 
           <div className="oniriaMinimalFooterContactLinks">
             <a href={contactDetails.phoneHref}>{contactDetails.phoneDisplay}</a>
